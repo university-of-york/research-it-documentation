@@ -14,7 +14,7 @@ jobs:
     - name: Deploy CloudFormation Stack
       uses: university-of-york/aws-cfn-deploy-action@v1.1
       env:
-        TEMPLATE: cloudformation.json
+        TEMPLATE: cloudformation.yaml
         AWS_STACK_NAME: ResearchITWebsiteStack
         AWS_REGION: eu-west-1
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

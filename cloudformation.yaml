@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Research IT Documentation Website
+Resources:
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName : uoy-researchit-website-dev
+      PublicAccessBlockConfiguration: 
+        BlockPublicAcls: false
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+      WebsiteConfiguration:
+        ErrorDocument: index.html
+        IndexDocument: 404.html
+      Tags:
+        - Key: description
+          Value: Hosts content for the Research IT website
+        - Key: name
+          Value: research-it-website-bucket
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebsiteBucket
+      PolicyDocument: 
+        Version: 2012-10-17
+        Statement: 
+          - Action:
+              - 's3:GetObject'
+            Effect: Allow
+            Principal: '*'
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref WebsiteBucket
+                - '/*'
+Outputs: 
+  WebsiteURL:
+    Description: URL for website hosted on S3
+    Value: !GetAtt WebsiteBucket.WebsiteURL

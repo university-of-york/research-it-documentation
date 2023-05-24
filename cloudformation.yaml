@@ -11,8 +11,8 @@ Resources:
         Rules:
           - ObjectOwnership: BucketOwnerPreferred
       WebsiteConfiguration:
-        ErrorDocument: index.html
-        IndexDocument: 404.html
+        ErrorDocument: 404.html
+        IndexDocument: index.html
       Tags:
         - Key: description
           Value: Hosts content for the Research IT website

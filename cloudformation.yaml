@@ -34,6 +34,12 @@ Resources:
               - - 'arn:aws:s3:::'
                 - !Ref WebsiteBucket
                 - '/*'
+  DevCNAME:
+    Type: Custom::CNAME
+    Properties:
+      ServiceToken: "arn:aws:sns:eu-west-1:230504789214:DevRequestRecordSet"
+      Source: "researchit.app-dev.york.ac.uk."
+      Target: !GetAtt WebsiteBucket.WebsiteURL
 Outputs: 
   WebsiteURL:
     Description: URL for website hosted on S3

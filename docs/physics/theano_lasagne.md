@@ -1,3 +1,0 @@
-# Theano and Lasagne
-
-TODO

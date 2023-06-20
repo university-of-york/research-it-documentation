@@ -1,3 +1,0 @@
-# Research IT
-
-Testing homepage

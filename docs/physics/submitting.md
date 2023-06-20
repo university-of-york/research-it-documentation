@@ -1,3 +1,0 @@
-# Submitting jobs
-
-TODO

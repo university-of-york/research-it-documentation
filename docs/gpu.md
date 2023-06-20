@@ -1,3 +1,0 @@
-# GViking
-
-TODO

@@ -1,3 +1,0 @@
-# Grants and acknowledgement
-
-TODO

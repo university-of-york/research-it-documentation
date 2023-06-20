@@ -1,3 +1,0 @@
-# ADACx (Windows)
-
-TODO

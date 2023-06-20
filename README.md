@@ -10,10 +10,11 @@ It is defined in `cloudformation.yaml` and deployed via GitHub Actions.
 
 ### Content
 
-The content is generated using `mkdocs` with the `material` theme.
+The content is generated using `sphinx` with the `rtd` theme.
 The source markdown files are stored in `docs` and the content is deployed via GitHub Actions.
 
 ## Development
 
-Clone the repo, install `mkdocs` through `pip install mkdocs-material` and run `mkdocs serve` to deploy a development web server that watches for changes made to the `docs` folder.
+Clone the repo, install `sphinx` through `pip install sphinx sphinx-rtd-theme` and run `sphinx-build -b html source/docs site/` to compile the web pages and open `site/index.html` in a web browser.
+There isn't a development server that auto-builds bundled with Sphinx.
 When your changes are ready to be deployed, submit a PR and request approval.

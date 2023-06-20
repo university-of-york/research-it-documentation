@@ -39,7 +39,36 @@ Resources:
     Properties:
       ServiceToken: "arn:aws:sns:eu-west-1:230504789214:DevRequestRecordSet"
       Source: "researchit.app-dev.york.ac.uk."
-      Target: !GetAtt WebsiteBucket.WebsiteURL
+      Target: !GetAtt CloudFrontDistribution.DomainName
+  OriginAccessID:
+        Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+        Properties:
+          CloudFrontOriginAccessIdentityConfig:
+            Comment:
+              Ref: WebsiteBucket
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Comment: CloudFront distribution for static s3 website.
+        DefaultRootObject: index.html
+        Enabled: True
+        Origins:
+        - DomainName: !GetAtt WebsiteBucket.DomainName
+          Id: myS3Origin
+          S3OriginConfig:
+            OriginAccessIdentity: !Join [ '', ["origin-access-identity/cloudfront/", !GetAtt OriginAccessID.Id ]]
+        DefaultCacheBehavior:
+            AllowedMethods:
+              - GET
+              - HEAD
+            ViewerProtocolPolicy: redirect-to-https
+            Compress: True
+            TargetOriginId: myS3Origin
+            ForwardedValues:
+              QueryString: 'false'
+              Cookies:
+                Forward: none
 Outputs: 
   WebsiteURL:
     Description: URL for website hosted on S3

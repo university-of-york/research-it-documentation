@@ -2,7 +2,7 @@ Connecting to Viking
 ====================
 
 .. note::
-    Before you can connect to Viking you'll need a :ref:`project code and a user account<creating-an-account_>`.
+    Before you can connect to Viking you'll need a :ref:`project code and a user account<creating-an-account>`.
 
 To access Viking you'll need to be on the campus network or using the VPN.
 
@@ -11,6 +11,7 @@ Terminal Access (Unix/Linux or Mac)
 -----------------------------------
 
 To log in from a terminal emulator, use the following command:
+
 .. code-block:: bash
 
     ssh viking.york.ac.uk

@@ -23,29 +23,30 @@ Show Me the Numbers
 ===================
 
 +------------------------------+-----------+
-| Compute node only CPU cores  | TBC       |
+| Compute node only CPU cores  | 12,864    |
 +------------------------------+-----------+
-| Total standard compute nodes | TBC       |
+| Total standard compute nodes | 134       |
 +------------------------------+-----------+
-| Compute node generation      | TBC       |
+| Compute node generation      | AMD EPYC3 |
 +------------------------------+-----------+
-| Cores per processor          | TBC       |
+| Cores per processor          | 48        |
 +------------------------------+-----------+
-| Number of processors per node| TBC       |
+| Number of processors per node| 2         |
 +------------------------------+-----------+
-| Memory per compute node      | TBC       |
+| Memory per compute node      | 512 GB    |
 +------------------------------+-----------+
-| High memory node             | TBC       |
+| High memory node             | 2x 2TB    |
 +------------------------------+-----------+
-| High memory node             | TBC       |
+| High memory node             | 1x 4 TB   |
 +------------------------------+-----------+
-| GPUs                         | TBC       |
+| GPUs                         | 48x A40   |
+|                              | 12x H100  |
 +------------------------------+-----------+
-| Scratch (PB)                 | TBC       |
+| Scratch (PB)                 | 1         |
 +------------------------------+-----------+
-| Usable NVME storage (TB)     | TBC       |
+| Usable NVME storage (TB)     | 215       |
 +------------------------------+-----------+
-| Interconnect type            | TBC       |
+| Interconnect type            | 100Gb OPA |
 +------------------------------+-----------+
 
 

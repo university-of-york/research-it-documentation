@@ -15,6 +15,7 @@ Contents
 
    quickstart
    creating-accounts
+   connecting-to-viking
    usage
    api
 

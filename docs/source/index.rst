@@ -19,8 +19,8 @@ Contents
    usage
    api
 
-Show Me the Numbers
-===================
+Headline Numbers
+================
 
 +------------------------------+-----------+
 | Compute node only CPU cores  | 12,864    |

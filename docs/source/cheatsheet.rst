@@ -2,7 +2,7 @@ Heading 1
 =========
 
 Heading 2
-=========
+---------
 Note: Heading structure is determined only by occurrence order.
 
 Styles
@@ -30,3 +30,10 @@ Targets & Links
 
 
 
+.. code-block:: bash
+
+    The following options are available:
+    - Enter the name of the machine you wish to ssh to.
+    - Enter 'username@machine' to use a different username.
+
+    Enter York host or service name: viking

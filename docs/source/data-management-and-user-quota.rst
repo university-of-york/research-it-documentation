@@ -168,11 +168,13 @@ In order to use ``rclone``, you will need a ``client-id``, the steps for which c
 Login to Viking and navigate to an area on your scratch folder, then load the ``rclone`` module.
 
 .. code-block:: console
+
     [abc123@login1(viking) ~]$ module load tools/rclone
 
 Next, for the first time using rclone, you will need to configure it using the following command
 
 .. code-block:: console
+
     [abc123@login1(viking) ~]$ rclone config
 
 ``rclone`` will then ask you a number of questions, including asking for your ``client-id``. We recommend the following answers:

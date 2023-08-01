@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'Research IT'
+project = 'Viking Documentation'
 copyright = '2023, University of York'
 author = 'University of York'
 

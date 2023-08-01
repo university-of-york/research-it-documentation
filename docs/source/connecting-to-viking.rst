@@ -7,8 +7,11 @@ Connecting to Viking
 To access Viking you'll need to be on the campus network or using the VPN.
 
 
-Terminal Access (Unix/Linux or Mac)
------------------------------------
+Terminal Access
+---------------
+
+Linux And MacOS
+^^^^^^^^^^^^^^^
 
 To log in from a terminal emulator, use the following command:
 
@@ -22,14 +25,14 @@ You will be prompted for your IT Services password.
     X11 forwarding will only work on the Viking login nodes, which means that you won't be able to run graphical applications e.g. MATLAB on the Viking compute nodes using X11 forwarding. Details about virtual desktop sessions on Viking `can be found here <FIXME: link to X11 forwarding>`_.
 
 
-Terminal Access (Windows)
--------------------------
+Windows
+^^^^^^^
 
 For terminal access to Viking from a Windows desktop, you will need to install `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/>`_ (or comparable software).
 
 
 Configuring PuTTY to Connect to Viking
---------------------------------------
+"""""""""""""""""""""""""""""""""""""""
 
 Open PuTTY and configure it to connect to Viking:
 
@@ -41,7 +44,7 @@ Open PuTTY and configure it to connect to Viking:
 .. image:: img/putty1.png
 
 Connecting to Viking
---------------------
+"""""""""""""""""""""
 
 1. Start PuTTY
 2. Select 'Viking' from the 'Saved Sessions'

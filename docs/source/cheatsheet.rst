@@ -1,7 +1,7 @@
-Heading
-=======
+Main heading
+============
 
-Use a clear line under each heading or similar
+Use a clear line under each heading or other markdown
 
 Subheading
 ----------
@@ -13,6 +13,8 @@ Subsubheading
 
 Paragraphs
 """"""""""
+
+By using different heading `levels` the TOC will produce nested entries, cutting down the default TOC size
 
 
 Styles
@@ -43,11 +45,25 @@ Targets & Links
 `This is a link, ensure the is a SPACE <https://www.york.ac.uk/etc>`_
 
 
-
 .. code-block:: console
+    :caption: optional caption appears above the code-block. If there is no caption, there **must** be a clear line before the code.
 
     The following options are available:
     - Enter the name of the machine you wish to ssh to.
     - Enter 'username@machine' to use a different username.
 
     Enter York host or service name: viking
+
+
+Code-blocks will allow syntax highlighting
+------------------------------------------
+
+.. code-block:: bash
+
+    echo "Hello World"
+
+
+.. note::
+
+    This is a note. Notice the clear line above this line.
+

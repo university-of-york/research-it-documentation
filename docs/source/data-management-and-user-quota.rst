@@ -36,7 +36,7 @@ To check how much space you have left, run the following command:
 
 .. code-block:: console
 
-    [abc123@login1(viking) scratch]$ myquota
+    [abc123@login1(viking) ~]$ myquota
 
 Which will produce the following result:
 
@@ -116,7 +116,7 @@ There are many options you can use with ``scp``.  To view these options run the 
 
 .. code-block:: console
 
-    man scp
+    $ man scp
 
 
 rsync
@@ -127,13 +127,18 @@ This is recommended for a large number of files. Rsync can check what is already
 .. code-block:: console
     :caption: This will copy your data from your device to your scratch area on Viking
 
-    rsync -avz dirname viking.york.ac.uk:~/scratch
+    $ rsync -avz dirname viking.york.ac.uk:~/scratch
+
+.. code-block:: console
+    :caption: This can be useful for copying a very large file from your device to your scratch area on Viking as it will allow you continue the transfer if the connection breaks for some reason
+
+    $ rsync -P --append filename viking.york.ac.uk:~/scratch
 
 There are many more options you can use with ``rsync``.  To view these options run the following command to view the ``rsync`` manual
 
 .. code-block:: console
 
-    man rsync
+    $ man rsync
 
 
 FileZilla

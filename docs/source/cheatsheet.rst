@@ -14,6 +14,8 @@ Subsubheading
 Paragraphs
 """"""""""
 
+By using different heading `levels` the TOC will produce nested entries, cutting down the default TOC size
+
 
 Styles
 ======
@@ -45,9 +47,16 @@ Targets & Links
 
 
 .. code-block:: console
+    :caption: optional caption appears above the code-block. If there is no caption, there **must** be a clear line before the code.
 
     The following options are available:
     - Enter the name of the machine you wish to ssh to.
     - Enter 'username@machine' to use a different username.
 
     Enter York host or service name: viking
+
+
+.. note::
+
+    This is a note. Notice the clear line above this line.
+

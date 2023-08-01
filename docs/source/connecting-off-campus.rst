@@ -14,13 +14,13 @@ SSH Gateway
 
 The University also provides an `SSH gateway service <https://www.york.ac.uk/it-services/services/ssh/>`_ that can be used to allow off-campus access to Viking, as an alternative to the VPN. To use this method, ``ssh`` to ``ssh.york.ac.uk`` (substituting your username for ``abc123``):
 
-.. code-block:: bash
+.. code-block:: console
 
     ssh abc123@viking.york.ac.uk
 
 Once you have entered your password and gone through the two-factor authentication, you should then see the following message asking which machine you wish to connect to. Simply enter ``viking`` and press ``Enter``.
 
-.. code-block:: bash
+.. code-block:: console
 
     The following options are available:
     - Enter the name of the machine you wish to ssh to.
@@ -34,7 +34,7 @@ Jump hosting via the SSH gateway
 
 To avoid manual entry of the hostname to connect to, it's also possible to connect by "jump hosting" using the SSH gateway:
 
-.. code-block:: bash
+.. code-block:: console
 
     ssh -J abc123@ssh.york.ac.uk viking
 

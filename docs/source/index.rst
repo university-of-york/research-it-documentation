@@ -17,6 +17,7 @@ Contents
    creating-accounts
    connecting-to-viking
    connecting-off-campus
+   data-management-and-user-quota
    usage
    api
 

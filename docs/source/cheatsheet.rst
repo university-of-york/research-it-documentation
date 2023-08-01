@@ -1,20 +1,32 @@
-Heading 1
-=========
+Heading
+=======
 
-Heading 2
----------
+Use a clear line under each heading or similar
+
+Subheading
+----------
+
 Note: Heading structure is determined only by occurrence order.
+
+Subsubheading
+^^^^^^^^^^^^^
+
+Paragraphs
+""""""""""
+
 
 Styles
 ======
-*Bold text*
-**Italic text**
-``Inline literal/code```
+
+**Bold text**
+*Italic text*
+``Inline literal/code``
 :sup:`super`\ Script
 :sub:`sub`\ Script
 
 Bullet Lists
 ============
+
 * Unordered item
 * Unordered item
 
@@ -28,9 +40,11 @@ Bullet Lists
 Targets & Links
 ===============
 
+`This is a link, ensure the is a SPACE <https://www.york.ac.uk/etc>`_
 
 
-.. code-block:: bash
+
+.. code-block:: console
 
     The following options are available:
     - Enter the name of the machine you wish to ssh to.

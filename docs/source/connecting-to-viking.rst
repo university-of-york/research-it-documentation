@@ -12,7 +12,7 @@ Terminal Access (Unix/Linux or Mac)
 
 To log in from a terminal emulator, use the following command:
 
-.. code-block:: bash
+.. code-block:: console
 
     ssh viking.york.ac.uk
 

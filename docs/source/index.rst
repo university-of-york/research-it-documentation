@@ -16,6 +16,7 @@ Contents
    quickstart
    creating-accounts
    connecting-to-viking
+   connecting-off-campus
    usage
    api
 
@@ -52,6 +53,6 @@ Headline Numbers
 
 Check out the :doc:`quickstart` section a speedy guide to getting started or the more in depth guide starting with the :doc:`creating-accounts` page.
 
-If new to using Linux then how about a  :doc:`FIXME-LINUXBEGINNER` course?
+If you are new to using Linux then how about a quick :doc:`FIXME-LINUXBEGINNER` course?
 
 

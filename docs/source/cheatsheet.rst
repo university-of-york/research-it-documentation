@@ -1,7 +1,7 @@
-Heading
-=======
+Main heading
+============
 
-Use a clear line under each heading or similar
+Use a clear line under each heading or other markdown
 
 Subheading
 ----------
@@ -45,7 +45,6 @@ Targets & Links
 `This is a link, ensure the is a SPACE <https://www.york.ac.uk/etc>`_
 
 
-
 .. code-block:: console
     :caption: optional caption appears above the code-block. If there is no caption, there **must** be a clear line before the code.
 
@@ -54,6 +53,14 @@ Targets & Links
     - Enter 'username@machine' to use a different username.
 
     Enter York host or service name: viking
+
+
+Code-blocks will allow syntax highlighting
+------------------------------------------
+
+.. code-block:: bash
+
+    echo "Hello World"
 
 
 .. note::

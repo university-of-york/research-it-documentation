@@ -20,8 +20,8 @@ Contents
    data-management-and-user-quota
 
 
-Headline Numbers
-================
+Cluster Configuration
+---------------------
 
 +------------------------------+-----------+
 | Compute node only CPU cores  | 12,864    |

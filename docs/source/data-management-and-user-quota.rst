@@ -144,7 +144,7 @@ There are many more options you can use with ``rsync``.  To view these options r
 FileZilla
 ^^^^^^^^^
 
-Filezilla can be used on both Windows, Linux, or MacOS to transfer files to and from Viking using a graphical format. You can download it from `their website <https://filezilla-project.org/>`_.
+Filezilla is a fantastic graphical program for transferring files and can be used on both Windows, Linux, or MacOS. You can download it from `their website <https://filezilla-project.org/>`_.
 
 Once it has been downloaded, run FileZilla and you will see this interface:
 
@@ -157,7 +157,7 @@ To connect to Viking, enter your details in the boxes towards the top of the scr
 
 For the username and password, enter your IT Services credentials.
 
-After entering these details and connecting to Viking, your Viking area will appear on the right. You will now be able to click and drag files similar to the file manager.
+After entering these details and connecting to Viking, your Viking area will appear on the right. You will now be able to click and drag files similar to the file manager. More information can be found in the `FileZilla documentation <https://wiki.filezilla-project.org/Using>`_.
 
 
 Moving Data To Google Drive Directly From Viking

@@ -13,12 +13,13 @@ Contents
 .. toctree::
    :maxdepth: 1
 
+   code-of-conduct
    quickstart
    creating-accounts
    connecting-to-viking
    connecting-off-campus
    data-management-and-user-quota
-
+   software-on-viking
 
 Cluster Configuration
 ---------------------

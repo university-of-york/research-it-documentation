@@ -5,7 +5,7 @@ Welcome to the Viking Documentation!
 
    This project is under active development.
 
-**Viking** is a large, Linux compute cluster with many nodes, CPUs, GPUs, lots of storage and boat loads of memory. Viking is housed in Sweden (of course!) in the fabulous `EcoDataCentre <https://ecodatacenter.tech/>`_, which is one of the most sustainable data centres in the whole world.
+**Viking** is a large, Linux compute cluster with many nodes, CPUs, GPUs, lots of storage and boat loads of memory. Viking is housed in Sweden (of course!) in the forward thinking `EcoDataCentre <https://ecodatacenter.tech/>`_, which is one of the most sustainable data centres in the whole world.
 
 Contents
 --------
@@ -13,8 +13,8 @@ Contents
 .. toctree::
    :maxdepth: 1
 
-   code-of-conduct
    quickstart
+   code-of-conduct
    creating-accounts
    connecting-to-viking
    connecting-off-campus

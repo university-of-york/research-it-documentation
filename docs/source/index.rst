@@ -20,6 +20,7 @@ Contents
    connecting-off-campus
    data-management-and-user-quota
    software-on-viking
+   submitting-jobs
 
 Cluster Configuration
 ---------------------

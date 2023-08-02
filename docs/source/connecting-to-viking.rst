@@ -10,7 +10,7 @@ To access Viking you'll need to be on the campus network or using the VPN.
 Terminal Access
 ---------------
 
-Linux And MacOS
+Linux and MacOS
 ^^^^^^^^^^^^^^^
 
 To log in from a terminal emulator, use the following command:

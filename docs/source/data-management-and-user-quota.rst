@@ -1,4 +1,4 @@
-Data Management And User Quota
+Data Management and User Quota
 ==============================
 
 Viking is a self-contained machine, therefore you will notice your normal UoY home directories are not available. This is intentional for the following reasons:
@@ -8,7 +8,7 @@ Viking is a self-contained machine, therefore you will notice your normal UoY ho
 - UoY home directories are not designed for high-performance computing. Instead Viking has its own filesystem designed for high-performance
 
 
-Your Area On Viking Explained
+Your Area on Viking Explained
 -----------------------------
 
 When you log in to Viking, you will land in your home directory, specifically:
@@ -36,7 +36,7 @@ To check how much space you have left, run the following command:
 
 .. code-block:: console
 
-    [abc123@login1(viking) ~]$ myquota
+    $ myquota
 
 Which will produce the following result:
 
@@ -65,7 +65,7 @@ If you are over quota in the ``scratch`` area and need more space please email i
     The most common reason for exceeding your quota in your home directory is by storing ``conda`` environments directly in your home directory. We have a page related to solving that `here <FIXME: make page>`_.
 
 
-Copying And Moving Your Data To Viking
+Copying and Moving Your Data to Viking
 --------------------------------------
 
 There are many ways you can copy data to and from Viking and so we will only go over some general examples here using popular programs as a basic guide. For quick reference here are the important details::
@@ -160,12 +160,12 @@ For the username and password, enter your IT Services credentials.
 After entering these details and connecting to Viking, your Viking area will appear on the right. You will now be able to click and drag files similar to the file manager. More information can be found in the `FileZilla documentation <https://wiki.filezilla-project.org/Using>`_.
 
 
-Moving Data To Google Drive Directly From Viking
+Moving Data to Google Drive Directly from Viking
 ------------------------------------------------
 
 We know a number of Viking users like to store data on Google Drive.  It is possible to copy data directly from Viking to your Google Drive folder. Below we will provide instructions on how to set this up.
 
-Setting up rclone on Viking
+Setting up Rclone on Viking
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to use ``rclone``, you will need a ``client-id``, the steps for which can be found on the `rclone website <https://rclone.org/drive/#making-your-own-client-id>`_.
@@ -174,13 +174,13 @@ Login to Viking and navigate to an area on your scratch folder, then load the ``
 
 .. code-block:: console
 
-    [abc123@login1(viking) ~]$ module load tools/rclone
+    $ module load tools/rclone
 
 Next, for the first time using rclone, you will need to configure it using the following command
 
 .. code-block:: console
 
-    [abc123@login1(viking) ~]$ rclone config
+    $ rclone config
 
 ``rclone`` will then ask you a number of questions, including asking for your ``client-id``. We recommend the following answers:
 
@@ -205,7 +205,7 @@ You are now ready to transfer files from Viking to your Google Drive.  This can 
 
 .. code-block:: console
 
-    [abc123@login1(viking) ~]$ rclone copy directory_to_copy/ gdrive:viking-data
+    $ rclone copy directory_to_copy/ gdrive:viking-data
 
 .. note::
 

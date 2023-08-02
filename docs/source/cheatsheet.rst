@@ -42,8 +42,22 @@ Bullet Lists
 Targets & Links
 ===============
 
+External Links
+--------------
+
 `This is a link, ensure the is a SPACE <https://www.york.ac.uk/etc>`_
 
+
+Internal Links
+--------------
+
+.. _link-target:
+
+:ref:`link text <link-target>`
+
+
+Code-blocks
+===========
 
 .. code-block:: console
     :caption: optional caption appears above the code-block. If there is no caption, there **must** be a clear line before the code.

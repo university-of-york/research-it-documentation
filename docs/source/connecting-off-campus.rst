@@ -1,3 +1,5 @@
+.. _connecting-off-campus:
+
 Connecting to Viking off campus
 ===============================
 

@@ -1,7 +1,7 @@
 Quickstart
 ==========
 
-.. note::
+.. attention::
     Please ensure you are on the campus network or :ref:`connected to the university VPN <connecting-off-campus>`. If you haven't already please :ref:`create an account <creating-an-account>`.
 
 
@@ -45,6 +45,9 @@ In your favorite text editor, create a jobscript for your job. Save it as someth
     :caption: this is just a basic template
 
     #!/usr/bin/env bash
+    # use 'set -e' to exit the script on first error
+    set -e
+
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=10                     # Number of MPI tasks to request
     #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task

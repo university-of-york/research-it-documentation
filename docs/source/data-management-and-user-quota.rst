@@ -25,7 +25,7 @@ where ``abc123`` will be replaced by your username. This home directory has a si
 
 This is a special high-performance filestore with a default size of **3TB** and **no limit** on the number of files. Because of this, you should run all your jobs on Viking from this directory rather than the home directory.
 
-.. note::
+.. tip::
     If you need more ``scratch`` storage space, please email us at itsupport@york.ac.uk, we are more than happy to accommodate large projects.
 
 
@@ -61,7 +61,7 @@ When you login to Viking you will be told if you are over quota. If this is in u
 
 If you are over quota in the ``scratch`` area and need more space please email itsupport@york.ac.uk where we can increase your quota. **There is a grace period of 7 days after which you will lose access to Viking.**
 
-.. note::
+.. tip::
     The most common reason for exceeding your quota in your home directory is by storing ``conda`` environments directly in your home directory. We have a page related to solving that `here <FIXME: make page>`_.
 
 
@@ -75,7 +75,7 @@ There are many ways you can copy data to and from Viking and so we will only go 
     Protocol:   SFTP
 
 
-.. note::
+.. caution::
     If you are not connected to the campus network, please remember you must be connected to the `university VPN <https://www.york.ac.uk/it-services/services/vpn/>`_ first.
 
 
@@ -215,7 +215,7 @@ You are now ready to transfer files from Viking to your Google Drive.  This can 
 
 If you login into Google Drive you should see the files from ``directory_to_copy`` inside a folder named ``viking-data``
 
-.. note::
+.. hint::
     If you see the following error message please check you are not trying to sync to a **team drive** instead. If you are trying to sync to a team drive you will need to amend question 14 to ``y``.
 
 .. code-block:: console

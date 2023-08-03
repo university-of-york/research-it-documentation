@@ -1,0 +1,10 @@
+Partition |br| Name,Max Job |br| Time,Max Jobs |br| per User,Max Cores |br| Running |br| per User,Max Running |br| Memory |br| Per User,Default |br| Coes |br| Per Job,Default |br| Memory |br| Per Core,Number |br| of Nodes
+nodes *,48 hrs,No Limit,500,2.4 TB,1,4.8 GB,170
+test,30 mins,2 running |br| 4 total,8,16 GB,1,1 GB,170
+preempt,30 days,No limit,No limit,No limit,1,4.8 GB,170
+himem,48 hrs,No limit,288,3.78 TB,1,11.875 GB,4
+himem_week,7 days,No limit,64,760 GB,1,11.875 GB,1
+gpu,72 hrs,No limit,40,384 GB,1,9.6 GB,2
+week,7 days,No limit,400,1.92 TB,1,4.75 GB,10
+month,30 days,No limit,120,575 GB,1,4.75 GB,3
+interactive,8 hrs,1,1,19258M,1,9629M,1

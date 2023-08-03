@@ -1,7 +1,7 @@
 Welcome to the Viking Documentation!
 ======================================
 
-.. note::
+.. caution::
 
    This project is under active development.
 

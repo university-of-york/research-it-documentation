@@ -1,7 +1,7 @@
 Connecting to Viking
 ====================
 
-.. note::
+.. hint::
     Before you can connect to Viking you'll need a :ref:`project code and a user account<creating-an-account>`.
 
 To access Viking you'll need to be on the campus network or using the VPN.
@@ -21,7 +21,7 @@ To log in from a terminal emulator, use the following command:
 
 You will be prompted for your IT Services password.
 
-.. note::
+.. hint::
     X11 forwarding will only work on the Viking login nodes, which means that you won't be able to run graphical applications e.g. MATLAB on the Viking compute nodes using X11 forwarding. Details about virtual desktop sessions on Viking `can be found here <FIXME: link to X11 forwarding>`_.
 
 

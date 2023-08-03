@@ -1,8 +1,9 @@
 Software on Viking
 ==================
 
-.. note::
-    All users have the ability to download, build (if necessary) and run software as long as it's compatible with Viking. We do our best to fulfill all software install requests quickly however, if it's a small or simple program, it can sometimes be beneficial for a user to download and build the software themselves.
+.. admonition:: Did you know...
+
+    All users have the ability to download, build and run software as long as it's compatible with Viking. We do our best to fulfill all software install requests quickly however, if it's a small or simple program, it can sometimes be beneficial for a user to download and build the software themselves. 🏗️👷🦺
 
 
 Modules and the User Environment
@@ -17,7 +18,7 @@ For a quick overview of the available ``module`` sub-commands and options, try t
     $ module help
 
 
-.. note::
+.. tip::
 
     The command ``ml`` is a handy front end for the ``module`` command. On Viking try typing ``ml --help`` to see how you can use it as shorthand for ``module load`` and other commands. We'll continue to use explicit commands like ``module load`` in this guide but know you can use ``ml`` a lot of the time instead. Try it out! 😎
 

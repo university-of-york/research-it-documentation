@@ -40,5 +40,5 @@ To avoid manual entry of the hostname to connect to, it's also possible to conne
 
     ssh -J abc123@ssh.york.ac.uk viking
 
-.. note::
+.. hint::
     You will still need to enter your password, and complete the 2FA as before.

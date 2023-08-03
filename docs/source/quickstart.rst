@@ -1,7 +1,7 @@
 Quickstart
 ==========
 
-.. note::
+.. attention::
     Please ensure you are on the campus network or :ref:`connected to the university VPN <connecting-off-campus>`. If you haven't already please :ref:`create an account <creating-an-account>`.
 
 

@@ -1,10 +1,10 @@
-Partition |br| Name,Max Job |br| Time,Max Jobs |br| per User,Max Cores |br| Running |br| per User,Max Running |br| Memory |br| Per User,Default |br| Coes |br| Per Job,Default |br| Memory |br| Per Core,Number |br| of Nodes,Additional |br| Information
-nodes *,48 hrs,No Limit,500,2.4 TB,1,4.8 GB,170,"Practical job limit of 500 running jobs, assuming 1 core per job. |br| There is also a total limit of 2.4TB"
-test,30 mins,2 running |br| 4 total,8,16 GB,1,1 GB,170,Partition for testing small jobs
-preempt,30 days,No limit,No limit,No limit,1,4.8 GB,170,"**Warning:** jobs submitted to this partition are subject to **preemption**. |br| There is no guarantee when or if a job will run, or whether it will complete. |br| This partition has no limits on the resources that can be requested, but a |br| lower priority than the nodes partition. Jobs will run if there are free resources |br| in the nodes partition, but will be cancelled if these resources are later required |br| for another higher priority job."
-himem,48 hrs,No limit,288,3.78 TB,1,11.875 GB,4,"Partition for running jobs that require memory greater than that available in other |br| partitions. Three nodes (himem02, himem04 and himem05) have 64 cores, one node |br| (himem01) has 96 cores. The max running cores and max running memory limits are |br| practical limits, due to the resources available on the nodes."
-himem_week,7 days,No limit,64,760 GB,1,11.875 GB,1,"Partition for running jobs that require memory greater than that available in other |br| partitions. The max running cores and max running memory limits are practical limits, |br| due to the resources available on the nodes."
-gpu,72 hrs,No limit,40,384 GB,1,9.6 GB,2,"Partition for running jobs that require GPUs, see documentation for details about how to |br| request GPUs. There are 4 GPUs and 40 cores on each GPU node, subject to the following |br| rules: Your job script must request at least one GPU You can request a maximum of 10 cores |br| per GPU You can use no more than 2 GPUs at a time across all of your jobs running in the |br| GPU partition"
-week,7 days,No limit,400,1.92 TB,1,4.75 GB,10,"Partition for jobs that need to run for longer than the 48h max time allowed by the nodes |br| partition, but for less than a week. The max running cores and max running memory limits |br| are practical limits, due to the resources available on the nodes."
-month,30 days,No limit,120,575 GB,1,4.75 GB,3,"Partition for jobs that need to run for longer than the 7 day max time allowed by the |br| week partition, but for less than 30 days. The max running cores and max running memory |br| limits are practical limits, due to the resources available on the nodes."
-interactive,8 hrs,1,1,19258M,1,9629M,1,Partition for jobs that would like to use Viking interactively. This could be used for |br| graphical work with the 8 hr queue limit set to mimic a working day.
+Partition |br| Name,Max Job |br| Time,Max Jobs |br| per User,Max Cores |br| Running |br| per User,Max Running |br| Memory |br| Per User,Default |br| Coes |br| Per Job,Default |br| Memory |br| Per Core,Number |br| of Nodes
+nodes *,48 hrs,No Limit,500,2.4 TB,1,4.8 GB,170
+test,30 mins,2 running |br| 4 total,8,16 GB,1,1 GB,170
+preempt,30 days,No limit,No limit,No limit,1,4.8 GB,170
+himem,48 hrs,No limit,288,3.78 TB,1,11.875 GB,4
+himem_week,7 days,No limit,64,760 GB,1,11.875 GB,1
+gpu,72 hrs,No limit,40,384 GB,1,9.6 GB,2
+week,7 days,No limit,400,1.92 TB,1,4.75 GB,10
+month,30 days,No limit,120,575 GB,1,4.75 GB,3
+interactive,8 hrs,1,1,19258M,1,9629M,1

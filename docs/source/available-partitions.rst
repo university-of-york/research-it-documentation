@@ -17,9 +17,9 @@ Available Partitions
 Viking's resources are divided up into various partitions as layed out below, these may change over time as it becomes clear how best to share Viking's resources.
 
 .. tip::
-    To select a partition you use the ``--partition=`` option in the jobscript, for example ``--partition=test``.
+    To select a partition you use the ``--partition=`` option in the jobscript, for example ``--partition=test``. The ``nodes`` partition the default and will be used if no other partition is specified.
 
-.. csv-table:: **\* Nodes is the default partition**
+.. csv-table:: Viking partition table
     :file: data/partition_table.csv
     :header-rows: 1
 

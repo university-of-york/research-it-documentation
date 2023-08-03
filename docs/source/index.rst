@@ -21,6 +21,7 @@ Contents
    data-management-and-user-quota
    software-on-viking
    submitting-jobs
+   available-partitions
 
 Cluster Configuration
 ---------------------

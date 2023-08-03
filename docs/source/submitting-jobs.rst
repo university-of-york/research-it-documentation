@@ -1,6 +1,27 @@
 Submitting Jobs
 ===============
 
+Best Practice
+-------------
+
+Resource Requests
+^^^^^^^^^^^^^^^^^
+
+Whilst you should avoid allocating fewer resources than required for your job to complete, please try to avoid significantly over-allocating resources. In addition to allowing more efficient utilisation of the cluster if job requests are reasonable, smaller jobs are likely to be scheduled quicker, thus improving your personal queue time. The same is true for wall-time; the scheduler assumes that the full duration will be used by the job, and so cannot backfill effectively if jobs are requesting significantly longer wall-times than they actually use.
+
+
+Job Arrays
+^^^^^^^^^^
+
+When submitting large volumes of jobs with identical resource requests, job arrays offer an efficient mechanism to manage these. However, if the individual jobs are very short duration (e.g. 5 minutes or less), it may be preferable to instead use a simple for-loop within a single batch job script, to reduce the overhead associated with each job.
+
+
+Bash Shebang and 'set -e'
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Consider using ``set -e`` after ``#!/usr/bin/env bash``. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.
+
+
 Batch Jobs
 ----------
 
@@ -12,6 +33,9 @@ Below is an example jobscript, let's save it as ``jobscript.job`` for this examp
     :caption: jobscript.job
 
     #!/usr/bin/env bash
+    # use 'set -e' to exit the script on first error
+    set -e
+
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=10                     # Number of MPI tasks to request
     #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
@@ -39,7 +63,15 @@ Below is an example jobscript, let's save it as ``jobscript.job`` for this examp
     echo '\n'Job completed at `date`
 
 
-It uses ``bash`` syntax and importantly has a set of ``sbatch`` specific options before the commands to be run. There are many options that can be added into a jobscript, far more than we can go into here but the `slurm documentation for sbatch <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all. For more advanced and specialised jobscript examples please see the `advanced jobscript section <FIXME: Link>`_.
+It uses ``bash`` syntax and importantly has a set of ``sbatch`` specific options **before** the commands which need to be run. There are many options that can be added into a jobscript, far more than we can go into here and the `slurm documentation for sbatch <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all. For more advanced and specialised jobscript examples please see the `advanced jobscript section <FIXME: Link>`_.
+
+Send this to the job scheduler ``Slurm`` with the ``sbatch`` command:
+
+.. code-block:: console
+
+    $ sbatch jobscript.job
+
+It's as simple as that!
 
 
 Interactive Jobs
@@ -77,7 +109,7 @@ Once the resources have been allocated, you will then be placed onto the computa
     srun: job 1234567 has been allocated resources
     $
 
-You can now run programs interactively with the allocated resources. The job will end either when the time limit has been exceeded, or when the interactive bash shell has been closed (e.g. using `exit`, or by disconnecting from Viking).
+You can now run programs interactively with the allocated resources. The job will end either when the time limit has been exceeded, or when the interactive bash shell has been closed (e.g. using ``exit``, or by disconnecting from Viking).
 
 If you find that you have been disconnected from Viking whilst you have an interactive job running, you should be able to get back to it using the ``sattach`` command as follows:
 

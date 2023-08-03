@@ -9,7 +9,7 @@ Software on Viking
 Modules and the User Environment
 --------------------------------
 
-Most software installed on Viking are made available through the module system ``Lmod``. This allows multiple versions of the same software to be installed, without conflicting or interfering with each other. By loading modules, the user environment is automatically modified to set the appropriate variables (``$PATH`` etc.) to make the corresponding software visible.
+Most software installed on Viking are made available through the module system ``lmod``. This allows multiple versions of the same software to be installed, without conflicting or interfering with each other. By loading modules, the user environment is automatically modified to set the appropriate variables (``$PATH`` etc.) to make the corresponding software visible.
 
 For a quick overview of the available ``module`` sub-commands and options, try typing ``module help`` on Viking:
 
@@ -42,6 +42,11 @@ Loading a Module
 .. code-block:: console
 
     $ module load lang/Python/3.10.8-GCCcore-12.2.0
+
+
+.. attention::
+
+    Always use the **full module name**, including version and toolchain. Being specific means that as new modules are added your work remains the same.
 
 
 Listing Modules in Use

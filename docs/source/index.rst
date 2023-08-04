@@ -23,6 +23,8 @@ Contents
    submitting-jobs
    available-partitions
    jobscript-examples
+   terminal-multiplexing
+   virtual-desktops
 
 Cluster Configuration
 ---------------------

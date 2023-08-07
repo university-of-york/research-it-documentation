@@ -1,3 +1,7 @@
+.. include:: global.rst
+
+.. include the global.rst which includes the substitution of |br| to html </br>
+
 Main heading
 ============
 
@@ -52,6 +56,10 @@ Internal Links
 .. _link-target:
 
 :ref:`link text <link-target>`
+
+Link to an internal page with the page filename minus the ``.rst``
+
+:doc:`link text <quickstart>`
 
 
 Code-blocks
@@ -124,3 +132,25 @@ Admonitions
 .. admonition:: And, by the way...
 
    You can make up your own admonition too. Note the clear line above this one.
+
+Tables
+-------
+
+For a basic table you can draw it out in ascii, it's pretty limited though:
+
+.. table:: Truth table for "not"
+   :widths: auto
+
+   =====  =====
+     A    not A
+   =====  =====
+   False  True
+   True   False
+   =====  =====
+
+
+Using a ``.csv`` file makes things a lot easier:
+
+.. csv-table:: Viking breakdown
+    :file: data/viking_stats.csv
+    :align: center

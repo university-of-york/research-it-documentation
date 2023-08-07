@@ -24,4 +24,5 @@ Check links are valid with the following `sphinx-build -b linkcheck docs/source 
 ## Reference
 
 [Sphinx Docs](https://www.sphinx-doc.org/en/master/index.html)
+
 [RST Specs](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html)

@@ -5,7 +5,7 @@ You can create virtual desktop sessions to run graphical programs. There a two m
 
 .. attention::
 
-    Remember, on the login nodes only **light work** can be done as mentioned in the :ref:`code of conduct <code-of-conduct>`, so ig you need to use a GUI program for heavy work, then please ensure you do that on a compute node.
+    Remember, the login nodes are only for **light work** as mentioned in the :ref:`code of conduct <code-of-conduct>`, so if you need to use a GUI program for heavy work, then please ensure that is done on a compute node.
 
 
 Login Node
@@ -18,6 +18,7 @@ Login Node
 And you will be presented with informtaion similar to mine below:
 
 .. code-block:: console
+    :emphasize-lines: 4,5,7
 
     VNC server started:
         Identity: 743178ce-32d2-11ee-8df4-246e96c38380
@@ -39,7 +40,7 @@ And you will be presented with informtaion similar to mine below:
     If prompted, you should supply the following password: 5jaHqekY
 
 
-Connect to the virtual desktop
+Connect to the Virtual Desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the appropriate application for your operating system, log into the virtual desktop. It will ask for a password and in my example this is ``5jaHqekY``, yours will be whatever the output on Viking was previously.
@@ -124,6 +125,7 @@ Your ``Identity`` code will be different to mine, this is just an example.
 
     It's important to ``kill`` any unused virtual desktops not just log out / close down the conection. They will still be running in the background using resources (remember the :ref:`code of conduct <code-of-conduct>`) so it's really important that you ``kill`` them after you are finished if you leave too many runing you will not be able to start a fresh one.
 
+.. _virtual-session-compute-node:
 
 Compute Node
 -------------
@@ -131,6 +133,7 @@ Compute Node
 The above method is great for light work like checking results but what if you want to do the heavy work with a GUI application? It's easy, when you get the the virtual desktop :ref:`like above <virtual-desktop>`, then you ask for some resources on a compute node, this is exactly the same as using the ``srun`` command however we use a special wrapper called ``start-interactive-session.sh`` in the terminal in the virtual desktop, for example:
 
 .. code-block:: console
+    :caption: like ``srun``, this describes 1 node, 20 tasks, for 4 hours and runs a bash shell
 
     $ start-interactive-session.sh -N 1 -n 20 -t 4:0:0 --pty /bin/bash
 

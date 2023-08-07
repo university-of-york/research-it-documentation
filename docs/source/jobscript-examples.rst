@@ -59,6 +59,7 @@ Single Process Jobs
 For software that does not support any parallelisation, or where single threaded operation is desired, the following example job script can serve as a template.
 
 .. code-block:: bash
+    :linenos:
 
     #!/usr/bin/env bash
     set -e
@@ -107,6 +108,7 @@ Threaded / Multi-Process Jobs
     FIXME: needs explanation
 
 .. code-block:: bash
+    :linenos:
 
     #!/usr/bin/env bash
     set -e
@@ -154,6 +156,7 @@ Multi-processor Jobs
     FIXME: needs explanation
 
 .. code-block:: bash
+    :linenos:
 
     #!/usr/bin/env bash
     set -e
@@ -191,6 +194,7 @@ Array Jobs
     FIXME: needs explanation
 
 .. code-block:: bash
+    :linenos:
 
     #!/usr/bin/env bash
     set -e

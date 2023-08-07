@@ -1,3 +1,5 @@
+.. include:: global.rst
+
 Welcome to the Viking Documentation!
 ======================================
 
@@ -25,40 +27,19 @@ Contents
    jobscript-examples
    terminal-multiplexing
    virtual-desktops
+   program-specific-jobscripts
 
 Cluster Configuration
 ---------------------
 
-+------------------------------+------------+
-| Compute node only CPU cores  | 12,864     |
-+------------------------------+------------+
-| Total standard compute nodes | 134        |
-+------------------------------+------------+
-| Compute node generation      | AMD EPYC3  |
-+------------------------------+------------+
-| Cores per processor          | 48         |
-+------------------------------+------------+
-| Number of processors per node| 2          |
-+------------------------------+------------+
-| Memory per compute node      | 512 GB     |
-+------------------------------+------------+
-| High memory node             | 2x 2TB     |
-+------------------------------+------------+
-| High memory node             | 1x 4 TB    |
-+------------------------------+------------+
-| GPUs                         | 48x A40    |
-|                              | 12x H100   |
-+------------------------------+------------+
-| Scratch                      | 1 PB       |
-+------------------------------+------------+
-| Usable NVME storage          | 215 TB     |
-+------------------------------+------------+
-| Interconnect type            | 100Gb OPA  |
-+------------------------------+------------+
+.. csv-table:: Viking breakdown
+    :file: data/viking_stats.csv
+    :align: center
+
 
 
 Check out the :doc:`quickstart` section a speedy guide to getting started or the more in depth guide starting with the :doc:`creating-accounts` page.
 
-If you are new to using Linux then how about a quick :doc:`FIXME-LINUXBEGINNER` course?
+If you are brand new to using Linux then how about a quick tutorial from Ubuntu called `The Linux command line for beginners <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>`_ course?
 
 

@@ -43,6 +43,7 @@ In your favorite text editor, create a jobscript for your job. Save it as someth
 
 .. code-block:: bash
     :caption: this is just a basic template
+    :linenos:
 
     #!/usr/bin/env bash
     # use 'set -e' to exit the script on first error

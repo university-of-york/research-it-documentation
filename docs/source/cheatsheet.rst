@@ -1,12 +1,10 @@
 Main heading
 ============
 
-Use a clear line under each heading or other markdown
+Use a clear line under each heading at least the length of the text
 
 Subheading
 ----------
-
-Note: Heading structure is determined only by occurrence order.
 
 Subsubheading
 ^^^^^^^^^^^^^
@@ -18,7 +16,7 @@ By using different heading `levels` the TOC will produce nested entries, cutting
 
 
 Styles
-======
+------
 
 **Bold text**
 *Italic text*
@@ -27,7 +25,7 @@ Styles
 :sub:`sub`\ Script
 
 Bullet Lists
-============
+------------
 
 * Unordered item
 * Unordered item
@@ -40,16 +38,16 @@ Bullet Lists
 * Unordered item
 
 Targets & Links
-===============
+---------------
 
 External Links
---------------
+^^^^^^^^^^^^^^
 
-`This is a link, ensure the is a SPACE <https://www.york.ac.uk/etc>`_
+`This is a link, ensure the is a SPACE <https://www.york.ac.uk/>`_
 
 
 Internal Links
---------------
+^^^^^^^^^^^^^^
 
 .. _link-target:
 
@@ -57,10 +55,14 @@ Internal Links
 
 
 Code-blocks
-===========
+-----------
 
 .. code-block:: console
     :caption: optional caption appears above the code-block. If there is no caption, there **must** be a clear line before the code.
+    :emphasize-lines: 3,5
+    :linenos:
+    :lineno-start: 10
+    :name: a label for hyperlink
 
     The following options are available:
     - Enter the name of the machine you wish to ssh to.
@@ -69,17 +71,9 @@ Code-blocks
     Enter York host or service name: viking
 
 
-Code-blocks will allow syntax highlighting
-------------------------------------------
-
 .. code-block:: bash
 
     echo "Hello World"
-
-
-.. note::
-
-    This is a note. Notice the clear line above this line.
 
 
 
@@ -129,4 +123,4 @@ Admonitions
 
 .. admonition:: And, by the way...
 
-   You can make up your own admonition too.
+   You can make up your own admonition too. Note the clear line above this one.

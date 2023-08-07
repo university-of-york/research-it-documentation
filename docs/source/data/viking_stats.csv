@@ -1,0 +1,12 @@
+ Compute node only CPU cores,"12,864"
+ Total standard compute nodes,134
+ Compute node generation,AMD EPYC3
+ Cores per processor,48
+ Number of processors per node,2
+ Memory per compute node,512 GB
+ High memory node,2x 2 TB
+ High memory node,1x 4 TB
+ GPUs,48x A40 |br| 12x H100
+ Scratch,1.5 PB
+ Usable NVME storage,215 TB
+ Interconnect type,100Gb OPA

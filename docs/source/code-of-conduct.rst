@@ -1,5 +1,3 @@
-.. _code-of-conduct:
-
 Code of Conduct
 ===============
 
@@ -27,6 +25,12 @@ Deleting Unneeded Files
 -----------------------
 
 Speeds up the filesystem
+
+
+Backing up data
+----------------
+
+``scratch`` is not backed up etc..
 
 
 

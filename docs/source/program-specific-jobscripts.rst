@@ -1,3 +1,5 @@
+.. include:: global.rst
+
 Program Specific Jobscripts
 ===========================
 
@@ -35,8 +37,7 @@ The following job script could be used to submit an ``Amber`` workflow to the cl
     :linenos:
     :caption: Example **CPU** Amber Script
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=amber_cpu_example           # Job name
     #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
     #SBATCH --partition=nodes                      # Partition for the job
@@ -57,8 +58,7 @@ The following job script could be used to submit an ``Amber`` workflow to the GP
     :linenos:
     :caption: Example **GPU** Amber Script
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=amber_gpu_example           # Job name
     #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
     #SBATCH --partition=gpu                        # Partition for the job ('gpu' for the GPU partition)
@@ -93,8 +93,7 @@ This job script can be used to submit a ``Gaussian`` workflow to the cluster, us
 .. code-block:: bash
     :linenos:
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=Gaussian_CPU_example    # Job Name
     #SBATCH --account=PROJECTCODE              # Project account
     #SBATCH --mail-type= BEGIN, END, FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
@@ -134,7 +133,7 @@ MATLAB
 Running Interactively
 ^^^^^^^^^^^^^^^^^^^^^
 
-``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so :ref:`inside an interactive cluster session <virtual-session-compute-node>`, rather than on :ref:`Viking's login nodes <code-of-conduct>`.
+``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so :ref:`inside an interactive cluster session <virtual-session-compute-node>`, rather than on :doc:`Viking's login nodes <code-of-conduct>`.
 
 The following demonstrates how you could run ``MATLAB`` interactively without the GUI:
 
@@ -175,8 +174,7 @@ The following job script could be used to submit a ``MATLAB`` script to the clus
     :caption: example MATLAB batch mode script
     :linenos:
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=matlab_batch_example        # Job name
     #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
     #SBATCH --partition=nodes                      # Partition for the job
@@ -316,8 +314,7 @@ The following Job Script will run the R code with the default number of CPUs and
 .. code-block:: bash
     :caption: Job Script to run simple.R
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=Simple-R                  # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL           # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=my.name@york.ac.uk       # Where to send mail
@@ -343,8 +340,7 @@ The following script uses 4 cores and 24GB of memory.
 
 .. code-block:: bash
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=Simple-R                  # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL           # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=andrew.smith@york.ac.uk  # Where to send mail
@@ -522,8 +518,7 @@ An example job script can be found here. This script takes 40 CPUs, 1 GB of memo
 
 .. code-block:: bash
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=VOX-FE_CPU_example       # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk       # Where to send mail to
@@ -566,8 +561,7 @@ An example script to run ``RELION`` can be seen here using
 
 .. code-block:: bash
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=RELION_CPU_example          # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL             # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk          # Where to send mail
@@ -592,3 +586,231 @@ An example script to run ``RELION`` can be seen here using
 
 .. note::
     ``RELION`` can use GPUs, and is available on Viking's virtual desktop
+
+
+Alpha Fold
+-----------
+
+`AlphaFold <https://deepmind.com/blog/article/putting-the-power-of-alphafold-into-the-worlds-hands>`_ is an AI system developed by `DeepMind <https://deepmind.com/>`_ that predicts a protein's 3D structure from it's amino acid sequence. The source code for the inference pipeline can be found on their `GitHub <https://github.com/deepmind/alphafold>`_ page.
+
+
+.. attention::
+
+    Since a few tweaks have been made to the installation, it is important to read through the following documentation before running any jobs with ``AlphaFold``.
+
+The CPU-only version of AlphaFold can be loaded using the following:
+
+.. code-block:: console
+
+    $ module load bio/AlphaFold/2.0.0-foss-2020b
+
+And the GPU version of AlphaFold can be loaded using the following command:
+
+.. code-block:: console
+
+    $ module load bio/AlphaFold/2.0.0-fosscuda-2020b
+
+
+Example job scripts
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+    :caption: using 16 CPUs, 80 GBs of memory and for up to 24 hours
+
+    {SHEBANG}
+    #SBATCH --job-name=AlphaFold_cpu_example        # Job name
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=1
+    #SBATCH --cpus-per-task=16
+    #SBATCH --mem=80G
+    #SBATCH --time=24:00:00
+    #SBATCH --output=%x-%j.log
+    #SBATCH --mail-type=BEGIN,END,FAIL              # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk           # Where to send mail
+    #SBATCH --account=PROJECTCODE                   # Project account
+
+    module purge                                    # purge any loaded modules
+    # Load AlphaFold module
+    module load bio/AlphaFold/2.0.0-foss-2020b
+
+    # Path to genetic databases
+    export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold_db/20210908/
+
+    # Optional: uncomment to change number of CPU cores to use for hhblits/jackhmmer
+    # export ALPHAFOLD_HHBLITS_N_CPU=8
+    # export ALPHAFOLD_JACKHMMER_N_CPU=8
+
+    # Run AlphaFold
+    alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
+
+.. code-block:: bash
+    :caption: using a GPU in addition to 10 CPUs for up to 4 hours
+
+    {SHEBANG}
+    #SBATCH --job-name=AlphaFold_GPU_example    # Job name
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=1
+    #SBATCH --cpus-per-task=10
+    #SBATCH --gres=gpu:1
+    #SBATCH --partition=gpu
+    #SBATCH --time=4:00:00
+    #SBATCH --output=%x-%j.log
+    #SBATCH --mail-type=BEGIN,END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk       # Where to send mail
+    #SBATCH --account=PROJECTCODE               # Project account
+
+    module purge                                # purge any loaded modules
+    # Load AlphaFold module
+    module load bio/AlphaFold/2.0.0-fosscuda-2020b
+
+    # Path to genetic databases
+    export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold_db/20210908/
+
+    # Optional: uncomment to change number of CPU cores to use for hhblits/jackhmmer
+    # export ALPHAFOLD_HHBLITS_N_CPU=8
+    # export ALPHAFOLD_JACKHMMER_N_CPU=8
+
+    # Run AlphaFold
+    alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
+
+
+Notes for using AlphaFold on Viking
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``AlphaFold`` currently requires access to various genetic databases such as ``UniRef90``, ``MGnify``, ``BFD``, ``Uniclust30``, ``PDB70`` and ``PDB``.
+
+To avoid needless duplication of large databases across the cluster, these have been made available in a central directory:
+
+.. code-block:: console
+
+    /mnt/bb/striped/alphafold_db/20210908
+
+The name of the subdirectory ``20210908`` indicates the date that the databases were downloaded. The files are hosted on the burst buffer (``/mnt/bb``) - a shared filesystem powered by fast SSDs - which is recommended for ``AlphaFold`` due to the random I/O access patterns. As seen below this can cause jobs to run up to **2x faster** than if the databases were stored on the disk-based lustre filesystem.
+
+It is important to note that we have made a few enhancements to the installation to facilitate easier usage:
+
+- The location to the AlphaFold data can be specified via the ``$ALPHAFOLD_DATA_DIR``  environment variable, so you should define this variable in your AlphaFold job script: ``export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold-db/20210908``
+- A symbolic link named ``alphafold`` , which points to the ``run_alphafold.py script`` , is included. This means you can just use `alphafold`  instead of ``run_alphafold.py`` or ``python run_alphafold.py``.
+- The ``run_alphafold.py``  script has been slightly modified such that defining ``$ALPHAFOLD_DATA_DIR``  is sufficient to pick up all the data provided in that location, meaning that you don't need to use options like ``--data_dir``  to specify the location of the data.
+- Similarly, the ``run_alphafold.py``  script was tweaked such that the location to commands like ``hhblits``, ``hhsearch``, ``jackhmmer`` or ``kalign`` are already correctly set, and thus options like ``--hhblits_binary_path``  are not required.
+- The Python script that are used to run ``hhblits``  and ``jackhmmer``  have been tweaked so you can control how many cores are used for these tools (rather than hard-coding this to 4 and 8 cores respectively).
+
+  - If set, the ``$ALPHAFOLD_HHBLITS_N_CPU``  environment variable can be used to specify how many cores should be used for running ``hhblits``. The default of 4 cores will be used if ``$ALPHAFOLD_HHBLITS_N_CPU`` is not defined. The same applies for ``jackhmmer`` and ``$ALPHAFOLD_JACKHMMER_N_CPU`` .
+  - Tweaking either of these may not be worth it however, since test jobs indicated that using more than 4/8 cores actually resulted in worse performance (although this may be workload dependent)
+
+
+CPU vs GPU performance
+^^^^^^^^^^^^^^^^^^^^^^
+
+Shown below are the results of using the ``T1050.fasta`` example mentioned in the ``AlphaFold`` README with different resource allocations.
+
+.. csv-table:: AlphaFold performance
+    :file: data/alphafold_performance.csv
+    :align: center
+    :header-rows: 1
+
+This highlights the importance of requesting resources when using ``AlphaFold``. These results suggest:
+
+  - It is faster for almost all jobs to use the ``AlphaFold`` with the database stored on the burst buffer, ``/mnt/bb``
+  - Using a GPU can considerably increase the speed at which a job completes (up to 6x)
+  - Using a second GPU does not significantly reduce the runtime for a job
+  - Counter intuitively, using more cores can lower performance
+
+
+VASP
+----
+
+``VASP`` can be loaded using the following command:
+
+.. code-block:: console
+
+    $ module load phys/VASP/5.4.4-intel-2018a
+
+.. code-block:: bash
+    :caption: example of a batch script using ``VASP`` can be found here using 120 CPU cores, 4750mb of RAM and for one hour.
+
+    {SHEBANG}
+    #SBATCH --job-name=VASP_cpu_example   # Job name
+    #SBATCH --mail-type=BEGIN,END,FAIL    # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk # where to send mail
+    #SBATCH --nodes=3-18          # Node range
+    #SBATCH --spread-job          # Evenly distribute cores
+    #SBATCH --ntasks=120          # Num mpi tasks
+    #SBATCH --cpus-per-task=1     # Number of CPU cores per task
+    #SBATCH --mem-per-cpu=4750mb  # Memory per core
+    #SBATCH --time=01:00:00       # Time limit hrs:min:sec
+    #SBATCH --output=%x.o%j       # Archer style screen output
+    #SBATCH --error=%x.e%j        # Archer style error output
+    #SBATCH --account=PROJECTCODE # Project code
+
+    module purge
+    module load phys/VASP/5.4.4-intel-2018a
+    ulimit -s unlimited
+
+    mpirun -np 120 vasp_std
+
+
+.. note::
+
+     VASP can take advantage of a GPU
+
+
+AtChem 2
+---------
+
+AtChem2 is a modelling tool for atmospheric chemistry. It is primarily designed to use the Master Chemical Mechanism (MCM), but it can be used with any general set of chemical reactions. The MCM is a near-explicit chemical mechanism which describes the gas-phase oxidation of volatile organic compounds (VOC) in the lower atmosphere. The MCM is available at http://mcm.york.ac.uk/. The latest stable version of AtChem2 can be downloaded from `GitHub <https://github.com/AtChem/AtChem2/releases>`_.
+
+This documentation will take you through getting a copy of the ``AtChem2`` source code, setting up the environment for ``AtChem2`` use, building a model, and submitting a model run to Viking's job scheduler, in batch mode.
+
+
+Setting up the environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To work with ``AtChem2`` you will need to load the following modules on Viking:
+
+.. code-block:: console
+    :caption: a Fortran compiler
+
+    $ module load toolchain/foss/2021a
+
+
+.. code-block:: console
+    :caption: CMake, for building AtChem2 dependencies
+
+    $ module load devel/CMake/3.20.1-GCCcore-10.3.0
+
+
+Next, clone a copy of the ``AtChem2`` source code:
+
+.. code-block:: console
+
+    $ git clone https://github.com/AtChem/AtChem2.git atchem2
+
+
+Then create a directory to contain AtChem2's dependencies
+
+.. code-block:: console
+
+    $ mkdir atchem2_dependencies
+
+
+Run the following files from the repository to install the dependencies for ``AtChem2``. These will automatically be installed into the directory you have made.
+
+.. code-block:: console
+    :caption: CVODE
+
+    $ ./atchem2/tools/install/install_cvode.sh ./atchem2_dependencies $(command -v gfortran)
+
+
+.. code-block:: console
+    :caption: OpenLibm
+
+    $ ./atchem2/tools/install/install_openlibm.sh ./atchem2_dependencies
+
+Make a note of the full path to your ``AtChem2`` dependencies directory by copying the output of the following command, this will be used later to build a model.
+
+.. code-block:: console
+
+    $ realpath ./atchem2_dependencies
+
+At this point, the environment is set up and you are ready to build an AtChem2 model.

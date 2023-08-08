@@ -61,8 +61,7 @@ For software that does not support any parallelisation, or where single threaded
 .. code-block:: bash
     :linenos:
 
-    #!/usr/bin/env bash
-    set -e
+    {SHEBANG}
 
     #----------------------------- Slurm directives ------------------------------#
     #SBATCH --job-name=my_job               # Job name
@@ -110,8 +109,7 @@ Threaded / Multi-Process Jobs
 .. code-block:: bash
     :linenos:
 
-    #!/usr/bin/env bash
-    set -e
+    {SHEBANG}
     #----------------------------- Slurm directives ------------------------------#
     #SBATCH --job-name=threaded_example     # Job name
     #SBATCH --ntasks=1                      # Number of MPI tasks to request
@@ -158,8 +156,7 @@ Multi-processor Jobs
 .. code-block:: bash
     :linenos:
 
-    #!/usr/bin/env bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=40                     # Number of MPI tasks to request
     #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
@@ -196,8 +193,7 @@ Array Jobs
 .. code-block:: bash
     :linenos:
 
-    #!/usr/bin/env bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=1                      # Number of MPI tasks to request
     #SBATCH --cpus-per-task=2               # Number of CPU cores per MPI task

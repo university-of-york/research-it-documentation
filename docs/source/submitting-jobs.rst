@@ -32,9 +32,7 @@ Below is an example jobscript, let's save it as ``jobscript.job`` for this examp
 .. code-block:: bash
     :caption: jobscript.job
 
-    #!/usr/bin/env bash
-    # use 'set -e' to exit the script on first error
-    set -e
+    {SHEBANG}
 
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=10                     # Number of MPI tasks to request
@@ -100,14 +98,14 @@ After submitting the job, it will be added to the queue, and you should receive 
 
 .. code-block:: console
 
-    srun: job 1234567 queued and waiting for resources
+    $ srun: job 1234567 queued and waiting for resources
 
 Once the resources have been allocated, you will then be placed onto the computational node allocated:
 
 .. code-block:: console
 
-    srun: job 1234567 has been allocated resources
-    $
+    $ srun: job 1234567 has been allocated resources
+
 
 You can now run programs interactively with the allocated resources. The job will end either when the time limit has been exceeded, or when the interactive bash shell has been closed (e.g. using ``exit``, or by disconnecting from Viking).
 

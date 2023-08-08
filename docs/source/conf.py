@@ -1,5 +1,8 @@
 # Configuration file for the Sphinx documentation builder.
 
+import sys
+import os
+
 # -- Project information
 
 project = 'Viking Documentation'
@@ -33,3 +36,7 @@ html_theme = 'sphinx_rtd_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+# include replacements
+sys.path.append(os.path.join(os.path.dirname(__file__), '.'))
+from replacements import *

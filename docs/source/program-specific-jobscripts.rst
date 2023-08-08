@@ -37,8 +37,7 @@ The following job script could be used to submit an ``Amber`` workflow to the cl
     :linenos:
     :caption: Example **CPU** Amber Script
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=amber_cpu_example           # Job name
     #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
     #SBATCH --partition=nodes                      # Partition for the job
@@ -59,8 +58,7 @@ The following job script could be used to submit an ``Amber`` workflow to the GP
     :linenos:
     :caption: Example **GPU** Amber Script
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=amber_gpu_example           # Job name
     #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
     #SBATCH --partition=gpu                        # Partition for the job ('gpu' for the GPU partition)
@@ -95,8 +93,7 @@ This job script can be used to submit a ``Gaussian`` workflow to the cluster, us
 .. code-block:: bash
     :linenos:
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=Gaussian_CPU_example    # Job Name
     #SBATCH --account=PROJECTCODE              # Project account
     #SBATCH --mail-type= BEGIN, END, FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
@@ -177,8 +174,7 @@ The following job script could be used to submit a ``MATLAB`` script to the clus
     :caption: example MATLAB batch mode script
     :linenos:
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=matlab_batch_example        # Job name
     #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
     #SBATCH --partition=nodes                      # Partition for the job
@@ -318,8 +314,7 @@ The following Job Script will run the R code with the default number of CPUs and
 .. code-block:: bash
     :caption: Job Script to run simple.R
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=Simple-R                  # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL           # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=my.name@york.ac.uk       # Where to send mail
@@ -345,8 +340,7 @@ The following script uses 4 cores and 24GB of memory.
 
 .. code-block:: bash
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=Simple-R                  # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL           # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=andrew.smith@york.ac.uk  # Where to send mail
@@ -524,8 +518,7 @@ An example job script can be found here. This script takes 40 CPUs, 1 GB of memo
 
 .. code-block:: bash
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=VOX-FE_CPU_example       # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk       # Where to send mail to
@@ -568,8 +561,7 @@ An example script to run ``RELION`` can be seen here using
 
 .. code-block:: bash
 
-    #!/bin/bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=RELION_CPU_example          # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL             # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk          # Where to send mail
@@ -625,8 +617,7 @@ Example job scripts
 .. code-block:: bash
     :caption: using 16 CPUs, 80 GBs of memory and for up to 24 hours
 
-    #!/usr/bin/env bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=AlphaFold_cpu_example        # Job name
     #SBATCH --nodes=1
     #SBATCH --ntasks-per-node=1
@@ -655,8 +646,7 @@ Example job scripts
 .. code-block:: bash
     :caption: using a GPU in addition to 10 CPUs for up to 4 hours
 
-    #!/usr/bin/env bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=AlphaFold_GPU_example    # Job name
     #SBATCH --nodes=1
     #SBATCH --ntasks-per-node=1
@@ -736,11 +726,10 @@ VASP
 
     $ module load phys/VASP/5.4.4-intel-2018a
 
-.. code-block::
+.. code-block:: bash
     :caption: example of a batch script using ``VASP`` can be found here using 120 CPU cores, 4750mb of RAM and for one hour.
 
-    #!/usr/bin/env bash
-    set -e
+    {SHEBANG}
     #SBATCH --job-name=VASP_cpu_example   # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL    # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk # where to send mail

@@ -123,7 +123,7 @@ Your ``Identity`` code will be different to mine, this is just an example.
 
 .. attention::
 
-    It's important to ``kill`` any unused virtual desktops not just log out / close down the conection. They will still be running in the background using resources (remember the :doc:`code of conduct <code-of-conduct>`) so it's really important that you ``kill`` them after you are finished if you leave too many runing you will not be able to start a fresh one.
+    It's important to ``kill`` any unused virtual desktops not just log out / close down the connection. They will still be running in the background using resources (remember the :doc:`code of conduct <code-of-conduct>`) so it's really important that you ``kill`` them after you are finished if you leave too many runing you will not be able to start a fresh one.
 
 .. _virtual-session-compute-node:
 

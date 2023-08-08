@@ -23,11 +23,12 @@ Contents
    data-management-and-user-quota
    software-on-viking
    submitting-jobs
-   available-partitions
+   resource-partitions
    jobscript-examples
+   jobscripts-program-specific
    terminal-multiplexing
    virtual-desktops
-   program-specific-jobscripts
+   program-specific-how-tos
 
 Cluster Configuration
 ---------------------
@@ -41,5 +42,14 @@ Cluster Configuration
 Check out the :doc:`quickstart` section a speedy guide to getting started or the more in depth guide starting with the :doc:`creating-accounts` page.
 
 If you are brand new to using Linux then how about a quick tutorial from Ubuntu called `The Linux command line for beginners <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>`_ course?
+
+
+.. hint::
+
+   In the examples of the Viking command line which we show here they will all begin with the dollar symbol ``$``, you don't need to copy this it's just there to help show you that it's a command prompt we are describing. For example you'll see things like this:
+
+.. code-block:: console
+
+   $ module spider Python
 
 

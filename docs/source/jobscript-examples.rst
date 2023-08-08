@@ -62,7 +62,6 @@ For software that does not support any parallelisation, or where single threaded
     :linenos:
 
     {SHEBANG}
-
     #----------------------------- Slurm directives ------------------------------#
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=1                      # Number of MPI tasks to request
@@ -76,7 +75,7 @@ For software that does not support any parallelisation, or where single threaded
     module purge
 
     #--------------------------- Load software modules ---------------------------#
-    module load compiler/GCC/10.3.0
+    module load {MOD_COMPILER}
 
     #------------------------- Directory/file management -------------------------#
     # copy example source code if it doesn't exist
@@ -123,7 +122,7 @@ Threaded / Multi-Process Jobs
     module purge
 
     #--------------------------- Load software modules ---------------------------#
-    module load compiler/GCC/10.3.0
+    module load {MOD_COMPILER}
 
     #------------------------- Directory/file management -------------------------#
     # copy example source code if it doesn't exist
@@ -172,7 +171,7 @@ Multi-processor Jobs
     module purge
 
     # Load modules #
-    module load lang/Python/3.7.4-GCCcore-8.3.0
+    module load {MOD_PYTHON}
 
     # Commands to run #
     echo My working directory is: `pwd`

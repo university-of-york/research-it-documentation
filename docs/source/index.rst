@@ -7,13 +7,11 @@ Welcome to the Viking Documentation!
 
    This project is under active development.
 
-**Viking** is a large, Linux compute cluster with many nodes, CPUs, GPUs, lots of storage and boat loads of memory. Viking is housed in Sweden (of course!) in the forward thinking `EcoDataCentre <https://ecodatacenter.tech/>`_, which is one of the most sustainable data centres in the whole world. 🌍🥰
-
-Contents
---------
 
 .. toctree::
    :maxdepth: 1
+   :caption: Getting Started
+   :hidden:
 
    quickstart
    code-of-conduct
@@ -21,13 +19,23 @@ Contents
    connecting-to-viking
    connecting-off-campus
    data-management-and-user-quota
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Using Viking
+   :hidden:
+
    software-on-viking
    submitting-jobs
-   available-partitions
+   resource-partitions
    jobscript-examples
+   jobscripts-program-specific
    terminal-multiplexing
    virtual-desktops
-   program-specific-jobscripts
+   program-specific-how-tos
+
+
+**Viking** is a large, Linux compute cluster with many nodes, CPUs, GPUs, lots of storage and boat loads of memory. Viking is housed in Sweden (of course!) in the forward thinking `EcoDataCentre <https://ecodatacenter.tech/>`_, which is one of the most sustainable data centres in the whole world. 🌍🥰
 
 Cluster Configuration
 ---------------------
@@ -41,5 +49,14 @@ Cluster Configuration
 Check out the :doc:`quickstart` section a speedy guide to getting started or the more in depth guide starting with the :doc:`creating-accounts` page.
 
 If you are brand new to using Linux then how about a quick tutorial from Ubuntu called `The Linux command line for beginners <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>`_ course?
+
+
+.. hint::
+
+   In the examples of the Viking command line which we show here they will all begin with the dollar symbol ``$``, you don't need to copy this it's just there to help show you that it's a command prompt we are describing. For example you'll see things like this:
+
+.. code-block:: console
+
+   $ module spider Python
 
 

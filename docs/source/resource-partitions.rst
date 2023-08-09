@@ -11,7 +11,7 @@
     THIS IS THE OLD PARTITION TABLE
 
 
-Available Partitions
+Resource Partitions
 ====================
 
 Viking's resources are divided up into various partitions as layed out below, these may change over time as it becomes clear how best to share Viking's resources.

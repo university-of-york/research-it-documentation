@@ -1,7 +1,7 @@
 .. include:: global.rst
 
-Program Specific Jobscripts
-===========================
+Jobscripts - Program Specific
+=============================
 
 This section of documentation goes over various programs installed on Viking which are more complicated than average to use.
 
@@ -28,8 +28,8 @@ There are two installations of ``Amber``, one which only supports running on CPU
 .. code-block:: console
     :caption: load the desired Amber module
 
-    $ module load chem/Amber/16-foss-2018a-AmberTools-17-CUDA
-    $ module load chem/Amber/16-intel-2018b-AmberTools-17-patchlevel-10-15
+    $ module load {MOD_AMBER_CPU}
+    $ module load {MOD_AMBER_GPU}
 
 The following job script could be used to submit an ``Amber`` workflow to the cluster, using 1 core and 4.8GB of memory for 2 hours. The following assumes that you have defined in the script ``amber_cpu_example.sh`` an ``Amber`` workflow, e.g. `minimisation and molecular dynamics <https://ambermd.org/tutorials/basic/tutorial1/section4.php>`_:
 
@@ -39,7 +39,7 @@ The following job script could be used to submit an ``Amber`` workflow to the cl
 
     {SHEBANG}
     #SBATCH --job-name=amber_cpu_example           # Job name
-    #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
+    #SBATCH --account=dept-proj-year               # Project account to use
     #SBATCH --partition=nodes                      # Partition for the job
     #SBATCH --ntasks=1                             # Run a single task
     #SBATCH --cpus-per-task=1                      # Number of cores per task
@@ -49,7 +49,8 @@ The following job script could be used to submit an ``Amber`` workflow to the cl
     #SBATCH --mail-type=ALL                        # Events to receive emails about
     #SBATCH --mail-user=a.user@york.ac.uk          # Where to send mail
 
-    module load chem/Amber/16-intel-2018b-AmberTools-17-patchlevel-10-15
+    module purge
+    module load {MOD_AMBER_CPU}
     ./amber_cpu_example.sh
 
 The following job script could be used to submit an ``Amber`` workflow to the GPU partition in the cluster, using 1 core, 4.8GB of memory, and 1 GPU for 2 hours. The following assumes that you have defined in the script ``amber_gpu_example.sh`` an ``Amber`` workflow which makes use of GPUs:
@@ -60,7 +61,7 @@ The following job script could be used to submit an ``Amber`` workflow to the GP
 
     {SHEBANG}
     #SBATCH --job-name=amber_gpu_example           # Job name
-    #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
+    #SBATCH --account=dept-proj-year               # Project account to use
     #SBATCH --partition=gpu                        # Partition for the job ('gpu' for the GPU partition)
     #SBATCH --ntasks=1                             # Run a single task
     #SBATCH --cpus-per-task=1                      # Number of cores per task
@@ -71,7 +72,8 @@ The following job script could be used to submit an ``Amber`` workflow to the GP
     #SBATCH --mail-type=END,FAIL                   # Events to receive emails about
     #SBATCH --mail-user=a.user@york.ac.uk          # Where to send mail
 
-    module load chem/Amber/16-foss-2018a-AmberTools-17-CUDA
+    module purge
+    module load {MOD_AMBER_GPU}
     ./amber_gpu_example.sh
 
 .. tip::
@@ -86,16 +88,16 @@ Gaussian
 
 .. code-block:: console
 
-    $ module load chem/Gaussian/G16a03
+    $ module load {MOD_GAUSSIAN}
 
-This job script can be used to submit a ``Gaussian`` workflow to the cluster, using 16GB of memory, 16 cores and 48 hours. This assumes you have a gaussian file called g16.gjf . Remember to update the account code and email address provided to ``slurm`` to your own details.
+This job script can be used to submit a ``Gaussian`` workflow to the cluster, using 16GB of memory, 16 cores and 48 hours. This assumes you have a gaussian file called ``g16.gjf`` . Remember to update the account code and email address provided to ``slurm`` to your own details.
 
 .. code-block:: bash
     :linenos:
 
     {SHEBANG}
     #SBATCH --job-name=Gaussian_CPU_example    # Job Name
-    #SBATCH --account=PROJECTCODE              # Project account
+    #SBATCH --account=dept-proj-year           # Project account to use
     #SBATCH --mail-type= BEGIN, END, FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk      # Where to send mail
     #SBATCH --ntasks=1
@@ -105,7 +107,7 @@ This job script can be used to submit a ``Gaussian`` workflow to the cluster, us
     #SBATCH --output=output.log
     #SBATCH --partition=nodes
     module purge                               # purge any loaded modules
-    module load chem/Gaussian/G16a03
+    module load {MOD_GAUSSIAN}
     g16 g16.gjf
 
 .. note::
@@ -122,7 +124,7 @@ MATLAB
 
 .. code-block:: console
 
-    $ module load math/MATLAB/2021a
+    $ module load {MOD_MATLAB}
 
 
 .. attention::
@@ -139,9 +141,9 @@ The following demonstrates how you could run ``MATLAB`` interactively without th
 
 .. code-block:: console
 
-    srun --ntasks=1 --mem-per-cpu=4800MB --time=00:30:00 --pty bash
-    module load math/MATLAB/2018a
-    matlab -nojvm -nodisplay -nosplash
+    $ srun --ntasks=1 --mem-per-cpu=4800MB --time=00:30:00 --pty bash
+    $ module load {MOD_MATLAB}
+    $ matlab -nojvm -nodisplay -nosplash
 
                             < M A T L A B (R) >
                   Copyright 1984-2018 The MathWorks, Inc.
@@ -157,7 +159,7 @@ To run ``MATLAB`` interactively with the graphical user interface, you must firs
     :caption: using ``start-interactive-session.sh`` as opposed to ``srun`` for the interactive session
 
     $ start-interactive-session.sh --ntasks=1 --mem-per-cpu=4800MB --time=00:30:00 --pty bash
-    $ module load math/MATLAB/2018a
+    $ module load {MOD_MATLAB}
     $ matlab
 
 In your virtual desktop session, you should now see the ``MATLAB`` graphical interface which is running on a compute node.
@@ -176,7 +178,7 @@ The following job script could be used to submit a ``MATLAB`` script to the clus
 
     {SHEBANG}
     #SBATCH --job-name=matlab_batch_example        # Job name
-    #SBATCH --account=PROJECT-ACCOUNT-2020         # Your Viking project account code
+    #SBATCH --account=dept-proj-year               # Project account to use
     #SBATCH --partition=nodes                      # Partition for the job
     #SBATCH --ntasks=1                             # Run a single task
     #SBATCH --cpus-per-task=1                      # Number of cores per task
@@ -186,7 +188,8 @@ The following job script could be used to submit a ``MATLAB`` script to the clus
     #SBATCH --mail-type=ALL                        # Events to receive emails about
     #SBATCH --mail-user=a.user@york.ac.uk          # Where to send mail
 
-    module load math/MATLAB/2021a
+    module purge
+    module load {MOD_MATLAB}
     matlab -batch matlab_batch_example
 
 .. note::
@@ -206,12 +209,12 @@ Certain ``MATLAB`` features are not available in standalone programs, so it is w
     :caption: start an interactive session and load the MATLAB module
 
     $ srun --ntasks=1 --time=00:30:00 --pty /bin/bash
-    $ module load math/MATLAB/2021a
+    $ module load {MOD_MATLAB}
 
 Your ``MATLAB`` code will need to be in the form of a function. The following example calculates an nxn magic square, where the user gives the input ``n``.
 
 .. code-block:: matlab
-    :caption: magicsquare.M
+    :caption: magicsquare.m
 
     function m = magicsquare(n)
 
@@ -254,7 +257,7 @@ Standalone ``MATLAB`` programs require the ``MATLAB`` Compiler Runtime ``MCR`` t
 
 .. code-block:: console
 
-    $ module load math/MATLAB/2021a
+    $ module load {MOD_MATLAB}
 
 When you run your standalone program, either in an interactive session or in a job script, you should use the bash script created during compilation to execute the program. The script has ``run_`` before the name of your source ``.m`` file. You must also use the environment variable ``$EBROOTMATLAB`` after the bash script name to specify where the MCR is and then give any arguments that are required (in this example the number 5 is passed to the program to generate a 5x5 magic square).
 
@@ -267,13 +270,13 @@ When you run your standalone program, either in an interactive session or in a j
 MongoDB
 -------
 
-MongoDB can be loaded using the following command:
+``MongoDB`` can be loaded using the following command:
 
 .. code-block:: console
 
-    $ module load tools/MongoDB/4.2.3
+    $ module load {MOD_MONGODB}
 
-When using `MongoDB`, you have to explicitly state the location of the database or ``mongod`` will error out as shown in the first option for ``mongod`` below. If you are using a unix socket you should also specify it's location, shown in the second option for ``mongod`` below.
+When using ``MongoDB``, you have to explicitly state the location of the database or ``mongod`` will error out as shown in the first option for ``mongod`` below. If you are using a unix socket you should also specify it's location, shown in the second option for ``mongod`` below.
 
 .. code-block:: console
 
@@ -283,17 +286,17 @@ When using `MongoDB`, you have to explicitly state the location of the database 
 R - For Statistical Computing
 -----------------------------
 
-To see what `R` versions are available, use the following command. Note the trailing slash in the command, without this Ruby modules will also be included in the results
+To see what ``R`` versions are available, use the following command. Note the trailing slash in the command, without this ``Ruby`` modules will also be included in the results
 
 .. code-block:: console
 
-    $ module spider lang/R
+    $ module spider lang/R/
 
 One of these versions can then be loaded as following. Here we use ``lang/R/4.2.1-foss-2022a`` as an example
 
 .. code-block:: console
 
-    $ module load lang/R/4.2.1-foss-2022a
+    $ module load {MOD_R}
 
 An example of a batch script using `R` can be seen here. This script uses an `R` file named ``buckeye_bayes-bpflat``, 16GB, 16 CPUs and 48 hours. Remember to update the account code and email address provided to ``slurm`` to your own details.
 
@@ -320,8 +323,10 @@ The following Job Script will run the R code with the default number of CPUs and
     #SBATCH --mail-user=my.name@york.ac.uk       # Where to send mail
     #SBATCH --time=00:02:00                      # Time limit hrs:min:sec
     #SBATCH --output=logs/Simple-R-%j.log        # Standard output and error log
-    #SBATCH --account=my-account-2018            # Project account
+    #SBATCH --account=dept-proj-year             # Project account to use
 
+    module purge
+    module load {MOD_R}
     echo `date`: executing R script simple on host ${HOSTNAME}
     echo
     Rscript --no-save --no-restore simple.R 93 "The end of the world is not today"
@@ -349,8 +354,10 @@ The following script uses 4 cores and 24GB of memory.
     #SBATCH --mem=24gb                           # Job memory request
     #SBATCH --time=00:05:00                      # Time limit hrs:min:sec
     #SBATCH --output=logs/Sinc2core-%j.log       # Standard output and error log
-    #SBATCH --account=ITS-SYSTEM-2018            # Project account
+    #SBATCH --account=dept-proj-year             # Project account to use
 
+    module purge
+    module load {MOD_R}
     echo `date`: executing sinc2core R test on host ${HOSTNAME} with $SLURM_CPUS_ON_
     NODE slots
     Rscript --no-save sinc2core.R $SLURM_CPUS_ON_NODE
@@ -463,7 +470,7 @@ Additional documentation on the parallel package can be found in `Chapter 8 of T
 foreach and doParallel
 """"""""""""""""""""""
 
-Using a foreach loop where early iterations do not affect the later ones facilitates the use of executing the loop in parallel.
+Using a ``foreach`` loop where early iterations do not affect the later ones facilitates the use of executing the loop in parallel.
 
 .. code-block:: r
     :caption: Simple foreach example
@@ -507,7 +514,7 @@ Using a foreach loop where early iterations do not affect the later ones facilit
 VOX-FE
 ------
 
-VOX-FE can be loaded using the following command:
+``VOX-FE`` can be loaded using the following command:
 
 .. code-block:: console
 
@@ -530,10 +537,10 @@ An example job script can be found here. This script takes 40 CPUs, 1 GB of memo
     #SBATCH --mem-per-cpu=1gb
     #SBATCH --time=02:00:00
     #SBATCH --output=logs/VOX-FE_CPU_example-node-%j.log
-    #SBATCH --account=PROJECTCODE               # Project account
+    #SBATCH --account=dept-proj-year            # Project account to use
 
     module purge                                # purge any loaded modules
-    module load module load bio/VOX-FE/2.0.1-foss-2017b
+    module load module load {MOD_VOXFE}
 
     echo "Running small-vox-fe on $SLURM_NTASKS CPU cores"
     echo "Nodes allocated to job: " $SLURM_JOB_NUM_NODES "(" $SLURM_JOB_NODELIST ")"
@@ -545,7 +552,7 @@ An example job script can be found here. This script takes 40 CPUs, 1 GB of memo
 
 .. note::
 
-    VOX-FE can not take advantage of a GPU, and runs purely on a CPU
+    ``VOX-FE`` can not take advantage of a GPU, and runs purely on a CPU
 
 
 Relion
@@ -555,7 +562,7 @@ Relion
 
 .. code-block:: console
 
-    $ module load bio/RELION/4.0.1-foss-2021a
+    $ module load {MOD_RELION}
 
 An example script to run ``RELION`` can be seen here using
 
@@ -565,14 +572,14 @@ An example script to run ``RELION`` can be seen here using
     #SBATCH --job-name=RELION_CPU_example          # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL             # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk          # Where to send mail
-    #SBATCH --account=PROJECTCODE                  # Viking account
+    #SBATCH --account=dept-proj-year               # Project account to use
     #SBATCH --ntasks=1                             # Number of tasks to run
     #SBATCH --mem=4gb                              # Memory requested
     #SBATCH --time=00:30:00                        # Time requested
 
     module purge                    # Purges all loaded modules
 
-    module load bio/RELION/4.0.1-foss-2021a
+    module load {MOD_RELION}
 
     echo
     echo Job started at `date`
@@ -591,24 +598,24 @@ An example script to run ``RELION`` can be seen here using
 Alpha Fold
 -----------
 
-`AlphaFold <https://deepmind.com/blog/article/putting-the-power-of-alphafold-into-the-worlds-hands>`_ is an AI system developed by `DeepMind <https://deepmind.com/>`_ that predicts a protein's 3D structure from it's amino acid sequence. The source code for the inference pipeline can be found on their `GitHub <https://github.com/deepmind/alphafold>`_ page.
+`AlphaFold <https://deepmind.com/blog/article/putting-the-power-of-alphafold-into-the-worlds-hands>`_ is an AI system developed by `DeepMind <https://deepmind.com/>`_ that predicts a protein's 3D structure from it's amino acid sequence. The source code for the inference pipeline can be found on the `AlphaFold GitHub <https://github.com/deepmind/alphafold>`_ page.
 
 
 .. attention::
 
     Since a few tweaks have been made to the installation, it is important to read through the following documentation before running any jobs with ``AlphaFold``.
 
-The CPU-only version of AlphaFold can be loaded using the following:
+The CPU-only version of ``AlphaFold`` can be loaded using the following:
 
 .. code-block:: console
 
-    $ module load bio/AlphaFold/2.0.0-foss-2020b
+    $ module load {MOD_ALPHAFOLD_CPU}
 
-And the GPU version of AlphaFold can be loaded using the following command:
+And the GPU version of ``AlphaFold`` can be loaded using the following command:
 
 .. code-block:: console
 
-    $ module load bio/AlphaFold/2.0.0-fosscuda-2020b
+    $ module load {MOD_ALPHAFOLD_GPU}
 
 
 Example job scripts
@@ -627,14 +634,14 @@ Example job scripts
     #SBATCH --output=%x-%j.log
     #SBATCH --mail-type=BEGIN,END,FAIL              # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk           # Where to send mail
-    #SBATCH --account=PROJECTCODE                   # Project account
+    #SBATCH --account=dept-proj-year                # Project account to use
 
     module purge                                    # purge any loaded modules
     # Load AlphaFold module
-    module load bio/AlphaFold/2.0.0-foss-2020b
+    module load {MOD_ALPHAFOLD_CPU}
 
     # Path to genetic databases
-    export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold_db/20210908/
+    export ALPHAFOLD_DATA_DIR={ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
 
     # Optional: uncomment to change number of CPU cores to use for hhblits/jackhmmer
     # export ALPHAFOLD_HHBLITS_N_CPU=8
@@ -657,14 +664,14 @@ Example job scripts
     #SBATCH --output=%x-%j.log
     #SBATCH --mail-type=BEGIN,END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk       # Where to send mail
-    #SBATCH --account=PROJECTCODE               # Project account
+    #SBATCH --account=dept-proj-year            # Project account to use
 
     module purge                                # purge any loaded modules
     # Load AlphaFold module
-    module load bio/AlphaFold/2.0.0-fosscuda-2020b
+    module load {MOD_ALPHAFOLD_GPU}
 
     # Path to genetic databases
-    export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold_db/20210908/
+    export ALPHAFOLD_DATA_DIR={ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
 
     # Optional: uncomment to change number of CPU cores to use for hhblits/jackhmmer
     # export ALPHAFOLD_HHBLITS_N_CPU=8
@@ -683,14 +690,14 @@ To avoid needless duplication of large databases across the cluster, these have 
 
 .. code-block:: console
 
-    /mnt/bb/striped/alphafold_db/20210908
+    {ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
 
-The name of the subdirectory ``20210908`` indicates the date that the databases were downloaded. The files are hosted on the burst buffer (``/mnt/bb``) - a shared filesystem powered by fast SSDs - which is recommended for ``AlphaFold`` due to the random I/O access patterns. As seen below this can cause jobs to run up to **2x faster** than if the databases were stored on the disk-based lustre filesystem.
+The name of the subdirectory ``{APLHPFOLD_DB_DATE}`` indicates the date that the databases were downloaded. The files are hosted on the burst buffer (``/mnt/bb``) - a shared filesystem powered by fast SSDs - which is recommended for ``AlphaFold`` due to the random I/O access patterns. As seen below this can cause jobs to run up to **2x faster** than if the databases were stored on the disk-based lustre filesystem.
 
 It is important to note that we have made a few enhancements to the installation to facilitate easier usage:
 
 - The location to the AlphaFold data can be specified via the ``$ALPHAFOLD_DATA_DIR``  environment variable, so you should define this variable in your AlphaFold job script: ``export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold-db/20210908``
-- A symbolic link named ``alphafold`` , which points to the ``run_alphafold.py script`` , is included. This means you can just use `alphafold`  instead of ``run_alphafold.py`` or ``python run_alphafold.py``.
+- A symbolic link named ``alphafold`` , which points to the ``run_alphafold.py script`` , is included. This means you can just use ``alphafold``  instead of ``run_alphafold.py`` or ``python run_alphafold.py``.
 - The ``run_alphafold.py``  script has been slightly modified such that defining ``$ALPHAFOLD_DATA_DIR``  is sufficient to pick up all the data provided in that location, meaning that you don't need to use options like ``--data_dir``  to specify the location of the data.
 - Similarly, the ``run_alphafold.py``  script was tweaked such that the location to commands like ``hhblits``, ``hhsearch``, ``jackhmmer`` or ``kalign`` are already correctly set, and thus options like ``--hhblits_binary_path``  are not required.
 - The Python script that are used to run ``hhblits``  and ``jackhmmer``  have been tweaked so you can control how many cores are used for these tools (rather than hard-coding this to 4 and 8 cores respectively).
@@ -724,27 +731,27 @@ VASP
 
 .. code-block:: console
 
-    $ module load phys/VASP/5.4.4-intel-2018a
+    $ module load {MOD_VASP}
 
 .. code-block:: bash
     :caption: example of a batch script using ``VASP`` can be found here using 120 CPU cores, 4750mb of RAM and for one hour.
 
     {SHEBANG}
-    #SBATCH --job-name=VASP_cpu_example   # Job name
-    #SBATCH --mail-type=BEGIN,END,FAIL    # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=abc123@york.ac.uk # where to send mail
-    #SBATCH --nodes=3-18          # Node range
-    #SBATCH --spread-job          # Evenly distribute cores
-    #SBATCH --ntasks=120          # Num mpi tasks
-    #SBATCH --cpus-per-task=1     # Number of CPU cores per task
-    #SBATCH --mem-per-cpu=4750mb  # Memory per core
-    #SBATCH --time=01:00:00       # Time limit hrs:min:sec
-    #SBATCH --output=%x.o%j       # Archer style screen output
-    #SBATCH --error=%x.e%j        # Archer style error output
-    #SBATCH --account=PROJECTCODE # Project code
+    #SBATCH --job-name=VASP_cpu_example     # Job name
+    #SBATCH --mail-type=BEGIN,END,FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk   # where to send mail
+    #SBATCH --nodes=3-18                    # Node range
+    #SBATCH --spread-job                    # Evenly distribute cores
+    #SBATCH --ntasks=120                    # Num mpi tasks
+    #SBATCH --cpus-per-task=1               # Number of CPU cores per task
+    #SBATCH --mem-per-cpu=4750mb            # Memory per core
+    #SBATCH --time=01:00:00                 # Time limit hrs:min:sec
+    #SBATCH --output=%x.o%j                 # Archer style screen output
+    #SBATCH --error=%x.e%j                  # Archer style error output
+    #SBATCH --account=dept-proj-year        # Project account to use
 
     module purge
-    module load phys/VASP/5.4.4-intel-2018a
+    module load {MOD_VASP}
     ulimit -s unlimited
 
     mpirun -np 120 vasp_std
@@ -752,13 +759,13 @@ VASP
 
 .. note::
 
-     VASP can take advantage of a GPU
+     ``VASP`` can take advantage of a GPU
 
 
 AtChem 2
 ---------
 
-AtChem2 is a modelling tool for atmospheric chemistry. It is primarily designed to use the Master Chemical Mechanism (MCM), but it can be used with any general set of chemical reactions. The MCM is a near-explicit chemical mechanism which describes the gas-phase oxidation of volatile organic compounds (VOC) in the lower atmosphere. The MCM is available at http://mcm.york.ac.uk/. The latest stable version of AtChem2 can be downloaded from `GitHub <https://github.com/AtChem/AtChem2/releases>`_.
+``AtChem2`` is a modelling tool for atmospheric chemistry. It is primarily designed to use the Master Chemical Mechanism (MCM), but it can be used with any general set of chemical reactions. The MCM is a near-explicit chemical mechanism which describes the gas-phase oxidation of volatile organic compounds (VOC) in the lower atmosphere. The MCM is available at http://mcm.york.ac.uk/. The latest stable version of AtChem2 can be downloaded from the`AtChem2 GitHub <https://github.com/AtChem/AtChem2/releases>`_.
 
 This documentation will take you through getting a copy of the ``AtChem2`` source code, setting up the environment for ``AtChem2`` use, building a model, and submitting a model run to Viking's job scheduler, in batch mode.
 
@@ -771,13 +778,13 @@ To work with ``AtChem2`` you will need to load the following modules on Viking:
 .. code-block:: console
     :caption: a Fortran compiler
 
-    $ module load toolchain/foss/2021a
+    $ module load {MOD_TOOLCHAIN_FOSS}
 
 
 .. code-block:: console
     :caption: CMake, for building AtChem2 dependencies
 
-    $ module load devel/CMake/3.20.1-GCCcore-10.3.0
+    $ module load {MOD_CMAKE}
 
 
 Next, clone a copy of the ``AtChem2`` source code:
@@ -787,7 +794,7 @@ Next, clone a copy of the ``AtChem2`` source code:
     $ git clone https://github.com/AtChem/AtChem2.git atchem2
 
 
-Then create a directory to contain AtChem2's dependencies
+Then create a directory to contain ``AtChem2``'s dependencies
 
 .. code-block:: console
 
@@ -813,4 +820,5 @@ Make a note of the full path to your ``AtChem2`` dependencies directory by copyi
 
     $ realpath ./atchem2_dependencies
 
-At this point, the environment is set up and you are ready to build an AtChem2 model.
+At this point, the environment is set up and you are ready to build an ``AtChem2`` model.
+

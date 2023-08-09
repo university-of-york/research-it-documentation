@@ -24,6 +24,7 @@ You will be prompted for your IT Services password.
 .. hint::
     X11 forwarding will only work on the Viking login nodes, which means that you won't be able to run graphical applications e.g. MATLAB on the Viking compute nodes using X11 forwarding. Details about virtual desktop sessions on Viking `can be found here <FIXME: link to X11 forwarding>`_.
 
+.. _connecting-via-windows:
 
 Windows
 ^^^^^^^

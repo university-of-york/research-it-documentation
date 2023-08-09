@@ -9,9 +9,13 @@ Log in to Viking
 ----------------
 
 .. code-block:: console
-    :caption: from a linux terminal
+    :caption: from a Linux / MacOS terminal
 
-    ssh viking.york.ac.uk
+    $ ssh viking.york.ac.uk
+
+.. admonition:: Windows Users
+
+    It's a little bit more involved than the one line above but we have :ref:`nice breakdown here <connecting-via-windows>`.
 
 
 Find the Software You Need
@@ -19,7 +23,7 @@ Find the Software You Need
 
 .. code-block:: console
 
-    module spider lang/Python
+    $ module spider lang/Python
 
 
 Load a Module
@@ -27,13 +31,13 @@ Load a Module
 
 .. code-block:: console
 
-    load module lang/Python/3.10.8-GCCcore-12.2.0
+    $ load module lang/Python/3.10.8-GCCcore-12.2.0
 
 
 Develop and Test
 ----------------
 
-Develop and test the the job you plan to create. Remember not to leave a proper job running on the login node as this can affect other users. If you are testing something and need to kill the command whilst it's running, press ``CTRL + C``.
+Develop and test the the job you plan to create. Remember not to leave a proper job running on the login node as this can affect other users. If you are testing something and need to kill the command whilst it's running, press ``Ctrl + C``.
 
 
 Create Job Script
@@ -45,10 +49,7 @@ In your favorite text editor, create a jobscript for your job. Save it as someth
     :caption: this is just a basic template
     :linenos:
 
-    #!/usr/bin/env bash
-    # use 'set -e' to exit the script on first error
-    set -e
-
+    {SHEBANG}
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=10                     # Number of MPI tasks to request
     #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
@@ -81,7 +82,7 @@ Send the Jobscript to the Job Scheduler
 
 .. code-block:: console
 
-    sbatch myjobscript.job
+    $ sbatch myjobscript.job
 
 
 Check Results

@@ -14,6 +14,7 @@ Contents
 
 .. toctree::
    :maxdepth: 1
+   :caption: Getting Started
 
    quickstart
    code-of-conduct
@@ -21,6 +22,11 @@ Contents
    connecting-to-viking
    connecting-off-campus
    data-management-and-user-quota
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Using Viking
+
    software-on-viking
    submitting-jobs
    resource-partitions

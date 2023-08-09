@@ -5,7 +5,7 @@ So you're remotely logging into Viking, loading modules and running jobs with th
 
 There is a really good beginners guide to ``screen`` and ``tmux`` on `Xiangyu Li's medium page <https://medium.com/@yiskylee/gnu-screen-and-tmux-which-should-you-choose-de325d32fc2a>`_ and well worth the read if you're new to either program. I prefer ``tmux`` but ``screen`` is totally fine too and it's the only one available on some systems so it's nice to have experience with both.
 
-By logging into Viking, running ``tmux`` then running your programs you can ``detach`` from the session, log out off Viking and return at your leisure and the session and it's history will be there, pretty cool huh? 😎
+By logging into Viking, running ``tmux`` then running your programs you can ``detach`` from the session, log out of Viking and return at your leisure and the session and with it's history will be there, pretty cool huh? 😎
 
 .. tip::
 

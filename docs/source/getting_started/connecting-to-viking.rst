@@ -42,7 +42,7 @@ Open PuTTY and configure it to connect to Viking:
 3. Type the name 'Viking' in 'Saved Sessions'
 4. Click 'Save'
 
-.. image:: ../static/img/putty1.png
+.. image:: ../assets/img/putty1.png
 
 Connecting to Viking
 """""""""""""""""""""
@@ -51,13 +51,13 @@ Connecting to Viking
 2. Select 'Viking' from the 'Saved Sessions'
 3. Click 'Open'
 
-.. image:: ../static/img/putty2.png
+.. image:: ../assets/img/putty2.png
 
 A terminal window should appear. Log in with your university username and password.
 
-.. image:: ../static/img/putty3.png
+.. image:: ../assets/img/putty3.png
 
 If you are successful this is what you will see:
 
-.. image:: ../static/img/putty4.png
+.. image:: ../assets/img/putty4.png
 

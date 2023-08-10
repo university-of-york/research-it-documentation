@@ -154,3 +154,11 @@ Using a ``.csv`` file makes things a lot easier:
 .. csv-table:: Viking breakdown
     :file: data/viking_stats.csv
     :align: center
+
+
+Simple abbreviations
+--------------------
+
+These use the ``title`` html attribute for mouse hover
+
+:abbr:`LIFO (last-in, first-out)`

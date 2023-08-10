@@ -415,7 +415,7 @@ This package can be used to profile your code. Note that at the start of your R 
 
 This will produce a a report as seen below, highlighting the slower performing sections of the code.
 
-.. figure:: /static/img/r-profile.png
+.. figure:: /assets/img/r-profile.png
 
     output from ``RRprofReport()``
 
@@ -442,7 +442,7 @@ To speed up your code, compile your functions where possible. This can be achiev
 
 The results of this comparison can be seen below:
 
-.. figure:: ../static/img/r-compile.png
+.. figure:: ../assets/img/r-compile.png
 
     note: the average speed of **g** is significantly lower than that of **f**.
 

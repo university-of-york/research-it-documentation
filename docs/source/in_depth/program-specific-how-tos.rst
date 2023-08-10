@@ -23,7 +23,7 @@ One way to do this is with the interactive desktop sessions on Viking, following
     5. In a new terminal, forward a connection from the virtual desktop (login node) to the compute node
     6. Load a browser and connect to the notebook
 
-Steps 1-3 is [pretty much explained on the wiki here](https://wiki.york.ac.uk/display/RCS/VK18%29+Virtual+Desktops+on+Viking). Once you have an interactive session running the terminal should tell you which ``node`` it is running on. I'll paste in the output form my test below and highlight the the lines where you can see the ``node`` for clarity:
+Steps 1-3 is explained on the linked pages. Once you have an interactive session running the terminal should tell you *which* ``node`` it is running on. I'll paste in the output from my test below and highlight the the lines where you can see the ``node`` for clarity:
 
 .. code-block:: console
     :emphasize-lines: 5,6
@@ -35,7 +35,7 @@ Steps 1-3 is [pretty much explained on the wiki here](https://wiki.york.ac.uk/di
     [nd996@node065 [viking] ~]$ ml tools/JupyterLab/3.1.6-GCCcore-11.2.0
     [nd996@node065 [viking] ~]$ jupyter notebook --no-browser
 
-As you can see, I also loaded the Jupyter module and started the notebook. From here you can leave this terminal alone, and then open a new terminal and paste the following command:
+As you can see, I also loaded the ``Jupyter`` module and started the notebook. From here you can leave this terminal alone, and then open another new terminal and paste the following command:
 
 .. code-block:: console
 
@@ -67,18 +67,19 @@ This is one way of accomplishing this. I also quickly tested doing this in VSCod
     6. In VSCode, open a new Jupyter notebook, press ``select kernel`` in the top right, select ``Exisiting Jupyter server``
     7. Paste in the URL of the note book, just like above, follow the prompts in VSCode to name the notebook and select the available kernel
 
-That's it, let me know how you get on. I don't use Jupyter notebooks but this looks like a couple of ways you can use Viking for them. If you need any clarification let me know but hopefully the above instructions help get you up and running.
-
 
 VSCode
 ------
 
 ``VSCode`` is a modern text editing program from Microsoft, it's possible to use many extensions with it to extend it capabilities but here we'll explain how to use it to connect to Viking over ``ssh`` and allow you to edit text files, which can be very handy.
 
-get VSCode
-get remoteserver
-set it up
-away we go
+
+TODO
+
+1. get VSCode
+2. get remoteserver
+3. set it up
+4. away we go
 
 .. tip::
 

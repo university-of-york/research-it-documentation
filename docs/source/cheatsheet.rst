@@ -59,7 +59,7 @@ Internal Links
 
 Link to an internal page with the page filename minus the ``.rst``
 
-:doc:`link text <quickstart>`
+:doc:`link text <getting_started/quickstart>`
 
 
 Code-blocks

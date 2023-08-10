@@ -5,7 +5,7 @@ You can create virtual desktop sessions to run graphical programs. There a two m
 
 .. attention::
 
-    Remember, the login nodes are only for **light work** as mentioned in the :doc:`code of conduct <code-of-conduct>`, so if you need to use a GUI program for heavy work, then please ensure that is done on a compute node.
+    Remember, the login nodes are only for **light work** as mentioned in the :doc:`code of conduct <../getting_started/code-of-conduct>`, so if you need to use a GUI program for heavy work, then please ensure that is done on a compute node.
 
 
 Login Node
@@ -81,7 +81,7 @@ Use the Virtual Desktop
 
 You should soon be presented with a virtual desktop running on Viking. Click the ``Applications > System Tools > Terminal`` button to launch a terminal and you can load modules and programs as usual.
 
-.. figure:: img/virtual-desktop1.png
+.. figure:: ../static/img/virtual-desktop1.png
     :align: center
     :alt: a virtual desktop on Viking with the application menu open
 
@@ -123,7 +123,7 @@ Your ``Identity`` code will be different to mine, this is just an example.
 
 .. attention::
 
-    It's important to ``kill`` any unused virtual desktops not just log out / close down the connection. They will still be running in the background using resources (remember the :doc:`code of conduct <code-of-conduct>`) so it's really important that you ``kill`` them after you are finished if you leave too many runing you will not be able to start a fresh one.
+    It's important to ``kill`` any unused virtual desktops not just log out / close down the connection. They will still be running in the background using resources (remember the :doc:`code of conduct <../getting_started/code-of-conduct>`) so it's really important that you ``kill`` them after you are finished if you leave too many runing you will not be able to start a fresh one.
 
 .. _virtual-session-compute-node:
 

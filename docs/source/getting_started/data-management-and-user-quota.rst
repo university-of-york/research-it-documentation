@@ -148,7 +148,7 @@ Filezilla is a fantastic graphical program for transferring files and can be use
 
 Once it has been downloaded, run FileZilla and you will see this interface:
 
-.. image:: img/filezilla.png
+.. image:: ../static/img/filezilla.png
 
 To connect to Viking, enter your details in the boxes towards the top of the screen::
 

@@ -135,7 +135,7 @@ MATLAB
 Running Interactively
 ^^^^^^^^^^^^^^^^^^^^^
 
-``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so :ref:`inside an interactive cluster session <virtual-session-compute-node>`, rather than on :doc:`Viking's login nodes <code-of-conduct>`.
+``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so :ref:`inside an interactive cluster session <virtual-session-compute-node>`, rather than on :doc:`Viking's login nodes <../getting_started/code-of-conduct>`.
 
 The following demonstrates how you could run ``MATLAB`` interactively without the GUI:
 
@@ -415,7 +415,7 @@ This package can be used to profile your code. Note that at the start of your R 
 
 This will produce a a report as seen below, highlighting the slower performing sections of the code.
 
-.. figure:: img/r-profile.png
+.. figure:: /static/img/r-profile.png
 
     output from ``RRprofReport()``
 
@@ -442,7 +442,7 @@ To speed up your code, compile your functions where possible. This can be achiev
 
 The results of this comparison can be seen below:
 
-.. figure:: img/r-compile.png
+.. figure:: ../static/img/r-compile.png
 
     note: the average speed of **g** is significantly lower than that of **f**.
 
@@ -712,7 +712,7 @@ CPU vs GPU performance
 Shown below are the results of using the ``T1050.fasta`` example mentioned in the ``AlphaFold`` README with different resource allocations.
 
 .. csv-table:: AlphaFold performance
-    :file: data/alphafold_performance.csv
+    :file: static/data/alphafold_performance.csv
     :align: center
     :header-rows: 1
 

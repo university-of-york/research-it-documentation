@@ -16,8 +16,8 @@ The `Jupyter notebook <Jupyter notebook>`_ is a web-based notebook environment f
 
 One way to do this is with the interactive desktop sessions on Viking, following these steps:
 
-    1. :doc:`Log into Viking <connecting-to-viking>`
-    2. Start a :doc:`desktop session & connect via VNC <virtual-desktops>`
+    1. :doc:`Log into Viking <../getting_started/connecting-to-viking>`
+    2. Start a :doc:`desktop session & connect via VNC <../using_viking/virtual-desktops>`
     3. Start an :ref:`interactive session <virtual-session-compute-node>` to get a compute node to run the notebook
     4. Load the Jupyter module and start the notebook, on the compute node
     5. In a new terminal, forward a connection from the virtual desktop (login node) to the compute node

@@ -81,7 +81,7 @@ Use the Virtual Desktop
 
 You should soon be presented with a virtual desktop running on Viking. Click the ``Applications > System Tools > Terminal`` button to launch a terminal and you can load modules and programs as usual.
 
-.. figure:: ../static/img/virtual-desktop1.png
+.. figure:: ../assets/img/virtual-desktop1.png
     :align: center
     :alt: a virtual desktop on Viking with the application menu open
 

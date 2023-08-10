@@ -14,7 +14,7 @@ By logging into Viking, running ``tmux`` then running your programs you can ``de
 
 Here's another `getting started <https://github.com/tmux/tmux/wiki/Getting-Started>`_ guide for ``tmux`` on their GitHub site, and this is the `full users manual <https://www.gnu.org/software/screen/manual/screen.html>`_ for ``screen`` if you want to dig a little deeper.
 
-.. figure:: ../static/img/tmux.png
+.. figure:: ../assets/img/tmux.png
     :align: center
     :alt: tmux multiplexer with three panes running in one terminal
 

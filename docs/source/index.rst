@@ -72,6 +72,3 @@ If you are brand new to using the Linux commands line then how about a quick tut
 .. code-block:: console
 
    $ module spider Python
-
-
-:abbr:`LIFO (last-in, first-out)`

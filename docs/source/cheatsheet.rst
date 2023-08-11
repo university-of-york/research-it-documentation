@@ -1,6 +1,6 @@
 .. include:: global.rst
 
-.. include the global.rst which includes the substitution of |br| to html </br>
+.. include the global.rst which includes the substitution of `|br|` to html `</br>`
 
 Main heading
 ============
@@ -40,6 +40,14 @@ Bullet Lists
         a. Nested ordered item
 
 * Unordered item
+
+Preserve line breaks
+--------------------
+
+| These lines are
+| broken exactly like in
+| the source file.
+
 
 Targets & Links
 ---------------

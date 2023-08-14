@@ -60,7 +60,7 @@ Options to a command are usually proceeded by a ``-`` or ``--``, this differenti
     drwxr-xr-x 3 abs4 csrv        4096 Aug 14 14:50 tmp
     -bash-4.1$
 
-To logout of the shell type ``logout``, ``exit`` or press ``Ctrl + D``.
+To logout of the shell type ``logout``, ``exit`` or press ``Ctrl + d``.
 
 .. code-block:: console
     :caption: logging out
@@ -308,8 +308,8 @@ Deleting files and directories
 
 The ``rm`` (remove) command is used to delete files.
 
-.. code-block::
-    :caption: Deleting files and directories
+.. code-block:: console
+    :caption: deleting files and directories
 
     -bash-4.1$ ls
     afile  bin        Desktop   Experiments  jobs  test
@@ -323,7 +323,7 @@ The ``rm`` (remove) command is used to delete files.
 To delete directories use the ``rmdir`` (remove directory) command.
 
 .. code-block:: console
-    :caption: Deleting directories and their contents
+    :caption: deleting directories and their contents
 
     -bash-4.1$ rmdir dira
     rmdir: failed to remove `dira': Directory not empty
@@ -349,9 +349,12 @@ Editing and Displaying the Contents of Files
 Text Editors
 """"""""""""
 
-  - vi and vim
-  - emacs
-  - nano
+Below is a list of some of the most popular text editors, ``nano`` is probably the simpliest however, the added capabilities of ``vim`` and ``emacs`` make them well worth learning. ``vim`` comes with the program ``vimtutor``, which you can run and follow along with. ``emacs`` also has a tutorial and you can start ``emacs`` and type ``C-h t`` , that is, ``Ctrl-h`` followed by ``t``. Both these programs are fantastic editors but their capabilities are beyond this beginners tutorial.
+
+  - vi and `vim <https://www.vim.org/docs.php>`_ (vim stands for *vi improved*)
+  - `emacs <https://www.gnu.org/software/emacs/documentation.html>`_
+  - `nano <https://www.nano-editor.org/dist/latest/nano.html>`_
+
 
 Displaying the contents of files
 """"""""""""""""""""""""""""""""
@@ -570,7 +573,7 @@ The history command lists the last commands you typed.
 Command Line Editing
 ^^^^^^^^^^^^^^^^^^^^
 
-You can select past commands using the up and down arrow keys. You can edit the command line using the left and right arrow keys and any of the following commands:
+You can select past commands using the ``up`` and ``down`` arrow keys. You can edit the command line using the ``left`` and ``right`` arrow keys and any of the following commands:
 
 ===============     =====================================
 Keystroke           Result
@@ -665,7 +668,7 @@ The sleep command does nothing for the number of seconds specified in the argume
     -bash-4.1$
 
 
-In this example we put two jobs into the background. The ``fg`` command moves the last job placed in the background into the foreground. ``Ctrl-z`` stops (pauses, not kills) the job and returns to the command line. The ``bg`` command places the paused job in the background. ``fg`` can bring specific jobs to the foreground by specifying the job number.
+In this example we put two jobs into the background. The ``fg`` command moves the last job placed in the background into the foreground. ``Ctrl-z`` *stops* (pauses, not kills) the job and returns to the command line. The ``bg`` command places the paused job in the background. ``fg`` can bring specific jobs to the foreground by specifying the job number.
 
 Environment Variables and Shell Scripts
 ---------------------------------------
@@ -691,7 +694,7 @@ EDITOR	    path to the program used for editing files, e.g. ``/usr/bin/nano``
 ==========  =========================================================================
 
 
-To use an environment variable precede its name with a ``$`` character. We can display all define environment variables with ``printenv``, and set values with export.
+To use an environment variable precede its name with a ``$`` character. We can display all defined environment variables with ``printenv``, and set values with export.
 
 .. code-block:: console
     :caption: using environment variables
@@ -712,15 +715,16 @@ Shell Scripts
 
 Shell scripts are files which contain shell commands. You run the script by typing its filename. Things to note:
 
-    - The first line of the file should contain the string ``#!/bin/bash``. This informs the shell which program to run the script
+    - The first line of the file should contain the string ``#!/usr/bin/env bash``. This informs the shell which program to run the script
     - Consider adding execute permission to the file to allow easy execution
     - Create a directory in your home directory to place all your scripts and add the directory path to your ``PATH`` variable
+    - You will see other ``bash`` scripts begin with ``#!/bin/bash``, and there is a good explanation on the differences and why we suggest ``#!/usr/bin/env bash`` on `Ask Ubuntu <https://askubuntu.com/q/1402718>`_.
 
 .. code-block:: console
     :caption: example
 
     -bash-4.1$ cat simple
-    #!/bin/bash
+    #!/usr/bin/env bash
     echo "I am a very simple script"
 
     -bash-4.1$ sh simple
@@ -763,13 +767,13 @@ We can change the behaviour of programs to redirect input from a file instead of
     25
     -bash-4.1$
 
-The ``wc -l`` command counts the number of lines typed. In this example we have redirected the input from a file.
+The ``wc -l`` command counts the number of lines typed. In this example we have redirected the input from a text file called ``wordsworth``.
 
 
 Pipes
 ^^^^^^
 
-Pipes allow the output of one program to be fed into the input of another. The ``|`` is the pipe symbol.
+Pipes allow the output of one program to be fed into the input of another. The ``|`` is the pipe symbol (Shift + \ on a GB ISO keyboard).
 
 This example counts the number of lines in a set of files. We write the output to a file. The file is then sorted, using the sort command, into ascending order to give us the file order by number of lines.
 
@@ -802,6 +806,392 @@ First we count the lines in each of the six file and redirect the output to a fi
 A quicker and more efficient way without using the intermediary file is to use a pipe.
 
 
+.. code-block:: console
+    :caption: pipe the output of ``wc`` into ``sort``
+
+    -bash-4.1$ wc -l * | sort -n -k 1
+       11 tennyson
+       25 wordsworth
+       28 thomas
+      156 milton
+      423 keats
+      733 carroll
+     1376 total
+    -bash-4.1$
+
+
+Filters
+^^^^^^^
+
+A filter is a program that transforms an input stream into an output stream. Almost all Linux programs do this. The pipe is used to connect the filters. Here is an example of finding all the user-names of people logged into the computer.
+
+.. code-block:: console
+    :caption: find a list of users who has logged in
+
+    -bash-4.1$ last |more
+    abs4     pts/14       gallifrey.york.a Thu Sep 11 08:47   still logged in
+    jg757    pts/3        elecpc111.ohm.yo Thu Sep 11 01:51   still logged in
+    dl792    pts/3        host-172-18-1-89 Wed Sep 10 23:10 - 23:34  (00:24)
+    yx664    pts/9        :1001.0          Wed Sep 10 17:55   still logged in
+    yx664    pts/7        :1001.0          Wed Sep 10 17:54   still logged in
+    yx664    pts/5        :1001.0          Wed Sep 10 17:40   still logged in
+    yx664    pts/13       :1001.0          Wed Sep 10 16:07   still logged in
+    yx664    pts/10       :1001.0          Wed Sep 10 16:05   still logged in
+    rm591    pts/14       mandle.york.ac.u Wed Sep 10 16:01 - 16:01  (00:00)
+    yx664    pts/13       :1002.0          Wed Sep 10 15:56 - 16:03  (00:07)
+    yx664    :1002        :1002            Wed Sep 10 15:54 - 16:04  (00:09)
+    jdr500   pts/9        10.240.171.184   Wed Sep 10 15:53 - 17:14  (01:20)
+    yx664    pts/7        :1001.0          Wed Sep 10 15:51 - 17:38  (01:47)
+    yx664    pts/6        :1001.0          Wed Sep 10 15:47 - 16:05  (00:17)
+    yx664    :1001        :1001            Wed Sep 10 15:45   still logged in
+    rm591    pts/14       mandle.york.ac.u Wed Sep 10 15:36 - 15:38  (00:01)
+    rm591    pts/14       mandle.york.ac.u Wed Sep 10 14:48 - 15:34  (00:45)
+    rm591    pts/14       mandle.york.ac.u Wed Sep 10 14:32 - 14:35  (00:02)
+    yx664    pts/13       :1001.0          Wed Sep 10 13:41 - 15:42  (02:00)
+    yx664    pts/10       :1001.0          Wed Sep 10 13:17 - 15:44  (02:26)
+    yx664    pts/9        :1001.0          Wed Sep 10 12:51 - 15:42  (02:50)
+    yx664    pts/6        :1001.0          Wed Sep 10 12:21 - 15:42  (03:20)
+    yx664    pts/9        :1001.0          Wed Sep 10 11:57 - 12:23  (00:26)
+    --More--
+    -bash-4.1$ last | sort | uniq -w 9 | cut -c1-9
+
+    abs4
+    at568
+    dl792
+    ff555
+    fjg504
+    jdr500
+    jg757
+    kb1024
+    klcm500
+    ma725
+    msr514
+    pbc500
+    pbk1
+    rfle500
+    rm591
+    root
+    sjb508
+    sl561
+    sy757
+    tao500
+    tm588
+    wtmp begi
+    yw679
+    yx664
+    -bash-4.1$
+
+The ``last`` command displays all users and the dates and times they have logged in. We then sort this, and pass it through ``uniq``, which removes duplicate lines by comparing only the first 9 characters. We then remove the remainder of the line after the username with the ``cut`` command.
+
+.. code-block:: console
+    :caption: other ways of doing this
+
+    -bash-4.1$ last | cut -c1-9 | sort | uniq
+
+    abs4
+    at568
+    dl792
+    ff555
+    fjg504
+    jdr500
+    jg757
+    kb1024
+    klcm500
+    ma725
+    msr514
+    pbc500
+    pbk1
+    rfle500
+    rm591
+    root
+    sjb508
+    sl561
+    sy757
+    tao500
+    tm588
+    wtmp begi
+    yw679
+    yx664
+    -bash-4.1$
+
 
 Useful Commands
 ---------------
+
+To find more information on any command below, type ``man <command>`` which will open up the built-in manual page for that command.
+
+.. code:: console
+
+    a
+      alias    Create an alias
+      apropos  Search Help manual pages (man -k)
+      apt-get  Search for and install software packages (Debian/Ubuntu)
+      aptitude Search for and install software packages (Debian/Ubuntu)
+      aspell   Spell Checker
+      awk      Find and Replace text, database sort/validate/index
+    b
+      basename Strip directory and suffix from filenames
+      bash     GNU Bourne-Again SHell
+      bc       Arbitrary precision calculator language
+      bg       Send to background
+      break    Exit from a loop
+      builtin  Run a shell builtin
+      bzip2    Compress or decompress named file(s)
+    c
+      cal      Display a calendar
+      case     Conditionally perform a command
+      cat      Concatenate and print (display) the content of files
+      cd       Change Directory
+      cfdisk   Partition table manipulator for Linux
+      chgrp    Change group ownership
+      chmod    Change access permissions
+      chown    Change file owner and group
+      chroot   Run a command with a different root directory
+      chkconfig System services (runlevel)
+      cksum    Print CRC checksum and byte counts
+      clear    Clear terminal screen
+      cmp      Compare two files
+      comm     Compare two sorted files line by line
+      command  Run a command - ignoring shell functions
+      continue Resume the next iteration of a loop
+      cp       Copy one or more files to another location
+      cron     Daemon to execute scheduled commands
+      crontab  Schedule a command to run at a later time
+      csplit   Split a file into context-determined pieces
+      cut      Divide a file into several parts
+    d
+      date     Display or change the date & time
+      dc       Desk Calculator
+      dd       Convert and copy a file, write disk headers, boot records
+      ddrescue Data recovery tool
+      declare  Declare variables and give them attributes
+      df       Display free disk space
+      diff     Display the differences between two files
+      diff3    Show differences among three files
+      dig      DNS lookup
+      dir      Briefly list directory contents
+      dircolors Colour setup for ``ls``
+      dirname  Convert a full pathname to just a path
+      dirs     Display list of remembered directories
+      dmesg    Print kernel & driver messages
+      du       Estimate file space usage
+    e
+      echo     Display message on screen
+      egrep    Search file(s) for lines that match an extended expression
+      eject    Eject removable media
+      enable   Enable and disable builtin shell commands
+      env      Environment variables
+      ethtool  Ethernet card settings
+      eval     Evaluate several commands/arguments
+      exec     Execute a command
+      exit     Exit the shell
+      expect   Automate arbitrary applications accessed over a terminal
+      expand   Convert tabs to spaces
+      export   Set an environment variable
+      expr     Evaluate expressions
+    f
+      false    Do nothing, unsuccessfully
+      fdformat Low-level format a floppy disk
+      fdisk    Partition table manipulator for Linux
+      fg       Send job to foreground
+      fgrep    Search file(s) for lines that match a fixed string
+      file     Determine file type
+      find     Search for files that meet a desired criteria
+      fmt      Reformat paragraph text
+      fold     Wrap text to fit a specified width.
+      for      Expand words, and execute commands
+      format   Format disks or tapes
+      free     Display memory usage
+      fsck     File system consistency check and repair
+      ftp      File Transfer Protocol
+      function Define Function Macros
+      fuser    Identify/kill the process that is accessing a file
+    g
+      gawk     Find and Replace text within file(s)
+      getopts  Parse positional parameters
+      grep     Search file(s) for lines that match a given pattern
+      groupadd Add a user security group
+      groupdel Delete a group
+      groupmod Modify a group
+      groups   Print group names a user is in
+      gzip     Compress or decompress named file(s)
+    h
+      hash     Remember the full pathname of a name argument
+      head     Output the first part of file(s)
+      help     Display help for a built-in command
+      history  Command History
+      hostname Print or set system name
+    i
+      iconv    Convert the character set of a file
+      id       Print user and group id's
+      if       Conditionally perform a command
+      ifconfig Configure a network interface
+      ifdown   Stop a network interface
+      ifup     Start a network interface up
+      import   Capture an X server screen and save the image to file
+      install  Copy files and set attributes
+    j
+      jobs     List active jobs
+      join     Join lines on a common field
+    k
+      kill     Stop a process from running
+      killall  Kill processes by name
+    l
+      less     Display output one screen at a time
+      let      Perform arithmetic on shell variables
+      link     Create a link to a file
+      ln       Create a symbolic link to a file
+      local    Create variables
+      locate   Find files
+      logname  Print current login name
+      logout   Exit a login shell
+      look     Display lines beginning with a given string
+      lpc      Line printer control program
+      lpr      Off line print
+      lprint   Print a file
+      lprintd  Abort a print job
+      lprintq  List the print queue
+      lprm     Remove jobs from the print queue
+      ls       List information about file(s)
+      lsof     List open files
+    m
+      make     Recompile a group of programs
+      man      Help manual
+      mkdir    Create new folder(s)
+      mkfifo   Make FIFOs (named pipes)
+      mkisofs  Create an hybrid ISO9660/JOLIET/HFS filesystem
+      mknod    Make block or character special files
+      more     Display output one screen at a time
+      mount    Mount a file system
+      mtools   Manipulate MS-DOS files
+      mtr      Network diagnostics (traceroute/ping)
+      mv       Move or rename files or directories
+      mmv      Mass Move and rename (files)
+    n
+      netstat  Networking information
+      nice     Set the priority of a command or job
+      nl       Number lines and write files
+      nohup    Run a command immune to hangups
+      notify-send  Send desktop notifications
+      nslookup Query Internet name servers interactively
+    o
+      open     Open a file in its default application
+      op       Operator access
+    p
+      passwd   Modify a user password
+      paste    Merge lines of files
+      pathchk  Check file name portability
+      ping     Test a network connection
+      pkill    Stop processes from running
+      popd     Restore the previous value of the current directory
+      pr       Prepare files for printing
+      printcap Printer capability database
+      printenv Print environment variables
+      printf   Format and print data
+      ps       Process status
+      pushd    Save and then change the current directory
+      pv       Monitor the progress of data through a pipe
+      pwd      Print Working Directory
+    q
+      quota    Display disk usage and limits
+      quotacheck Scan a file system for disk usage
+      quotactl Set disk quotas
+    r
+      ram      ram disk device
+      rcp      Copy files between two machines
+      read     Read a line from standard input
+      readarray Read from stdin into an array variable
+      readonly Mark variables/functions as readonly
+      reboot   Reboot the system
+      rename   Rename files
+      renice   Alter priority of running processes
+      remsync  Synchronize remote files via email
+      return   Exit a shell function
+      rev      Reverse lines of a file
+      rm       Remove files
+      rmdir    Remove folder(s)
+      rsync    Remote file copy (Synchronize file trees)
+    s
+      screen   Multiplex terminal, run remote shells via ssh
+      scp      Secure copy (remote file copy)
+      sdiff    Merge two files interactively
+      sed      Stream Editor
+      select   Accept keyboard input
+      seq      Print numeric sequences
+      set      Manipulate shell variables and functions
+      sftp     Secure File Transfer Program
+      shift    Shift positional parameters
+      shopt    Shell Options
+      shutdown Shutdown or restart linux
+      sleep    Delay for a specified time
+      slocate  Find files
+      sort     Sort text files
+      source   Run commands from a file ``.``
+      split    Split a file into fixed-size pieces
+      ssh      Secure Shell client (remote login program)
+      strace   Trace system calls and signals
+      su       Substitute user identity
+      sudo     Execute a command as another user
+      sum      Print a checksum for a file
+      suspend  Suspend execution of this shell
+      sync     Synchronize data on disk with memory
+    t
+      tail     Output the last part of file
+      tar      Store, list or extract files in an archive
+      tee      Redirect output to multiple files
+      test     Evaluate a conditional expression
+      time     Measure Program running time
+      timeout  Run a command with a time limit
+      times    User and system times
+      touch    Change file timestamps
+      top      List processes running on the system
+      traceroute Trace Route to Host
+      trap     Run a command when a signal is set(bourne)
+      tr       Translate, squeeze, and/or delete characters
+      true     Do nothing, successfully
+      tsort    Topological sort
+      tty      Print filename of terminal on stdin
+      type     Describe a command
+    u
+      ulimit   Limit user resources
+      umask    Users file creation mask
+      umount   Unmount a device
+      unalias  Remove an alias
+      uname    Print system information
+      unexpand Convert spaces to tabs
+      uniq     Uniquify files
+      units    Convert units from one scale to another
+      unset    Remove variable or function names
+      unshar   Unpack shell archive scripts
+      until    Execute commands (until error)
+      uptime   Show uptime
+      useradd  Create new user account
+      userdel  Delete a user account
+      usermod  Modify user account
+      users    List users currently logged in
+      uuencode Encode a binary file
+      uudecode Decode a file created by uuencode
+    v
+      vdir     Verbosely list directory contents (``ls -l -b``)
+      vi       Text Editor
+      vmstat   Report virtual memory statistics
+    w
+      wait     Wait for a process to complete
+      watch    Execute/display a program periodically
+      wc       Print byte, word, and line counts
+      whereis  Search the user's $path, man pages and source files for a program
+      which    Search the user's $path for a program file
+      while    Execute commands
+      who      Print all usernames currently logged in
+      whoami   Print the current user id and name (``id -un``)
+      wget     Retrieve web pages or files via HTTP, HTTPS or FTP
+      write    Send a message to another user
+    x
+      xargs    Execute utility, passing constructed argument list(s)
+      xdg-open Open a file or URL in the user's preferred application.
+      yes      Print a string until interrupted
+      zip      Package and compress (archive) files.
+
+      .        Run a command script in the current shell
+      !!       Run the last command again
+      ###      Comment / Remark

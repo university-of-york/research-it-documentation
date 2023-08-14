@@ -55,14 +55,14 @@ Cluster Configuration
 ---------------------
 
 .. csv-table:: Viking breakdown
-    :file: static/data/viking_stats.csv
+    :file: assets/data/viking_stats.csv
     :align: center
 
 
 
 Check out the :doc:`getting_started/quickstart` section for a speedy guide to getting started or for a more in depth guide, start with the :doc:`getting_started/creating-accounts` page.
 
-If you are brand new to using the Linux commands line then how about a quick tutorial from Ubuntu called `The Linux command line for beginners <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>`_?
+If you are brand new to using the Linux commands line then how about a quick tutorial from Ubuntu called `The Linux command line for beginners <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>`_ or have a read of our own :doc:`beginners guide to the Linux shell </beginners_guide/linux-shell>`.
 
 
 .. hint::

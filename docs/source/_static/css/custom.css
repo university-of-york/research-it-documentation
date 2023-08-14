@@ -1,0 +1,22 @@
+:root {
+    --main-colour: #A6A091;
+    --highlight: #A3ADB4;
+
+    /* --main-colour: #78BF26;
+    --highlight: #78BF26; */
+
+}
+/* search box border */
+#rtd-search-form > input[type=text]:nth-child(1) {
+    border-color: var(--highlight) !important;
+}
+
+/* navbar heading colour */
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+    color:  var(--main-colour) !important;
+}
+
+/* navbar item bg colour when link clicked */
+.wy-menu-vertical a:active {
+    background-color: var(--main-colour) !important;
+}

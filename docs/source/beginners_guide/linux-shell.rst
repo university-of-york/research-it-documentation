@@ -970,7 +970,7 @@ To find more information on any command below, type ``man <command>`` which will
       diff3    Show differences among three files
       dig      DNS lookup
       dir      Briefly list directory contents
-      dircolors Colour setup for ``ls``
+      dircolors Colour setup for `ls`
       dirname  Convert a full pathname to just a path
       dirs     Display list of remembered directories
       dmesg    Print kernel & driver messages
@@ -1126,7 +1126,7 @@ To find more information on any command below, type ``man <command>`` which will
       sleep    Delay for a specified time
       slocate  Find files
       sort     Sort text files
-      source   Run commands from a file ``.``
+      source   Run commands from a file `.`
       split    Split a file into fixed-size pieces
       ssh      Secure Shell client (remote login program)
       strace   Trace system calls and signals
@@ -1172,7 +1172,7 @@ To find more information on any command below, type ``man <command>`` which will
       uuencode Encode a binary file
       uudecode Decode a file created by uuencode
     v
-      vdir     Verbosely list directory contents (``ls -l -b``)
+      vdir     Verbosely list directory contents (`ls -l -b`)
       vi       Text Editor
       vmstat   Report virtual memory statistics
     w
@@ -1183,7 +1183,7 @@ To find more information on any command below, type ``man <command>`` which will
       which    Search the user's $path for a program file
       while    Execute commands
       who      Print all usernames currently logged in
-      whoami   Print the current user id and name (``id -un``)
+      whoami   Print the current user id and name (`id -un`)
       wget     Retrieve web pages or files via HTTP, HTTPS or FTP
       write    Send a message to another user
     x

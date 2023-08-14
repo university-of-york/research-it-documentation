@@ -135,7 +135,7 @@ MATLAB
 Running Interactively
 ^^^^^^^^^^^^^^^^^^^^^
 
-``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so :ref:`inside an interactive cluster session <virtual-session-compute-node>`, rather than on :doc:`Viking's login nodes <../getting_started/code-of-conduct>`.
+``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so :ref:`inside an interactive cluster session <virtual_session_compute_node>`, rather than on :doc:`Viking's login nodes <../getting_started/code_of_conduct>`.
 
 The following demonstrates how you could run ``MATLAB`` interactively without the GUI:
 
@@ -153,7 +153,7 @@ The following demonstrates how you could run ``MATLAB`` interactively without th
     For online documentation, see http://www.mathworks.com/support
     For product information, visit www.mathworks.com.
 
-To run ``MATLAB`` interactively with the graphical user interface, you must first set up a :ref:`virtual desktop session on a compute mode <virtual-session-compute-node>`. Ensure that you use the command ``start-interactive-session.sh`` to set up your interactive job, rather than ``srun``. Note that these commands take the same parameters.
+To run ``MATLAB`` interactively with the graphical user interface, you must first set up a :ref:`virtual desktop session on a compute mode <virtual_session_compute_node>`. Ensure that you use the command ``start-interactive-session.sh`` to set up your interactive job, rather than ``srun``. Note that these commands take the same parameters.
 
 .. code-block:: console
     :caption: using ``start-interactive-session.sh`` as opposed to ``srun`` for the interactive session
@@ -415,7 +415,7 @@ This package can be used to profile your code. Note that at the start of your R 
 
 This will produce a a report as seen below, highlighting the slower performing sections of the code.
 
-.. figure:: /assets/img/r-profile.png
+.. figure:: /assets/img/r_profile.png
 
     output from ``RRprofReport()``
 
@@ -442,7 +442,7 @@ To speed up your code, compile your functions where possible. This can be achiev
 
 The results of this comparison can be seen below:
 
-.. figure:: ../assets/img/r-compile.png
+.. figure:: ../assets/img/r_compile.png
 
     note: the average speed of **g** is significantly lower than that of **f**.
 

@@ -95,7 +95,7 @@ VSCode
 
 
 
-Singularity / Apptainer
+Apptainer / Singularity
 -----------------------
 
 I've worked through a procedure that works today. There are a few steps and after following along it would be a good idea to go over the wiki page we have on Singularity to help with any understanding, if needed.

@@ -33,6 +33,7 @@ Welcome to the Viking Documentation!
    using_viking/jobscripts_program_specific
    using_viking/terminal_multiplexing
    using_viking/virtual_desktops
+   using_viking/apptainer
 
 .. toctree::
    :maxdepth: 1

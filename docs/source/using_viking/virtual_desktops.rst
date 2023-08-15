@@ -5,7 +5,7 @@ You can create virtual desktop sessions to run graphical programs. There a two m
 
 .. attention::
 
-    Remember, the login nodes are only for **light work** as mentioned in the :doc:`code of conduct <../getting_started/code-of-conduct>`, so if you need to use a GUI program for heavy work, then please ensure that is done on a compute node.
+    Remember, the login nodes are only for **light work** as mentioned in the :doc:`code of conduct <../getting_started/code_of_conduct>`, so if you need to use a GUI program for heavy work, then please ensure that is done on a compute node.
 
 
 Login Node
@@ -74,14 +74,14 @@ MacOS
     vnc://144.32.247.22:5938
 
 
-.. _virtual-desktop:
+.. _virtual_desktop:
 
 Use the Virtual Desktop
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 You should soon be presented with a virtual desktop running on Viking. Click the ``Applications > System Tools > Terminal`` button to launch a terminal and you can load modules and programs as usual.
 
-.. figure:: ../assets/img/virtual-desktop1.png
+.. figure:: ../assets/img/virtual_desktop1.png
     :align: center
     :alt: a virtual desktop on Viking with the application menu open
 
@@ -107,7 +107,7 @@ And you'll be presented with a list similar to mine below:
     | 743178ce | gnome      | login2             | 144.32.247.22   |     :38 | 5938 | 5jaHqekY |
     +----------+------------+--------------------+-----------------+---------+------+----------+
 
-.. _kill-sessions:
+.. _kill_sessions:
 
 Kill Sessions
 ^^^^^^^^^^^^^
@@ -123,14 +123,14 @@ Your ``Identity`` code will be different to mine, this is just an example.
 
 .. attention::
 
-    It's important to ``kill`` any unused virtual desktops not just log out / close down the connection. They will still be running in the background using resources (remember the :doc:`code of conduct <../getting_started/code-of-conduct>`) so it's really important that you ``kill`` them after you are finished if you leave too many runing you will not be able to start a fresh one.
+    It's important to ``kill`` any unused virtual desktops not just log out / close down the connection. They will still be running in the background using resources (remember the :doc:`code of conduct <../getting_started/code_of_conduct>`) so it's really important that you ``kill`` them after you are finished if you leave too many runing you will not be able to start a fresh one.
 
-.. _virtual-session-compute-node:
+.. _virtual_session_compute_node:
 
 Compute Node
 -------------
 
-The above method is great for light work like checking results but what if you want to do the heavy work with a GUI application? It's easy, when you get the the virtual desktop :ref:`like above <virtual-desktop>`, then you ask for some resources on a compute node, this is exactly the same as using the ``srun`` command however we use a special wrapper called ``start-interactive-session.sh`` in the terminal in the virtual desktop, for example:
+The above method is great for light work like checking results but what if you want to do the heavy work with a GUI application? It's easy, when you get the the virtual desktop :ref:`like above <virtual_desktop>`, then you ask for some resources on a compute node, this is exactly the same as using the ``srun`` command however we use a special wrapper called ``start-interactive-session.sh`` in the terminal in the virtual desktop, for example:
 
 .. code-block:: console
     :caption: like ``srun``, this describes 1 node, 20 tasks, for 4 hours and runs a bash shell
@@ -145,4 +145,4 @@ You'll have to wait for the resources and you'll get output similar to that belo
     srun: job 25363864 has been allocated resources
     Enabling login2 to accept our X-connection... node001 being added to access control list
 
-After this you'll have a new session on one of the compute nodes. Stay in this terminal, load your modules and run your program and it will be running on the compute node. After you're done close everything down and remember to kill the virtual desktop just like we showed :ref:`before <kill-sessions>`.
+After this you'll have a new session on one of the compute nodes. Stay in this terminal, load your modules and run your program and it will be running on the compute node. After you're done close everything down and remember to kill the virtual desktop just like we showed :ref:`before <kill_sessions>`.

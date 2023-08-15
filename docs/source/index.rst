@@ -15,38 +15,39 @@ Welcome to the Viking Documentation!
    :hidden:
 
    getting_started/quickstart
-   getting_started/code-of-conduct
-   getting_started/creating-accounts
-   getting_started/connecting-to-viking
-   getting_started/connecting-off-campus
-   getting_started/data-management-and-user-quota
+   getting_started/code_of_conduct
+   getting_started/creating_accounts
+   getting_started/connecting_to_viking
+   getting_started/connecting_off_campus
+   getting_started/data_management_and_user_quota
 
 .. toctree::
    :maxdepth: 1
    :caption: Using Viking
    :hidden:
 
-   using_viking/software-on-viking
-   using_viking/submitting-jobs
-   using_viking/resource-partitions
-   using_viking/jobscript-examples
-   using_viking/jobscripts-program-specific
-   using_viking/terminal-multiplexing
-   using_viking/virtual-desktops
+   using_viking/software_on_viking
+   using_viking/submitting_jobs
+   using_viking/resource_partitions
+   using_viking/jobscript_examples
+   using_viking/jobscripts_program_specific
+   using_viking/terminal_multiplexing
+   using_viking/virtual_desktops
+   using_viking/apptainer
 
 .. toctree::
    :maxdepth: 1
    :caption: Beginners Guides
    :hidden:
 
-   beginners_guide/linux-shell
+   beginners_guide/linux_shell
 
 .. toctree::
    :maxdepth: 1
    :caption: In Depth Guides
    :hidden:
 
-   in_depth/program-specific-how-tos
+   in_depth/program_specific_how_tos
 
 
 **Viking** is a large, Linux compute cluster with many nodes, CPUs, GPUs, lots of storage and boat loads of memory. Viking is housed in Sweden (of course!) in the forward thinking `EcoDataCentre <https://ecodatacenter.tech/>`_, which is one of the most sustainable data centres in the whole world. 🌍🥰
@@ -60,9 +61,9 @@ Cluster Configuration
 
 
 
-Check out the :doc:`getting_started/quickstart` section for a speedy guide to getting started or for a more in depth guide, start with the :doc:`getting_started/creating-accounts` page.
+Check out the :doc:`getting_started/quickstart` section for a speedy guide to getting started or for a more in depth guide, start with the :doc:`getting_started/creating_accounts` page.
 
-If you are brand new to using the Linux commands line then how about a quick tutorial from Ubuntu called `The Linux command line for beginners <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>`_ or have a read of our own :doc:`beginners guide to the Linux shell </beginners_guide/linux-shell>`.
+If you are brand new to using the Linux commands line then how about a quick tutorial from Ubuntu called `The Linux command line for beginners <https://ubuntu.com/tutorials/command-line-for-beginners#1-overview>`_ or have a read of our own :doc:`beginners guide to the Linux shell </beginners_guide/linux_shell>`.
 
 
 .. hint::

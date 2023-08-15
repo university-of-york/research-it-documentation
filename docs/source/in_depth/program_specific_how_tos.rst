@@ -16,9 +16,9 @@ The `Jupyter notebook <https://docs.jupyter.org/en/latest/>`_ is a web-based not
 
 One way to do this is with the interactive desktop sessions on Viking, following these steps:
 
-    1. :doc:`Log into Viking <../getting_started/connecting-to-viking>`
-    2. Start a :doc:`desktop session & connect via VNC <../using_viking/virtual-desktops>`
-    3. Start an :ref:`interactive session <virtual-session-compute-node>` to get a compute node to run the notebook on
+    1. :doc:`Log into Viking <../getting_started/connecting_to_viking>`
+    2. Start a :doc:`desktop session & connect via VNC <../using_viking/virtual_desktops>`
+    3. Start an :ref:`interactive session <virtual_session_compute_node>` to get a compute node to run the notebook on
     4. Load the Jupyter module and start the notebook, **on the compute node**
     5. In a **new** terminal, forward a connection from the virtual desktop (login node) to the compute node
     6. Load a browser and connect to the notebook
@@ -92,4 +92,5 @@ VSCode
 .. tip::
 
     If you at some point VSCode refuses to connect and it's not obvious why, sometimes the files it installs on Viking have become corrupted. You can log into Viking in your ususal way without VSCode, and delete the following directory ``~/.vscode-server``. The next time VSCode connects to Viking it will install the files again and hopefully it will fix the problems.
+
 

@@ -37,6 +37,8 @@ variable_replacements = {
     "{MOD_VASP}": "phys/VASP/5.4.4-intel-2019a",
     "{MOD_TOOLCHAIN_FOSS}": "toolchain/foss/2022b",  # used in the AtChem2 example
     "{MOD_CMAKE}": "devel/CMake/3.24.3-GCCcore-12.2.0",  # used in the AtChem2 example
+    "{MOD_APPTAINER}": "tools/Singularity/3.5.3",  # has own page
+    "{NAME_APPTAINER}": "singularity",
 
 }
 

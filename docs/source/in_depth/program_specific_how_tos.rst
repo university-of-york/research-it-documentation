@@ -94,30 +94,3 @@ VSCode
     If you at some point VSCode refuses to connect and it's not obvious why, sometimes the files it installs on Viking have become corrupted. You can log into Viking in your ususal way without VSCode, and delete the following directory ``~/.vscode-server``. The next time VSCode connects to Viking it will install the files again and hopefully it will fix the problems.
 
 
-
-Apptainer / Singularity
------------------------
-
-I've worked through a procedure that works today. There are a few steps and after following along it would be a good idea to go over the wiki page we have on Singularity to help with any understanding, if needed.
-
-Create account on here https://cloud.sylabs.io/builder, this will allow you to build a container off Viking
-Create an access token on that site: `User acocunt -> Access Token -> Generate` you can name this anything
-
-On Viking, from the command line:
-
-`module load tools/Singularity/3.5.3`
-`singularity remote login`
-
-Then paste in the `access token` you created earlier. This will allow us to build the container just from the Viking command line. Then after this, still on the Viking command line:
-
-`singularity build --remote dia-nn.simg docker://proteomicsunitcrg/dia-nn:latest`
-
-This should build the container for you and save it as `dia-nn.simg` in your current folder. If all goes well you can run it with the following:
-
-`singularity shell --cleanenv dia-nn.simg`
-
-This should get you a `shell` session within the container, the program `diann` is located in the following directory, here I have it list it's version:
-
-`/usr/diann/1.8/diann-1.8 --version`
-
-It seems it's important to use the `--cleanenv` option when running this container to stop it passing the current environment variables to the container. If you're happy to try the above, it should all work but if you need any help please feel free to ask.

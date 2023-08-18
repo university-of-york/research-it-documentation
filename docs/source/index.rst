@@ -34,6 +34,7 @@ Welcome to the Viking Documentation!
    using_viking/terminal_multiplexing
    using_viking/virtual_desktops
    using_viking/apptainer
+   using_viking/virtual_environments
 
 .. toctree::
    :maxdepth: 1

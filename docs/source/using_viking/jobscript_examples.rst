@@ -7,7 +7,7 @@ In this section we'll try to give some general purpose examples of different job
 
 .. admonition:: We need your help!
 
-    If you have a splendid jobscript, maybe it's super efficient, has a neat trick or maybe it does something not shown here. If that's the case then please send it to us so we can add it to this site and share it with everyone else. You never know, you may just make someone else's day!
+    If you have a splendid jobscript, maybe it's super efficient, has a neat trick or maybe it does something not shown here. If that's the case then please send it to us so we can add it to this site and share it with everyone else. You never know, you may just make someone's day!
 
 
 .. hint::

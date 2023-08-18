@@ -16,7 +16,7 @@ Quickstart
     $ python3 -m pip install virtualenv
     $ python3 -m venv .venv
     $ source .venv/bin/activate
-    $ python3 -m pip install <packages here>
+    $ python3 -m pip install package1 package2 package3
 
 
 Conda
@@ -41,9 +41,9 @@ These directories inevitably end up containing many files, and Viking sets a quo
 
 .. code-block:: console
 
-    cd ~
-    mkdir -p scratch/python_environments/envs
-    mkdir -p scratch/python_environments/pkgs
+    $ cd ~
+    $ mkdir -p scratch/python_environments/envs
+    $ mkdir -p scratch/python_environments/pkgs
 
 
 2. Create a conda configuration file in your ``HOME`` directory, specifically: ``/users/USERNAME/.condarc``
@@ -61,7 +61,7 @@ You will also need to load the Miniconda module, which will enable you to make u
 
 .. code-block:: console
 
-   module load {MOD_MINICONDA}
+   $ module load {MOD_MINICONDA}
 
 
 in a Viking shell. At this point, you are ready to use the ``conda`` utility with no risk of hitting the 100,000 files quota on your ``HOME`` directory.
@@ -73,7 +73,7 @@ Creating an Environment
 There are a few different ways in which environments can be created using the ``conda`` utility, but we are going to describe what is perhaps the most reliable and reproducible way in which it can be done - using an environment file. An environment file is a `YAML <https://yaml.org/>`_ file that describes the Python environment that you would like to create. Once this file has been created, the environment it represents can be created using the ``conda`` utility. This allows you to recreate the same environment in multiple places, and easily pass on a specification for a Python environment to other users. A simple example of an environment file is shown below.
 
 .. code-block:: console
-    :caption: my_first_environment.yaml file
+    :caption: my_first_environment.yaml
 
     name: my_first_environment
     channels:
@@ -101,7 +101,7 @@ Now that you have an environment file, ``my_first_environment.yaml``, somewhere 
 
 .. code-block:: console
 
-   conda env create -f my_first_environment.yaml
+    $ conda env create -f my_first_environment.yaml
 
 Here you are telling ``conda`` to create a new environment using the file (-f) ``my_first_environment.yaml`` as the specification. Once the environment has been installed, you should be able to confirm that the environment exists by using the info subcommand of the ``conda`` tool:
 

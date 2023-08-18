@@ -39,6 +39,7 @@ variable_replacements = {
     "{MOD_CMAKE}": "devel/CMake/3.24.3-GCCcore-12.2.0",  # used in the AtChem2 example
     "{MOD_APPTAINER}": "tools/Singularity/3.5.3",  # has own page
     "{NAME_APPTAINER}": "singularity",
+    "{MOD_MINICONDA}": "lang/Miniconda3",
 
 }
 

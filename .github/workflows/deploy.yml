@@ -1,10 +1,11 @@
 name: "Deploy new release"
-on: 
+on:
  pull_request:
     types:
       - closed
     branches:
       - main
+ workflow_dispatch:
 
 jobs:
   infra:
@@ -40,4 +41,6 @@ jobs:
     - name: Build site
       run: sphinx-build -b html docs/source/ site/
     - name: Push to S3
-      run: aws s3 sync site/. s3://uoy-researchit-website-dev
+      run: |
+        aws s3 sync site/. s3://uoy-researchit-website-dev
+        aws cloudfront create-invalidation --distribution-id $(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,origin:Origins.Items[0].Id}[?origin=='uoy-researchit-website-dev'].id" --output text) --paths "/*"

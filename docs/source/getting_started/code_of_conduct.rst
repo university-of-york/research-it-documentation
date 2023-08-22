@@ -21,16 +21,19 @@ Closing Virtual Desktop Sessions
 Virtual desktop sessions don't close if you simply disconnect, this is to allow you to come back to them at a later time. If you do not ``kill`` the virtual desktop after you have finished and later create new ones, more and more virtual desktops will be running taking up resources. This is why it's best practice to simply :ref:`kill any virtual desktops after use <kill_sessions>`.
 
 
-Deleting Unneeded Files
------------------------
-
-Speeds up the filesystem
-
-
 Backing up data
 ----------------
 
-``scratch`` is not backed up etc..
+The ``scratch`` folder, the main folder in your home directory where you store data, is not backed up. This is partyly due to the sheer size of the filesystem and so this means that backing up your data is every users responsibility. In the worst case scenario all data could be lost, therefore you should regularly `back up your data <getting_started/backing_up>`.
+
+
+Deleting Unneeded Files
+-----------------------
+
+We strongly encourage all users to take time to periodically sort through their data on Viking, back up the data and when it's successfully backed up, delete it from Viking if it's no longer needed. This frees up space for other people's data on the filesystem and helps avoid us reaching the storage limits.
+
+
+
 
 
 

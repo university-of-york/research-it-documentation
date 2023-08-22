@@ -12,7 +12,7 @@ Running Tasks on the Login Nodes
 
 When you first log in to Viking you, and every other user, will be logged into one of the ``login nodes``. These act as gateways to the ``compute nodes``, which is where all the hard work should be done. The login nodes are meant for transferring files, writing code, viewing results and other similar **light work**. If you have a task which crunches through a massisve data set, spinning off multiple instances and taking up as many CPUs as it can to get the job done, then running this task on a login node will impact other people.
 
-Please run all tasks through the ``slurm`` job scheduler, this way they are run on the compute nodes, not the login nodes and you can control their resources. You can read about ``Slurm`` and how to send jobs to it on the `scheduling jobs page <FIXME: Link to page>`_.
+Please run all tasks through the ``slurm`` job scheduler, this way they are run on the compute nodes, not the login nodes and you can control their resources. You can read about ``Slurm`` and how to send jobs to it on the :doc:`scheduling jobs page </using_viking/submitting_jobs>`.
 
 
 Closing Virtual Desktop Sessions

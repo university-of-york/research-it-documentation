@@ -24,6 +24,7 @@ Conda
 
 Virtual environments are a convenient way for you to have complete control over potentially many versions of Python. Viking provides the ``conda`` utility, as part of the ``Miniconda`` module, to allow you to create and manage virtual Python environments. This page describes the basics of using ``conda``, as well as some Viking-specific configuration that you are likely to find useful. The full documentation of ``conda`` can be found in the `conda online documentation <https://docs.conda.io/projects/conda/en/latest/index.html>`_.
 
+.. _conda_setup:
 
 Initial Setup
 ^^^^^^^^^^^^^
@@ -88,7 +89,7 @@ There are a few different ways in which environments can be created using the ``
 The above file, ``my_first_environment.yaml``, describes the following things about a Python environment:
 
     - **name**: the name of the Python environment. This is the name that will be used to refer to the environment when using the conda tools
-    - **channels**: the `Anaconda <https://anaconda.org/>`_ Cloud channels that should be used to find packages for this environment. There are many channels available, but the two most common that you will see are defaults, which contains stable packages curated by the Anaconda team, and `conda-forge <https://conda-forge.org/>`_, a community-led channel containing a wide range of high-quality packages that are often of a more recent version than those in defaults
+    - **channels**: the `Anaconda <https://anaconda.cloud/>`_ Cloud channels that should be used to find packages for this environment. There are many channels available, but the two most common that you will see are defaults, which contains stable packages curated by the Anaconda team, and `conda-forge <https://conda-forge.org/>`_, a community-led channel containing a wide range of high-quality packages that are often of a more recent version than those in defaults
     - **dependencies**: the dependencies of the Python environment that you want to create. In the example above, we have specified a Python version that we want to use (3.7), some packages to be installed from the conda-forge channel that we named earlier in the environment file, and a package to be installed from `PyPI <https://pypi.org/>`_ through pip, as the package is not available from the conda-forge channel
 
 You can read more about environment files in the `conda user guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually>`_.

@@ -1,6 +1,7 @@
 :root {
-    --main-colour: #A6A091;
-    --highlight: #A3ADB4;
+    --main-colour: hwb(43 57% 35%);
+    /* --highlight: #A3ADB4; */
+    --highlight: hwb(43 57% 60%);
 
     /* --main-colour: #78BF26;
     --highlight: #78BF26; */

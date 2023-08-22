@@ -85,6 +85,8 @@ Windows
 If you are copying data from a Windows device it is recommended that you use `WinSCP <https://winscp.net/>`_ and their website has some good `tutorials for uploading and downloading files <https://winscp.net/eng/docs/task_index>`_ and other uses. Using the your ``username`` and the ``hostname``, ``port`` and ``protocol`` shown above, you should be able to connect to Viking and start moving files!
 
 
+.. _transfer_files_linux:
+
 Linux
 ^^^^^
 
@@ -102,13 +104,13 @@ scp
 This is recommended for transferring a small number of files. This example will copy data from your device to your ``scratch`` directory on Viking
 
 .. code-block:: console
-    :caption: For an individual file
+    :caption: for an individual file
 
     $ scp filename viking.york.ac.uk:~/scratch/
 
 
 .. code-block:: console
-    :caption: For a folder with lots of files
+    :caption: for a folder with lots of files
 
     $ scp -r dirname viking.york.ac.uk:~/scratch/
 
@@ -125,12 +127,12 @@ rsync
 This is recommended for a large number of files. Rsync can check what is already in place, therefore if the network is interrupted you can run the command again and it will pick up from where it was stopped. It will only transfer files that do not exist on the other server or files that have been changed.
 
 .. code-block:: console
-    :caption: This will copy your data from your device to your scratch area on Viking
+    :caption: this will copy your data from your device to your scratch area on Viking
 
     $ rsync -avz dirname viking.york.ac.uk:~/scratch
 
 .. code-block:: console
-    :caption: This can be useful for copying a very large file from your device to your scratch area on Viking as it will allow you continue the transfer if the connection breaks for some reason
+    :caption: this can be useful for copying a very large file from your device to your scratch area on Viking as it will allow you continue the transfer if the connection breaks for some reason
 
     $ rsync -P --append filename viking.york.ac.uk:~/scratch
 
@@ -145,10 +147,6 @@ FileZilla
 ^^^^^^^^^
 
 Filezilla is a fantastic graphical program for transferring files and can be used on both Windows, Linux, or MacOS. You can download it from `their website <https://filezilla-project.org/>`_.
-
-Once it has been downloaded, run FileZilla and you will see this interface:
-
-.. image:: ../assets/img/filezilla.png
 
 To connect to Viking, enter your details in the boxes towards the top of the screen::
 
@@ -165,8 +163,8 @@ Moving Data to Google Drive Directly from Viking
 
 We know a number of Viking users like to store data on Google Drive.  It is possible to copy data directly from Viking to your Google Drive folder. Below we will provide instructions on how to set this up.
 
-Setting up Rclone on Viking
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setting up rclone on Viking
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to use ``rclone``, you will need a ``client-id``, the steps for which can be found on the `rclone website <https://rclone.org/drive/#making-your-own-client-id>`_.
 
@@ -222,3 +220,8 @@ If you login into Google Drive you should see the files from ``directory_to_copy
 
     2021/08/16 11:33:23 Fatal error: listing Team Drives failed: googleapi: Error 403: Insufficient Permission: Request had insufficient authentication scopes., insufficientPermissions
 
+
+DropOff Service
+---------------
+
+The York `DropOff Service <https://www.york.ac.uk/it-services/services/dropoff/>`_ is a web page that lets you easily and securely exchange files up to 128G with University staff and students or external people. Files are automatically deleted after 14 days and all files are transferred across the network `securely encrypted <https://dropoff.york.ac.uk/security>`_.

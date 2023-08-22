@@ -84,13 +84,18 @@ Interactive jobs are typically used when testing code, or when running applicati
     5. On exit, the allocated resources are automatically released
 
 
+.. note::
+
+    There is a dedicated ``interactive`` :doc:`partition </using_viking/resource_partitions>` but it won't be used by default. The default partition is the ``nodes`` partition, therefore unless you need more resources, please explicitly request the ``interactive`` partition.
+
+
 srun Command
 ^^^^^^^^^^^^
 
 .. code-block:: console
-    :caption: describes a job to run on: 1 node, with up to 10 tasks, for 15 mins and the program to run is `/bin/bash`
+    :caption: describes a job to run on: the interactive partition for 8 hours, and the program to run is `/bin/bash`
 
-    $ srun --nodes 1 --ntasks 10 --time 00-00:15:00 --pty /bin/bash
+    $ srun --time 08:00:00 --partition interactive --pty /bin/bash
 
 The same options available to ``sbatch`` are available to ``srun`` so please see the `slurm documentation <https://slurm.schedmd.com/sbatch.html>`_ for more options and in depth descriptions.
 

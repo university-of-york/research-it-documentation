@@ -45,3 +45,7 @@ Options ``a`` set up a number of options useful for *archiving*, ``v`` for *verb
 
 Option ``-P`` sets the ``--partial`` and ``--progress`` options, which will *keep partially transferred files* and shows *progress*. The ``--append`` option will *append data onto shorter files*. Together this is handy if a large file needs to be transferred but for some reason could get interrupted. Rerunning this command should pick up where it left off.
 
+
+.. hint::
+
+    If you use the above commands on Viking to transfer files why not look into using :doc:`tmux or screen </using_viking/terminal_multiplexing>`, and this will allow you to ``detach`` from the terminal where it will continue to run ready for your return later.

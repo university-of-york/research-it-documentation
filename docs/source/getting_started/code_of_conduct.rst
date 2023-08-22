@@ -18,7 +18,7 @@ Please run all tasks through the ``slurm`` job scheduler, this way they are run 
 Closing Virtual Desktop Sessions
 --------------------------------
 
-Frees up resources
+Virtual desktop sessions don't close if you simply disconnect, this is to allow you to come back to them at a later time. If you do not ``kill`` the virtual desktop after you have finished and later create new ones, more and more virtual desktops will be running taking up resources. This is why it's best practice to simply :ref:`kill any virtual desktops after use <kill_sessions>`.
 
 
 Deleting Unneeded Files

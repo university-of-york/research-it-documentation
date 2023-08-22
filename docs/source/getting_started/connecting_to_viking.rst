@@ -17,12 +17,12 @@ To log in from a terminal emulator, use the following command:
 
 .. code-block:: console
 
-    ssh viking.york.ac.uk
+    $ ssh viking.york.ac.uk
 
 You will be prompted for your IT Services password.
 
 .. hint::
-    X11 forwarding will only work on the Viking login nodes, which means that you won't be able to run graphical applications e.g. MATLAB on the Viking compute nodes using X11 forwarding. Details about virtual desktop sessions on Viking `can be found here <FIXME: link to X11 forwarding>`_.
+    X11 forwarding will only work on the Viking login nodes, which means that you won't be able to run graphical applications e.g. MATLAB on the Viking compute nodes using X11 forwarding. Details about virtual desktop sessions on Viking :doc:`can be found here </using_viking/virtual_desktops>`.
 
 .. _connecting-via-windows:
 

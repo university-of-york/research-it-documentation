@@ -24,6 +24,7 @@ Conda
 
 Virtual environments are a convenient way for you to have complete control over potentially many versions of Python. Viking provides the ``conda`` utility, as part of the ``Miniconda`` module, to allow you to create and manage virtual Python environments. This page describes the basics of using ``conda``, as well as some Viking-specific configuration that you are likely to find useful. The full documentation of ``conda`` can be found in the `conda online documentation <https://docs.conda.io/projects/conda/en/latest/index.html>`_.
 
+.. _conda_setup:
 
 Initial Setup
 ^^^^^^^^^^^^^

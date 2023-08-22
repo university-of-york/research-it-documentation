@@ -61,7 +61,7 @@ Below is an example jobscript, let's save it as ``jobscript.job`` for this examp
     echo '\n'Job completed at `date`
 
 
-It uses ``bash`` syntax and importantly has a set of ``sbatch`` specific options **before** the commands which need to be run. There are many options that can be added into a jobscript, far more than we can go into here and the `slurm documentation for sbatch <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all. For more advanced and specialised jobscript examples please see the `advanced jobscript section <FIXME: Link>`_.
+It uses ``bash`` syntax and importantly has a set of ``sbatch`` specific options **before** the commands which need to be run. There are many options that can be added into a jobscript, far more than we can go into here and the `slurm documentation for sbatch <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all. For more advanced and specialised jobscript examples please see the :doc:` jobscript for specific applications section </using_viking/jobscripts_program_specific>`.
 
 Send this to the job scheduler ``Slurm`` with the ``sbatch`` command:
 

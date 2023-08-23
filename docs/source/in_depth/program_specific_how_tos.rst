@@ -28,7 +28,7 @@ Steps 1-3 is explained on the linked pages. Once you have an interactive session
 .. code-block:: console
     :emphasize-lines: 5,6
 
-    [abc123@login2 [viking] ~]$ start-interactive-session.sh -N 1 -n 10 -t 1:0:0
+    [abc123@login2 [viking] ~]$ start-interactive-session.sh -N 1 -n 1 -c 10 -t 1:0:0
     srun: job 23721784 queued and waiting for resources
     srun: job 23721784 has been allocated resources
     Enabling login2 to accept our X-connection... node065 being added to access control list
@@ -65,7 +65,7 @@ Using some of the above guide as reference, another way to so this is with VSCod
 
     1. Install the `Jupyter extension <https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter>`_ in VSCode
     2. Remote ssh connect to Viking from VSCode's `terminal <https://code.visualstudio.com/docs/terminal/basics>`_
-    3. Start an interactive session with ``srun`` eg ``srun -N 1 -n 20 -t 4:0:0 --pty /bin/bash`` **in the terminal of VSCode**
+    3. Start an interactive session with ``srun`` eg ``srun -N 1 -n 1 -c 10 -t 4:0:0 --pty /bin/bash`` **in the terminal of VSCode**
     4. Once the interactive session is running, load the ``Jupyter`` module and run the notebook, like above
     5. In a **new** remote terminal on Viking, in VSCode, set up the ssh forwarding, like above (noting the ``node`` number from step 4.)
     6. In VSCode, open a new ``Jupyter`` notebook: ``(Ctrl+Shift+P)`` and type ``Jupyter: Create New Jupyter Notebook.``

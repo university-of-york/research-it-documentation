@@ -4,6 +4,11 @@ Backing Up your Data
 There are two main options, the University Filestore or the Vault. Choosing will depend on how frequently you need to access the data. The Vault provides unlimited cold storage and is appropriate for storing sensitive data but retrieving the data can take some time and may incur a charge, the Filestore is more readily accessible, if you need more space please contact itsupport@york.ac.uk. If you use the Filestore for backing up then usually, the date will then be transferred to the Vault for archiving.
 
 
+.. warning::
+
+    Please ensure you **regularly** back up your data, if there is a catastrophic failure all data on Viking could be lost!
+
+
 The Vault
 ----------
 

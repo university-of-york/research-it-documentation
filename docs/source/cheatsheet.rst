@@ -22,11 +22,12 @@ By using different heading `levels` the TOC will produce nested entries, cutting
 Styles
 ------
 
-**Bold text**
 *Italic text*
+**Bold text**
 ``Inline literal/code``
 :sup:`super`\ Script
 :sub:`sub`\ Script
+
 
 Bullet Lists
 ------------
@@ -40,6 +41,7 @@ Bullet Lists
         a. Nested ordered item
 
 * Unordered item
+
 
 Preserve line breaks
 --------------------
@@ -91,6 +93,14 @@ Code-blocks
 
     echo "Hello World"
 
+Quotes
+------
+
+.. epigraph::
+
+    User this as a quote from someone.
+
+    -- Joan Doe
 
 
 Admonitions
@@ -160,7 +170,7 @@ For a basic table you can draw it out in ascii, it's pretty limited though:
 Using a ``.csv`` file makes things a lot easier:
 
 .. csv-table:: Viking breakdown
-    :file: data/viking_stats.csv
+    :file: assets/data/viking_stats.csv
     :align: center
 
 

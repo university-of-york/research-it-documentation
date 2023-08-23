@@ -4,7 +4,7 @@ Virtual Environments
 venv
 ----
 
-For simple virtual environments, where you just need to install packages through `pip`, `venv` can be a good choice. Here is a `really good article <https://www.bitecode.dev/p/relieving-your-python-packaging-pain>`_ about using ``venv`` in Python which is well worth the read, more info can be found in the `documentation <https://docs.python.org/3/library/venv.html>`_. Below we'll keep a quickstart guide of the list of commands to get a ``venv`` virtual environment up and running. In this case, after making the project folder we install ``virtualenv`` using ``pip``, this step is only needed if the system doesn't have the system package for ``virtualenv`` installed already. You can test this by running the following command: :code:`python3 -c "import venv"` if you receive an error it's not installed:
+For simple virtual environments, where you just need to install packages through ``pip``, ``venv`` can be a good choice. Here is a `really good article <https://www.bitecode.dev/p/relieving-your-python-packaging-pain>`_ about using ``venv`` in Python which is well worth the read, more info can be found in the `documentation <https://docs.python.org/3/library/venv.html>`_. Below we'll keep a quickstart guide of the list of commands to get a ``venv`` virtual environment up and running which is a built-in module since Python 3.3.
 
 
 Quickstart
@@ -13,7 +13,6 @@ Quickstart
 
     $ mkdir new_project
     $ cd new_project
-    $ python3 -m pip install virtualenv
     $ python3 -m venv .venv
     $ source .venv/bin/activate
     $ python3 -m pip install package1 package2 package3

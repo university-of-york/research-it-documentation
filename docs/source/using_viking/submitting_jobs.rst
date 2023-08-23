@@ -1,6 +1,35 @@
 Submitting Jobs
 ===============
 
+Selecting configuration options for jobs in ``Slurm`` can be quite complex and not easy to predict. There is an `in depth guide <https://slurm.schedmd.com/cpu_management.html>`_ about CPU management in the ``Slurm`` docs which is well worth the read.
+
+.. epigraph::
+
+    The interactions between different CPU management options are complex and often difficult to predict. Some experimentation may be required to discover the exact combination of options needed to produce a desired outcome.
+
+    -- Slurm documentation
+
+
+.. hint::
+
+    For the vast majority of jobs the configuration for requesting multiple CPU cores is:
+
+    .. code-block:: bash
+
+        #SBATCH --nodes=1
+        #SBATCH --ntasks=1
+        #SBATCH --cpus-per-task=N
+
+    This configuration describes 1 task on 1 node and ``N`` CPU cores, where you substitute ``N`` for how many cores you need e.g ``16``
+
+For more examples of how to use ``--nodes``, ``--ntasks``, ``--ntasks-per-node`` and ``--cpus-per-task`` `CECI has a good answer <https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html#q05-how-do-i-create-a-parallel-environment>`_ on their site which explains various ways to request 16 cores and the results.
+
+
+.. attention::
+
+    In summary, usually where ``N > 1``, ``--ntasks=N`` is for mpi and ``--cpus-per-task=N`` is for multithreading applications
+
+
 Best Practice
 -------------
 
@@ -61,7 +90,7 @@ Below is an example jobscript, let's save it as ``jobscript.job`` for this examp
     echo '\n'Job completed at `date`
 
 
-It uses ``bash`` syntax and importantly has a set of ``sbatch`` specific options **before** the commands which need to be run. There are many options that can be added into a jobscript, far more than we can go into here and the `slurm documentation for sbatch <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all. For more advanced and specialised jobscript examples please see the :doc:` jobscript for specific applications section </using_viking/jobscripts_program_specific>`.
+It uses ``bash`` syntax and importantly has a set of ``sbatch`` specific options **before** the commands which need to be run. There are many options that can be added into a jobscript, far more than we can go into here and the `slurm documentation for sbatch <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all. For more advanced and specialised jobscript examples please see the :doc:`jobscript for specific applications section </using_viking/jobscripts_program_specific>`.
 
 Send this to the job scheduler ``Slurm`` with the ``sbatch`` command:
 
@@ -93,11 +122,20 @@ srun Command
 ^^^^^^^^^^^^
 
 .. code-block:: console
-    :caption: describes a job to run on: the interactive partition for 8 hours, and the program to run is `/bin/bash`
+    :caption: describes a job to run on: the interactive partition for 8 hours, and the program to run is ``/bin/bash``
 
-    $ srun --time 08:00:00 --partition interactive --pty /bin/bash
+    $ srun --time=08:00:00 --partition=interactive --pty /bin/bash
 
 The same options available to ``sbatch`` are available to ``srun`` so please see the `slurm documentation <https://slurm.schedmd.com/sbatch.html>`_ for more options and in depth descriptions.
+
+If you do need more processing power than the interactive partition offers, perhaps you're running ``MATLAB`` interactively, then you can request other partitions and resources, for example:
+
+
+.. code-block:: console
+    :caption: describes a job to run on: 1 node with 20 CPU cores on the ``nodes`` partition for 1 hour and the command to run is ``/bin/bash``
+
+    $ srun --nodes=1 --cpus-per-task=20 --partition=nodes --time=0-01:00:00 --pty /bin/bash
+
 
 After submitting the job, it will be added to the queue, and you should receive the following message:
 

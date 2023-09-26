@@ -18,7 +18,7 @@ The University also provides an `SSH gateway service <https://www.york.ac.uk/it-
 
 .. code-block:: console
 
-    ssh abc123@viking.york.ac.uk
+    $ ssh abc123@viking.york.ac.uk
 
 Once you have entered your password and gone through the two-factor authentication, you should then see the following message asking which machine you wish to connect to. Simply enter ``viking`` and press ``Enter``.
 

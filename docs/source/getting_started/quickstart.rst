@@ -37,7 +37,7 @@ Load a Module
 Develop and Test
 ----------------
 
-Develop and test the the job you plan to create. Remember not to leave a proper job running on the login node as this can affect other users. If you are testing something and need to kill the command whilst it's running, press ``Ctrl + C``.
+Develop and test the the job you plan to create. Remember not to leave a proper job running on the login node as this can affect other users. If you are testing something and need to kill the command whilst it's running, press ``Ctrl + c``.
 
 
 Create Job Script
@@ -51,7 +51,8 @@ In your favorite text editor, create a jobscript for your job. Save it as someth
 
     {SHEBANG}
     #SBATCH --job-name=my_job               # Job name
-    #SBATCH --ntasks=10                     # Number of MPI tasks to request
+    #SBATCH --nodes=1                       # Number of nodes to run on
+    #SBATCH --ntasks=1                      # Number of MPI tasks to request
     #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
     #SBATCH --mem=16G                       # Total memory to request
     #SBATCH --time=0-00:15:00               # Time limit (DD-HH:MM:SS)
@@ -60,6 +61,9 @@ In your favorite text editor, create a jobscript for your job. Save it as someth
     #SBATCH --mail-user=abc123@york.ac.uk   # Where to send mail
     #SBATCH --output=%x-%j.log              # Standard output log
     #SBATCH --error=%x-%j.err               # Standard error log
+
+    # Abort if any command fails
+    set -e
 
     # Purge any previously loaded modules #
     module purge
@@ -88,7 +92,7 @@ Send the Jobscript to the Job Scheduler
 Check Results
 --------------
 
-Depending on what you set for ``#SBATCH --mail-type=`` you should receive some emails as the job progresses. When the job is completed you should have a log file in the directory where you ran the ``sbatch`` command originally. This is a great opportinuty to see how efficient your job was.
+Depending on what you set for ``#SBATCH --mail-type=`` you should receive some emails as the job progresses. When the job is completed you should have a log file in the directory where you ran the ``sbatch`` command originally. This is a great opportunity to see how efficient your job was.
 
 
 Adjust the Jobscript

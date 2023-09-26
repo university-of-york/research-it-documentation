@@ -4,7 +4,7 @@ Connecting to Viking
 .. hint::
     Before you can connect to Viking you'll need a :ref:`project code and a user account<creating-an-account>`.
 
-To access Viking you'll need to be on the campus network or using the VPN.
+To access Viking you'll need to be on the campus network or using the VPN :doc:`which you can read about here. </getting_started/connecting_off_campus>`
 
 
 Terminal Access
@@ -19,7 +19,11 @@ To log in from a terminal emulator, use the following command:
 
     $ ssh viking.york.ac.uk
 
-You will be prompted for your IT Services password.
+You will be prompted for your IT Services password. If you're using a personal device then you'll need to add your IT Services username for example:
+
+.. code-block:: console
+
+    $ ssh abc123@viking.york.ac.uk
 
 .. hint::
     X11 forwarding will only work on the Viking login nodes, which means that you won't be able to run graphical applications e.g. MATLAB on the Viking compute nodes using X11 forwarding. Details about virtual desktop sessions on Viking :doc:`can be found here </using_viking/virtual_desktops>`.

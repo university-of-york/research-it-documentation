@@ -49,6 +49,9 @@ The following job script could be used to submit an ``Amber`` workflow to the cl
     #SBATCH --mail-type=ALL                        # Events to receive emails about
     #SBATCH --mail-user=a.user@york.ac.uk          # Where to send mail
 
+    # Abort if any command fails
+    set -e
+
     module purge
     module load {MOD_AMBER_CPU}
     ./amber_cpu_example.sh
@@ -71,6 +74,9 @@ The following job script could be used to submit an ``Amber`` workflow to the GP
     #SBATCH --output=%x.log                        # Standard output and error log
     #SBATCH --mail-type=END,FAIL                   # Events to receive emails about
     #SBATCH --mail-user=a.user@york.ac.uk          # Where to send mail
+
+    # Abort if any command fails
+    set -e
 
     module purge
     module load {MOD_AMBER_GPU}
@@ -106,6 +112,10 @@ This job script can be used to submit a ``Gaussian`` workflow to the cluster, us
     #SBATCH --time=48:00:00
     #SBATCH --output=output.log
     #SBATCH --partition=nodes
+
+    # Abort if any command fails
+    set -e
+
     module purge                               # purge any loaded modules
     module load {MOD_GAUSSIAN}
     g16 g16.gjf
@@ -187,6 +197,9 @@ The following job script could be used to submit a ``MATLAB`` script to the clus
     #SBATCH --output=%x.log                        # Standard output and error log
     #SBATCH --mail-type=ALL                        # Events to receive emails about
     #SBATCH --mail-user=a.user@york.ac.uk          # Where to send mail
+
+    # Abort if any command fails
+    set -e
 
     module purge
     module load {MOD_MATLAB}
@@ -325,6 +338,9 @@ The following Job Script will run the R code with the default number of CPUs and
     #SBATCH --output=logs/Simple-R-%j.log        # Standard output and error log
     #SBATCH --account=dept-proj-year             # Project account to use
 
+    # Abort if any command fails
+    set -e
+
     module purge
     module load {MOD_R}
     echo `date`: executing R script simple on host ${HOSTNAME}
@@ -355,6 +371,9 @@ The following script uses 4 cores and 24GB of memory.
     #SBATCH --time=00:05:00                      # Time limit hrs:min:sec
     #SBATCH --output=logs/Sinc2core-%j.log       # Standard output and error log
     #SBATCH --account=dept-proj-year             # Project account to use
+
+    # Abort if any command fails
+    set -e
 
     module purge
     module load {MOD_R}
@@ -539,6 +558,9 @@ An example job script can be found here. This script takes 40 CPUs, 1 GB of memo
     #SBATCH --output=logs/VOX-FE_CPU_example-node-%j.log
     #SBATCH --account=dept-proj-year            # Project account to use
 
+    # Abort if any command fails
+    set -e
+
     module purge                                # purge any loaded modules
     module load module load {MOD_VOXFE}
 
@@ -576,6 +598,9 @@ An example script to run ``RELION`` can be seen here using
     #SBATCH --ntasks=1                             # Number of tasks to run
     #SBATCH --mem=4gb                              # Memory requested
     #SBATCH --time=00:30:00                        # Time requested
+
+    # Abort if any command fails
+    set -e
 
     module purge                    # Purges all loaded modules
 
@@ -636,6 +661,9 @@ Example job scripts
     #SBATCH --mail-user=abc123@york.ac.uk           # Where to send mail
     #SBATCH --account=dept-proj-year                # Project account to use
 
+    # Abort if any command fails
+    set -e
+
     module purge                                    # purge any loaded modules
     # Load AlphaFold module
     module load {MOD_ALPHAFOLD_CPU}
@@ -665,6 +693,9 @@ Example job scripts
     #SBATCH --mail-type=BEGIN,END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk       # Where to send mail
     #SBATCH --account=dept-proj-year            # Project account to use
+
+    # Abort if any command fails
+    set -e
 
     module purge                                # purge any loaded modules
     # Load AlphaFold module
@@ -749,6 +780,9 @@ VASP
     #SBATCH --output=%x.o%j                 # Archer style screen output
     #SBATCH --error=%x.e%j                  # Archer style error output
     #SBATCH --account=dept-proj-year        # Project account to use
+
+    # Abort if any command fails
+    set -e
 
     module purge
     module load {MOD_VASP}

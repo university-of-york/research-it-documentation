@@ -48,7 +48,7 @@ When submitting large volumes of jobs with identical resource requests, job arra
 Bash Shebang and 'set -e'
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Consider using ``set -e`` after ``#!/usr/bin/env bash``. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.
+Consider using ``set -e`` after the ``#SBATCH`` section. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.
 
 
 Batch Jobs
@@ -73,6 +73,9 @@ Below is an example jobscript, let's save it as ``jobscript.job`` for this examp
     #SBATCH --mail-user=abc123@york.ac.uk   # Where to send mail
     #SBATCH --output=%x-%j.log              # Standard output log
     #SBATCH --error=%x-%j.err               # Standard error log
+
+    # Abort if any command fails
+    set -e
 
     # Purge any previously loaded modules #
     module purge

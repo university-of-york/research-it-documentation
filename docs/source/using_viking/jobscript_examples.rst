@@ -71,6 +71,9 @@ For software that does not support any parallelisation, or where single threaded
     #SBATCH --account=dept-proj-year        # Project account to use
     #SBATCH --output=%x-%j.log              # Standard output log
 
+    # Abort if any command fails
+    set -e
+
     # purge any existing modules
     module purge
 
@@ -117,6 +120,9 @@ Threaded / Multi-Process Jobs
     #SBATCH --time=0-00:05:00               # Time limit (DD-HH:MM:SS)
     #SBATCH --account=dept-proj-year        # Project account to use
     #SBATCH --output=%x-%j.log              # Standard output log
+
+    # Abort if any command fails
+    set -e
 
     # purge any existing modules
     module purge
@@ -167,6 +173,9 @@ Multi-processor Jobs
     #SBATCH --output=%x-%j.log              # Standard output log
     #SBATCH --error=%x-%j.err               # Standard error log
 
+    # Abort if any command fails
+    set -e
+
     # purge any existing modules
     module purge
 
@@ -204,6 +213,9 @@ Array Jobs
     #SBATCH --output=%x-%j.log              # Standard output log
     #SBATCH --error=%x-%j.err               # Standard error log
     #SBATCH --array=1-100                   # Array range
+
+    # Abort if any command fails
+    set -e
 
     # purge any existing modules
     module purge

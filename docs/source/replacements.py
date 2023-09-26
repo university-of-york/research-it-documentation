@@ -17,7 +17,7 @@ variable_replacements = {
     # an indent is '4 spaces'
 
     # 'shebang' at the start of all the jobscripts
-    "{SHEBANG}" : "#!/usr/bin/env bash \n    set -e",  # used in all the example jobscripts
+    "{SHEBANG}" : "#!/usr/bin/env bash",  # used in all the example jobscripts
 
     # modules and versions used in the various jobscript examples for easy updating & consistency
     "{MOD_PYTHON}": "lang/Python/3.10.8-GCCcore-12.2.0",

@@ -9,7 +9,7 @@ By logging into Viking, running ``tmux`` then running your programs you can ``de
 
 .. tip::
 
-    Viking has two login nodes and if you have a ``tmux`` or ``screen`` session on one of the login nodes you will want to log back into the same login node to ``reattach`` to your session. Those addresses are ``viking-login1.york.ac.uk`` and ``viking-login2.york.ac.uk``. If you had a session on a computer node, you would ``ssh`` into any login node first then back to the same compute node and ``reattach``.
+    Viking has two login nodes and if you have a ``tmux`` or ``screen`` session on one of the login nodes you will want to log back into the same login node to ``reattach`` to your session. Those addresses are ``viking-login1.york.ac.uk`` and ``viking-login2.york.ac.uk``.
 
 
 Here's another `getting started <https://github.com/tmux/tmux/wiki/Getting-Started>`_ guide for ``tmux`` on their GitHub site, and this is the `full users manual <https://www.gnu.org/software/screen/manual/screen.html>`_ for ``screen`` if you want to dig a little deeper.

@@ -92,8 +92,8 @@ Linux
 
 You can copy your data from any Linux device to Viking using the following commands:
 
-- scp
-- rsync
+- ``scp``
+- ``rsync``
 
 For example, you can run the following commands from a terminal running on your device to move files to Viking.
 

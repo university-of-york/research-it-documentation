@@ -129,7 +129,7 @@ This is recommended for a large number of files. Rsync can check what is already
 .. code-block:: console
     :caption: this will copy your data from your device to your scratch area on Viking
 
-    $ rsync -avz dirname viking.york.ac.uk:~/scratch
+    $ rsync -av dirname viking.york.ac.uk:~/scratch
 
 .. code-block:: console
     :caption: this can be useful for copying a very large file from your device to your scratch area on Viking as it will allow you continue the transfer if the connection breaks for some reason

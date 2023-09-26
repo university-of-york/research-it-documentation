@@ -39,9 +39,9 @@ The ``-r`` option means it copies the directory recursively.
 .. code-block:: console
     :caption: copies a directory 'dirname' to your filestore
 
-    $ rsync -avz dirname sftp.york.ac.uk:/shared/storage/<filestore>
+    $ rsync -av dirname sftp.york.ac.uk:/shared/storage/<filestore>
 
-Options ``a`` set up a number of options useful for *archiving*, ``v`` for *verbose*, so you can monitor the process, and ``z`` to use *compression* which will take CPU time but potentially send smaller files.
+Options ``a`` set up a number of options useful for *archiving*, ``v`` for *verbose* so you can monitor the process.
 
 .. code-block:: console
     :caption: copies a file 'filename' to your filestore

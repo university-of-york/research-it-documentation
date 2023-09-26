@@ -19,6 +19,17 @@ Paragraphs
 By using different heading `levels` the TOC will produce nested entries, cutting down the default TOC size
 
 
+Comments
+--------
+
+.. this is a comment
+
+
+.. tip::
+
+    Line breaks after any RST is pretty much a good idea, some RST is fine without a clear line after, some is not so probably best to just add a clear line.
+
+
 Styles
 ------
 
@@ -63,11 +74,13 @@ External Links
 Internal Links
 ^^^^^^^^^^^^^^
 
+To link to an anchor point:
+
 .. _link-target:
 
 :ref:`link text <link-target>`
 
-Link to an internal page with the page filename minus the ``.rst``
+To link to an internal page, use the page filename minus the ``.rst``
 
 :doc:`link text <getting_started/quickstart>`
 
@@ -92,6 +105,7 @@ Code-blocks
 .. code-block:: bash
 
     echo "Hello World"
+
 
 Quotes
 ------

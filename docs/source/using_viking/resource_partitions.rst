@@ -1,4 +1,4 @@
-.. include:: global.rst
+.. include:: /global.rst
 
 .. raw:: html
 
@@ -22,7 +22,7 @@ Viking's resources are divided up into various partitions as layed out below, th
 
 
 .. csv-table:: Viking partition table
-    :file: data/partition_table.csv
+    :file: /assets/data/partition_table.csv
     :header-rows: 1
 
 

@@ -1,4 +1,4 @@
-.. include:: global.rst
+.. include:: /global.rst
 
 .. include the global.rst which includes the substitution of `|br|` to html `</br>`
 
@@ -184,7 +184,7 @@ For a basic table you can draw it out in ascii, it's pretty limited though:
 Using a ``.csv`` file makes things a lot easier:
 
 .. csv-table:: Viking breakdown
-    :file: assets/data/viking_stats.csv
+    :file: /assets/data/viking_stats.csv
     :align: center
 
 

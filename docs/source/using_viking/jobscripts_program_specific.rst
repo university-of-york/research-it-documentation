@@ -1,4 +1,4 @@
-.. include:: global.rst
+.. include:: /global.rst
 
 Jobscripts - Program Specific
 =============================
@@ -743,7 +743,7 @@ CPU vs GPU performance
 Shown below are the results of using the ``T1050.fasta`` example mentioned in the ``AlphaFold`` README with different resource allocations.
 
 .. csv-table:: AlphaFold performance
-    :file: static/data/alphafold_performance.csv
+    :file: /assets/data/alphafold_performance.csv
     :align: center
     :header-rows: 1
 

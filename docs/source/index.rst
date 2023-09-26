@@ -1,4 +1,4 @@
-.. include:: global.rst
+.. include:: /global.rst
 
 Welcome to the Viking Documentation!
 ======================================
@@ -46,7 +46,7 @@ Welcome to the Viking Documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: In Depth Guides
+   :caption: Other Guides
    :hidden:
 
    in_depth/program_specific_how_tos
@@ -58,7 +58,7 @@ Cluster Configuration
 ---------------------
 
 .. csv-table:: Viking breakdown
-    :file: assets/data/viking_stats.csv
+    :file: /assets/data/viking_stats.csv
     :align: center
 
 

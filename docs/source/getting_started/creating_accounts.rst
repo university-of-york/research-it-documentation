@@ -5,7 +5,7 @@ Creating an Account
 
 Getting access to Viking is a simple two-stage process:
 
-1. The principal investigator (PI) of a project completes the `project application form <https://goo.gl/forms/xlSrWsP0QaT7PYpm2>`_. Once approved, the PI will be assigned a ``project code`` to distribute to members of the project.
+1. The principal investigator (PI) of a project completes the `project application form <https://docs.google.com/forms/d/1vmMoV641Vqknbz5UA_akmEZvmwkqugLgPieK9FpP8CA/edit>`_. Once approved, the PI will be assigned a ``project code`` to distribute to members of the project.
 2. Members can then use this ``project code`` to complete the `user application form <https://docs.google.com/forms/d/e/1FAIpQLSfXkL10ypU6EQCBB2jS5oDwTpRMo77ppl7dvdbLnXm5zrKR7Q/viewform?usp=sf_link>`_. The PI will be notified each time a user account is assigned to the project.
 
 
@@ -19,7 +19,7 @@ In order to use Viking, the project PI (or supervisor) must apply for a Viking p
 
 Once the application has been approved, a new Viking project code will be supplied to you. You should then distribute the project code to all research team members, before they apply for user accounts.
 
-`The Project Application Form can be found here <https://goo.gl/forms/xlSrWsP0QaT7PYpm2>`_.
+`The Project Application Form can be found here <https://docs.google.com/forms/d/1vmMoV641Vqknbz5UA_akmEZvmwkqugLgPieK9FpP8CA/edit>`_.
 
 User Account Application
 ------------------------

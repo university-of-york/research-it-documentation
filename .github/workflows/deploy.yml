@@ -42,4 +42,9 @@ jobs:
       run: sphinx-build -b html docs/source/ site/
     - name: Push to S3
       run: aws s3 sync site/. s3://uoy-researchit-website-dev
-        # aws cloudfront create-invalidation --distribution-id $(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,origin_domain:Origins.Items[0].DomainName}[?starts_with(origin_domain,'uoy-researchit-website-dev.')].id" --output text) --paths "/*"
+    - name: Get CloudFront distribution id
+      run:  |
+        echo "{DISTRIBUTION_ID}=$(aws cloudformation describe-stacks --stack-name ResearchITWebsiteStack --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionID`].OutputValue' --output=text)" >> "$GITHUB_ENV"
+    - name: Invalidate CloudFront distribution
+      run:  |
+        aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"

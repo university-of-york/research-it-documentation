@@ -70,3 +70,6 @@ Outputs:
   CloudFrontDistributionID:
     Description: ID of the CloudFront distribution
     Value: !GetAtt CloudFrontDistribution.Id
+  BucketName:
+    Description: Website bucket name
+    Value: !Ref WebsiteBucket

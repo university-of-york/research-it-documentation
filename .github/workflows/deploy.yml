@@ -33,18 +33,23 @@ jobs:
     - name: Install sphinx
       run: pip install sphinx sphinx-rtd-theme
     - name: Set AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v3
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-1
     - name: Build site
       run: sphinx-build -b html docs/source/ site/
-    - name: Push to S3
-      run: aws s3 sync site/. s3://uoy-researchit-website-dev
-    - name: Get CloudFront distribution id
+    - name: Get Bucket name
+      id: get-bucket
       run:  |
-        echo "{DISTRIBUTION_ID}=$(aws cloudformation describe-stacks --stack-name ResearchITWebsiteStack --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionID`].OutputValue' --output=text)" >> "$GITHUB_ENV"
+        echo "{BUCKET_NAME}=$(aws cloudformation describe-stacks --stack-name ResearchITWebsiteStack --query 'Stacks[0].Outputs[?OutputKey==`BucketName`].OutputValue' --output=text)" >> "$GITHUB_OUTPUT"
+    - name: Get CloudFront distribution id
+      id: get-distribution-id
+      run:  |
+        echo "{DISTRIBUTION_ID}=$(aws cloudformation describe-stacks --stack-name ResearchITWebsiteStack --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionID`].OutputValue' --output=text)" >> "$GITHUB_OUTPUT"
+    - name: Push to S3
+      run: aws s3 sync site/. s3://${{steps.get-bucket.outputs.BUCKET_NAME}}
     - name: Invalidate CloudFront distribution
       run:  |
-        aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
+        aws cloudfront create-invalidation --distribution-id ${{steps.get-distribution-id.outputs.DISTRIBUTION_ID}} --paths "/*"

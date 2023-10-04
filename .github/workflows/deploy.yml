@@ -26,7 +26,7 @@ jobs:
   content:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
       with:
         python-version: '3.11.3'
@@ -39,17 +39,17 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-1
     - name: Build site
-      run: sphinx-build -b html docs/source/ site/
+      run: TZ=UTC sphinx-build -b html docs/source/ site/
     - name: Get Bucket name
       id: get-bucket
       run:  |
-        echo "{BUCKET_NAME}=$(aws cloudformation describe-stacks --stack-name ResearchITWebsiteStack --query 'Stacks[0].Outputs[?OutputKey==`BucketName`].OutputValue' --output=text)" >> "$GITHUB_OUTPUT"
+        echo "BUCKET_NAME=$(aws cloudformation describe-stacks --stack-name ResearchITWebsiteStack --query 'Stacks[0].Outputs[?OutputKey==`BucketName`].OutputValue' --output=text)" >> "$GITHUB_OUTPUT"
     - name: Get CloudFront distribution id
       id: get-distribution-id
       run:  |
-        echo "{DISTRIBUTION_ID}=$(aws cloudformation describe-stacks --stack-name ResearchITWebsiteStack --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionID`].OutputValue' --output=text)" >> "$GITHUB_OUTPUT"
+        echo "DISTRIBUTION_ID=$(aws cloudformation describe-stacks --stack-name ResearchITWebsiteStack --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionID`].OutputValue' --output=text)" >> "$GITHUB_OUTPUT"
     - name: Push to S3
-      run: aws s3 sync site/. s3://${{steps.get-bucket.outputs.BUCKET_NAME}}
+      run: aws s3 sync site/. s3://${{ steps.get-bucket.outputs.BUCKET_NAME }}
     - name: Invalidate CloudFront distribution
       run:  |
-        aws cloudfront create-invalidation --distribution-id ${{steps.get-distribution-id.outputs.DISTRIBUTION_ID}} --paths "/*"
+        aws cloudfront create-invalidation --distribution-id ${{ steps.get-distribution-id.outputs.DISTRIBUTION_ID }} --paths "/*"

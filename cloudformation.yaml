@@ -4,7 +4,7 @@ Resources:
   WebsiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName : uoy-researchit-website-dev
+      BucketName : uoy-researchit-website
       PublicAccessBlockConfiguration: 
         BlockPublicAcls: false
       OwnershipControls:
@@ -34,12 +34,6 @@ Resources:
               - - 'arn:aws:s3:::'
                 - !Ref WebsiteBucket
                 - '/*'
-  DevCNAME:
-    Type: Custom::CNAME
-    Properties:
-      ServiceToken: "arn:aws:sns:eu-west-1:230504789214:DevRequestRecordSet"
-      Source: "researchit.app-dev.york.ac.uk."
-      Target: !GetAtt CloudFrontDistribution.DomainName
   OriginAccessID:
         Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
         Properties:
@@ -73,3 +67,6 @@ Outputs:
   WebsiteURL:
     Description: URL for website hosted on S3
     Value: !GetAtt WebsiteBucket.WebsiteURL
+  CloudFrontDistributionID:
+    Description: ID of the CloudFront distribution
+    Value: !GetAtt CloudFrontDistribution.Id

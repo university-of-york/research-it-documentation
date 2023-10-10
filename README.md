@@ -15,11 +15,24 @@ The source markdown files are stored in `docs` and the content is deployed via G
 
 ## Development
 
-Clone the repo, install `sphinx` through `pip install sphinx sphinx-rtd-theme` and run `sphinx-build -b html docs/source site/` to compile the web pages and open `site/index.html` in a web browser.
+Clone the repo, install `sphinx` through
+
+`pip install sphinx sphinx-rtd-theme`
+
+### Compile the web pages
+
+`sphinx-build -b html docs/source site/`
+
+### View the website
+
+Open `site/index.html` in a web browser.
+
 There isn't a development server that auto-builds bundled with Sphinx.
 When your changes are ready to be deployed, submit a PR and request approval.
 
-Check links are valid with the following `sphinx-build -b linkcheck docs/source site/`
+### Check links are valid
+
+`sphinx-build -b linkcheck docs/source site/`
 
 ## Replacement
 

@@ -69,7 +69,7 @@ Using some of the above guide as reference, another way to so this is with VSCod
     4. Once the interactive session is running, load the ``Jupyter`` module and run the notebook, like above
     5. In a **new** remote terminal on Viking, in VSCode, set up the ssh forwarding, like above (noting the ``node`` number from step 4.)
     6. In VSCode, open a new ``Jupyter`` notebook: ``(Ctrl+Shift+P)`` and type ``Jupyter: Create New Jupyter Notebook.``
-    7. In VSCode, press ``select kernel`` in the top right then select ``Exisiting Jupyter server``
+    7. In VSCode, press ``select kernel`` in the top right then select ``Existing Jupyter server``
     8. Paste in the URL of the notebook, just like above, follow the prompts in VSCode to name the notebook and select the available kernel
 
 

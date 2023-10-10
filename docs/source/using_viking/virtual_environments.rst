@@ -18,6 +18,31 @@ Quickstart
     $ python3 -m pip install package1 package2 package3
 
 
+First we create a new directory with ``mkdir new_project`` to house our project and run ``cd new_project`` to change into that directory. Next we create the ``venv`` virtual environment and tell it to store the files in a folder called ``.venv`` with the ``python3 -m venv .venv`` command. The directory called ``.venv`` can be name anything you like, it doesn't have to be ``.venv``.
+
+.. admonition:: Info
+
+    The full stop ``.`` at the beginning of the directory name makes it ``hidden``. This isn't necessary but can be handy to keep things organised. You can read more about `hidden files and directories here <https://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory>`_.
+
+
+Next we run ``source .venv/bin/activate`` which reads and executes the commands from the file name ``.venv/bin/activate`` - this then activates our environment and you'll see ``(.venv)`` pop up at the beginning of your command prompt like this:
+
+.. code-block:: console
+
+    (.venv) [abc123@login1 [viking] new_project]$
+
+Now we're *inside* our virtual environment, we use Python to install the packages we need and we can start developing. We use ``python3 -m pip install`` command to install the packages, because the ``-m`` option means that particular ``python3`` is going to use *only it's own* ``pip`` to install the packages. This is important because on Viking there are multiple different versions of ``Python`` and ``pip`` installed (and you can even install versions yourself in your home directory) - so this ensures that you use the *correct* ``pip`` associated with the ``python3`` that you are using.
+
+Once all the required packages are installed you can start developing.
+
+.. tip::
+
+    To ``deactivate`` a ``venv`` environment, you simply type ``deactivate`` on the command line.
+
+
+If you need a more complex virtual environment with complex dependencies then ``conda`` is probably more suited to your needs but remember that the best tool is the one that suits *your* needs best and makes the development process smoother for you.
+
+
 Conda
 ------
 

@@ -24,7 +24,7 @@ Virtual desktop sessions don't close if you simply disconnect, this is to allow 
 Backing up data
 ----------------
 
-The ``scratch`` folder, the main folder in your home directory where you store data, is not backed up. This is partyly due to the sheer size of the filesystem and so this means that backing up your data is every users responsibility. In the worst case scenario all data could be lost, therefore you should regularly `back up your data <getting_started/backing_up>`.
+The ``scratch`` folder, the main folder in your home directory where you store data, is not backed up. This is partyly due to the sheer size of the filesystem and so this means that backing up your data is every users responsibility. In the worst case scenario all data could be lost, therefore you should regularly :doc:`back up your data </getting_started/backing_up>`.
 
 
 Deleting Unneeded Files

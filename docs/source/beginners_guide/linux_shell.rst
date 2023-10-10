@@ -470,7 +470,7 @@ In the above example the first column of the directory listing shows the permiss
 This is a ``directory``, the owner ``abs4`` can ``read``, ``write`` and ``access`` the directory. Members of the group, ``csrv``, can ``read`` and ``access`` the directory, they can not create or ``write`` to files in the directory, all ``other`` users do not have any access to the directory.
 
 
-Chaning Permissions
+Changing Permissions
 """"""""""""""""""""
 
 To change file permissions use the ``chmod`` command.

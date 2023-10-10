@@ -1,6 +1,10 @@
 Data Management and User Quota
 ==============================
 
+.. attention::
+
+    FIXME: This uses OLD information
+
 Viking is a self-contained machine, therefore you will notice your normal UoY home directories are not available. This is intentional for the following reasons:
 
 - If the dedicated network link between campus and Viking goes down, it may cause slowness or jobs to fail. Instead, jobs should continue to run until the link is re-established
@@ -17,7 +21,7 @@ When you log in to Viking, you will land in your home directory, specifically:
 
     /users/abc123
 
-where ``abc123`` will be replaced by your username. This home directory has a size of **50GB** and a file limit of **100,000**. From within the home directory, you can access your ``scratch`` directory at
+Where ``abc123`` will be replaced by your username. This home directory has a size of **50GB** and a file limit of **100,000**. From within the home directory, you can access your ``scratch`` directory at
 
 .. code-block:: console
 
@@ -28,6 +32,12 @@ This is a special high-performance filestore with a default size of **3TB** and 
 .. tip::
     If you need more ``scratch`` storage space, please email us at itsupport@york.ac.uk, we are more than happy to accommodate large projects.
 
+
+Additionally, you also have access to the ``warm storage`` area, linked as ``FIXME: warm_storage`` which is **FIXME:??TB** and has no file limit. This is used for FIXME: What is it used for?
+
+.. code-block:: console
+
+    /users/abc123/FIXME: warm
 
 Checking Your Quota
 -------------------

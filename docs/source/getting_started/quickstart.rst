@@ -31,7 +31,14 @@ Load a Module
 
 .. code-block:: console
 
-    $ load module lang/Python/3.10.8-GCCcore-12.2.0
+    $ module load lang/Python/3.10.8-GCCcore-12.2.0
+
+
+.. hint::
+
+    The module name scheme on Viking is as follows: ``category`` / ``program_name`` / ``version`` - ``toolchain`` - ``toolchain_version``, where sometimes ``toolchain`` and ``toolchain_version`` not listed.
+
+    To read more about the EasyBuild concept of *common toolchains*, please see the `EasyBuild docs <https://docs.easybuild.io/common-toolchains/>`_. In it's simplest sense, think of it as the compiler version the software was build with.
 
 
 Develop and Test
@@ -44,6 +51,11 @@ Create Job Script
 -----------------
 
 In your favorite text editor, create a jobscript for your job. Save it as something like ``myjobscript.job``.
+
+.. tip::
+
+    Please change the email address **abc123@york.ac.uk** below to your own email address and see the emails it generates!
+
 
 .. code-block:: bash
     :caption: this is just a basic template
@@ -61,6 +73,7 @@ In your favorite text editor, create a jobscript for your job. Save it as someth
     #SBATCH --mail-user=abc123@york.ac.uk   # Where to send mail
     #SBATCH --output=%x-%j.log              # Standard output log
     #SBATCH --error=%x-%j.err               # Standard error log
+    #SBATCH --partition=test
 
     # Abort if any command fails
     set -e
@@ -99,3 +112,7 @@ Adjust the Jobscript
 --------------------
 
 If your ``CPU`` or ``memory`` utilisation is very low, it means your settings in the jobscript need adjusting if you are to run the job again. Now is a good time to adjust these down, you should aim them pretty close to the end results, this will mean that Viking can start more jobs quicker and everyone can get their results faster. That's teamwork! ❤️
+
+.. note::
+
+    In this example we set which ``partition`` we wanted the jobscript to use as ``test`` as we are just testing. For full jobs generally most users will be happy with the default ``nodes`` partition, you can see more about this on the :doc:`resource partitions </using_viking/resource_partitions>` page.

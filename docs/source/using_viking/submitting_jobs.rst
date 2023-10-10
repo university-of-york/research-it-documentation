@@ -48,7 +48,7 @@ When submitting large volumes of jobs with identical resource requests, job arra
 Bash Shebang and 'set -e'
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Consider using ``set -e`` after the ``#SBATCH`` section. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.
+Consider using ``set -e`` after the ``#SBATCH`` section. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.  This is the `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_ we were referencing in the title.
 
 
 Batch Jobs
@@ -58,11 +58,15 @@ Viking can run lots of different jobs in many different ways, but for the most p
 
 Below is an example jobscript, let's save it as ``jobscript.job`` for this example:
 
+.. admonition:: Remember
+
+    To change the email address **abc123@york.ac.uk** below to your own email address to receive the emails!
+
+
 .. code-block:: bash
     :caption: jobscript.job
 
     {SHEBANG}
-
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=10                     # Number of MPI tasks to request
     #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task

@@ -19,22 +19,22 @@ Clone the repo, install `sphinx` through
 
 `pip install sphinx sphinx-rtd-theme`
 
-### Compile the web pages
+**Compile the web pages**
 
 `sphinx-build -b html docs/source site/`
 
-### View the website
+**View the website**
 
 Open `site/index.html` in a web browser.
+
+**Check links are valid**
+
+`sphinx-build -b linkcheck docs/source site/`
 
 There isn't a development server that auto-builds bundled with Sphinx.
 When your changes are ready to be deployed, submit a PR and request approval.
 
-### Check links are valid
-
-`sphinx-build -b linkcheck docs/source site/`
-
-## Replacement
+**Replacement**
 
 The `docs/source/replacements.py` file contains a dictionary of replacement words to use throughout the docs. For exmaple, all the module versions to load in the jobscript examples. This makes it simple to update that part of the docs in the future.
 

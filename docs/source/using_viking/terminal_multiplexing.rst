@@ -1,11 +1,15 @@
 Terminal Multiplexing
 =====================
 
-So you're remotely logging into Viking, loading modules and running jobs with the ``sbatch`` or ``srun`` commands, the results are flying in and everything is looking pretty good. But what if you want to monitor the status of something running on Viking, turn off and walk away from your laptop and come back later? Or, what if you want to do this with *multiple* sessions? Well, programs like ``screen`` and ``tmux`` have got you covered.
+Terminal multiplexing allows you to ``detatch`` from a terminal session, leaving any commands running, and come back to it later - as if you never disconnected. You can ``detatch`` and ``attach`` multiple times, and once ``detatched`` you can even turn off your device, leaving the session running on Viking and come back at any time to pick up where you left off.
+
+Programs like ``tmux`` and ``screen`` allow exactly this and are a powerful and timesaving tools when remotely working on Viking. Examples can be copying or processing large amounts of data or compiling a large codebase. Really anything that could take a while which doesn't require constant user input is a good candidate.
+
+Not only that, but you can have multiple sessions and each one can be split up into multiple ``panes`` - imagine a window with multiple panes of glass. This and much, much more!
 
 Rather than copy and paste a beginners guide here, there is already a really good beginners guide to ``screen`` and ``tmux`` on `Xiangyu Li's medium page <https://medium.com/@yiskylee/gnu-screen-and-tmux-which-should-you-choose-de325d32fc2a>`_ and well worth the read if you're new to either program. I probably prefer ``tmux`` but ``screen`` is totally fine and on some Linux systems it's the only available option so it's nice to have experience with both.
 
-By logging into Viking, running ``tmux`` then running your programs you can ``detach`` from the session, log out of Viking and return at your leisure and the session and with it's history will be there, pretty cool huh? 😎
+By logging into Viking, running ``tmux`` then running your programs you can ``detach`` from the session, log out of Viking and return at your leisure and the session and with it's history will be there, pretty cool. 😎
 
 .. tip::
 

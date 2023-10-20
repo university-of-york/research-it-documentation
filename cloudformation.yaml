@@ -47,6 +47,7 @@ Resources:
         Comment: CloudFront distribution for static s3 website.
         DefaultRootObject: index.html
         Enabled: True
+        HttpVersion: http2and3
         Origins:
         - DomainName: !GetAtt WebsiteBucket.DomainName
           Id: myS3Origin

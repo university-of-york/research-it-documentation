@@ -82,9 +82,8 @@ The following job script could be used to submit an ``Amber`` workflow to the GP
     module load {MOD_AMBER_GPU}
     ./amber_gpu_example.sh
 
-.. tip::
 
-    FIXME: Add in benchmarks like old docs
+.. FIXME: Add in benchmarks like old docs
 
 
 Gaussian
@@ -137,9 +136,7 @@ MATLAB
     $ module load {MOD_MATLAB}
 
 
-.. attention::
-
-    FIXME: New docs reference a jobscript emailed to Emma - can we get a copy?
+.. FIXME: New docs reference a jobscript emailed to Emma - can we get a copy?
 
 
 Running Interactively

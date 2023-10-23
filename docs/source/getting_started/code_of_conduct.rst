@@ -1,8 +1,7 @@
 Code of Conduct
 ===============
 
-.. caution::
-    WIP: Needs suggestions
+.. FIXME: Needs suggestions
 
 We hope everyone enjoys using Viking and all it's powerful resources. As all of Viking's resources are shared amongst the users, it's up to all of us to do our best to ensure we are using them wisely and not negatively impacting other users. We understand that for some people this may be the first time they have access to a HPC like Viking, or even the first time using a Linux machine, so we have created this page to help explain some of the concepts on how to use Viking so we don't impact other users. As always, if you need help with any explanation please get in touch with the team by emailing itsupport@york.ac.uk.
 

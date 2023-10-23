@@ -1,9 +1,7 @@
 Data Management and User Quota
 ==============================
 
-.. attention::
-
-    FIXME: This uses OLD information
+.. FIXME: This uses OLD information
 
 Viking is a self-contained machine, therefore you will notice your normal UoY home directories are not available. This is intentional for the following reasons:
 

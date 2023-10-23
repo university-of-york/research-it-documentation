@@ -105,8 +105,7 @@ For software that does not support any parallelisation, or where single threaded
 Threaded / Multi-Process Jobs
 -----------------------------
 
-.. caution::
-    FIXME: needs explanation
+..  FIXME: needs explanation
 
 .. code-block:: bash
     :linenos:
@@ -155,8 +154,7 @@ Threaded / Multi-Process Jobs
 Multi-processor Jobs
 --------------------
 
-.. caution::
-    FIXME: needs explanation
+.. FIXME: needs explanation
 
 .. code-block:: bash
     :linenos:
@@ -195,8 +193,7 @@ Multi-processor Jobs
 Array Jobs
 ----------
 
-.. caution::
-    FIXME: needs explanation
+.. FIXME: needs explanation
 
 .. code-block:: bash
     :linenos:

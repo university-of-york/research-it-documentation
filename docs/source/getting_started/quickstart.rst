@@ -23,7 +23,10 @@ Find the Software You Need
 
 .. code-block:: console
 
-    $ module spider lang/Python
+    $ module spider Python
+
+
+.. FIXME: add example output
 
 
 Load a Module
@@ -31,12 +34,14 @@ Load a Module
 
 .. code-block:: console
 
-    $ module load lang/Python/3.10.8-GCCcore-12.2.0
+    $ module load {MOD_PYTHON}
 
 
 .. hint::
 
-    The module name scheme on Viking is as follows: ``category`` / ``program_name`` / ``version`` - ``toolchain`` - ``toolchain_version``, where sometimes ``toolchain`` and ``toolchain_version`` not listed.
+.. FIXME: check this is correct
+
+    The module name scheme on Viking is as follows: ``program_name`` / ``version`` or sometimes - ``program_name`` / ``version`` / ``toolchain`` - ``toolchain_version``.
 
     To read more about the EasyBuild concept of *common toolchains*, please see the `EasyBuild docs <https://docs.easybuild.io/common-toolchains/>`_. In it's simplest sense, think of it as the compiler version the software was build with.
 
@@ -82,7 +87,7 @@ In your favorite text editor, create a jobscript for your job. Save it as someth
     module purge
 
     # Load modules #
-    module load lang/Python/3.10.8-GCCcore-12.2.0
+    module load {MOD_PYTHON}
 
     # Commands to run #
     echo My working directory is: `pwd`

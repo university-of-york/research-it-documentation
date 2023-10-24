@@ -20,7 +20,7 @@ For a quick overview of the available ``module`` sub-commands and options, try t
 
 .. tip::
 
-    The command ``ml`` is a handy front end for the ``module`` command. On Viking try typing ``ml --help`` to see how you can use it as shorthand for ``module load`` and other commands. We'll continue to use explicit commands like ``module load`` in this guide but know you can use ``ml`` a lot of the time instead. Try it out! 😎
+    The command ``ml`` is a handy front end for the ``module`` command. On Viking, try typing ``ml --help`` to see how you can use it as shorthand for ``module load`` and other commands. We'll continue to use explicit commands like ``module load`` in this guide but know you can use ``ml`` a lot of the time instead. Try it out! 😎
 
 
 Using the Module Command
@@ -41,7 +41,7 @@ Loading a Module
 
 .. code-block:: console
 
-    $ module load lang/Python/3.10.8-GCCcore-12.2.0
+    $ module load {MOD_PYTHON}
 
 
 .. attention::
@@ -62,7 +62,7 @@ Unloading a Module
 
 .. code-block:: console
 
-    $ module unload lang/Python/3.10.8-GCCcore-12.2.0
+    $ module unload {MOD_PYTHON}
 
 
 Purge All Modules

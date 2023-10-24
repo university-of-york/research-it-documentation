@@ -25,17 +25,22 @@ Where ``abc123`` will be replaced by your username. This home directory has a si
 
     /users/abc123/scratch
 
+.. FIXME: needs size
+
 This is a special high-performance filestore with a default size of **3TB** and **no limit** on the number of files. Because of this, you should run all your jobs on Viking from this directory rather than the home directory.
 
 .. tip::
     If you need more ``scratch`` storage space, please email us at itsupport@york.ac.uk, we are more than happy to accommodate large projects.
 
 
-Additionally, you also have access to the ``warm storage`` area, linked as ``FIXME: warm_storage`` which is **FIXME:??TB** and has no file limit. This is used for FIXME: What is it used for?
+.. FIXME: add size, and file duration
+
+Additionally you also have access to two more folders, ``localscratch`` and ``localtmp`` which points to some storage space on the current node you are logged into, on fast SSD drives. You can access these directories at:
 
 .. code-block:: console
 
-    /users/abc123/FIXME: warm
+    /users/abc123/localscratch
+    /users/abc123/localtmp
 
 Checking Your Quota
 -------------------
@@ -47,6 +52,8 @@ To check how much space you have left, run the following command:
     $ myquota
 
 Which will produce the following result:
+
+.. FIXME: update this
 
 .. code-block:: console
 
@@ -110,6 +117,11 @@ scp
 ^^^
 
 This is recommended for transferring a small number of files. This example will copy data from your device to your ``scratch`` directory on Viking
+
+.. hint::
+
+    The 'tilde' symbol ``~`` is shorthand for your home directory, e.g ``/users/abc123``
+
 
 .. code-block:: console
     :caption: for an individual file

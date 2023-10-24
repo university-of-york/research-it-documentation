@@ -26,6 +26,12 @@ To move your data from Viking and to the Filestore ("Storage"), the address you 
 
     sftp.york.ac.uk:/shared/storage/<filestore>
 
+
+.. tip::
+
+    Please speak to your department if you need access to your department's shared filestore.
+
+
 You can use ``PuTTY`` on Windows and the command line on Linux and MacOS with commands such as ``rsync``  and ``scp`` much like the examples on the :ref:`Data Management page <transfer_files_linux>`, examples below.
 
 .. code-block:: console

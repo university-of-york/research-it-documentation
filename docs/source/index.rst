@@ -5,7 +5,7 @@ Welcome to the Viking Documentation!
 
 .. caution::
 
-   This project is under active development.
+   Please note, his project is under active development.
 
 .. list of all the pages which are hidden on this page but used to build the navbar
 

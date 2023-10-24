@@ -293,7 +293,7 @@ When using ``MongoDB``, you have to explicitly state the location of the databas
     $ mongod --dbpath $HOME/scratch/mongod/db --unixSocketPrefix $HOME/scratch/mongod
 
 
-R - For Statistical Computing
+R
 -----------------------------
 
 To see what ``R`` versions are available, use the following command. Note the trailing slash in the command, without this ``Ruby`` modules will also be included in the results
@@ -308,224 +308,166 @@ One of these versions can then be loaded as following. Here we use ``lang/R/4.2.
 
     $ module load {MOD_R}
 
-An example of a batch script using `R` can be seen here. This script uses an `R` file named ``buckeye_bayes-bpflat``, 16GB, 16 CPUs and 48 hours. Remember to update the account code and email address provided to ``slurm`` to your own details.
-
-
-Submitting Simple R Scripts to the Cluster
+Submitting R jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following Job Script will run the R code with the default number of CPUs and memory.
+The following Job Script will run an R script with no parallelisation, just in a single process.
+This is useful when you have a script that takes a long time to run and you don't want to tie up your personal computer with it, but the code has no parallelisable functionality.
 
 .. code-block:: r
     :caption: Example Simple R Script - simple.R
 
-    args <- commandArgs(trailingOnly = TRUE)
-    number=as.numeric(args[1])
-    string=args[2]
-    print(sprintf("R script called with arguments \'%s\' and \'%s\'", number, string))
+    # Load data
+    df <- read.csv("/path/to/data.csv")
+
+    # Run long running model
+    mod <- fit_model(df)
+
+    # Save results
+    saveRDS(mod, "model.rds")
 
 .. code-block:: bash
     :caption: Job Script to run simple.R
 
     {SHEBANG}
-    #SBATCH --job-name=Simple-R                  # Job name
-    #SBATCH --mail-type=BEGIN,END,FAIL           # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=my.name@york.ac.uk       # Where to send mail
-    #SBATCH --time=00:02:00                      # Time limit hrs:min:sec
-    #SBATCH --output=logs/Simple-R-%j.log        # Standard output and error log
-    #SBATCH --account=dept-proj-year             # Project account to use
+    #SBATCH --job-name=my_job               # Job name
+    #SBATCH --ntasks=1                      # Number of MPI tasks to request
+    #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
+    #SBATCH --mem=1G                        # Total memory to request
+    #SBATCH --time=0-00:05:00               # Time limit (DD-HH:MM:SS)
+    #SBATCH --account=dept-proj-year        # Project account to use
+    #SBATCH --output=%x-%j.log              # Standard output log
+    #SBATCH --mail-type=BEGIN,END,FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=my.name@york.ac.uk  # Where to send mail
 
     # Abort if any command fails
     set -e
 
     module purge
     module load {MOD_R}
-    echo `date`: executing R script simple on host ${HOSTNAME}
-    echo
-    Rscript --no-save --no-restore simple.R 93 "The end of the world is not today"
-    echo
-    echo `date`: completed R script simple on host ${HOSTNAME}
+    Rscript --vanilla simple.R
 
+Multi-threaded applications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Asking for more Cores and Memory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+If your code does have the ability to use multiple cores, then use the `example multi-threaded job script <using_viking/jobscript_examples.html#threaded-multi-process-jobs>`_ to request the correct number of cores, otherwise the job will run mulithreaded on the same core and being inefficient.
+Some libraries can also offer MPI support but that is less common.
 
-R jobs that require more memory can use the ``--mem`` directive.
+R libraries that support multi-core parallelisation are the Bayesian probabilist programming languages `Stan <https://mc-stan.org/>`_ and `INLA <https://www.r-inla.org>`_, or the machine learning library `caret <https://cran.r-project.org/web/packages/caret/index.html>`_.
+You can also write your own parallel code through functions such as ``parallel::mclapply`` (forked processes, recommended on Viking) or ``parallel::makeCluster`` (socket cluster, compatible with Windows but could be slower than forked processes on Viking). 
+See the relevant chapter in `R Programming for Data Science <https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html>`_ for further guidance.
 
-R scripts that make use of threading can use the ``--cpus-per-task`` directive to ask to more cores.
+The following example shows how to run ``cmdstanr`` using 4 cores, one for each chain.
 
-The following script uses 4 cores and 24GB of memory.
+.. code-block:: r
+    :caption: Example multithreaded R Script - multithreaded.R
+
+    # Load library
+    library(cmdstanr)
+
+    # Load data
+    df <- read.csv("/path/to/data.csv")
+
+    # Compile stan model
+    mod <- cmdstan_model("my_model.stan")
+
+    # Fit the model
+    fit <- mod$sample(
+      data = list(x=df$x, y=df$y),
+      chains=4,
+      parallel_chains=4
+    )
+
+    # Save results
+    saveRDS(fit, "model.rds")
 
 .. code-block:: bash
+    :caption: Job Script to run multithreaded.R
 
     {SHEBANG}
-    #SBATCH --job-name=Simple-R                  # Job name
-    #SBATCH --mail-type=BEGIN,END,FAIL           # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=andrew.smith@york.ac.uk  # Where to send mail
-    #SBATCH --ntasks=1                           # Run a single task
-    #SBATCH --cpus-per-task=4                    # Number of CPU cores per task
-    #SBATCH --mem=24gb                           # Job memory request
-    #SBATCH --time=00:05:00                      # Time limit hrs:min:sec
-    #SBATCH --output=logs/Sinc2core-%j.log       # Standard output and error log
-    #SBATCH --account=dept-proj-year             # Project account to use
+    #SBATCH --job-name=my_job               # Job name
+    #SBATCH --ntasks=1                      # Number of MPI tasks to request
+    #SBATCH --cpus-per-task=4               # Number of CPU cores per MPI task
+    #SBATCH --mem=1G                        # Total memory to request
+    #SBATCH --time=0-00:05:00               # Time limit (DD-HH:MM:SS)
+    #SBATCH --account=dept-proj-year        # Project account to use
+    #SBATCH --output=%x-%j.log              # Standard output log
+    #SBATCH --mail-type=BEGIN,END,FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=my.name@york.ac.uk  # Where to send mail
 
     # Abort if any command fails
     set -e
 
     module purge
     module load {MOD_R}
-    echo `date`: executing sinc2core R test on host ${HOSTNAME} with $SLURM_CPUS_ON_
-    NODE slots
-    Rscript --no-save sinc2core.R $SLURM_CPUS_ON_NODE
+    Rscript --vanilla multithreaded.R
 
+Note that the important thing in the above job script is setting ``--cpus-per-task=4``, to ensure that you request the same number of cores that you are using in your R script to parallelize over.
 
-Profiling Your Code
-^^^^^^^^^^^^^^^^^^^
+.. attention::
 
-Overview
-""""""""
+    Always explicitly specify the number of cores in your R code when possible. This is because some R packages use ``parallel::detect_cores()`` to identify the number of cores on the system to parallelize over. However, this doesn't work on Viking as it returns the number of cores in total on the node, **not** the number of cores you have requested. 
 
-Profiling code refers to the process of analysing it's performance to highlight slow sections or flaws.
+Array jobs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Array jobs are extremely useful for running a large number of related programs where you would typically use a for loop, such as fitting 1,000 copies of a model with different parameters, running a stochastic model a large number of times for a sensitivty analysis, or fitting a model for a number of different subgroups in your data.
 
-GUIProfiler Package
-""""""""""""""""""""
-
-This package can be used to profile your code. Note that at the start of your R program, you will need to import it, as seen on the first line below. Then wrap your function between ``RRprofStart()``, ``RRprofStop()`` and ``RRprofReport()`` as seen at the bottom of the program.
+The example below shows the case of fitting a model that takes a single parameter 1,000 times, where the parameter is drawn from a standard normal distribution.
+The Slurm environment variable, ``$SLURM_ARRAY_TASK_ID`` corresponds to the array iteration number and gets passed into the R script.
+NB: if your R script also makes use of multi-core parallelisation then you can set ``--cpus-per-task`` in the job-script, e.g. if you are running multiple copies of a Slurm model that itself uses multi-threading.
 
 .. code-block:: r
+    :caption: Example array job R Script - arrayjob.R
 
-    library(GUIProfiler)
+    # Read array iteration number from script arguments
+    args <- commandArays(trailingOnly=TRUE)
+    job <- as.integer(args[1])
 
-    profile.func <- function() {
+    # Load data
+    df <- read.csv("/path/to/data.csv")
 
-    apply.function <- function(data) {
+    # Load parameters
+    params <- rnorm(1000)
 
-    summary(data)
-    min(data); max(data)
-    range(data)
-    mean(data); median(data)
-    sd(data); mad(data)
-    IQR(data)
-    quantile(data)
-    quantile(data, c(1, 3)/4)
+    # Fit model using this iteration's parameters
+    job_param <- params[job]
+    mod <- some_fit_function(data, job_param)
 
-    }
+    # Save results
+    filename <- sprintf("model_%d.rds", job)
+    saveRDS(mod, filename)
 
-    #start time
-    strt<-Sys.time()
+.. code-block:: bash
+    :caption: Job Script to run arrayjob.R
 
-    data.list <- replicate(10, rnorm(500000), simplify=FALSE)
+    {SHEBANG}
+    #SBATCH --job-name=my_job                # Job name
+    #SBATCH --ntasks=1                       # Number of MPI tasks to request
+    #SBATCH --cpus-per-task=1                # Number of CPU cores per MPI task
+    #SBATCH --mem=1G                         # Total memory to request
+    #SBATCH --time=0-00:15:00                # Time limit (DD-HH:MM:SS)
+    #SBATCH --account=dept-proj-year         # Project account to use
+    #SBATCH --mail-type=END,FAIL             # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk    # Where to send mail
+    #SBATCH --output=%x-%j.log               # Standard output log
+    #SBATCH --error=%x-%j.err                # Standard error log
+    #SBATCH --array=1-1000                   # Array range
+    #SBATCH --mail-type=BEGIN,END,FAIL       # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=my.name@york.ac.uk   # Where to send mail
 
-    lapply(data.list, apply.function)
+    # Abort if any command fails
+    set -e
 
-    # time taken
-    print(Sys.time()-strt)
+    module purge
+    module load {MOD_R}
+    Rscript --vanilla jobarray.R $SLURM_ARRAY_TASK_ID
 
-    }
+Converting serial for loop to array job
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    RRprofStart()
-    profile.func()
-    RRprofStop()
-    RRprofReport()
-
-This will produce a a report as seen below, highlighting the slower performing sections of the code.
-
-.. figure:: /assets/img/r_profile.png
-
-    output from ``RRprofReport()``
-
-For more information on the ``GUIProfiler Package``, please see the PDF reference manual on the `package page <https://cran.r-project.org/web/packages/GUIProfiler/>`_.
-
-
-A quick and easy way to speed up your code
-""""""""""""""""""""""""""""""""""""""""""
-
-To speed up your code, compile your functions where possible. This can be achieved using the ``cmpfun()`` function from the compiler library. An example of this can be seen below, comparing the uncompiled function *f* and the compiled function *g*.
-
-.. code-block:: r
-
-    library(compiler)
-    library(ggplot2)
-    library(microbenchmark)
-
-    f <- function(n, x) for (i in 1:n) x = (1 + x)^(-1)
-    g <- cmpfun(f)
-
-    compare <- microbenchmark(f(1000, 1), g(1000, 1), times = 1000)
-
-    autoplot(compare)
-
-The results of this comparison can be seen below:
-
-.. figure:: ../assets/img/r_compile.png
-
-    note: the average speed of **g** is significantly lower than that of **f**.
-
-
-Using multiple cores via the parallel package
-"""""""""""""""""""""""""""""""""""""""""""""
-
-Parallel Package
-""""""""""""""""
-
-This package provides the mechanisms to support "core-grained" parallelism. Large portions of code can run concurrently with the objective to reduce the total time for the computation. Many of the package routines are directed at running the same function many times in parallel. These functions do not share data and do not communicate with each other. The functions can take varying amounts of time to execute, but for best performance should be run in similar time frames.
-
-The process used by the Parallel package is as follows:
-
-    1. Initialise "worker" processes
-    2. Divide users task into a number of sub-tasks
-    3. Allocate the task to workers
-    4. Wait for tasks to complete
-    5. If task still waiting to be processed goto 3
-    6. Close down worker processes
-
-Additional documentation on the parallel package can be found in `Chapter 8 of The R Reference Index <https://cran.r-project.org/manuals.html>`_.
-
-
-foreach and doParallel
-""""""""""""""""""""""
-
-Using a ``foreach`` loop where early iterations do not affect the later ones facilitates the use of executing the loop in parallel.
-
-.. code-block:: r
-    :caption: Simple foreach example
-
-    library(doParallel)
-
-    # simple example
-    foreach.example <- function(procs) {
-
-      cl <- makeCluster(procs)
-      registerDoParallel(cl)
-
-      #start time
-      strt<-Sys.time()
-
-      n <- foreach(y=1:200000) %dopar% {
-
-        sqrt(y) + y^2 + y^3
-
-      }
-
-      # time taken
-      print(Sys.time()-strt)
-
-      stopCluster(cl)
-
-    }
-
-
-.. code-block:: r
-    :caption: Parallel execution
-
-    > foreach.example(1)
-    Time difference of 2.060153 mins
-    > foreach.example(2)
-    Time difference of 1.479866 mins
-    > foreach.example(4)
-    Time difference of 1.831992 mins
-
+TODO fill this out showing how would do the paramater sweep in the above example as a for loop and the steps needed to turn it into an array job
+And then show how this is done using ``batchtools``
 
 VOX-FE
 ------

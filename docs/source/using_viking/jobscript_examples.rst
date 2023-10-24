@@ -102,6 +102,8 @@ For software that does not support any parallelisation, or where single threaded
     echo '\n'Job completed at `date`
 
 
+.. _threaded-multi-process-jobs:
+
 Threaded / Multi-Process Jobs
 -----------------------------
 

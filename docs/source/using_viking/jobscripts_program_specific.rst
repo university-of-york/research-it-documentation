@@ -19,6 +19,141 @@ All of the example files shown on these pages can be downloaded or can be found 
 
     In each section there may be an example ``module load`` command. Newer versions may be available so please try the command ``module spider NAME`` where 'NAME' is the software to search for, and you will be presented with the currently available list.
 
+Alpha Fold
+-----------
+
+`AlphaFold <https://deepmind.com/blog/article/putting-the-power-of-alphafold-into-the-worlds-hands>`_ is an AI system developed by `DeepMind <https://deepmind.com/>`_ that predicts a protein's 3D structure from it's amino acid sequence. The source code for the inference pipeline can be found on the `AlphaFold GitHub <https://github.com/deepmind/alphafold>`_ page.
+
+
+.. attention::
+
+    Since a few tweaks have been made to the installation, it is important to read through the following documentation before running any jobs with ``AlphaFold``.
+
+The CPU-only version of ``AlphaFold`` can be loaded using the following:
+
+.. code-block:: console
+
+    $ module load {MOD_ALPHAFOLD_CPU}
+
+And the GPU version of ``AlphaFold`` can be loaded using the following command:
+
+.. code-block:: console
+
+    $ module load {MOD_ALPHAFOLD_GPU}
+
+
+Example job scripts
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+    :caption: using 16 CPUs, 80 GBs of memory and for up to 24 hours
+
+    {SHEBANG}
+    #SBATCH --job-name=AlphaFold_cpu_example        # Job name
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=1
+    #SBATCH --cpus-per-task=16
+    #SBATCH --mem=80G
+    #SBATCH --time=24:00:00
+    #SBATCH --output=%x-%j.log
+    #SBATCH --mail-type=BEGIN,END,FAIL              # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk           # Where to send mail
+    #SBATCH --account=dept-proj-year                # Project account to use
+
+    # Abort if any command fails
+    set -e
+
+    module purge                                    # purge any loaded modules
+    # Load AlphaFold module
+    module load {MOD_ALPHAFOLD_CPU}
+
+    # Path to genetic databases
+    export ALPHAFOLD_DATA_DIR={ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
+
+    # Optional: uncomment to change number of CPU cores to use for hhblits/jackhmmer
+    # export ALPHAFOLD_HHBLITS_N_CPU=8
+    # export ALPHAFOLD_JACKHMMER_N_CPU=8
+
+    # Run AlphaFold
+    alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
+
+.. code-block:: bash
+    :caption: using a GPU in addition to 10 CPUs for up to 4 hours
+
+    {SHEBANG}
+    #SBATCH --job-name=AlphaFold_GPU_example    # Job name
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=1
+    #SBATCH --cpus-per-task=10
+    #SBATCH --gres=gpu:1
+    #SBATCH --partition=gpu
+    #SBATCH --time=4:00:00
+    #SBATCH --output=%x-%j.log
+    #SBATCH --mail-type=BEGIN,END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk       # Where to send mail
+    #SBATCH --account=dept-proj-year            # Project account to use
+
+    # Abort if any command fails
+    set -e
+
+    module purge                                # purge any loaded modules
+    # Load AlphaFold module
+    module load {MOD_ALPHAFOLD_GPU}
+
+    # Path to genetic databases
+    export ALPHAFOLD_DATA_DIR={ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
+
+    # Optional: uncomment to change number of CPU cores to use for hhblits/jackhmmer
+    # export ALPHAFOLD_HHBLITS_N_CPU=8
+    # export ALPHAFOLD_JACKHMMER_N_CPU=8
+
+    # Run AlphaFold
+    alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
+
+
+Notes for using AlphaFold on Viking
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``AlphaFold`` currently requires access to various genetic databases such as ``UniRef90``, ``MGnify``, ``BFD``, ``Uniclust30``, ``PDB70`` and ``PDB``.
+
+To avoid needless duplication of large databases across the cluster, these have been made available in a central directory:
+
+.. code-block:: console
+
+    {ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
+
+The name of the subdirectory ``{APLHPFOLD_DB_DATE}`` indicates the date that the databases were downloaded. The files are hosted on the burst buffer (``/mnt/bb``) - a shared filesystem powered by fast SSDs - which is recommended for ``AlphaFold`` due to the random I/O access patterns. As seen below this can cause jobs to run up to **2x faster** than if the databases were stored on the disk-based lustre filesystem.
+
+It is important to note that we have made a few enhancements to the installation to facilitate easier usage:
+
+- The location to the AlphaFold data can be specified via the ``$ALPHAFOLD_DATA_DIR``  environment variable, so you should define this variable in your AlphaFold job script: ``export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold-db/20210908``
+- A symbolic link named ``alphafold`` , which points to the ``run_alphafold.py script`` , is included. This means you can just use ``alphafold``  instead of ``run_alphafold.py`` or ``python run_alphafold.py``.
+- The ``run_alphafold.py``  script has been slightly modified such that defining ``$ALPHAFOLD_DATA_DIR``  is sufficient to pick up all the data provided in that location, meaning that you don't need to use options like ``--data_dir``  to specify the location of the data.
+- Similarly, the ``run_alphafold.py``  script was tweaked such that the location to commands like ``hhblits``, ``hhsearch``, ``jackhmmer`` or ``kalign`` are already correctly set, and thus options like ``--hhblits_binary_path``  are not required.
+- The Python script that are used to run ``hhblits``  and ``jackhmmer``  have been tweaked so you can control how many cores are used for these tools (rather than hard-coding this to 4 and 8 cores respectively).
+
+  - If set, the ``$ALPHAFOLD_HHBLITS_N_CPU``  environment variable can be used to specify how many cores should be used for running ``hhblits``. The default of 4 cores will be used if ``$ALPHAFOLD_HHBLITS_N_CPU`` is not defined. The same applies for ``jackhmmer`` and ``$ALPHAFOLD_JACKHMMER_N_CPU`` .
+  - Tweaking either of these may not be worth it however, since test jobs indicated that using more than 4/8 cores actually resulted in worse performance (although this may be workload dependent)
+
+
+CPU vs GPU performance
+^^^^^^^^^^^^^^^^^^^^^^
+
+Shown below are the results of using the ``T1050.fasta`` example mentioned in the ``AlphaFold`` README with different resource allocations.
+
+.. csv-table:: AlphaFold performance
+    :file: /assets/data/alphafold_performance.csv
+    :align: center
+    :header-rows: 1
+
+This highlights the importance of requesting resources when using ``AlphaFold``. These results suggest:
+
+  - It is faster for almost all jobs to use the ``AlphaFold`` with the database stored on the burst buffer, ``/mnt/bb``
+  - Using a GPU can considerably increase the speed at which a job completes (up to 6x)
+  - Using a second GPU does not significantly reduce the runtime for a job
+  - Counter intuitively, using more cores can lower performance
+
+
 
 Amber
 -----
@@ -84,6 +219,66 @@ The following job script could be used to submit an ``Amber`` workflow to the GP
 
 
 .. FIXME: Add in benchmarks like old docs
+
+AtChem 2
+---------
+
+``AtChem2`` is a modelling tool for atmospheric chemistry. It is primarily designed to use the Master Chemical Mechanism (MCM), but it can be used with any general set of chemical reactions. The MCM is a near-explicit chemical mechanism which describes the gas-phase oxidation of volatile organic compounds (VOC) in the lower atmosphere. The MCM is available at http://mcm.york.ac.uk/. The latest stable version of AtChem2 can be downloaded from the`AtChem2 GitHub <https://github.com/AtChem/AtChem2/releases>`_.
+
+This documentation will take you through getting a copy of the ``AtChem2`` source code, setting up the environment for ``AtChem2`` use, building a model, and submitting a model run to Viking's job scheduler, in batch mode.
+
+
+Setting up the environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To work with ``AtChem2`` you will need to load the following modules on Viking:
+
+.. code-block:: console
+    :caption: a Fortran compiler
+
+    $ module load {MOD_TOOLCHAIN_FOSS}
+
+
+.. code-block:: console
+    :caption: CMake, for building AtChem2 dependencies
+
+    $ module load {MOD_CMAKE}
+
+
+Next, clone a copy of the ``AtChem2`` source code:
+
+.. code-block:: console
+
+    $ git clone https://github.com/AtChem/AtChem2.git atchem2
+
+
+Then create a directory to contain ``AtChem2``'s dependencies
+
+.. code-block:: console
+
+    $ mkdir atchem2_dependencies
+
+
+Run the following files from the repository to install the dependencies for ``AtChem2``. These will automatically be installed into the directory you have made.
+
+.. code-block:: console
+    :caption: CVODE
+
+    $ ./atchem2/tools/install/install_cvode.sh ./atchem2_dependencies $(command -v gfortran)
+
+
+.. code-block:: console
+    :caption: OpenLibm
+
+    $ ./atchem2/tools/install/install_openlibm.sh ./atchem2_dependencies
+
+Make a note of the full path to your ``AtChem2`` dependencies directory by copying the output of the following command, this will be used later to build a model.
+
+.. code-block:: console
+
+    $ realpath ./atchem2_dependencies
+
+At this point, the environment is set up and you are ready to build an ``AtChem2`` model.
 
 
 Gaussian
@@ -293,238 +488,465 @@ When using ``MongoDB``, you have to explicitly state the location of the databas
     $ mongod --dbpath $HOME/scratch/mongod/db --unixSocketPrefix $HOME/scratch/mongod
 
 
-R - For Statistical Computing
------------------------------
+R
+-
 
-To see what ``R`` versions are available, use the following command. Note the trailing slash in the command, without this ``Ruby`` modules will also be included in the results
+To see which ``R`` versions are available, use the following command. Note the trailing slash in the command, without this ``Ruby`` modules will also be included in the results.
 
 .. code-block:: console
 
-    $ module spider lang/R/
+    $ module spider R/
 
-One of these versions can then be loaded as following. Here we use ``lang/R/4.2.1-foss-2022a`` as an example
+One of these versions can then be loaded as following. Here we use ``{MOD_R}`` as an example
 
 .. code-block:: console
 
     $ module load {MOD_R}
 
-An example of a batch script using `R` can be seen here. This script uses an `R` file named ``buckeye_bayes-bpflat``, 16GB, 16 CPUs and 48 hours. Remember to update the account code and email address provided to ``slurm`` to your own details.
+Submitting R jobs
+^^^^^^^^^^^^^^^^^
 
-
-Submitting Simple R Scripts to the Cluster
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The following Job Script will run the R code with the default number of CPUs and memory.
+The following Job Script will run an ``R`` script with no parallelisation, just in a single process. This is useful when you have a script that takes a long time to run and you don't want to tie up your personal computer with it, but the code has no parallelisable functionality.
 
 .. code-block:: r
     :caption: Example Simple R Script - simple.R
 
-    args <- commandArgs(trailingOnly = TRUE)
-    number=as.numeric(args[1])
-    string=args[2]
-    print(sprintf("R script called with arguments \'%s\' and \'%s\'", number, string))
+    # Load data
+    df <- read.csv("/path/to/data.csv")
+
+    # Run long running model
+    fit_model <- function(data) {
+      # Fit model
+      ...
+    }
+    mod <- fit_model(df)
+
+    # Save results
+    saveRDS(mod, "model.rds")
+
 
 .. code-block:: bash
     :caption: Job Script to run simple.R
 
     {SHEBANG}
-    #SBATCH --job-name=Simple-R                  # Job name
-    #SBATCH --mail-type=BEGIN,END,FAIL           # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=my.name@york.ac.uk       # Where to send mail
-    #SBATCH --time=00:02:00                      # Time limit hrs:min:sec
-    #SBATCH --output=logs/Simple-R-%j.log        # Standard output and error log
-    #SBATCH --account=dept-proj-year             # Project account to use
+    #SBATCH --job-name=my_job               # Job name
+    #SBATCH --ntasks=1                      # Number of MPI tasks to request
+    #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
+    #SBATCH --mem=1G                        # Total memory to request
+    #SBATCH --time=0-00:05:00               # Time limit (DD-HH:MM:SS)
+    #SBATCH --account=dept-proj-year        # Project account to use
+    #SBATCH --output=%x-%j.log              # Standard output log
+    #SBATCH --mail-type=BEGIN,END,FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=my.name@york.ac.uk  # Where to send mail
 
     # Abort if any command fails
     set -e
 
     module purge
     module load {MOD_R}
-    echo `date`: executing R script simple on host ${HOSTNAME}
-    echo
-    Rscript --no-save --no-restore simple.R 93 "The end of the world is not today"
-    echo
-    echo `date`: completed R script simple on host ${HOSTNAME}
+    Rscript --vanilla simple.R
 
 
-Asking for more Cores and Memory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Multi-threaded applications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-R jobs that require more memory can use the ``--mem`` directive.
+If your code does have the ability to use multiple cores, then use the :ref:`example multi-threaded job script <threaded-multi-process-jobs>` to request the correct number of cores, otherwise the job will run mulithreaded on the same core and being inefficient. Some libraries can also offer MPI support but that is less common.
 
-R scripts that make use of threading can use the ``--cpus-per-task`` directive to ask to more cores.
+Examples of ``R`` packages that support multi-core parallelisation are the Bayesian probabilist programming languages `Stan <https://mc-stan.org/>`_ and `INLA <https://www.r-inla.org>`_, or the machine learning library `caret <https://cran.r-project.org/web/packages/caret/index.html>`_.
+You can also write your own parallel code through functions such as ``parallel::mclapply`` (forked processes, recommended on Viking) or ``parallel::makeCluster`` (socket cluster, compatible with Windows but could be slower than forked processes on Viking).
+See the relevant chapter in `R Programming for Data Science <https://bookdown.org/rdpeng/rprogdatascience/parallel-computation.html>`_ for further guidance.
 
-The following script uses 4 cores and 24GB of memory.
+The following example shows how to run ``cmdstanr`` using 4 cores, one for each chain.
+
+.. code-block:: r
+    :caption: Example multithreaded R Script - multithreaded.R
+
+    # Load library
+    library(cmdstanr)
+
+    # Load data
+    df <- read.csv("/path/to/data.csv")
+
+    # Compile stan model
+    mod <- cmdstan_model("my_model.stan")
+
+    # Fit the model
+    fit <- mod$sample(
+      data = list(x=df$x, y=df$y),
+      chains=4,
+      parallel_chains=4
+    )
+
+    # Save results
+    saveRDS(fit, "model.rds")
+
+.. code-block:: bash
+    :caption: Job Script to run multithreaded.R
+
+    {SHEBANG}
+    #SBATCH --job-name=my_job               # Job name
+    #SBATCH --ntasks=1                      # Number of MPI tasks to request
+    #SBATCH --cpus-per-task=4               # Number of CPU cores per MPI task
+    #SBATCH --mem=1G                        # Total memory to request
+    #SBATCH --time=0-00:05:00               # Time limit (DD-HH:MM:SS)
+    #SBATCH --account=dept-proj-year        # Project account to use
+    #SBATCH --output=%x-%j.log              # Standard output log
+    #SBATCH --mail-type=BEGIN,END,FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=my.name@york.ac.uk  # Where to send mail
+
+    # Abort if any command fails
+    set -e
+
+    module purge
+    module load {MOD_R}
+    Rscript --vanilla multithreaded.R
+
+
+.. note::
+
+    The crucial step in the above job script is setting ``--cpus-per-task=4``, to ensure that you request the same number of cores that you are using in your ``R`` script to parallelize over.
+
+.. attention::
+
+    Always explicitly specify the number of cores in your ``R`` code when possible. This is because some ``R`` packages use ``parallel::detect_cores()`` to identify the number of cores on the system to parallelize over. However, this doesn't work on Viking as it returns the number of cores in total on the node, **not** the number of cores you have requested and can result in unexpected behaviour.
+
+
+Array jobs
+^^^^^^^^^^
+
+Array jobs are extremely useful for running a large number of related programs where you would typically use a for loop, such as fitting 1,000 copies of a model with different parameters, running a stochastic model a large number of times for a sensitivity analysis, or fitting a model for a number of different subgroups in your data.
+
+The example below shows the case of fitting a model that takes a single parameter 1,000 times, where the parameter is drawn from a standard normal distribution.
+The Slurm environment variable, ``$SLURM_ARRAY_TASK_ID`` corresponds to the array iteration number and gets passed into the ``R`` script.
+NB: if your ``R`` script also makes use of multi-core parallelisation then you can set ``--cpus-per-task`` in the job-script, e.g. if you are running multiple copies of a Stan model that itself uses multi-threading.
+
+.. code-block:: r
+    :caption: Example array job R Script - arrayjob.R
+
+    # Read array iteration number from script arguments
+    args <- commandArays(trailingOnly=TRUE)
+    job <- as.integer(args[1])
+
+    # Load data
+    df <- read.csv("/path/to/data.csv")
+
+    # Load parameters
+    params <- rnorm(1000)
+
+    # Fit model using this iteration's parameters
+    fit_model <- function(param, data) {
+      # Fit model
+      ...
+    }
+    job_param <- params[job]
+    mod <- fit_model(job_param, df)
+
+    # Save results
+    filename <- sprintf("model_%d.rds", job)
+    saveRDS(mod, filename)
+
+
+.. code-block:: bash
+    :caption: Job Script to run arrayjob.R
+
+    {SHEBANG}
+    #SBATCH --job-name=my_job                # Job name
+    #SBATCH --ntasks=1                       # Number of MPI tasks to request
+    #SBATCH --cpus-per-task=1                # Number of CPU cores per MPI task
+    #SBATCH --mem=1G                         # Total memory to request
+    #SBATCH --time=0-00:15:00                # Time limit (DD-HH:MM:SS)
+    #SBATCH --account=dept-proj-year         # Project account to use
+    #SBATCH --mail-type=END,FAIL             # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk    # Where to send mail
+    #SBATCH --output=%x-%j.log               # Standard output log
+    #SBATCH --error=%x-%j.err                # Standard error log
+    #SBATCH --array=1-1000                   # Array range
+    #SBATCH --mail-type=BEGIN,END,FAIL       # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=my.name@york.ac.uk   # Where to send mail
+
+    # Abort if any command fails
+    set -e
+
+    module purge
+    module load {MOD_R}
+    Rscript --vanilla jobarray.R $SLURM_ARRAY_TASK_ID
+
+
+Converting A Serial For Loop To Array Job
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+While array jobs are a very effective way of running trivially parallelisable code on Viking, they require a bit of modification to scripts that you have been running on your personal computer. Take the parameter sweep example from above, this might have started out life as a for loop when running on your computer, as in the example below. This would work well until it takes too long to run, either from increasing the number of iterations or from the model fitting taking longer, until you want to run it on Viking to free up your PC.
+
+.. code-block:: r
+    :caption: Example parameter sweep R Script
+
+    # Read array iteration number from script arguments
+    args <- commandArays(trailingOnly=TRUE)
+
+    # Load data
+    df <- read.csv("/path/to/data.csv")
+
+    # Load parameters
+    params <- rnorm(1000)
+    results <- list()
+    fit_model <- function(param, data) {
+      # Fit model
+      ...
+    }
+
+    for (job in 1:1000) {
+        # Fit model using this iteration's parameters
+        job_param <- params[job]
+        mod <- fit_model(job_param, df)
+        results[[job]] <- mod
+    }
+
+    # Save results
+    saveRDS(results, "models.rds")
+
+
+Porting this script to an array job to run on Viking requires several steps:
+
+  1. Add an argument to the script
+  2. Remove the for loop and replace with the iteration number being passed in
+  3. Create a Slurm batch script
+  4. Write a script to collate the results from each iteration
+
+A neat solution to manually undertaking each of these steps is using the ``batchtools`` package (available on `CRAN <https://cran.r-project.org/web/packages/batchtools/index.html>`_) to automate it.
+This package takes as input:
+
+  - A function that will be run at each iteration
+  - The values to iterate over
+  - A location to save a *registry*
+  - A Slurm batch job template file (one provided below)
+
+The registry is just a structured directory where ``batchtools`` saves its environment, which includes items such as the completed Slurm job script, serialized versions of the ``R`` code to run, and outputs from each iteration of the array.
+
+The ``R`` script below shows how to use ``batchtools`` to convert the for-loop parameter sweep into an array job that runs on Viking.
+This script will need to be moved onto Viking and run - it can't automatically submit from your PC (yet... watch this space).
+If the preparation doesn't take much time or memory then it can be run from a login node, otherwise it should be run from a compute node.
+
+.. code-block:: r
+    :caption: Example R script using batch tools
+
+    # Prepare batchtools registry and Slurm config
+    reg <- makeRegistry(
+        file.dir = "registry",  # This is where data related to this job will be saved
+        make.default = FALSE,
+        source=c(),             # Replace with paths to any files that are Sourced and needed by fit_model()
+        packages=c()            # Replace with any libraries used by fit_model()
+    )
+    reg$cluster.functions <- makeClusterFunctionsSlurm(
+        template="slurm_template.tmpl",
+        array.jobs=TRUE  # Allow batchtools to create array jobs
+    )
+
+    # Load data
+    df <- read.csv("/path/to/data.csv")
+
+    # Load parameters
+    params <- rnorm(1000)
+    fit_model <- function(param, data) {
+      # Fit model
+      ...
+    }
+
+    # Create Slurm jobs
+    jobs <- batchMap(
+        fit_model,         # Function to call at each iteration
+        param=1:1000,      # Arguments to iterate over
+        more.args = list(  # Arguments that don't change per array
+          data = df
+        ),
+        reg = reg)         # Registry to save results and job information to
+
+    # Submit jobs, specifying resources
+    submitJobs(
+        jobs,
+        reg=reg,
+        resources=list(
+          walltime=as.integer(10 * 60),  # walltime should be in seconds, so this is 10 mins
+          memory="1GB",
+          ncpus="1",                     # Can increase if fit_model() uses multithreading
+          modules="{MOD_R}",
+          job.name="my_job",
+          log.file="%x-%j.log",
+          account="dept-proj-year",
+          email_address="my.name@york.ac.uk"
+        )
+    )
+
+The Slurm template that this references is shown below and should be general enough to be used in most situations, feel free to adapt it to meet your needs.
+
+.. code-block:: bash
+    :caption: Example batchtools template - slurm_template.tmpl
+
+    #!/usr/bin/env bash
+
+    ## Slurm template for using batchtools on Viking at the University of York
+    ## Modified from https://github.com/mllg/batchtools/blob/master/inst/templates/slurm-lido3.tmpl
+    ## Author: Stuart Lacy
+    ## Date: 2023-07-13
+
+    ## Job Resource Interface Definition
+    ##
+    ## ncpus [integer(1)]:        Number of required cpus per task,
+    ##                            Set larger than 1 if you want to further parallelize
+    ##                            with multicore/parallel within each task.
+    ## walltime [integer(1)]:     Walltime for this job, in seconds.
+    ##                            Must be at least 1 minute.
+    ## memory   [integer(1)]:     Memory in megabytes for each cpu.
+    ##                            Must be at least 100 (when I tried lower values my
+    ##                            jobs did not start at all).
+    ##
+    ## Default resources can be set in your .batchtools.conf.R by defining the variable
+    ## 'default.resources' as a named list.
+
+    <%
+
+    # resources
+    walltime = asInt(resources$walltime, lower = 60L, upper = 31L * 24L * 60L * 60L)
+    memory = asInt(resources$memory, lower = 100L, upper = 1024L * 1024L)
+    ncpus = if (!is.null(resources$ncpus)) ncpus = assertInt(resources$ncpus, lower = 1L) else 1L
+
+    # modules
+    modules = paste(resources$modules, resources$R)
+
+    # user
+    account = resources$account
+    email_address = resources$email_address
+
+    # cli args
+    cli.args = ""
+    if (!is.null(resources$pp.size))
+        cli.args = sprintf("--max-ppsize=%i", assertInt(pp.size, upper = 500000L))
+    -%>
+
+    #SBATCH --mail-type=BEGIN,END,FAIl
+    #SBATCH --job-name=<%= job.name %>
+    #SBATCH --output=<%= log.file %>
+    #SBATCH --error=<%= log.file %>
+    #SBATCH --time=<%= ceiling(walltime / 60L) %>
+    #SBATCH --cpus-per-task=<%= ncpus %>
+    #SBATCH --ntasks=1
+    #SBATCH --mem-per-cpu=<%= memory %>
+    #SBATCH --account=<%= account %>
+    #SBATCH --mail-user=<%= email_address %>
+    <%= if (array.jobs) sprintf("#SBATCH --array=1-%i", nrow(jobs)) else "" %>
+
+    ## Initialize work environment like
+    module add <%= modules %>
+
+    ## Export value of DEBUGME environemnt var to slave
+    export DEBUGME=<%= Sys.getenv("DEBUGME") %>
+
+    ## Use scratch on the node, TMPDIR is mounted as tmpfs
+    export TMPDIR=/mnt/lustre/users/${USER}/slurm/<%= job.name %>/${SLURM_JOBID}
+    mkdir -p ${TMPDIR}
+
+    ## Run R:
+    ## we merge R output with stdout from SLURM, which gets then logged via --output option
+    Rscript <%= cli.args -%> -e 'batchtools::doJobCollection("<%= uri %>")'
+
+Another advantage of the registry that is that it makes it easy to monitor your jobs, for example checking how many are still running, how many errored, resubmitting those that errored and so on.
+An additional benefit is that the output from each job is automatically saved to the registry (note that we didn't manually call ``saveRDS()`` unlike for the manual ``arrayjob.R`` version).
+You can then easily load the results and collate them into a single data structure, as shown below.
+Again, if you aren't doing anything complex during this phase you can run this from a login node.
+
+.. code-block:: r
+    :caption: Example R script to collate results from a registry
+
+    library(batchtools)
+
+    # Load registry
+    reg <- loadRegistry(file.dir="registry")
+    # Load the saved results within the registry
+    results <- lapply(1:1000, loadResult, reg)
+
+
+Relion
+-------
+
+``RELION`` can be loaded using the following command:
+
+.. code-block:: console
+
+    $ module load {MOD_RELION}
+
+An example script to run ``RELION`` can be seen here using
 
 .. code-block:: bash
 
     {SHEBANG}
-    #SBATCH --job-name=Simple-R                  # Job name
-    #SBATCH --mail-type=BEGIN,END,FAIL           # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=andrew.smith@york.ac.uk  # Where to send mail
-    #SBATCH --ntasks=1                           # Run a single task
-    #SBATCH --cpus-per-task=4                    # Number of CPU cores per task
-    #SBATCH --mem=24gb                           # Job memory request
-    #SBATCH --time=00:05:00                      # Time limit hrs:min:sec
-    #SBATCH --output=logs/Sinc2core-%j.log       # Standard output and error log
-    #SBATCH --account=dept-proj-year             # Project account to use
+    #SBATCH --job-name=RELION_CPU_example          # Job name
+    #SBATCH --mail-type=BEGIN,END,FAIL             # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk          # Where to send mail
+    #SBATCH --account=dept-proj-year               # Project account to use
+    #SBATCH --ntasks=1                             # Number of tasks to run
+    #SBATCH --mem=4gb                              # Memory requested
+    #SBATCH --time=00:30:00                        # Time requested
+
+    # Abort if any command fails
+    set -e
+
+    module purge                    # Purges all loaded modules
+
+    module load {MOD_RELION}
+
+    echo
+    echo Job started at `date`
+    echo Job ID $SLURM_JOB_ID
+
+    mpiexec -n XXXmpinodesXXX XXXcommandXXX
+
+    echo
+    echo Job completed at `date`
+    echo Job ID $SLURM_JOB_ID
+
+.. note::
+    ``RELION`` can use GPUs, and is available on Viking's virtual desktop
+
+VASP
+----
+
+``VASP`` can be loaded using the following command:
+
+.. code-block:: console
+
+    $ module load {MOD_VASP}
+
+.. code-block:: bash
+    :caption: example of a batch script using ``VASP`` can be found here using 120 CPU cores, 4750mb of RAM and for one hour.
+
+    {SHEBANG}
+    #SBATCH --job-name=VASP_cpu_example     # Job name
+    #SBATCH --mail-type=BEGIN,END,FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk   # where to send mail
+    #SBATCH --nodes=3-18                    # Node range
+    #SBATCH --spread-job                    # Evenly distribute cores
+    #SBATCH --ntasks=120                    # Num mpi tasks
+    #SBATCH --cpus-per-task=1               # Number of CPU cores per task
+    #SBATCH --mem-per-cpu=4750mb            # Memory per core
+    #SBATCH --time=01:00:00                 # Time limit hrs:min:sec
+    #SBATCH --output=%x.o%j                 # Archer style screen output
+    #SBATCH --error=%x.e%j                  # Archer style error output
+    #SBATCH --account=dept-proj-year        # Project account to use
 
     # Abort if any command fails
     set -e
 
     module purge
-    module load {MOD_R}
-    echo `date`: executing sinc2core R test on host ${HOSTNAME} with $SLURM_CPUS_ON_
-    NODE slots
-    Rscript --no-save sinc2core.R $SLURM_CPUS_ON_NODE
+    module load {MOD_VASP}
+    ulimit -s unlimited
+
+    mpirun -np 120 vasp_std
 
 
-Profiling Your Code
-^^^^^^^^^^^^^^^^^^^
+.. note::
 
-Overview
-""""""""
-
-Profiling code refers to the process of analysing it's performance to highlight slow sections or flaws.
+     ``VASP`` can take advantage of a GPU
 
 
-GUIProfiler Package
-""""""""""""""""""""
-
-This package can be used to profile your code. Note that at the start of your R program, you will need to import it, as seen on the first line below. Then wrap your function between ``RRprofStart()``, ``RRprofStop()`` and ``RRprofReport()`` as seen at the bottom of the program.
-
-.. code-block:: r
-
-    library(GUIProfiler)
-
-    profile.func <- function() {
-
-    apply.function <- function(data) {
-
-    summary(data)
-    min(data); max(data)
-    range(data)
-    mean(data); median(data)
-    sd(data); mad(data)
-    IQR(data)
-    quantile(data)
-    quantile(data, c(1, 3)/4)
-
-    }
-
-    #start time
-    strt<-Sys.time()
-
-    data.list <- replicate(10, rnorm(500000), simplify=FALSE)
-
-    lapply(data.list, apply.function)
-
-    # time taken
-    print(Sys.time()-strt)
-
-    }
-
-    RRprofStart()
-    profile.func()
-    RRprofStop()
-    RRprofReport()
-
-This will produce a a report as seen below, highlighting the slower performing sections of the code.
-
-.. figure:: /assets/img/r_profile.png
-
-    output from ``RRprofReport()``
-
-For more information on the ``GUIProfiler Package``, please see the PDF reference manual on the `package page <https://cran.r-project.org/web/packages/GUIProfiler/>`_.
-
-
-A quick and easy way to speed up your code
-""""""""""""""""""""""""""""""""""""""""""
-
-To speed up your code, compile your functions where possible. This can be achieved using the ``cmpfun()`` function from the compiler library. An example of this can be seen below, comparing the uncompiled function *f* and the compiled function *g*.
-
-.. code-block:: r
-
-    library(compiler)
-    library(ggplot2)
-    library(microbenchmark)
-
-    f <- function(n, x) for (i in 1:n) x = (1 + x)^(-1)
-    g <- cmpfun(f)
-
-    compare <- microbenchmark(f(1000, 1), g(1000, 1), times = 1000)
-
-    autoplot(compare)
-
-The results of this comparison can be seen below:
-
-.. figure:: ../assets/img/r_compile.png
-
-    note: the average speed of **g** is significantly lower than that of **f**.
-
-
-Using multiple cores via the parallel package
-"""""""""""""""""""""""""""""""""""""""""""""
-
-Parallel Package
-""""""""""""""""
-
-This package provides the mechanisms to support "core-grained" parallelism. Large portions of code can run concurrently with the objective to reduce the total time for the computation. Many of the package routines are directed at running the same function many times in parallel. These functions do not share data and do not communicate with each other. The functions can take varying amounts of time to execute, but for best performance should be run in similar time frames.
-
-The process used by the Parallel package is as follows:
-
-    1. Initialise "worker" processes
-    2. Divide users task into a number of sub-tasks
-    3. Allocate the task to workers
-    4. Wait for tasks to complete
-    5. If task still waiting to be processed goto 3
-    6. Close down worker processes
-
-Additional documentation on the parallel package can be found in `Chapter 8 of The R Reference Index <https://cran.r-project.org/manuals.html>`_.
-
-
-foreach and doParallel
-""""""""""""""""""""""
-
-Using a ``foreach`` loop where early iterations do not affect the later ones facilitates the use of executing the loop in parallel.
-
-.. code-block:: r
-    :caption: Simple foreach example
-
-    library(doParallel)
-
-    # simple example
-    foreach.example <- function(procs) {
-
-      cl <- makeCluster(procs)
-      registerDoParallel(cl)
-
-      #start time
-      strt<-Sys.time()
-
-      n <- foreach(y=1:200000) %dopar% {
-
-        sqrt(y) + y^2 + y^3
-
-      }
-
-      # time taken
-      print(Sys.time()-strt)
-
-      stopCluster(cl)
-
-    }
-
-
-.. code-block:: r
-    :caption: Parallel execution
-
-    > foreach.example(1)
-    Time difference of 2.060153 mins
-    > foreach.example(2)
-    Time difference of 1.479866 mins
-    > foreach.example(4)
-    Time difference of 1.831992 mins
 
 
 VOX-FE
@@ -573,283 +995,4 @@ An example job script can be found here. This script takes 40 CPUs, 1 GB of memo
 
     ``VOX-FE`` can not take advantage of a GPU, and runs purely on a CPU
 
-
-Relion
--------
-
-``RELION`` can be loaded using the following command:
-
-.. code-block:: console
-
-    $ module load {MOD_RELION}
-
-An example script to run ``RELION`` can be seen here using
-
-.. code-block:: bash
-
-    {SHEBANG}
-    #SBATCH --job-name=RELION_CPU_example          # Job name
-    #SBATCH --mail-type=BEGIN,END,FAIL             # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=abc123@york.ac.uk          # Where to send mail
-    #SBATCH --account=dept-proj-year               # Project account to use
-    #SBATCH --ntasks=1                             # Number of tasks to run
-    #SBATCH --mem=4gb                              # Memory requested
-    #SBATCH --time=00:30:00                        # Time requested
-
-    # Abort if any command fails
-    set -e
-
-    module purge                    # Purges all loaded modules
-
-    module load {MOD_RELION}
-
-    echo
-    echo Job started at `date`
-    echo Job ID $SLURM_JOB_ID
-
-    mpiexec -n XXXmpinodesXXX XXXcommandXXX
-
-    echo
-    echo Job completed at `date`
-    echo Job ID $SLURM_JOB_ID
-
-.. note::
-    ``RELION`` can use GPUs, and is available on Viking's virtual desktop
-
-
-Alpha Fold
------------
-
-`AlphaFold <https://deepmind.com/blog/article/putting-the-power-of-alphafold-into-the-worlds-hands>`_ is an AI system developed by `DeepMind <https://deepmind.com/>`_ that predicts a protein's 3D structure from it's amino acid sequence. The source code for the inference pipeline can be found on the `AlphaFold GitHub <https://github.com/deepmind/alphafold>`_ page.
-
-
-.. attention::
-
-    Since a few tweaks have been made to the installation, it is important to read through the following documentation before running any jobs with ``AlphaFold``.
-
-The CPU-only version of ``AlphaFold`` can be loaded using the following:
-
-.. code-block:: console
-
-    $ module load {MOD_ALPHAFOLD_CPU}
-
-And the GPU version of ``AlphaFold`` can be loaded using the following command:
-
-.. code-block:: console
-
-    $ module load {MOD_ALPHAFOLD_GPU}
-
-
-Example job scripts
-^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: bash
-    :caption: using 16 CPUs, 80 GBs of memory and for up to 24 hours
-
-    {SHEBANG}
-    #SBATCH --job-name=AlphaFold_cpu_example        # Job name
-    #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=1
-    #SBATCH --cpus-per-task=16
-    #SBATCH --mem=80G
-    #SBATCH --time=24:00:00
-    #SBATCH --output=%x-%j.log
-    #SBATCH --mail-type=BEGIN,END,FAIL              # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=abc123@york.ac.uk           # Where to send mail
-    #SBATCH --account=dept-proj-year                # Project account to use
-
-    # Abort if any command fails
-    set -e
-
-    module purge                                    # purge any loaded modules
-    # Load AlphaFold module
-    module load {MOD_ALPHAFOLD_CPU}
-
-    # Path to genetic databases
-    export ALPHAFOLD_DATA_DIR={ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
-
-    # Optional: uncomment to change number of CPU cores to use for hhblits/jackhmmer
-    # export ALPHAFOLD_HHBLITS_N_CPU=8
-    # export ALPHAFOLD_JACKHMMER_N_CPU=8
-
-    # Run AlphaFold
-    alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
-
-.. code-block:: bash
-    :caption: using a GPU in addition to 10 CPUs for up to 4 hours
-
-    {SHEBANG}
-    #SBATCH --job-name=AlphaFold_GPU_example    # Job name
-    #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=1
-    #SBATCH --cpus-per-task=10
-    #SBATCH --gres=gpu:1
-    #SBATCH --partition=gpu
-    #SBATCH --time=4:00:00
-    #SBATCH --output=%x-%j.log
-    #SBATCH --mail-type=BEGIN,END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=abc123@york.ac.uk       # Where to send mail
-    #SBATCH --account=dept-proj-year            # Project account to use
-
-    # Abort if any command fails
-    set -e
-
-    module purge                                # purge any loaded modules
-    # Load AlphaFold module
-    module load {MOD_ALPHAFOLD_GPU}
-
-    # Path to genetic databases
-    export ALPHAFOLD_DATA_DIR={ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
-
-    # Optional: uncomment to change number of CPU cores to use for hhblits/jackhmmer
-    # export ALPHAFOLD_HHBLITS_N_CPU=8
-    # export ALPHAFOLD_JACKHMMER_N_CPU=8
-
-    # Run AlphaFold
-    alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
-
-
-Notes for using AlphaFold on Viking
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-``AlphaFold`` currently requires access to various genetic databases such as ``UniRef90``, ``MGnify``, ``BFD``, ``Uniclust30``, ``PDB70`` and ``PDB``.
-
-To avoid needless duplication of large databases across the cluster, these have been made available in a central directory:
-
-.. code-block:: console
-
-    {ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
-
-The name of the subdirectory ``{APLHPFOLD_DB_DATE}`` indicates the date that the databases were downloaded. The files are hosted on the burst buffer (``/mnt/bb``) - a shared filesystem powered by fast SSDs - which is recommended for ``AlphaFold`` due to the random I/O access patterns. As seen below this can cause jobs to run up to **2x faster** than if the databases were stored on the disk-based lustre filesystem.
-
-It is important to note that we have made a few enhancements to the installation to facilitate easier usage:
-
-- The location to the AlphaFold data can be specified via the ``$ALPHAFOLD_DATA_DIR``  environment variable, so you should define this variable in your AlphaFold job script: ``export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold-db/20210908``
-- A symbolic link named ``alphafold`` , which points to the ``run_alphafold.py script`` , is included. This means you can just use ``alphafold``  instead of ``run_alphafold.py`` or ``python run_alphafold.py``.
-- The ``run_alphafold.py``  script has been slightly modified such that defining ``$ALPHAFOLD_DATA_DIR``  is sufficient to pick up all the data provided in that location, meaning that you don't need to use options like ``--data_dir``  to specify the location of the data.
-- Similarly, the ``run_alphafold.py``  script was tweaked such that the location to commands like ``hhblits``, ``hhsearch``, ``jackhmmer`` or ``kalign`` are already correctly set, and thus options like ``--hhblits_binary_path``  are not required.
-- The Python script that are used to run ``hhblits``  and ``jackhmmer``  have been tweaked so you can control how many cores are used for these tools (rather than hard-coding this to 4 and 8 cores respectively).
-
-  - If set, the ``$ALPHAFOLD_HHBLITS_N_CPU``  environment variable can be used to specify how many cores should be used for running ``hhblits``. The default of 4 cores will be used if ``$ALPHAFOLD_HHBLITS_N_CPU`` is not defined. The same applies for ``jackhmmer`` and ``$ALPHAFOLD_JACKHMMER_N_CPU`` .
-  - Tweaking either of these may not be worth it however, since test jobs indicated that using more than 4/8 cores actually resulted in worse performance (although this may be workload dependent)
-
-
-CPU vs GPU performance
-^^^^^^^^^^^^^^^^^^^^^^
-
-Shown below are the results of using the ``T1050.fasta`` example mentioned in the ``AlphaFold`` README with different resource allocations.
-
-.. csv-table:: AlphaFold performance
-    :file: /assets/data/alphafold_performance.csv
-    :align: center
-    :header-rows: 1
-
-This highlights the importance of requesting resources when using ``AlphaFold``. These results suggest:
-
-  - It is faster for almost all jobs to use the ``AlphaFold`` with the database stored on the burst buffer, ``/mnt/bb``
-  - Using a GPU can considerably increase the speed at which a job completes (up to 6x)
-  - Using a second GPU does not significantly reduce the runtime for a job
-  - Counter intuitively, using more cores can lower performance
-
-
-VASP
-----
-
-``VASP`` can be loaded using the following command:
-
-.. code-block:: console
-
-    $ module load {MOD_VASP}
-
-.. code-block:: bash
-    :caption: example of a batch script using ``VASP`` can be found here using 120 CPU cores, 4750mb of RAM and for one hour.
-
-    {SHEBANG}
-    #SBATCH --job-name=VASP_cpu_example     # Job name
-    #SBATCH --mail-type=BEGIN,END,FAIL      # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=abc123@york.ac.uk   # where to send mail
-    #SBATCH --nodes=3-18                    # Node range
-    #SBATCH --spread-job                    # Evenly distribute cores
-    #SBATCH --ntasks=120                    # Num mpi tasks
-    #SBATCH --cpus-per-task=1               # Number of CPU cores per task
-    #SBATCH --mem-per-cpu=4750mb            # Memory per core
-    #SBATCH --time=01:00:00                 # Time limit hrs:min:sec
-    #SBATCH --output=%x.o%j                 # Archer style screen output
-    #SBATCH --error=%x.e%j                  # Archer style error output
-    #SBATCH --account=dept-proj-year        # Project account to use
-
-    # Abort if any command fails
-    set -e
-
-    module purge
-    module load {MOD_VASP}
-    ulimit -s unlimited
-
-    mpirun -np 120 vasp_std
-
-
-.. note::
-
-     ``VASP`` can take advantage of a GPU
-
-
-AtChem 2
----------
-
-``AtChem2`` is a modelling tool for atmospheric chemistry. It is primarily designed to use the Master Chemical Mechanism (MCM), but it can be used with any general set of chemical reactions. The MCM is a near-explicit chemical mechanism which describes the gas-phase oxidation of volatile organic compounds (VOC) in the lower atmosphere. The MCM is available at http://mcm.york.ac.uk/. The latest stable version of AtChem2 can be downloaded from the`AtChem2 GitHub <https://github.com/AtChem/AtChem2/releases>`_.
-
-This documentation will take you through getting a copy of the ``AtChem2`` source code, setting up the environment for ``AtChem2`` use, building a model, and submitting a model run to Viking's job scheduler, in batch mode.
-
-
-Setting up the environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To work with ``AtChem2`` you will need to load the following modules on Viking:
-
-.. code-block:: console
-    :caption: a Fortran compiler
-
-    $ module load {MOD_TOOLCHAIN_FOSS}
-
-
-.. code-block:: console
-    :caption: CMake, for building AtChem2 dependencies
-
-    $ module load {MOD_CMAKE}
-
-
-Next, clone a copy of the ``AtChem2`` source code:
-
-.. code-block:: console
-
-    $ git clone https://github.com/AtChem/AtChem2.git atchem2
-
-
-Then create a directory to contain ``AtChem2``'s dependencies
-
-.. code-block:: console
-
-    $ mkdir atchem2_dependencies
-
-
-Run the following files from the repository to install the dependencies for ``AtChem2``. These will automatically be installed into the directory you have made.
-
-.. code-block:: console
-    :caption: CVODE
-
-    $ ./atchem2/tools/install/install_cvode.sh ./atchem2_dependencies $(command -v gfortran)
-
-
-.. code-block:: console
-    :caption: OpenLibm
-
-    $ ./atchem2/tools/install/install_openlibm.sh ./atchem2_dependencies
-
-Make a note of the full path to your ``AtChem2`` dependencies directory by copying the output of the following command, this will be used later to build a model.
-
-.. code-block:: console
-
-    $ realpath ./atchem2_dependencies
-
-At this point, the environment is set up and you are ready to build an ``AtChem2`` model.
 

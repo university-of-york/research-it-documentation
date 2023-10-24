@@ -10,47 +10,6 @@ Selecting configuration options for jobs in ``Slurm`` can be quite complex and n
     -- Slurm documentation
 
 
-.. hint::
-
-    For the vast majority of jobs the configuration for requesting multiple CPU cores is:
-
-    .. code-block:: bash
-
-        #SBATCH --nodes=1
-        #SBATCH --ntasks=1
-        #SBATCH --cpus-per-task=N
-
-    This configuration describes 1 task on 1 node and ``N`` CPU cores, where you substitute ``N`` for how many cores you need e.g ``16``
-
-For more examples of how to use ``--nodes``, ``--ntasks``, ``--ntasks-per-node`` and ``--cpus-per-task`` `CECI has a good answer <https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html#q05-how-do-i-create-a-parallel-environment>`_ on their site which explains various ways to request 16 cores and the results.
-
-
-.. attention::
-
-    In summary, usually where ``N > 1``, ``--ntasks=N`` is for mpi and ``--cpus-per-task=N`` is for multithreading applications
-
-
-Best Practice
--------------
-
-Resource Requests
-^^^^^^^^^^^^^^^^^
-
-Whilst you should avoid allocating fewer resources than required for your job to complete, please try to avoid significantly over-allocating resources. In addition to allowing more efficient utilisation of the cluster if job requests are reasonable, smaller jobs are likely to be scheduled quicker, thus improving your personal queue time. The same is true for wall-time; the scheduler assumes that the full duration will be used by the job, and so cannot backfill effectively if jobs are requesting significantly longer wall-times than they actually use.
-
-
-Job Arrays
-^^^^^^^^^^
-
-When submitting large volumes of jobs with identical resource requests, job arrays offer an efficient mechanism to manage these. However, if the individual jobs are very short duration (e.g. 5 minutes or less), it may be preferable to instead use a simple for-loop within a single batch job script, to reduce the overhead associated with each job.
-
-
-Bash Shebang and 'set -e'
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Consider using ``set -e`` after the ``#SBATCH`` section. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.  This is the `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_ we were referencing in the title.
-
-
 Batch Jobs
 ----------
 
@@ -85,7 +44,7 @@ Below is an example jobscript, let's save it as ``jobscript.job`` for this examp
     module purge
 
     # Load modules #
-    module load lang/Python/3.10.8-GCCcore-12.2.0
+    module load {MOD_PYTHON}
 
     # Commands to run #
     echo My working directory is: `pwd`
@@ -106,6 +65,27 @@ Send this to the job scheduler ``Slurm`` with the ``sbatch`` command:
     $ sbatch jobscript.job
 
 It's as simple as that!
+
+
+.. hint::
+
+    For the vast majority of jobs the configuration for requesting multiple CPU cores is:
+
+    .. code-block:: bash
+
+        #SBATCH --nodes=1
+        #SBATCH --ntasks=1
+        #SBATCH --cpus-per-task=N
+
+    This configuration describes 1 task on 1 node and ``N`` CPU cores, where you substitute ``N`` for how many cores you need e.g ``16``
+
+For more examples of how to use ``--nodes``, ``--ntasks``, ``--ntasks-per-node`` and ``--cpus-per-task`` `CECI has a good answer <https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html#q05-how-do-i-create-a-parallel-environment>`_ on their site which explains various ways to request 16 cores and the results.
+
+
+.. attention::
+
+    In summary, usually where ``N > 1``, ``--ntasks=N`` is for mpi and ``--cpus-per-task=N`` is for multithreading applications
+
 
 
 Interactive Jobs
@@ -170,3 +150,24 @@ where ``JOBID`` is the ID of your running interactive job, if you need to find t
 .. code-block:: console
 
     $ squeue -u $USER
+
+
+Best Practice
+-------------
+
+Resource Requests
+^^^^^^^^^^^^^^^^^
+
+Whilst you should avoid allocating fewer resources than required for your job to complete, please try to avoid significantly over-allocating resources. In addition to allowing more efficient utilisation of the cluster if job requests are reasonable, smaller jobs are likely to be scheduled quicker, thus improving your personal queue time. The same is true for wall-time; the scheduler assumes that the full duration will be used by the job, and so cannot backfill effectively if jobs are requesting significantly longer wall-times than they actually use.
+
+
+Job Arrays
+^^^^^^^^^^
+
+When submitting large volumes of jobs with identical resource requests, job arrays offer an efficient mechanism to manage these. However, if the individual jobs are very short duration (e.g. 5 minutes or less), it may be preferable to instead use a simple for-loop within a single batch job script, to reduce the overhead associated with each job.
+
+
+Bash Shebang and 'set -e'
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Consider using ``set -e`` after the ``#SBATCH`` section. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.  This is the `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_ we were referencing in the title.

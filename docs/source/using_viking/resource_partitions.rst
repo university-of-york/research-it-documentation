@@ -59,4 +59,4 @@ month
     Partition for jobs that need to run for longer than the 7 day max time allowed by the week partition, but for less than 30 days. The max running cores and max running memory limits are practical limits, due to the resources available on the nodes.
 
 interactive
-    Partition for jobs that would like to use Viking interactively.  This could be used for graphical work with the 8 hr queue limit set to mimic a working day.
+    Partition for jobs that would like to use Viking interactively.  This could be used for graphical work with the 8 hr queue limit set to mimic a working day. You can run interactive jobs in the ``nodes`` partition (or any other), but the queue time will be shorter in the ``interactive`` partition.

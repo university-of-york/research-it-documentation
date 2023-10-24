@@ -13,7 +13,7 @@ Selecting configuration options for jobs in ``Slurm`` can be quite complex and n
 Batch Jobs
 ----------
 
-Viking can run lots of different jobs in many different ways, but for the most part you'll probably want to submit the job via a jobscript. A jobscript is just a text file with various options in it and then a list of commands to run, which makes up the job. This is then submitted to the job scheduler called `Slurm <https://slurm.schedmd.com/quickstart.html>`_ which manages all the jobs on Viking and does it's best to ensure they all run as fairly and efficiently as possible. This means you set up the jobscript, send it to ``Slurm`` with the ``sbatch`` command and you can leave Viking to work on the job when ``Slurm`` decides it's time. This is great because you don't have to sit and wait for your job to start!
+Viking can run lots of different jobs in many different ways, but for the most part you'll probably want to submit the job via a jobscript. A jobscript is just a text file with various options in it and then a list of commands to run, which makes up the job. This is then submitted to the job scheduler called `Slurm <https://slurm.schedmd.com/quickstart.html>`_ which manages all the jobs on Viking and does its best to ensure they all run as fairly and efficiently as possible. This means you set up the jobscript, send it to ``Slurm`` with the ``sbatch`` command and you can leave Viking to work on the job when ``Slurm`` decides it's time. This is great because you don't have to sit and wait for your job to start!
 
 Below is an example jobscript, let's save it as ``jobscript.job`` for this example:
 
@@ -86,6 +86,25 @@ For more examples of how to use ``--nodes``, ``--ntasks``, ``--ntasks-per-node``
 
     In summary, usually where ``N > 1``, ``--ntasks=N`` is for mpi and ``--cpus-per-task=N`` is for multithreading applications
 
+Best Practice
+-------------
+
+Resource Requests
+^^^^^^^^^^^^^^^^^
+
+Whilst you should avoid allocating fewer resources than required for your job to complete, please try to avoid significantly over-allocating resources. In addition to allowing more efficient utilisation of the cluster if job requests are reasonable, smaller jobs are likely to be scheduled quicker, thus improving your personal queue time. The same is true for wall-time; the scheduler assumes that the full duration will be used by the job, and so cannot backfill effectively if jobs are requesting significantly longer wall-times than they actually use.
+
+
+Job Arrays
+^^^^^^^^^^
+
+When submitting large volumes of jobs with identical resource requests, job arrays offer an efficient mechanism to manage these. However, if the individual jobs are very short duration (e.g. 5 minutes or less), it may be preferable to instead use a simple for-loop within a single batch job script, to reduce the overhead associated with each job.
+
+
+Bash Shebang and 'set -e'
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Consider using ``set -e`` after the ``#SBATCH`` section. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.  This is the `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_ we were referencing in the title.
 
 
 Interactive Jobs
@@ -152,22 +171,3 @@ where ``JOBID`` is the ID of your running interactive job, if you need to find t
     $ squeue -u $USER
 
 
-Best Practice
--------------
-
-Resource Requests
-^^^^^^^^^^^^^^^^^
-
-Whilst you should avoid allocating fewer resources than required for your job to complete, please try to avoid significantly over-allocating resources. In addition to allowing more efficient utilisation of the cluster if job requests are reasonable, smaller jobs are likely to be scheduled quicker, thus improving your personal queue time. The same is true for wall-time; the scheduler assumes that the full duration will be used by the job, and so cannot backfill effectively if jobs are requesting significantly longer wall-times than they actually use.
-
-
-Job Arrays
-^^^^^^^^^^
-
-When submitting large volumes of jobs with identical resource requests, job arrays offer an efficient mechanism to manage these. However, if the individual jobs are very short duration (e.g. 5 minutes or less), it may be preferable to instead use a simple for-loop within a single batch job script, to reduce the overhead associated with each job.
-
-
-Bash Shebang and 'set -e'
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Consider using ``set -e`` after the ``#SBATCH`` section. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.  This is the `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_ we were referencing in the title.

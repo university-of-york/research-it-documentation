@@ -1,7 +1,7 @@
 Virtual Desktops
 ================
 
-You can create virtual desktop sessions to run graphical programs. There a two main ways you can do this, on the login node and on a compute node.
+You can create virtual desktop sessions to run graphical programs. There two main ways you can do this, on the login node and on a compute node.
 
 .. attention::
 
@@ -13,9 +13,11 @@ Login Node
 
 .. code-block:: console
 
+Run the following line from within a login node
+
     $ alces session start gnome
 
-And you will be presented with informtaion similar to mine below:
+And you will be presented with information similar to mine below:
 
 .. code-block:: console
     :emphasize-lines: 4,5,7
@@ -43,12 +45,12 @@ And you will be presented with informtaion similar to mine below:
 Connect to the Virtual Desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the appropriate application for your operating system, log into the virtual desktop. It will ask for a password and in my example this is ``5jaHqekY``, yours will be whatever the output on Viking was previously.
+Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. It will ask for a password (in my example this is ``5jaHqekY``), yours will be whatever was displayed in the previous step.
 
 Windows
 """""""
 
-On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.php>`_, using the above as an example (your details will be different), then the ``Remote Host`` you use would be:
+On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.php>`_. Using the above as an example (your details will be different), the ``Remote Host`` would be:
 
 .. code-block:: console
 
@@ -67,7 +69,7 @@ Linux
 MacOS
 """"""
 
- MacOS has build in support and you can use ``Finder`` for this, select ``Go`` and then ``Connect to server`` but the address is slightly different you must add ``vnc://`` to the beginning:
+ MacOS has built in support and you can use ``Finder`` for this, select ``Go`` and then ``Connect to server`` but the address is slightly different you must add ``vnc://`` to the beginning:
 
 .. code-block:: console
 
@@ -123,7 +125,7 @@ Your ``Identity`` code will be different to mine, this is just an example.
 
 .. attention::
 
-    It's important to ``kill`` any unused virtual desktops not just log out / close down the connection. They will still be running in the background using resources (remember the :doc:`code of conduct <../getting_started/code_of_conduct>`) so it's really important that you ``kill`` them after you are finished if you leave too many runing you will not be able to start a fresh one.
+    It's important to ``kill`` any unused virtual desktops not just log out / close down the connection. They will still be running in the background using resources (remember the :doc:`code of conduct <../getting_started/code_of_conduct>`) so it's really important that you ``kill`` them after you are finished. If you leave too many running you will not be able to start a fresh one and will negatively impact other users.
 
 .. _virtual_session_compute_node:
 

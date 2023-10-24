@@ -1,13 +1,14 @@
 Program Specific How-Tos
 ========================
 
-Here we will share some guides on getting started with some specific applications. In many cases there are multiple ways to accomplish things so you can treat this as a starting point. If you found a good guide elsewhere which you successfully followed or if you would like your own guide added please feel free `let us know <itsupport@york.ac.uk>`_.
+Here we will share some guides on getting started with some specific applications. In many cases there are multiple ways to accomplish things so you can treat this as a starting point. If you found a good guide elsewhere which you successfully followed or if you would like your own guide added please feel free to `let us know <itsupport@york.ac.uk>`_.
 
 
 Jupyter Notebooks
 -----------------
 
-The `Jupyter notebook <https://docs.jupyter.org/en/latest/>`_ is a web-based notebook environment for interactive computing. Running a ``Jupyter notebook`` server remotely on Viking and connecting to it from your local web browser is certainly possible. There are a few ways where this could be done, to utilise the compute nodes of Viking there would be a few steps to ensure that your ``Jupyter`` notebook is running on the compute node (not the login node) and you can remotely connect to it.
+The `Jupyter notebook <https://docs.jupyter.org/en/latest/>`_ is a web-based notebook environment for interactive computing. Running a ``Jupyter notebook`` server remotely on Viking and connecting to it from your local web browser is certainly possible.
+There are a few steps to ensure that your notebook is running on a compute node (not a login node) and you can remotely connect to it.
 
 .. admonition:: The connection would look something like this:
 
@@ -41,7 +42,7 @@ As you can see, I also loaded the ``Jupyter`` module and started the notebook. F
 
     $ ssh -N -L localhost:8888:localhost:8888 abc123@node065
 
-This forwards the connection from the login node, where you are running the virtual desktop, to the compute node. You'll need to amend ``abc123``` to your ``username`` and ``node065`` to your own details which where displayed earlier.
+This forwards the connection from the login node, where you are running the virtual desktop, to the compute node. You'll need to amend ``abc123`` to your username and ``node065`` to your own details which were displayed earlier.
 
 Then, back to the first terminal where the notebook is running, there should be a link to click on to connect to the notebook eg:
 
@@ -76,7 +77,7 @@ Using some of the above guide as reference, another way to so this is with VSCod
 VSCode
 ------
 
-``VSCode`` is a modern text editing program from Microsoft, it's possible to use many extensions with it to extend it capabilities but here we'll explain how to use it to connect to Viking over ``ssh`` and allow you to edit text files, which can be very handy.
+``VSCode`` is a modern text editor from Microsoft. It's possible to use many extensions with it to extend its capabilities but here we'll explain how to use it to connect to Viking over ``ssh`` and allow you to remotely edit text files, which can be very handy.
 
 
     1. Install `VSCode <https://code.visualstudio.com/>`_ for your operating system
@@ -91,6 +92,6 @@ VSCode
 
 .. tip::
 
-    If you at some point VSCode refuses to connect and it's not obvious why, sometimes the files it installs on Viking have become corrupted. You can log into Viking in your ususal way without VSCode, and delete the following directory ``~/.vscode-server``. The next time VSCode connects to Viking it will install the files again and hopefully it will fix the problems.
+    If you at some point VSCode refuses to connect and it's not obvious why, sometimes the files it installs on Viking have become corrupted. You can log into Viking in your ususal way without VSCode, and delete the following directory ``~/.vscode-server``. The next time VSCode connects to Viking it will reiinstall the files and hopefully will fix the problem.
 
 

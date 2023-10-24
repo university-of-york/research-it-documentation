@@ -116,8 +116,8 @@ Depending on what you set for ``#SBATCH --mail-type=`` you should receive some e
 Adjust the Jobscript
 --------------------
 
-If your ``CPU`` or ``memory`` utilisation is very low, it means your settings in the jobscript need adjusting if you are to run the job again. Now is a good time to adjust these down, you should aim them pretty close to the end results, this will mean that Viking can start more jobs quicker and everyone can get their results faster. That's teamwork! ❤️
+If your ``CPU`` or ``memory`` utilisation is very low, it means your settings in the jobscript need adjusting if you are to run the job again. Now is a good time to adjust these down, you should aim to get the actual utilisation close to the requested values, this will mean that Viking can start more jobs quicker and everyone can get their results faster. That's teamwork! ❤️
 
 .. note::
 
-    In this example we set which ``partition`` we wanted the jobscript to use as ``test`` as we are just testing. For full jobs generally most users will be happy with the default ``nodes`` partition, you can see more about this on the :doc:`resource partitions </using_viking/resource_partitions>` page.
+    In this example jobscript we specified the jobs to run on the ``test`` ``partition`` as we are just testing. For full jobs generally most users will be want to use the default ``nodes`` partition, you can see more about this on the :doc:`resource partitions </using_viking/resource_partitions>` page.

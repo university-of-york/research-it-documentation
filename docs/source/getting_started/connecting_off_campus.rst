@@ -34,7 +34,7 @@ Once you have entered your password and gone through the two-factor authenticati
 Jump hosting via the SSH gateway
 --------------------------------
 
-To avoid manual entry of the hostname to connect to, it's also possible to connect by "jump hosting" using the SSH gateway:
+To avoid manual entering the hostname when using the SSH gateway, it's also possible to directly connect to Viking by "jump hosting":
 
 .. code-block:: console
 

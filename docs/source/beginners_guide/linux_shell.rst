@@ -1,5 +1,5 @@
-Beginners Guide to the Linux Shell
-==================================
+Linux Shell
+===========
 
 Intro
 -----
@@ -38,7 +38,7 @@ The last line is a ``command prompt`` and it is the means by which the computer 
 
 :command:`command [ options ] [ arguments ]`
 
-Options to a command are usually proceeded by a ``-`` or ``--``, this differentiates them from the arguments. The following example shows the ``echo`` command which prints the arguments and the ``ls`` command which take options arguments. The ``ls`` command display the users file. There will be more explanation of files and the ``ls`` command later.
+Options to a command are usually proceeded by a ``-`` or ``--`` and are optional, this differentiates them from the arguments which are mandatory. The following example shows the ``echo`` command which prints the arguments, and the ``ls`` command which displays the users files. There will be more explanation of files and the ``ls`` command later.
 
 .. code-block:: console
     :caption: example of command execution

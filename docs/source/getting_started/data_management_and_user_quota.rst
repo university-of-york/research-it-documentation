@@ -19,7 +19,7 @@ When you log in to Viking, you will land in your home directory, specifically:
 
     /users/abc123
 
-Where ``abc123`` will be replaced by your username. This home directory has a size of **50GB** and a file limit of **100,000**. From within the home directory, you can access your ``scratch`` directory at
+Where ``abc123`` will be replaced by your username. This home directory has a size of **50GB** and a file limit of **100,000**. From within the home directory, you can access your ``scratch`` directory, which is a special high-performance filestore with a default size of **3TB** and **no limit** on the number of files.
 
 .. code-block:: console
 
@@ -27,7 +27,11 @@ Where ``abc123`` will be replaced by your username. This home directory has a si
 
 .. FIXME: needs size
 
-This is a special high-performance filestore with a default size of **3TB** and **no limit** on the number of files. Because of this, you should run all your jobs on Viking from this directory rather than the home directory.
+
+.. attention::
+
+    You should run all your jobs on Viking from ``scratch`` as it is faster and has more relaxed file limits than the home directory. However, it is not backed up.
+
 
 .. tip::
     If you need more ``scratch`` storage space, please email us at itsupport@york.ac.uk, we are more than happy to accommodate large projects.
@@ -69,8 +73,8 @@ Which will produce the following result:
                       31384  52428800 78643200             318  100000  150000
 
 
-What Happens If You Exceed Quota
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+What Happens If You Exceed Your Quota
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you login to Viking you will be told if you are over quota. If this is in users area with the **50GB** or **100,000** files limit you will need to delete or move your files to your ``scratch`` area.  **There is a grace period of 7 days after which you will lose access to Viking.**
 
@@ -187,6 +191,7 @@ Setting up rclone on Viking
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to use ``rclone``, you will need a ``client-id``, the steps for which can be found on the `rclone website <https://rclone.org/drive/#making-your-own-client-id>`_.
+You will also need to either have a local install of `rclone`, or to be doing the setup in a Virtual Desktop.
 
 Login to Viking and navigate to an area on your scratch folder, then load the ``rclone`` module.
 
@@ -202,22 +207,20 @@ Next, for the first time using rclone, you will need to configure it using the f
 
 ``rclone`` will then ask you a number of questions, including asking for your ``client-id``. We recommend the following answers:
 
-    1.  ``n`` - new remote
-    2.  Give it a name - don't use spaces, makes it awkward (I used ``gdrive``. Remember this as you will need it later)
-    3.  ``16`` - Google Drive (NB: do not select "google cloud storage")
-    4.  ``Enter`` - Application Client Id (see step above to create an ID)
-    5.  ``Enter`` - Client Secret (see step above to create an ID)
-    6.  ``3`` - Scope
+    1.  Action: ``n`` - new remote
+    2.  Name: Choose something sensible without spaces (I used ``gdrive``)
+    3.  Storage: ``Google Drive`` (NB: do not select "Google Cloud Storage")
+    4.  Application Client Id: See step above to create an ID
+    5.  Client Secret: See step above to create an ID
+    6.  Scope: ``drive.file`` (or ``drive`` if you want to be able to download files from Google Drive onto Viking)
     7.  ``Enter`` - ID of the root folder
-    8.  ``Enter`` - Service account credentials
-    9.  ``n`` - Edit advanced config
-    10. ``n`` - Use auto config
-    11. Copy and paste the URL provided into your browser
-    12. Authorize app with click through
-    13. Copy and paste code back into terminal
-    14. ``n`` - Configure this as Team Drive
-    15. ``y`` - This is okay
-    16. ``q``
+    8.  Service account credentials: ``Enter`` to leave empty
+    9.  Edit advanced config: ``n``
+    10. Web browser authenticate: ``n`` (or Yes if in a Virtual Desktop)
+    11. Follow the steps to authenticate locally
+    12. Configure this as a Shared Drive: ``n``
+    13. ``y`` - This is okay
+    14. ``q``
 
 You are now ready to transfer files from Viking to your Google Drive.  This can be done with the following command
 
@@ -234,7 +237,7 @@ You are now ready to transfer files from Viking to your Google Drive.  This can 
 If you login into Google Drive you should see the files from ``directory_to_copy`` inside a folder named ``viking-data``
 
 .. hint::
-    If you see the following error message please check you are not trying to sync to a **team drive** instead. If you are trying to sync to a team drive you will need to amend question 14 to ``y``.
+    If you see the following error message please check you are not trying to sync to a **Shared Drive** (previously known as Team Drives) instead. If you are trying to sync to a team drive you will need to amend question 12 to ``y``.
 
 .. code-block:: console
 

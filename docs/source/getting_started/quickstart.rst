@@ -37,9 +37,9 @@ Load a Module
     $ module load {MOD_PYTHON}
 
 
-.. hint::
-
 .. FIXME: check this is correct
+
+.. hint::
 
     The module name scheme on Viking is as follows: ``program_name`` / ``version`` or sometimes - ``program_name`` / ``version`` / ``toolchain`` - ``toolchain_version``.
 

@@ -35,7 +35,7 @@ This is a special high-performance filestore with a default size of **3TB** and 
 
 .. FIXME: add size, and file duration
 
-Additionally you also have access to two more folders, ``localscratch`` and ``localtmp`` which points to some storage space on the current node you are logged into, on fast SSD drives. You can access these directories at:
+Additionally you also have access to two more folders, ``localscratch`` and ``localtmp`` which point to storage space on the *current node* which you are logged into, on fast SSD drives. You can access these directories at:
 
 .. code-block:: console
 

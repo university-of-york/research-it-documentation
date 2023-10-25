@@ -17,7 +17,7 @@ Please run all serious work through the ``slurm`` job scheduler, this way they a
 Closing Virtual Desktop Sessions
 --------------------------------
 
-`Virtual desktop sessions <using_viking/virtual_desktops.html>`_ don't close if you simply disconnect, this is to allow you to come back to them at a later time. If you do not ``kill`` the virtual desktop after you have finished and later create new ones, more and more virtual desktops will be running taking up resources. This is why it's required to simply :ref:`kill virtual desktops when finished with <kill_sessions>`.
+:doc:`Virtual desktop sessions <../using_viking/virtual_desktops>` don't close if you simply disconnect, this is to allow you to come back to them at a later time. If you do not ``kill`` the virtual desktop after you have finished and later create new ones, more and more virtual desktops will be running taking up resources. This is why it's required to simply :ref:`kill virtual desktops when finished with <kill_sessions>`.
 
 
 Backing up data

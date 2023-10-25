@@ -41,6 +41,10 @@ When your changes are ready to be deployed, submit a PR and request approval.
 
 The `docs/source/replacements.py` file contains a dictionary of replacement words to use throughout the docs. For exmaple, all the module versions to load in the jobscript examples. This makes it simple to update that part of the docs in the future.
 
+**Substitutions**
+
+The `global.rst` file contains an [RST substitution](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#substitution-definitions) so you can use `|br|` to create a raw html `</br>`. Useful in some formatting for example in the table headers. To use this substitution in a page  you must include the following at the top of the page: `.. include:: /global.rst`
+
 ## Reference
 
 For `Re Structured Text` help:

@@ -19,7 +19,7 @@ When you log in to Viking, you will land in your home directory, specifically:
 
     /users/abc123
 
-Where ``abc123`` will be replaced by your username. This home directory has a size of **50GB** and a file limit of **100,000**. From within the home directory, you can access your ``scratch`` directory, which is a special high-performance filestore with a default size of **3TB** and **no limit** on the number of files.
+Where ``abc123`` will be replaced by your username. This ``home`` directory has a size of **100GB** and a file limit of **200,000**. From within the ``home`` directory, you can access your ``scratch`` directory, which is a special high-performance filestore with a default size of **2TB** and **no limit** on the number of files.
 
 .. code-block:: console
 
@@ -30,7 +30,7 @@ Where ``abc123`` will be replaced by your username. This home directory has a si
 
 .. attention::
 
-    You should run all your jobs on Viking from ``scratch`` as it is faster and has more relaxed file limits than the home directory. However, it is not backed up.
+    You should run all your jobs on Viking from ``scratch`` as it is faster and has more relaxed file limits than the home directory. However, it is **not backed up**.
 
 
 .. tip::
@@ -39,12 +39,13 @@ Where ``abc123`` will be replaced by your username. This home directory has a si
 
 .. FIXME: add size, and file duration
 
-Additionally you also have access to two more folders, ``localscratch`` and ``localtmp`` which point to storage space on the *current node* which you are logged into, on fast SSD drives. You can access these directories at:
+Additionally you also have access to a ``localtmp`` folder which points to storage space on the *current node* which you are logged into, on fast SSD drives. It's also an area which is **not backed up** so should only be used for processing data whilst it's in use, after which the data should be backed up or archived if needed. You can access this directory at:
 
 .. code-block:: console
 
-    /users/abc123/localscratch
     /users/abc123/localtmp
+
+
 
 Checking Your Quota
 -------------------
@@ -55,7 +56,7 @@ To check how much space you have left, run the following command:
 
     $ myquota
 
-Which will produce the following result:
+Which will produce something similar to the following result:
 
 .. FIXME: update this
 
@@ -64,19 +65,21 @@ Which will produce the following result:
     Scratch quota:
     Disk quotas for usr abc123 (uid 12345):
          Filesystem    used   quota   limit   grace   files   quota   limit   grace
-        /mnt/lustre  254.5G      3T    3.1T       - 1465164       0       0       -
+       /mnt/scratch      4k      2T    2.1T       -       1       0       0       -
+    uid 12860 is using default block quota setting
+    uid 12860 is using default file quota setting
 
     Home quota:
     Disk quotas for user abc123 (uid 12345):
-         Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
-    storage:/export/users
-                      31384  52428800 78643200             318  100000  150000
+         Filesystem   space   quota   limit   grace   files   quota   limit   grace
+    10.10.0.15:/export/users
+                       232K    100G    110G              57    200k    250k
 
 
 What Happens If You Exceed Your Quota
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you login to Viking you will be told if you are over quota. If this is in users area with the **50GB** or **100,000** files limit you will need to delete or move your files to your ``scratch`` area.  **There is a grace period of 7 days after which you will lose access to Viking.**
+When you login to Viking you will be told if you are over quota. If this is in users area with the **100GB** or **200,000** files limit you will need to delete or move your files to your ``scratch`` area.  **There is a grace period of 7 days after which you will lose access to Viking.**
 
 If you are over quota in the ``scratch`` area and need more space please email itsupport@york.ac.uk where we can increase your quota. **There is a grace period of 7 days after which you will lose access to Viking.**
 

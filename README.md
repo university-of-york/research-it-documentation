@@ -49,4 +49,6 @@ For `Re Structured Text` help:
 
 [RST Specs](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html)
 
-The site has a cheatsheet page which is built from `docs/source/cheatsheet.rst` and not linked in the website but accessible as `/cheatsheet.html`.
+The site has a cheatsheet page which is built from `docs/source/cheatsheet.rst` and not linked in the website but accessible as [https://vikingdocs.york.ac.uk/cheatsheet.html](https://vikingdocs.york.ac.uk/cheatsheet.html).
+
+

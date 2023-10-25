@@ -3,13 +3,14 @@ Software on Viking
 
 .. admonition:: Did you know...
 
-    All users have the ability to download, build and run software as long as it's compatible with Viking. We do our best to fulfill all software install requests quickly however, if it's a small or simple program, it can sometimes be beneficial for a user to download and build the software themselves. 🏗️👷🦺
+    We provide a central library of software installed for all users to benefit from, although everyone has the ability to download, build, and run software as long as it's compatible with Viking.
+    We do our best to fulfill all software install requests quickly, however, if it's a small or simple program, it can sometimes be beneficial for a user to download and build the software themselves. 🏗️👷🦺
 
 
 Modules and the User Environment
 --------------------------------
 
-Most software installed on Viking are made available through the module system ``lmod``. This allows multiple versions of the same software to be installed, without conflicting or interfering with each other. By loading modules, the user environment is automatically modified to set the appropriate variables (``$PATH`` etc.) to make the corresponding software visible.
+Most software installed on Viking are made available through the module system ``lmod``. This allows multiple versions of the same software to be installed without conflicting or interfering with each other. By loading modules, the user environment is automatically modified to set the appropriate variables (``$PATH`` etc.) to make the corresponding software visible.
 
 For a quick overview of the available ``module`` sub-commands and options, try typing ``module help`` on Viking:
 
@@ -46,7 +47,7 @@ Loading a Module
 
 .. attention::
 
-    Always use the **full module name**, including version and toolchain. Being specific means that as new modules are added your work remains the same.
+    Always use the **full module name**, including version and toolchain. Being specific means that as new modules are added your work remains the same and reproducible.
 
 
 Listing Modules in Use

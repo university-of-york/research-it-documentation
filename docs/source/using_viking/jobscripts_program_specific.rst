@@ -22,7 +22,7 @@ All of the example files shown on these pages can be downloaded or can be found 
 Alpha Fold
 -----------
 
-`AlphaFold <https://deepmind.com/blog/article/putting-the-power-of-alphafold-into-the-worlds-hands>`_ is an AI system developed by `DeepMind <https://deepmind.com/>`_ that predicts a protein's 3D structure from it's amino acid sequence. The source code for the inference pipeline can be found on the `AlphaFold GitHub <https://github.com/deepmind/alphafold>`_ page.
+`AlphaFold <https://deepmind.com/blog/article/putting-the-power-of-alphafold-into-the-worlds-hands>`_ is an AI system developed by `DeepMind <https://deepmind.com/>`_ that predicts a protein's 3D structure from its amino acid sequence. The source code for the inference pipeline can be found on the `AlphaFold GitHub <https://github.com/deepmind/alphafold>`_ page.
 
 
 .. attention::
@@ -223,7 +223,7 @@ The following job script could be used to submit an ``Amber`` workflow to the GP
 AtChem 2
 ---------
 
-``AtChem2`` is a modelling tool for atmospheric chemistry. It is primarily designed to use the Master Chemical Mechanism (MCM), but it can be used with any general set of chemical reactions. The MCM is a near-explicit chemical mechanism which describes the gas-phase oxidation of volatile organic compounds (VOC) in the lower atmosphere. The MCM is available at http://mcm.york.ac.uk/. The latest stable version of AtChem2 can be downloaded from the`AtChem2 GitHub <https://github.com/AtChem/AtChem2/releases>`_.
+``AtChem2`` is a modelling tool for atmospheric chemistry. It is primarily designed to use the `Master Chemical Mechanism (MCM) <https://mcm.york.ac.uk>`_, but it can be used with any general set of chemical reactions. The MCM is a near-explicit chemical mechanism which describes the gas-phase oxidation of volatile organic compounds (VOC) in the lower atmosphere. The latest stable version of AtChem2 can be downloaded from the `AtChem2 GitHub <https://github.com/AtChem/AtChem2/releases>`_.
 
 This documentation will take you through getting a copy of the ``AtChem2`` source code, setting up the environment for ``AtChem2`` use, building a model, and submitting a model run to Viking's job scheduler, in batch mode.
 
@@ -290,7 +290,7 @@ Gaussian
 
     $ module load {MOD_GAUSSIAN}
 
-This job script can be used to submit a ``Gaussian`` workflow to the cluster, using 16GB of memory, 16 cores and 48 hours. This assumes you have a gaussian file called ``g16.gjf`` . Remember to update the account code and email address provided to ``slurm`` to your own details.
+This job script can be used to submit a ``Gaussian`` workflow to the cluster, using 16GB of memory, 16 cores and 48 hours. This assumes you have a Gaussian file called ``g16.gjf`` . Remember to update the account code and email address provided to ``slurm`` to your own details.
 
 .. code-block:: bash
     :linenos:
@@ -337,7 +337,7 @@ MATLAB
 Running Interactively
 ^^^^^^^^^^^^^^^^^^^^^
 
-``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so :ref:`inside an interactive cluster session <virtual_session_compute_node>`, rather than on :doc:`Viking's login nodes <../getting_started/code_of_conduct>`.
+``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so inside an :ref:`interactive cluster session <virtual_session_compute_node>`, rather than on :doc:`Viking's login nodes <../getting_started/code_of_conduct>`.
 
 The following demonstrates how you could run ``MATLAB`` interactively without the GUI:
 

@@ -22,6 +22,7 @@ Vault is a file archiving service.  It can be used to store files that need to b
 Filestore
 ---------
 
+Please see the University's `Filestore guide <https://www.york.ac.uk/it-services/filestore/rented/>`_ for more information about accessing and using this service.
 To move your data from Viking and to the Filestore ("Storage"), the address you need to use as an example is::
 
     sftp.york.ac.uk:/shared/storage/<filestore>

@@ -7,8 +7,9 @@ A static website hosting Research IT related documentation.
 
 ### Infrastructure
 
-The website is hosted in S3 (behind a CloudFront distribution coming soon).
-It is defined in `cloudformation.yaml` and deployed via GitHub Actions.
+The website is hosted in S3 and delivered from a CloudFront distribution.
+It is defined in `cloudformation.yaml` and deployed via GitHub Actions, although the SSL certificate is manually created and added to CloudFront through the AWS website.
+The certificate is validated through DNS by adding the CNAMEs it provides, this can be done via a ticket to Systems.
 
 ### Content
 

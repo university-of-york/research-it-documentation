@@ -45,6 +45,10 @@ The `docs/source/replacements.py` file contains a dictionary of replacement word
 
 The `global.rst` file contains an [RST substitution](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#substitution-definitions) so you can use `|br|` to create a raw html `</br>`. Useful in some formatting for example in the table headers. To use this substitution in a page  you must include the following at the top of the page: `.. include:: /global.rst`
 
+**Custom CSS**
+
+Found in the `docs/source/_static/css/custom.css` file. Only a minimal set of CSS tweaks are there as we keep close to the default theme.
+
 ## Reference
 
 For `Re Structured Text` help:

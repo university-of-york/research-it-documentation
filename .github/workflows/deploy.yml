@@ -39,7 +39,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-1
     - name: Build site
-      run: TZ=UTC sphinx-build -b html docs/source/ site/
+      run: TZ=UTC sphinx-build -a -b html docs/source/ site/
     - name: Get Bucket name
       id: get-bucket
       run:  |

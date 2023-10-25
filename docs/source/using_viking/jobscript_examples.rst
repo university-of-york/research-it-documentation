@@ -10,47 +10,25 @@ In this section we'll try to give some general purpose examples of different job
     If you have a splendid jobscript, maybe it's super efficient, has a neat trick or maybe it does something not shown here. If that's the case then please send it to us so we can add it to this site and share it with everyone else. You never know, you may just make someone's day!
 
 
-.. hint::
+.. _jobscript_parallelisation:
+   
+Different types of parallelisation
+----------------------------------
 
-    The `Slurm Documentation site <https://slurm.schedmd.com/sbatch.html>`_ has the complete list of options you can use in an jobscript for ``sbatch``, it's quite a lot so please refer there for more information or type ``man sbatch`` on Viking for the manual.
+.. epigraph::
 
-Jobscript Layout
-----------------
+    The interactions between different CPU management options are complex and often difficult to predict. Some experimentation may be required to discover the exact combination of options needed to produce a desired outcome.
 
-Jobscripts for ``sbatch`` must begin with the `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_ and the path to the ``bash`` interpreter (we then use \'`set -e <https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html>`_\' to stop processing on the first error). Next are the ``sbatch directives``, which must be all together, before any other commands. Finally you have the commands you wish to run, which should include which modules you wish to load.
+    -- Slurm documentation
 
+There are several ``SBATCH`` options related to executing your program using a parallel execution model that all have similar sounding names, e.g.: ``--nodes``, ``--ntasks``, ``--cpus-per-task``, and ``--ntasks-per-node``.
+Selecting configuration options for jobs in ``Slurm`` can be quite complex and not easy to predict. There is an `in depth guide <https://slurm.schedmd.com/cpu_management.html>`_ about CPU management in the ``Slurm`` docs which is well worth the read, and CECI has a `very informative FAQ <https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html#q05-how-do-i-create-a-parallel-environment>`_ explaining the various ways to request 16 cores and the results.
 
-Managing Time
-^^^^^^^^^^^^^
+For the purposes of simplicity, we'll group the types of parallel execution into 3:
 
-The time directive is the time that the job take to run. It can be omitted in which case the default time is 8 hours. The job will be killed if it exceeds this time. Specifying a shorter and more accurate time will allow your job to start execution sooner. The time can be specified in two ways in the format ``DD-HH:MM:SS``:
-
-    1. In the job script using the ``#SBATCH --time=00-02:00:00`` directive **RECOMMENDED**
-    2. On the command line using the ``--time=00-02:00:00`` option
-
-
-Controlling Memory Usage
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-You need to understand the memory requirements of your program. A job has a default memory allocation and sometimes you will need to request a little more memory so your program can run. Specify the real memory required per node, default units are megabytes ``--mem=<size[units]>`` for example: ``#SBATCH --mem=1G``
-
-Redirecting Output
-^^^^^^^^^^^^^^^^^^
-
-The %j in the ``#SBATCH --output`` line tells ``Slurm`` to substitute the ``job ID`` in the name of the output file. You can also add a ``#SBATCH --error`` with an error file name to separate output and error logs.
-
-
-Filename Patterns
-^^^^^^^^^^^^^^^^^
-
-There are several useful placeholders that can be used in filenames which will be automatically filled in by ``Slurm``. The full list of these can be found in the ``sbatch`` man page, under the ``filename pattern`` heading or in the `online documentation <https://slurm.schedmd.com/sbatch.html#lbAH>`_.
-
-
-.. attention::
-
-    Specifying a project account code is mandatory, please use the following line in your batch scripts so that we can associate your work with your project:
-
-    ``#SBATCH --account=YOUR-PROJECT-CODE``
+  - Multi-threaded
+  - Multi-processor (MPI)
+  - Job arrays
 
 
 Single Process Jobs
@@ -77,37 +55,19 @@ For software that does not support any parallelisation, or where single threaded
     # purge any existing modules
     module purge
 
-    #--------------------------- Load software modules ---------------------------#
-    module load {MOD_COMPILER}
+    # Load modules
+    module load {MOD_PYTHON}
 
-    #------------------------- Directory/file management -------------------------#
-    # copy example source code if it doesn't exist
-    if [[ ! -f serial_example.cpp ]] && [[ ! -f serial_example ]]; then
-        cp /mnt/lustre/groups/viking-examples/serial_job/serial_example.cpp .
-    fi
-
-    #------------------------------ Commands to run ------------------------------#
-    echo My working directory is: `pwd`
-    echo Running job on host:
-    echo -e '\t'`hostname` at `date`'\n'
-
-    # compile example, if executable doesn't already exist
-    if [[ ! -f serial_example ]]; then
-        g++ -o serial_example serial_example.cpp
-    fi
-
-    # run example
-    ./serial_example 5
-
-    echo '\n'Job completed at `date`
+    # Commands to run
+    python some_serial_script.py
 
 
 .. _threaded-multi-process-jobs:
 
-Threaded / Multi-Process Jobs
------------------------------
+Multi-Threaded
+--------------
 
-..  FIXME: needs explanation
+The following job script requests 8 cores on the same node, which could be used in a multi-threaded application.
 
 .. code-block:: bash
     :linenos:
@@ -116,6 +76,7 @@ Threaded / Multi-Process Jobs
     #----------------------------- Slurm directives ------------------------------#
     #SBATCH --job-name=threaded_example     # Job name
     #SBATCH --ntasks=1                      # Number of MPI tasks to request
+    #SBATCH --nodes=1                       # Run on the same node
     #SBATCH --cpus-per-task=8               # Number of CPU cores per MPI task
     #SBATCH --mem=1G                        # Total memory to request
     #SBATCH --time=0-00:05:00               # Time limit (DD-HH:MM:SS)
@@ -128,35 +89,17 @@ Threaded / Multi-Process Jobs
     # purge any existing modules
     module purge
 
-    #--------------------------- Load software modules ---------------------------#
-    module load {MOD_COMPILER}
+    # Load modules
+    module load {MOD_R}
 
-    #------------------------- Directory/file management -------------------------#
-    # copy example source code if it doesn't exist
-    if [[ ! -f threaded_example.cpp ]] && [[ ! -f threaded_example ]]; then
-        cp /mnt/lustre/groups/viking-examples/threaded_job/threaded_example.cpp .
-    fi
-
-    #------------------------------ Commands to run ------------------------------#
-    echo My working directory is: `pwd`
-    echo Running job on host:
-    echo -e '\t'`hostname` at `date`'\n'
-
-    # compile example, if executable doesn't already exist
-    if [[ ! -f threaded_example ]]; then
-        g++ -fopenmp -o threaded_example threaded_example.cpp -lpthread
-    fi
-
-    # run example
-    ./threaded_example
-
-    echo '\n'Job completed at `date`
+    # Commands to run
+    Rscript --vanilla some_multithreaded_script.R
 
 
-Multi-processor Jobs
---------------------
+MPI
+---
 
-.. FIXME: needs explanation
+This job script requests 40 processes that could be split amongst different nodes, as might be desirable for an MPI application.
 
 .. code-block:: bash
     :linenos:
@@ -179,31 +122,35 @@ Multi-processor Jobs
     # purge any existing modules
     module purge
 
-    # Load modules #
+    # Load modules
     module load {MOD_PYTHON}
 
-    # Commands to run #
-    echo My working directory is: `pwd`
-    echo Running job on host:
-    echo -e '\t'`hostname` at `date`'\n'
+    # Commands to run
+    python some_mpi_script.py
 
-    python -c 'print ("Hello, world!")'
+.. _jobscript_job_arrays:
 
-    echo '\n'Job completed at `date`
-
-
-Array Jobs
+Job Arrays
 ----------
 
-.. FIXME: needs explanation
+Job arrays are efficient ways of running the same program multiple times.
+They can be quicker to run than executing the program once and using MPI or multi-threaded for handling the multiple replicates.
+This is because the job scheduler is much quicker at allocating resources to small jobs, even a large number of them, than one bigger job.
+
+The example job script ``my_array.job`` below requests 100 jobs of the same R script, indicated by the ``--array`` option.
+Submitting this file to Slurm has the same effect as running ``sbatch my_array.job`` 100 times if the ``--array`` option wasn't present.
+
+Job arrays aren't restricted to running identical copies of a program either.
+The ``$SLURM_ARRAY_TASK_ID`` environmental variable represents the array index, which can be passed into your program as an argument to allow for iteration-specific behaviour, e.g. using 100 different parameter settings, or 100 different input data files.
 
 .. code-block:: bash
+    :caption: my_array.job
     :linenos:
 
     {SHEBANG}
     #SBATCH --job-name=my_job               # Job name
     #SBATCH --ntasks=1                      # Number of MPI tasks to request
-    #SBATCH --cpus-per-task=2               # Number of CPU cores per MPI task
+    #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
     #SBATCH --mem=8G                        # Total memory to request
     #SBATCH --time=0-00:15:00               # Time limit (DD-HH:MM:SS)
     #SBATCH --account=dept-proj-year        # Project account to use
@@ -219,8 +166,8 @@ Array Jobs
     # purge any existing modules
     module purge
 
-    module load lang/R/4.1.2-foss-2021b
+    # Load modules
+    module load {MOD_R}
 
-    echo "Job started on $(hostname) at $(date)"
-    Rscript --vanilla code/simulation_array.R $SLURM_ARRAY_TASK_ID
-    echo "Job finished at $(date)"
+    # Commands to run
+    Rscript --vanilla some_job_array_script.R $SLURM_ARRAY_TASK_ID

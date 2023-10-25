@@ -29,9 +29,9 @@ Welcome to the Viking Documentation!
 
    using_viking/software_on_viking
    using_viking/submitting_jobs
-   using_viking/resource_partitions
    using_viking/jobscript_examples
    using_viking/jobscripts_program_specific
+   using_viking/resource_partitions
    using_viking/terminal_multiplexing
    using_viking/virtual_desktops
    using_viking/apptainer

@@ -7,6 +7,23 @@ Connecting to viking
 To access Viking you'll need to be on the campus network or using the VPN :doc:`which you can read about here. </getting_started/connecting_off_campus>`
 
 
+.. attention::
+
+    The ``ssh`` fingerprints for the two login nodes are listed below. If you connected to the old Viking previously then you will probably see a warning that the ``fingerprint`` has changed. The correct fingerprints for the two login nodes are:
+
+    .. code-block:: console
+
+        viking2-login1
+        3072 SHA256:e6QUl1pE1RK55unuALoNDXaEvJLcam4LJo6P07nbGcs viking2-login1 (RSA)
+        256 SHA256:jn1KdPw+M9iws+uEwsnuqC5NVph4eNT095m22RFz4Mw viking2-login1 (ECDSA)
+        256 SHA256:TztJ/bGgPiK6bIGfQqRQnxfg/nVhw978T6kyy9HhJTQ viking2-login1 (ED25519)
+
+        viking2-login2
+        3072 SHA256:e6QUl1pE1RK55unuALoNDXaEvJLcam4LJo6P07nbGcs viking2-login2 (RSA)
+        256 SHA256:jn1KdPw+M9iws+uEwsnuqC5NVph4eNT095m22RFz4Mw viking2-login2 (ECDSA)
+        256 SHA256:TztJ/bGgPiK6bIGfQqRQnxfg/nVhw978T6kyy9HhJTQ viking2-login2 (ED25519)
+
+
 Terminal access
 ---------------
 

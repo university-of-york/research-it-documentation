@@ -1,4 +1,4 @@
-Virtual Desktops
+Virtual desktops
 ================
 
 You can create virtual desktop sessions to run graphical programs. There two main ways you can do this, on the login node and on a compute node.
@@ -8,7 +8,7 @@ You can create virtual desktop sessions to run graphical programs. There two mai
     Remember, the login nodes are only for **light work** as mentioned in the :doc:`code of conduct <../getting_started/code_of_conduct>`, so if you need to use a GUI program for heavy work, then please ensure that is done on a compute node.
 
 
-Login Node
+Login node
 ----------
 
 .. code-block:: console
@@ -42,7 +42,7 @@ And you will be presented with information similar to mine below:
     If prompted, you should supply the following password: 5jaHqekY
 
 
-Connect to the Virtual Desktop
+Connect to the virtual desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. It will ask for a password (in my example this is ``5jaHqekY``), yours will be whatever was displayed in the previous step.
@@ -78,7 +78,7 @@ MacOS
 
 .. _virtual_desktop:
 
-Use the Virtual Desktop
+Use the virtual desktop
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 You should soon be presented with a virtual desktop running on Viking. Click the ``Applications > System Tools > Terminal`` button to launch a terminal and you can load modules and programs as usual.
@@ -90,7 +90,7 @@ You should soon be presented with a virtual desktop running on Viking. Click the
     it's a virtual desktop, on a remote machine!
 
 
-List Sessions
+List sessions
 ^^^^^^^^^^^^^
 
 List all the current virtual desktops you have running with the following command:
@@ -111,7 +111,7 @@ And you'll be presented with a list similar to mine below:
 
 .. _kill_sessions:
 
-Kill Sessions
+Kill sessions
 ^^^^^^^^^^^^^
 
 To kill a session you need to use the ``Identity`` code from the output above, use it with the following command:
@@ -129,7 +129,7 @@ Your ``Identity`` code will be different to mine, this is just an example.
 
 .. _virtual_session_compute_node:
 
-Compute Node
+Compute node
 -------------
 
 The above method is great for light work like checking results but what if you want to do the heavy work with a GUI application? It's easy, when you get the the virtual desktop :ref:`like above <virtual_desktop>`, then you ask for some resources on a compute node, this is exactly the same as using the ``srun`` command however we use a special wrapper called ``start-interactive-session.sh`` in the terminal in the virtual desktop, for example:

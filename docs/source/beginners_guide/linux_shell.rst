@@ -1,4 +1,4 @@
-Linux Shell
+Linux shell
 ===========
 
 Intro
@@ -74,10 +74,10 @@ To logout of the shell type ``logout``, ``exit`` or press ``Ctrl + d``.
     The are a number of shells available to the user. In this tutorial we will be using `Bash <https://www.gnu.org/software/bash/>`_, the most widely used Linux shell.
 
 
-Files and Directories
+Files and directories
 ---------------------
 
-Filesystem Organisation
+Filesystem organisation
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 The file system is the component of the operating system that organises data into files. These files are organised into directories.
@@ -108,7 +108,7 @@ The output of the ``pwd`` command, ``/usr/researchcomp/elecclust/abs4``, is call
 The ``cd`` command lets you change your working directory to another location in the file system. ``cd`` with no arguments places you back in your home directory. The special directory ``..`` references the directory above your current directory (known as the parent directory). The is another special direcory ``.`` which references the current directory. These two directories can be viewed as *links*.
 
 
-Listing Files and Directories
+Listing files and directories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To list the files in a directory use the ``ls`` (list) command.
@@ -253,7 +253,7 @@ The next example displays the directory in the long format using the ``-l`` opti
 Using a directory name as an option causes ``ls`` to list the contents of the directory. To list the attributes of the directory use the ``-d`` option. You can use a pathname as the argument.
 
 
-Creating, Moving and Copying Files and Directories
+Creating, moving and copying files and directories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can create directories, move or copy files or directories to other locations in the filesystem using the ``mkdir`` (make directory) ``mv`` (move) and ``cp`` (copy) commands.
@@ -343,7 +343,7 @@ To delete directories use the ``rmdir`` (remove directory) command.
 ``rmdir`` will only remove empty directories. To remove a directory and all it's contents use the ``rm -r`` (recursive) option to the ``rm`` command. To be safe and check the files before you remove them use ``rm -ri`` (recursive and interactive) options.
 
 
-Editing and Displaying the Contents of Files
+Editing and displaying the contents of files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Text Editors
@@ -410,7 +410,7 @@ The ``cat`` command displays all the text in the users file on the screen. This 
    | ``/pattern``    - search for text in the file
 
 
-Files and Directory Permissions
+Files and directory permissions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Groups are provided to manage sets of users and control access to files and directories. All users belong to a default group and may be a member of other groups.
@@ -470,7 +470,7 @@ In the above example the first column of the directory listing shows the permiss
 This is a ``directory``, the owner ``abs4`` can ``read``, ``write`` and ``access`` the directory. Members of the group, ``csrv``, can ``read`` and ``access`` the directory, they can not create or ``write`` to files in the directory, all ``other`` users do not have any access to the directory.
 
 
-Changing Permissions
+Changing permissions
 """"""""""""""""""""
 
 To change file permissions use the ``chmod`` command.
@@ -547,7 +547,7 @@ To change the group of a file use the  command ``chgrp <groupname> <filename>``.
     -bash-4.1$
 
 
-History, Command Line Editing and Job Control
+History, command line editing and job control
 ---------------------------------------------
 
 History
@@ -570,7 +570,7 @@ The history command lists the last commands you typed.
     -bash-4.1$
 
 
-Command Line Editing
+Command line editing
 ^^^^^^^^^^^^^^^^^^^^
 
 You can select past commands using the ``up`` and ``down`` arrow keys. You can edit the command line using the ``left`` and ``right`` arrow keys and any of the following commands:
@@ -593,7 +593,7 @@ ESC-B	            move back one word
 ===============     =====================================
 
 
-Job Control
+Job control
 ^^^^^^^^^^^
 
 Job control deals with managing your programs whilst they are running. Linux uses the name process for a running program. The ``ps`` command list all the processes you have running.
@@ -670,16 +670,16 @@ The sleep command does nothing for the number of seconds specified in the argume
 
 In this example we put two jobs into the background. The ``fg`` command moves the last job placed in the background into the foreground. ``Ctrl-z`` *stops* (pauses, not kills) the job and returns to the command line. The ``bg`` command places the paused job in the background. ``fg`` can bring specific jobs to the foreground by specifying the job number.
 
-Environment Variables and Shell Scripts
+Environment variables and shell scripts
 ---------------------------------------
 
-Environment Variables
+Environment variables
 ^^^^^^^^^^^^^^^^^^^^^
 
 In the Linux shell a variable is a named object that contains data and which can be used by programs and commands.  Environment variables provides a simple way to share configuration settings between multiple applications and processes in Linux. For example the value of an environmental variable can be the default editor that should be used, which can then be used by command to invoke the correct editor when necessary.
 
 
-Predefined Environment Variables
+Predefined environment variables
 """"""""""""""""""""""""""""""""
 ==========  =========================================================================
 Variable    Value
@@ -710,7 +710,7 @@ To use an environment variable precede its name with a ``$`` character. We can d
     -bash-4.1$
 
 
-Shell Scripts
+Shell scripts
 ^^^^^^^^^^^^^
 
 Shell scripts are files which contain shell commands. You run the script by typing its filename. Things to note:
@@ -749,10 +749,10 @@ Shell scripts are files which contain shell commands. You run the script by typi
     -bash-4.1$
 
 
-Input and Output Redirection, Pipes, and Filters
+Input and output redirection, pipes, and filters
 ------------------------------------------------
 
-Input and Redirection
+Input and redirection
 ^^^^^^^^^^^^^^^^^^^^^
 
 We can change the behaviour of programs to redirect input from a file instead of the keyboard and write to a file instead of the screen. The ``>`` character is used to redirect output to a file and ``<`` to redirect input.
@@ -915,7 +915,7 @@ The ``last`` command displays all users and the dates and times they have logged
     -bash-4.1$
 
 
-Useful Commands
+Useful commands
 ---------------
 
 To find more information on any command below, type ``man <command>`` which will open up the built-in manual page for that command.

@@ -1,6 +1,6 @@
 .. _connecting-off-campus:
 
-Connecting to Viking off campus
+Connecting to viking off campus
 ===============================
 
 Viking has been configured to only allow connections from the university network. Therefore, in order to access Viking off-campus, you must first connect to either the VPN service, or create an ``ssh`` tunnel. These re-route your traffic through the university network allowing you to connect to Viking as if you were on campus.
@@ -11,7 +11,7 @@ Using the VPN
 Please see the main IT Services page on using the VPN found `here <https://www.york.ac.uk/it-services/services/vpn/>`_.
 
 
-SSH Gateway
+SSH gateway
 -----------
 
 The university also provides an `SSH gateway service <https://www.york.ac.uk/it-services/services/ssh/>`_ that can be used to allow off-campus access to Viking, as an alternative to the VPN. To use this method, ``ssh`` to ``ssh.york.ac.uk`` (substituting your username for ``abc123``):

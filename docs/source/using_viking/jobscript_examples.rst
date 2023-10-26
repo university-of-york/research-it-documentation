@@ -1,4 +1,4 @@
-Jobscript Examples
+Jobscript examples
 ==================
 
 
@@ -11,7 +11,7 @@ In this section we'll try to give some general purpose examples of different job
 
 
 .. _jobscript_parallelisation:
-   
+
 Different types of parallelisation
 ----------------------------------
 
@@ -31,7 +31,7 @@ For the purposes of simplicity, we'll group the types of parallel execution into
   - Job arrays
 
 
-Single Process Jobs
+Single process jobs
 -------------------
 
 For software that does not support any parallelisation, or where single threaded operation is desired, the following example job script can serve as a template.
@@ -64,7 +64,7 @@ For software that does not support any parallelisation, or where single threaded
 
 .. _threaded-multi-process-jobs:
 
-Multi-Threaded
+Multi-threaded
 --------------
 
 The following job script requests 8 cores on the same node, which could be used in a multi-threaded application.
@@ -130,7 +130,7 @@ This job script requests 40 processes that could be split amongst different node
 
 .. _jobscript_job_arrays:
 
-Job Arrays
+Job arrays
 ----------
 
 Job arrays are efficient ways of running the same program multiple times.

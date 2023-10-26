@@ -14,13 +14,13 @@ Please see the main IT Services page on using the VPN found `here <https://www.y
 SSH Gateway
 -----------
 
-The University also provides an `SSH gateway service <https://www.york.ac.uk/it-services/services/ssh/>`_ that can be used to allow off-campus access to Viking, as an alternative to the VPN. To use this method, ``ssh`` to ``ssh.york.ac.uk`` (substituting your username for ``abc123``):
+The university also provides an `SSH gateway service <https://www.york.ac.uk/it-services/services/ssh/>`_ that can be used to allow off-campus access to Viking, as an alternative to the VPN. To use this method, ``ssh`` to ``ssh.york.ac.uk`` (substituting your username for ``abc123``):
 
 .. code-block:: console
 
-    $ ssh abc123@viking.york.ac.uk
+    $ ssh abc123@ssh.york.ac.uk
 
-Once you have entered your password and gone through the two-factor authentication, you should then see the following message asking which machine you wish to connect to. Simply enter ``viking`` and press ``Enter``.
+Once you have entered your password and gone through the 2FA (two-factor authentication), you should then see the following message asking which machine you wish to connect to. Simply enter ``viking`` and press ``Enter``.
 
 .. code-block:: console
 
@@ -41,4 +41,5 @@ To avoid manual entering the hostname when using the SSH gateway, it's also poss
     ssh -J abc123@ssh.york.ac.uk viking
 
 .. hint::
-    You will still need to enter your password, and complete the 2FA as before.
+
+    You will still need to enter your password, and then complete the 2FA.

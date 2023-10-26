@@ -11,7 +11,7 @@ Getting access to Viking is a simple two-stage process:
 
 Project Application
 -------------------
-In order to use Viking, the project PI (or supervisor) must apply for a Viking project account. These will be used to monitor the usage of Viking, and attribute usage by researchers across the University. We ask that the PI who applies for the account is a permanent member of staff, as this will allow us to have a permanent contact for project reporting purposes. You may also nominate a deputy, who can deal with any project enquiries on your behalf. A PI may request more than one project code, such as in the situation when they have multiple projects.
+In order to use Viking, the project PI (or supervisor) must apply for a Viking project account. These will be used to monitor the usage of Viking, and attribute usage by researchers across the university. We ask that the PI who applies for the account is a permanent member of staff, as this will allow us to have a permanent contact for project reporting purposes. You may also nominate a deputy, who can deal with any project enquiries on your behalf. A PI may request more than one project code, such as in the situation when they have multiple projects.
 
 .. attention::
 

@@ -1,7 +1,7 @@
 Backing Up your Data
 ====================
 
-There are two main options depending on how frequently you need to access the data, the University **Filestore** or the **Vault**.
+There are two main options depending on how frequently you need to access the data, the university **Filestore** or the **Vault**.
 
 The **Vault** provides unlimited cold storage and is appropriate for storing sensitive data but retrieving the data can take some time and may incur a charge
 
@@ -22,7 +22,7 @@ Vault is a file archiving service.  It can be used to store files that need to b
 Filestore
 ---------
 
-Please see the University's `Filestore guide <https://www.york.ac.uk/it-services/filestore/rented/>`_ for more information about accessing and using this service.
+Please see the university's `Filestore guide <https://www.york.ac.uk/it-services/filestore/rented/>`_ for more information about accessing and using this service.
 To move your data from Viking and to the Filestore ("Storage"), the address you need to use as an example is::
 
     sftp.york.ac.uk:/shared/storage/<filestore>

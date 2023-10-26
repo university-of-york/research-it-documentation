@@ -783,7 +783,7 @@ The Slurm template that this references is shown below and should be general eno
 
     #!/usr/bin/env bash
 
-    ## Slurm template for using batchtools on Viking at the University of York
+    ## Slurm template for using batchtools on Viking at the university of York
     ## Modified from https://github.com/mllg/batchtools/blob/master/inst/templates/slurm-lido3.tmpl
     ## Author: Stuart Lacy
     ## Date: 2023-07-13

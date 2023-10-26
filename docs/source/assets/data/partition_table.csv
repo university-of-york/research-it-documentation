@@ -1,11 +1,11 @@
 Partition |br| Name,Max Job |br| Time,Max Jobs |br| per User,Max Cores |br| Running |br| per User,Max Running |br| Memory |br| Per User,Default |br| Coes |br| Per Job,Default |br| Memory |br| Per Core,Number |br| of Nodes
-nodes,48 hrs,No Limit,960,51G,,,116
-week,7 days,No Limit,,,,,11
-month,30 days,No Limit,,,,,2
-test,30 mins,2,8,16G,,1G,116
-preempt,30 days,No Limit,,,,,116
-gpu,3 days,No Limit,,,,,16
-gpuplus,3 days,No Limit,,,,,6
-himmem,2 days,No Limit,,,,20G,2
-himem_week,7 days,No Limit,,,,20G,1
-interactive,8 hours,1,1,25G,,10G,1
+nodes,48 hrs,No Limit,960,5T,1,5.2G,116
+week,7 days,No Limit,,,1,5.2G,11
+month,30 days,No Limit,,,1,5.2G,2
+test,30 mins,2,8,16G,1,5.2G,116
+preempt,30 days,No Limit,,,1,5.2G,116
+gpu,3 days,No Limit,,,1,5.2G,16
+gpuplus,3 days,No Limit,,,1,5.2G,6
+himmem,2 days,No Limit,,,1,20G,2
+himem_week,7 days,No Limit,,,1,20G,1
+interactive,8 hours,1,1,25G,1,10G,1

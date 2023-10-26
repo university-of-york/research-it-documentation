@@ -604,11 +604,11 @@ The following example shows how to run ``cmdstanr`` using 4 cores, one for each 
 
 .. note::
 
-    The crucial step in the above job script is setting ``--cpus-per-task=4``, to ensure that you request the same number of cores that you are using in your ``R`` script to parallelize over.
+    The crucial step in the above job script is setting ``--cpus-per-task=4``, to ensure that you request the same number of cores that you are using in your ``R`` script to parallelise over.
 
 .. attention::
 
-    Always explicitly specify the number of cores in your ``R`` code when possible. This is because some ``R`` packages use ``parallel::detect_cores()`` to identify the number of cores on the system to parallelize over. However, this doesn't work on Viking as it returns the number of cores in total on the node, **not** the number of cores you have requested and can result in unexpected behaviour.
+    Always explicitly specify the number of cores in your ``R`` code when possible. This is because some ``R`` packages use ``parallel::detect_cores()`` to identify the number of cores on the system to parallelise over. However, this doesn't work on Viking as it returns the number of cores in total on the node, **not** the number of cores you have requested and can result in unexpected behaviour.
 
 
 Array jobs
@@ -720,7 +720,7 @@ This package takes as input:
   - A location to save a *registry*
   - A Slurm batch job template file (one provided below)
 
-The registry is just a structured directory where ``batchtools`` saves its environment, which includes items such as the completed Slurm job script, serialized versions of the ``R`` code to run, and outputs from each iteration of the array.
+The registry is just a structured directory where ``batchtools`` saves its environment, which includes items such as the completed Slurm job script, serialised versions of the ``R`` code to run, and outputs from each iteration of the array.
 
 The ``R`` script below shows how to use ``batchtools`` to convert the for-loop parameter sweep into an array job that runs on Viking.
 This script will need to be moved onto Viking and run - it can't automatically submit from your PC (yet... watch this space).
@@ -783,7 +783,7 @@ The Slurm template that this references is shown below and should be general eno
 
     #!/usr/bin/env bash
 
-    ## Slurm template for using batchtools on Viking at the university of York
+    ## Slurm template for using batchtools on Viking at the University of York
     ## Modified from https://github.com/mllg/batchtools/blob/master/inst/templates/slurm-lido3.tmpl
     ## Author: Stuart Lacy
     ## Date: 2023-07-13
@@ -791,7 +791,7 @@ The Slurm template that this references is shown below and should be general eno
     ## Job Resource Interface Definition
     ##
     ## ncpus [integer(1)]:        Number of required cpus per task,
-    ##                            Set larger than 1 if you want to further parallelize
+    ##                            Set larger than 1 if you want to further parallelise
     ##                            with multicore/parallel within each task.
     ## walltime [integer(1)]:     Walltime for this job, in seconds.
     ##                            Must be at least 1 minute.
@@ -834,7 +834,7 @@ The Slurm template that this references is shown below and should be general eno
     #SBATCH --mail-user=<%= email_address %>
     <%= if (array.jobs) sprintf("#SBATCH --array=1-%i", nrow(jobs)) else "" %>
 
-    ## Initialize work environment like
+    ## Initialise work environment like
     module add <%= modules %>
 
     ## Export value of DEBUGME environemnt var to slave

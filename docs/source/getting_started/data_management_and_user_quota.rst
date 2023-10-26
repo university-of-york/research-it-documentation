@@ -6,7 +6,7 @@ Data management and user quota
 Viking is a self-contained machine, therefore you will notice your normal UoY home directories are not available. This is intentional for the following reasons:
 
 - If the dedicated network link between campus and Viking goes down, it may cause slowness or jobs to fail. Instead, jobs should continue to run until the link is re-established
-- If a user tries to read/write from the university filestores using Viking, it is possible that they could bring the entire storage system down for the university
+- If a user tries to read/write from the University filestores using Viking, it is possible that they could bring the entire storage system down for the University
 - UoY home directories are not designed for high-performance computing. Instead Viking has its own filesystem designed for high-performance
 
 
@@ -98,7 +98,7 @@ There are many ways you can copy data to and from Viking and so we will only go 
 
 
 .. caution::
-    If you are not connected to the campus network, please remember you must be connected to the `university VPN <https://www.york.ac.uk/it-services/services/vpn/>`_ first.
+    If you are not connected to the campus network, please remember you must be connected to the `University VPN <https://www.york.ac.uk/it-services/services/vpn/>`_ first.
 
 
 Windows
@@ -250,4 +250,4 @@ If you login into Google Drive you should see the files from ``directory_to_copy
 Dropoff service
 ---------------
 
-The York `DropOff Service <https://www.york.ac.uk/it-services/services/dropoff/>`_ is a web page that lets you easily and securely exchange files up to 128G with university staff and students or external people. Files are automatically deleted after 14 days and all files are transferred across the network `securely encrypted <https://dropoff.york.ac.uk/security>`_.
+The York `DropOff Service <https://www.york.ac.uk/it-services/services/dropoff/>`_ is a web page that lets you easily and securely exchange files up to 128G with University staff and students or external people. Files are automatically deleted after 14 days and all files are transferred across the network `securely encrypted <https://dropoff.york.ac.uk/security>`_.

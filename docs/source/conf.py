@@ -6,8 +6,8 @@ import os
 # -- Project information
 
 project = 'Viking Documentation'
-copyright = '2023, university of York'
-author = 'university of York'
+copyright = '2023, The University of York'
+author = 'The University of York'
 
 release = '0.1'
 version = '0.1.0'

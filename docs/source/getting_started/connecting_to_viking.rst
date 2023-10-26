@@ -57,7 +57,7 @@ Connecting to viking
 
 .. image:: ../assets/img/putty2.png
 
-A terminal window should appear. Log in with your university username and password.
+A terminal window should appear. Log in with your University username and password.
 
 .. image:: ../assets/img/putty3.png
 

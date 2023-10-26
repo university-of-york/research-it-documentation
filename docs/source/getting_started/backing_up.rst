@@ -1,4 +1,4 @@
-Backing Up your Data
+Backing up your data
 ====================
 
 There are two main options depending on how frequently you need to access the data, the University **Filestore** or the **Vault**.
@@ -13,7 +13,7 @@ The **Filestore** is more readily accessible, if you need more space please cont
     Please ensure you **regularly** back up your data, if there is a catastrophic failure all data on Viking could be lost!
 
 
-The Vault
+The vault
 ----------
 
 Vault is a file archiving service.  It can be used to store files that need to be kept, but are unlikely to be accessed again.  The main use is for storing research data which needs to be kept for contractual or other reasons, but is probably never going to be used or looked at again. Please see the `Vault User Guide <https://support.york.ac.uk/s/article/Vault-User-Guide>`_ for more details.

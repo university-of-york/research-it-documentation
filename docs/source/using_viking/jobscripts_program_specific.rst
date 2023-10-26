@@ -1,6 +1,6 @@
 .. include:: /global.rst
 
-Jobscripts - Program Specific
+Jobscripts - program specific
 =============================
 
 This section of documentation goes over various programs installed on Viking which are more complicated than average to use.
@@ -19,8 +19,8 @@ All of the example files shown on these pages can be downloaded or can be found 
 
     In each section there may be an example ``module load`` command. Newer versions may be available so please try the command ``module spider NAME`` where 'NAME' is the software to search for, and you will be presented with the currently available list.
 
-Alpha Fold
------------
+AlphaFold
+----------
 
 `AlphaFold <https://deepmind.com/blog/article/putting-the-power-of-alphafold-into-the-worlds-hands>`_ is an AI system developed by `DeepMind <https://deepmind.com/>`_ that predicts a protein's 3D structure from its amino acid sequence. The source code for the inference pipeline can be found on the `AlphaFold GitHub <https://github.com/deepmind/alphafold>`_ page.
 
@@ -111,7 +111,7 @@ Example job scripts
     alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
 
 
-Notes for using AlphaFold on Viking
+Notes for using AlphaFold on viking
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``AlphaFold`` currently requires access to various genetic databases such as ``UniRef90``, ``MGnify``, ``BFD``, ``Uniclust30``, ``PDB70`` and ``PDB``.
@@ -334,7 +334,7 @@ MATLAB
 .. FIXME: New docs reference a jobscript emailed to Emma - can we get a copy?
 
 
-Running Interactively
+Running interactively
 ^^^^^^^^^^^^^^^^^^^^^
 
 ``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so inside an :ref:`interactive cluster session <virtual_session_compute_node>`, rather than on :doc:`Viking's login nodes <../getting_started/code_of_conduct>`.
@@ -367,7 +367,7 @@ To run ``MATLAB`` interactively with the graphical user interface, you must firs
 In your virtual desktop session, you should now see the ``MATLAB`` graphical interface which is running on a compute node.
 
 
-Running in Batch mode
+Running in batch mode
 ^^^^^^^^^^^^^^^^^^^^^
 
 ``MATLAB`` (2019a and newer) can also be run in batch mode, i.e non-interactively. This model of execution fits nicely with HPC systems like Viking, where work can be submitted to the scheduler to be executed.
@@ -401,7 +401,7 @@ The following job script could be used to submit a ``MATLAB`` script to the clus
     **Do not** include the ``.m`` extension, which is part of the ``matlab_batch_example.m`` filename, in the job script when calling ``matlab -batch`` command, as shown.
 
 
-Standalone MATLAB Programs
+Standalone MATLAB programs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is possible to create standalone ``MATLAB`` programs from your ``MATLAB`` projects, and these can be run on Viking. An advantage of doing this is that when running a standalone program, ``MATLAB`` does not check out a licence from the licence server, which means somebody else who has to run ``MATLAB`` interactively will be able to do so even if your ``MATLAB`` program is running!
@@ -455,7 +455,7 @@ If you encounter the following error it is because the compiler has detected tha
 Certain ``MATLAB`` features are not available in standalone programs, so it is worth being aware of what these are to avoid trouble when running your program. You can find a list of ineligible features here, and comprehensive documentation of supported features `here <https://uk.mathworks.com/products/compiler/compiler_support.html?s_tid=srchtitle>`_.
 
 
-Running Standalone Programs
+Running standalone programs
 """""""""""""""""""""""""""
 
 Standalone ``MATLAB`` programs require the ``MATLAB`` Compiler Runtime ``MCR`` to run. This requires the ``MATLAB`` module to be loaded either in your interactive session or in your job script. Make sure that the version you load is the same version that was used when you compiled the program.
@@ -604,11 +604,11 @@ The following example shows how to run ``cmdstanr`` using 4 cores, one for each 
 
 .. note::
 
-    The crucial step in the above job script is setting ``--cpus-per-task=4``, to ensure that you request the same number of cores that you are using in your ``R`` script to parallelize over.
+    The crucial step in the above job script is setting ``--cpus-per-task=4``, to ensure that you request the same number of cores that you are using in your ``R`` script to parallelise over.
 
 .. attention::
 
-    Always explicitly specify the number of cores in your ``R`` code when possible. This is because some ``R`` packages use ``parallel::detect_cores()`` to identify the number of cores on the system to parallelize over. However, this doesn't work on Viking as it returns the number of cores in total on the node, **not** the number of cores you have requested and can result in unexpected behaviour.
+    Always explicitly specify the number of cores in your ``R`` code when possible. This is because some ``R`` packages use ``parallel::detect_cores()`` to identify the number of cores on the system to parallelise over. However, this doesn't work on Viking as it returns the number of cores in total on the node, **not** the number of cores you have requested and can result in unexpected behaviour.
 
 
 Array jobs
@@ -672,7 +672,7 @@ NB: if your ``R`` script also makes use of multi-core parallelisation then you c
     Rscript --vanilla jobarray.R $SLURM_ARRAY_TASK_ID
 
 
-Converting A Serial For Loop To Array Job
+Converting a serial for loop to array job
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While array jobs are a very effective way of running trivially parallelisable code on Viking, they require a bit of modification to scripts that you have been running on your personal computer. Take the parameter sweep example from above, this might have started out life as a for loop when running on your computer, as in the example below. This would work well until it takes too long to run, either from increasing the number of iterations or from the model fitting taking longer, until you want to run it on Viking to free up your PC.
@@ -720,7 +720,7 @@ This package takes as input:
   - A location to save a *registry*
   - A Slurm batch job template file (one provided below)
 
-The registry is just a structured directory where ``batchtools`` saves its environment, which includes items such as the completed Slurm job script, serialized versions of the ``R`` code to run, and outputs from each iteration of the array.
+The registry is just a structured directory where ``batchtools`` saves its environment, which includes items such as the completed Slurm job script, serialised versions of the ``R`` code to run, and outputs from each iteration of the array.
 
 The ``R`` script below shows how to use ``batchtools`` to convert the for-loop parameter sweep into an array job that runs on Viking.
 This script will need to be moved onto Viking and run - it can't automatically submit from your PC (yet... watch this space).
@@ -791,7 +791,7 @@ The Slurm template that this references is shown below and should be general eno
     ## Job Resource Interface Definition
     ##
     ## ncpus [integer(1)]:        Number of required cpus per task,
-    ##                            Set larger than 1 if you want to further parallelize
+    ##                            Set larger than 1 if you want to further parallelise
     ##                            with multicore/parallel within each task.
     ## walltime [integer(1)]:     Walltime for this job, in seconds.
     ##                            Must be at least 1 minute.
@@ -834,7 +834,7 @@ The Slurm template that this references is shown below and should be general eno
     #SBATCH --mail-user=<%= email_address %>
     <%= if (array.jobs) sprintf("#SBATCH --array=1-%i", nrow(jobs)) else "" %>
 
-    ## Initialize work environment like
+    ## Initialise work environment like
     module add <%= modules %>
 
     ## Export value of DEBUGME environemnt var to slave

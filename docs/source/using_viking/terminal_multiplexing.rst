@@ -1,4 +1,4 @@
-Terminal Multiplexing
+Terminal multiplexing
 =====================
 
 Terminal multiplexing allows you to ``detatch`` from a terminal session, leaving any commands running, and come back to it later - as if you never disconnected. You can ``detatch`` and ``attach`` multiple times, and once ``detatched`` you can even turn off your device, leaving the session running on Viking and come back at any time to pick up where you left off.

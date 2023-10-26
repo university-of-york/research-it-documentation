@@ -2,10 +2,10 @@ Quickstart
 ==========
 
 .. attention::
-    Please ensure you are on the campus network or :ref:`connected to the university VPN <connecting-off-campus>`. If you haven't already please :ref:`create an account <creating-an-account>`.
+    Please ensure you are on the campus network or :ref:`connected to the University VPN <connecting-off-campus>`. If you haven't already please :ref:`create an account <creating-an-account>`.
 
 
-Log in to Viking
+Log in to viking
 ----------------
 
 .. code-block:: console
@@ -18,7 +18,7 @@ Log in to Viking
     It's a little bit more involved than the one line above but we have :ref:`nice breakdown here <connecting-via-windows>`.
 
 
-Find the Software You Need
+Find the software you need
 --------------------------
 
 .. code-block:: console
@@ -29,7 +29,7 @@ Find the Software You Need
 .. FIXME: add example output
 
 
-Load a Module
+Load a module
 --------------
 
 .. code-block:: console
@@ -46,13 +46,13 @@ Load a Module
     To read more about the EasyBuild concept of *common toolchains*, please see the `EasyBuild docs <https://docs.easybuild.io/common-toolchains/>`_. In it's simplest sense, think of it as the compiler version the software was build with.
 
 
-Develop and Test
+Develop and test
 ----------------
 
 Develop and test the the job you plan to create. Remember not to leave a proper job running on the login node as this can affect other users. If you are testing something and need to kill the command whilst it's running, press ``Ctrl + c``.
 
 
-Create Job Script
+Create job script
 -----------------
 
 In your favorite text editor, create a jobscript for your job. Save it as something like ``myjobscript.job``.
@@ -99,7 +99,7 @@ In your favorite text editor, create a jobscript for your job. Save it as someth
     echo '\n'Job completed at `date`
 
 
-Send the Jobscript to the Job Scheduler
+Send the jobscript to the job scheduler
 ---------------------------------------
 
 .. code-block:: console
@@ -107,13 +107,13 @@ Send the Jobscript to the Job Scheduler
     $ sbatch myjobscript.job
 
 
-Check Results
+Check results
 --------------
 
 Depending on what you set for ``#SBATCH --mail-type=`` you should receive some emails as the job progresses. When the job is completed you should have a log file in the directory where you ran the ``sbatch`` command originally. This is a great opportunity to see how efficient your job was.
 
 
-Adjust the Jobscript
+Adjust the jobscript
 --------------------
 
 If your ``CPU`` or ``memory`` utilisation is very low, it means your settings in the jobscript need adjusting if you are to run the job again. Now is a good time to adjust these down, you should aim to get the actual utilisation close to the requested values, this will mean that Viking can start more jobs quicker and everyone can get their results faster. That's teamwork! ❤️

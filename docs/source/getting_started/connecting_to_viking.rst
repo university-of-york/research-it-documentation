@@ -1,4 +1,4 @@
-Connecting to Viking
+Connecting to viking
 ====================
 
 .. hint::
@@ -7,10 +7,10 @@ Connecting to Viking
 To access Viking you'll need to be on the campus network or using the VPN :doc:`which you can read about here. </getting_started/connecting_off_campus>`
 
 
-Terminal Access
+Terminal access
 ---------------
 
-Linux and MacOS
+Linux and macOS
 ^^^^^^^^^^^^^^^
 
 To log in from a terminal emulator, use the following command:
@@ -36,7 +36,7 @@ Windows
 For terminal access to Viking from a Windows desktop, you will need to install `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/>`_ (or comparable software).
 
 
-Configuring PuTTY to Connect to Viking
+Configuring PuTTY to connect to viking
 """""""""""""""""""""""""""""""""""""""
 
 Open PuTTY and configure it to connect to Viking:
@@ -48,7 +48,7 @@ Open PuTTY and configure it to connect to Viking:
 
 .. image:: ../assets/img/putty1.png
 
-Connecting to Viking
+Connecting to viking
 """""""""""""""""""""
 
 1. Start PuTTY
@@ -57,7 +57,7 @@ Connecting to Viking
 
 .. image:: ../assets/img/putty2.png
 
-A terminal window should appear. Log in with your university username and password.
+A terminal window should appear. Log in with your University username and password.
 
 .. image:: ../assets/img/putty3.png
 

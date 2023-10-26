@@ -1,10 +1,10 @@
-Virtual Environments
+Virtual environments
 ====================
 
 venv (Python)
 -------------
 
-For simple virtual environments, where you just need to install packages through ``pip``, ``venv`` can be a good choice. Here is a `really good article <https://www.bitecode.dev/p/relieving-your-python-packaging-pain>`_ about using ``venv`` in Python which is well worth the read. More info can be found in the `documentation <https://docs.python.org/3/library/venv.html>`_. Below we'll keep a quickstart guide of the list of commands to get a ``venv`` virtual environment up and running. 
+For simple virtual environments, where you just need to install packages through ``pip``, ``venv`` can be a good choice. Here is a `really good article <https://www.bitecode.dev/p/relieving-your-python-packaging-pain>`_ about using ``venv`` in Python which is well worth the read. More info can be found in the `documentation <https://docs.python.org/3/library/venv.html>`_. Below we'll keep a quickstart guide of the list of commands to get a ``venv`` virtual environment up and running.
 
 .. admonition:: Did you know?
 
@@ -59,7 +59,7 @@ Viking provides the ``conda`` utility program, as part of the ``Miniconda`` modu
 
 .. _conda_setup:
 
-Initial Setup
+Initial setup
 ^^^^^^^^^^^^^
 
 Before you get started using ``conda`` on Viking, there is a small amount of configuration that you can set up to make working with multiple environments much more straightforward. By default, ``conda`` will create environments and install packages into subdirectories of your ``HOME`` directory, namely:
@@ -101,7 +101,7 @@ You will also need to load the Miniconda module, which will enable you to make u
 in a Viking shell. At this point, you are ready to use the ``conda`` utility with no risk of hitting the 100,000 files quota on your ``HOME`` directory.
 
 
-Creating an Environment
+Creating an environment
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 There are a few different ways in which environments can be created using the ``conda`` utility, but we are going to describe what is perhaps the most reliable and reproducible method - using an environment file. An environment file is a `YAML <https://yaml.org/>`_ file that describes the environment that you would like to create. This allows you to recreate the same environment in multiple places and easily pass on a specification to other users to reproduce your findings. A simple example environment file is shown below.
@@ -151,7 +151,7 @@ Here you are telling ``conda`` to create a new environment using the file (``-f`
 At this point, the environment ``my_first_environment`` has been created, and is ready to be used. Note: the asterisk in the output of ``conda info --envs`` indicates *which* conda environment is currently activated. As you haven't yet activated your new environment, the ``base`` environment (the default environment over which you have no control) is activated.
 
 
-Using an Environment
+Using an environment
 ^^^^^^^^^^^^^^^^^^^^
 
 Once an environment has been created, you can activate it using the ``source activate`` command. This can be seen clearly in the following example:

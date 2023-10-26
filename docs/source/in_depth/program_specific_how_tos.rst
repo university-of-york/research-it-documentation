@@ -1,10 +1,10 @@
-Program Specific How-Tos
+Program specific how-tos
 ========================
 
 Here we will share some guides on getting started with some specific applications. In many cases there are multiple ways to accomplish things so you can treat this as a starting point. If you found a good guide elsewhere which you successfully followed or if you would like your own guide added please feel free to `let us know <itsupport@york.ac.uk>`_.
 
 
-Jupyter Notebooks
+Jupyter notebooks
 -----------------
 
 The `Jupyter notebook <https://docs.jupyter.org/en/latest/>`_ is a web-based notebook environment for interactive computing. Running a ``Jupyter notebook`` server remotely on Viking and connecting to it from your local web browser is certainly possible.
@@ -59,7 +59,7 @@ Then, back to the first terminal where the notebook is running, there should be 
 ``Ctrl + left mouse click`` on this link and the browser should load and connect to the notebook running on the compute node!
 
 
-Jupyter Notebooks using VSCode
+Jupyter notebooks using VSCode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using some of the above guide as reference, another way to so this is with VSCode and it's similar, but you don't need to make a virtual desktop. If you're interested in this method it's similar to the above in many ways:

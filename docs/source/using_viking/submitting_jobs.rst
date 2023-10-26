@@ -1,12 +1,12 @@
-Submitting Jobs
+Submitting jobs
 ===============
 
-Batch Jobs
+Batch jobs
 ----------
 
 Viking can run lots of different jobs in many different ways, but for the most part you'll probably want to submit the job via a **jobscript**.
 A jobscript is just a text file with various options in it and then a list of the commands to run your desired program.
-This is then submitted to the job scheduler called `Slurm <https://slurm.schedmd.com/quickstart.html>`_ which manages all the jobs on Viking and does its best to ensure they all run as fairly and efficiently as possible. 
+This is then submitted to the job scheduler called `Slurm <https://slurm.schedmd.com/quickstart.html>`_ which manages all the jobs on Viking and does its best to ensure they all run as fairly and efficiently as possible.
 
 A typical workflow involves preparing the jobscript for your needs and submitting the job to ``Slurm`` when ready via the ``sbatch`` command.
 However, this doesn't mean your program will start executing straight away!
@@ -49,7 +49,7 @@ Below is an example jobscript to run a Python script, let's save it as ``jobscri
     Please ensure your project account code is specified through the ``--account`` option so that we can associate your work with your project. Your job won't run without it.
 
 It uses ``bash`` syntax and importantly has a set of ``SBATCH`` specific options **before** the commands which need to be run.
-Here is a quick summary of the most important ``SBATCH`` options as these determine the computational resources you are requesting, which will impact both on your queueing time (if you request more resources you will experience longer waits), but also on your job performance, however, there are far more possible options than we can go into here. 
+Here is a quick summary of the most important ``SBATCH`` options as these determine the computational resources you are requesting, which will impact both on your queueing time (if you request more resources you will experience longer waits), but also on your job performance, however, there are far more possible options than we can go into here.
 The `Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all, and please refer to the :doc:`jobscript for specific applications section </using_viking/jobscripts_program_specific>` for more advanced and specialised jobscript examples.
 
     - ``--partition``: The compute nodes on Viking are grouped into different *partitions* based on different use cases. For most general computing the ``nodes`` partition will be sufficient. See the :doc:`Resource Partition page </using_viking/resource_partitions>` for more details
@@ -70,39 +70,39 @@ If you filled out the ``--mail-user`` option you will get an email when the job 
     This command must be run from the same folder that the Python file ``my_script.py`` is located in, or more generally filepaths should be relative to the directory where ``sbatch`` is run from.
 
 
-Tips and Best Practices
+Tips and best practices
 -----------------------
 
-Resource Requests
+Resource requests
 ^^^^^^^^^^^^^^^^^
 
 Whilst you must avoid allocating fewer resources than required for your job to complete, please try to avoid significantly over-allocating resources. In addition to allowing more efficient utilisation of the cluster if job requests are reasonable, smaller jobs are likely to be scheduled quicker, thus improving your personal queue time. The same is true for wall-time; the scheduler assumes that the full duration will be used by the job, and so cannot backfill effectively if jobs are requesting significantly longer wall-times than they actually use.
 
 
-Job Arrays
+Job arrays
 ^^^^^^^^^^
 
-When submitting large volumes of jobs with identical resource requests, job arrays offer an efficient mechanism to manage these. 
+When submitting large volumes of jobs with identical resource requests, job arrays offer an efficient mechanism to manage these.
 See the :ref:`Job Arrays section <jobscript_job_arrays>`  or the `official Slurm documentation <https://slurm.schedmd.com/job_array.html>`_ for further details.
 
 
-Bash Shebang and 'set -e'
+Bash shebang and 'set -e'
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Consider using ``set -e`` after the ``#SBATCH`` section. This has the effect of aborting the job if **any** command within the batch script fails, instead of potentially continuing with an environment that is different to what is expected, or with erroneous data. Furthermore, it ensures that the job displays as ``FAILED`` when querying the status of jobs with ``sacct``. In future versions of Viking this can be done in one line with ``#!/usr/bin/env -S bash -e``.  This is the `shebang <https://en.wikipedia.org/wiki/Shebang_(Unix)>`_ we were referencing in the title.
 
-Redirecting Output
+Redirecting output
 ^^^^^^^^^^^^^^^^^^
 
 The %j in the ``#SBATCH --output`` line tells ``Slurm`` to substitute the ``job ID`` in the name of the output file. You can also add a ``#SBATCH --error`` with an error file name to separate output and error logs.
 
-Filename Patterns
+Filename patterns
 ^^^^^^^^^^^^^^^^^
 
 There are several useful placeholders similar to ``%j`` that can be used in filenames which will be automatically filled in by ``Slurm``. The full list of these can be found in the ``sbatch`` man page, under the ``filename pattern`` heading or in the `online documentation <https://slurm.schedmd.com/sbatch.html#lbAH>`_.
 
 
-Interactive Jobs
+Interactive jobs
 ----------------
 
 If you would like to have a terminal session on a high powered compute node, for example to do interactive data analysis in programs like R, Python or MATLAB, or to run GUI applications, then you need an **interactive job**.
@@ -117,7 +117,7 @@ The workflow is:
     5. On exit, the allocated resources are automatically released
 
 
-srun Command
+Srun command
 ^^^^^^^^^^^^
 
 Running the command below will request a Bash shell on a compute node in the interactive partition for 8 hours.

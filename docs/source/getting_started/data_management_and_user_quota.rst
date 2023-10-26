@@ -1,4 +1,4 @@
-Data Management and User Quota
+Data management and user quota
 ==============================
 
 .. FIXME: This uses OLD information
@@ -6,11 +6,11 @@ Data Management and User Quota
 Viking is a self-contained machine, therefore you will notice your normal UoY home directories are not available. This is intentional for the following reasons:
 
 - If the dedicated network link between campus and Viking goes down, it may cause slowness or jobs to fail. Instead, jobs should continue to run until the link is re-established
-- If a user tries to read/write from the university filestores using Viking, it is possible that they could bring the entire storage system down for the university
+- If a user tries to read/write from the University filestores using Viking, it is possible that they could bring the entire storage system down for the University
 - UoY home directories are not designed for high-performance computing. Instead Viking has its own filesystem designed for high-performance
 
 
-Your Area on Viking Explained
+Your area on viking explained
 -----------------------------
 
 When you log in to Viking, you will land in your home directory, specifically:
@@ -47,7 +47,7 @@ Additionally you also have access to a ``localtmp`` folder which points to stora
 
 
 
-Checking Your Quota
+Checking your quota
 -------------------
 
 To check how much space you have left, run the following command:
@@ -76,7 +76,7 @@ Which will produce something similar to the following result:
                        232K    100G    110G              57    200k    250k
 
 
-What Happens If You Exceed Your Quota
+What happens if you exceed your quota
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you login to Viking you will be told if you are over quota. If this is in users area with the **100GB** or **200,000** files limit you will need to delete or move your files to your ``scratch`` area.  **There is a grace period of 7 days after which you will lose access to Viking.**
@@ -87,7 +87,7 @@ If you are over quota in the ``scratch`` area and need more space please email i
     The most common reason for exceeding your quota in your home directory is by storing ``conda`` environments directly in your home directory. The solution for that is to :ref:`set up your Conda environment first <conda_setup>`.
 
 
-Copying and Moving Your Data to Viking
+Copying and moving your data to viking
 --------------------------------------
 
 There are many ways you can copy data to and from Viking and so we will only go over some general examples here using popular programs as a basic guide. For quick reference here are the important details::
@@ -98,7 +98,7 @@ There are many ways you can copy data to and from Viking and so we will only go 
 
 
 .. caution::
-    If you are not connected to the campus network, please remember you must be connected to the `university VPN <https://www.york.ac.uk/it-services/services/vpn/>`_ first.
+    If you are not connected to the campus network, please remember you must be connected to the `University VPN <https://www.york.ac.uk/it-services/services/vpn/>`_ first.
 
 
 Windows
@@ -185,12 +185,12 @@ For the username and password, enter your IT Services credentials.
 After entering these details and connecting to Viking, your Viking area will appear on the right. You will now be able to click and drag files similar to the file manager. More information can be found in the `FileZilla documentation <https://wiki.filezilla-project.org/Using>`_.
 
 
-Moving Data to Google Drive Directly from Viking
+Moving data to google drive directly from viking
 ------------------------------------------------
 
 We know a number of Viking users like to store data on Google Drive.  It is possible to copy data directly from Viking to your Google Drive folder. Below we will provide instructions on how to set this up.
 
-Setting up rclone on Viking
+Setting up rclone on viking
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to use ``rclone``, you will need a ``client-id``, the steps for which can be found on the `rclone website <https://rclone.org/drive/#making-your-own-client-id>`_.
@@ -247,7 +247,7 @@ If you login into Google Drive you should see the files from ``directory_to_copy
     2021/08/16 11:33:23 Fatal error: listing Team Drives failed: googleapi: Error 403: Insufficient Permission: Request had insufficient authentication scopes., insufficientPermissions
 
 
-DropOff Service
+Dropoff service
 ---------------
 
 The York `DropOff Service <https://www.york.ac.uk/it-services/services/dropoff/>`_ is a web page that lets you easily and securely exchange files up to 128G with University staff and students or external people. Files are automatically deleted after 14 days and all files are transferred across the network `securely encrypted <https://dropoff.york.ac.uk/security>`_.

@@ -5,7 +5,7 @@
 Main heading
 ============
 
-Use a clear line under each heading at least the length of the text
+Use a clear line under each heading at least the length of the text. All headings must be *sentence case* (capitalise the first character only) to adhere to the University style guide.
 
 Subheading
 ----------

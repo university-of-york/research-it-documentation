@@ -51,7 +51,7 @@ Found in the `docs/source/_static/css/custom.css` file. Only a minimal set of CS
 
 **Images and Tables**
 
-Located in the `assets/img` and `assets/data` folders. The `csv` files in the `data` folder are useful for displaying tables with good formatting.
+Located in the `assets/img` and `assets/data` folders. The `csv` files in the `data` folder are useful for displaying tables with better formatting.
 
 ## Reference
 

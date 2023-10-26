@@ -38,6 +38,13 @@ Searching for modules
     $ module spider Python/
 
 
+For even more control over the search you can use regular expressions, for example:
+
+.. code-block:: console
+
+    $ module -r spider '^Python'
+
+
 .. hint::
 
     Try running the command `module overview` to give you a nicely categorised view of all names and number versions of each module on Viking.

@@ -33,8 +33,14 @@ Searching for modules
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
+    :caption: note the trailing slash '/' this helps reduce the output
 
-    $ module spider Python
+    $ module spider Python/
+
+
+.. hint::
+
+    Try running the command `module overview` to give you a nicely categorised view of all names and number versions of each module on Viking.
 
 
 Loading a module

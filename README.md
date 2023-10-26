@@ -49,6 +49,10 @@ The `global.rst` file contains an [RST substitution](https://docutils.sourceforg
 
 Found in the `docs/source/_static/css/custom.css` file. Only a minimal set of CSS tweaks are there as we keep close to the default theme.
 
+**Images and Tables**
+
+Located in the `assets/img` and `assets/data` folders. The `csv` files in the `data` folder are useful for displaying tables with good formatting.
+
 ## Reference
 
 For `Re Structured Text` help:
@@ -57,6 +61,6 @@ For `Re Structured Text` help:
 
 [RST Specs](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html)
 
-The site has a cheatsheet page which is built from `docs/source/cheatsheet.rst` and not linked in the website but accessible as [https://vikingdocs.york.ac.uk/cheatsheet.html](https://vikingdocs.york.ac.uk/cheatsheet.html).
+The site has a *cheatsheet* page to showcase example syntax, it's built from `docs/source/cheatsheet.rst` and not linked in the website but accessible as [https://vikingdocs.york.ac.uk/cheatsheet.html](https://vikingdocs.york.ac.uk/cheatsheet.html).
 
 

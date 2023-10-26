@@ -491,11 +491,12 @@ When using ``MongoDB``, you have to explicitly state the location of the databas
 R
 -
 
-To see which ``R`` versions are available, use the following command. Note the trailing slash in the command, without this ``Ruby`` modules will also be included in the results.
+To see which ``R`` versions are available, use the following command. Notice that we're using the ``-r`` option to allow us to use a ``Regular Expression`` (or ``RegEx``) in the search. This helps cut down on the returned results. Try ``module spider R/`` and see the difference.
 
 .. code-block:: console
 
-    $ module spider R/
+    $ module -r spider '^R/'
+
 
 One of these versions can then be loaded as following. Here we use ``{MOD_R}`` as an example
 

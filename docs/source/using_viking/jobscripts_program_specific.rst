@@ -7,9 +7,10 @@ This section of documentation goes over various programs installed on Viking whi
 
 All of the example files shown on these pages can be downloaded or can be found on Viking at
 
-.. code-block:: console
+.. fixme: add local copies on Viking
+.. .. code-block:: console
 
-    /mnt/lustre/groups/viking-examples/program_job_scripts
+..    /mnt/lustre/groups/viking-examples/program_job_scripts
 
 .. note::
 

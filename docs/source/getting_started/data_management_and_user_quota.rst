@@ -90,7 +90,25 @@ If you are over quota in the ``scratch`` area and need more space please email i
 Copying and moving your data to viking
 --------------------------------------
 
-There are many ways you can copy data to and from Viking and so we will only go over some general examples here using popular programs as a basic guide. For quick reference here are the important details::
+If you need to transfer data to Viking from your department's shared storage space one of the fastest ways is doing this is by being logged into Viking and initiating the transfer there.
+
+Transfer data from the shared storage directly to Viking
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It's possible to be logged into Viking and directly copy data across from your `shared filestore <https://www.york.ac.uk/it-services/filestore/rented/>`_ over `scp, sftp or rsync <https://www.york.ac.uk/it-services/services/file-transfer/>`_. You'll need to know the path to the folder but an example is shown below. Here we use ``scp`` to copy a folder to the current folder on Viking:
+
+.. code-block:: console
+    :caption: replace '<filestore>' with the path to your folder
+
+    $ scp -r scp.york.ac.uk:/shared/storage/<filestore> .
+
+The dot ``.`` at the end tells ``scp`` to copy the folder to the current directory, in this case it's ``<filestore>`` but you should change that to the correct folder path on the shared storage. You can change the ``.`` to any path you have access to (normally within your home folder).
+
+
+Transferring data to Viking from another computer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There are many other ways you can copy data to and from Viking and so we will only go over some general examples here using popular programs as a basic guide. For quick reference here are the important details::
 
     Hostname:   viking.york.ac.uk
     Port:       22
@@ -102,7 +120,7 @@ There are many ways you can copy data to and from Viking and so we will only go 
 
 
 Windows
-^^^^^^^
+"""""""
 
 If you are copying data from a Windows device it is recommended that you use `WinSCP <https://winscp.net/>`_ and their website has some good `tutorials for uploading and downloading files <https://winscp.net/eng/docs/task_index>`_ and other uses. Using the your ``username`` and the ``hostname``, ``port`` and ``protocol`` shown above, you should be able to connect to Viking and start moving files!
 
@@ -110,7 +128,7 @@ If you are copying data from a Windows device it is recommended that you use `Wi
 .. _transfer_files_linux:
 
 Linux
-^^^^^
+"""""
 
 You can copy your data from any Linux device to Viking using the following commands:
 
@@ -121,7 +139,7 @@ For example, you can run the following commands from a terminal running on your 
 
 
 scp
-^^^
+"""
 
 This is recommended for transferring a small number of files. This example will copy data from your device to your ``scratch`` directory on Viking
 
@@ -149,7 +167,7 @@ There are many options you can use with ``scp``.  To view these options run the 
 
 
 rsync
-^^^^^
+"""""
 
 This is recommended for a large number of files. Rsync can check what is already in place, therefore if the network is interrupted you can run the command again and it will pick up from where it was stopped. It will only transfer files that do not exist on the other server or files that have been changed.
 
@@ -171,7 +189,7 @@ There are many more options you can use with ``rsync``.  To view these options r
 
 
 FileZilla
-^^^^^^^^^
+"""""""""
 
 Filezilla is a fantastic graphical program for transferring files and can be used on both Windows, Linux, or MacOS. You can download it from `their website <https://filezilla-project.org/>`_.
 

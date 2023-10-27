@@ -49,6 +49,14 @@ If you need a more complex virtual environment with complex dependencies then ``
 Conda (multi-language)
 ----------------------
 
+.. fixme: remove this when it's fixed
+
+.. attention::
+
+    Currently performance might be poor if ``conda`` includes MPI in the stack. This is being investigated.
+
+
+
 ``Conda`` provides similar functionality to ``venv`` but with some additional useful features:
 
     - it is language-agnostic rather than being restricted to Python

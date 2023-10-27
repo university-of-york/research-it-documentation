@@ -113,7 +113,7 @@ There are a few different ways in which environments can be created using the ``
     channels:
       - conda-forge
     dependencies:
-      - python=3.7
+      - python=3.11
       - numpy
       - ipython
       - pip:

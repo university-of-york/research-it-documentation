@@ -23,7 +23,7 @@ Where ``abc123`` will be replaced by your username. This ``home`` directory has 
 
 .. code-block:: console
 
-    /users/abc123/scratch
+    /mnt/scratch/users/abc123/
 
 .. FIXME: needs size
 

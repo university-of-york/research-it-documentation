@@ -5,9 +5,9 @@ Jobscripts - program specific
 
 This section of documentation goes over various programs installed on Viking which are more complicated than average to use.
 
-All of the example files shown on these pages can be downloaded or can be found on Viking at
-
 .. fixme: add local copies on Viking
+.. All of the example files shown on these pages can be downloaded or can be found on Viking at
+
 .. .. code-block:: console
 
 ..    /mnt/lustre/groups/viking-examples/program_job_scripts

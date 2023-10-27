@@ -21,5 +21,5 @@ If you connected to the old Viking then your computer may have stored the old ``
 I cannot connect when using the eduroam WiFi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Currently this is being worked on and we hope to have a solution soon. In the meantime please use a wired connection on campus or use the :doc:`University VPN </getting_started/connecting_off_campus>`.
+Currently this is being worked on and we hope to have a solution soon. In the meantime please use a wired connection on campus or first connect to the :doc:`University VPN </getting_started/connecting_off_campus>`.
 

@@ -1,6 +1,11 @@
 Virtual desktops
 ================
 
+.. warning::
+
+    This page is being updated and the process of starting and connecting to a virtual desktop on Viking is being worked on. Some of this page may be inaccurate or not work at times.
+
+
 You can create virtual desktop sessions to run graphical programs. There two main ways you can do this, on the login node and on a compute node.
 
 .. attention::
@@ -11,50 +16,111 @@ You can create virtual desktop sessions to run graphical programs. There two mai
 Login node
 ----------
 
-.. code-block:: console
-
 Run the following line from within a login node
 
-    $ alces session start gnome
+.. code-block:: console
+
+    $ flight desktop start gnome
 
 And you will be presented with information similar to mine below:
 
 .. code-block:: console
-    :emphasize-lines: 4,5,7
+    :emphasize-lines: 23
 
-    VNC server started:
-        Identity: 743178ce-32d2-11ee-8df4-246e96c38380
-            Type: gnome
-            Host: 144.32.247.22
-            Port: 5938
-         Display: 38
-        Password: 5jaHqekY
-       Websocket: 41377
+    Starting a 'gnome' desktop session:
 
-    Depending on your client, you can (insecurely by default) connect to the
-    session using:
+        > ✅ Starting session
 
-      vnc://nd996:5jaHqekY@144.32.247.22:5938
-      144.32.247.22:5938
-      144.32.247.22:38
+    A 'gnome' desktop session has been started.
+
+    == Session details ==
+          Name:
+      Identity: ef742a0c-63e7-4b7e-8aef-fa1bcca92e3f
+          Type: gnome
+       Host IP: 10.0.13.22
+      Hostname: login2
+          Port: 5902
+       Display: :2
+      Password: Nicdaij9
+      Geometry: 1024x768
+
+    This desktop session is not directly accessible from outside of your
+    cluster as it is running on a machine that only provides internal
+    cluster access.  In order to access your desktop session you will need
+    to perform port forwarding using 'ssh'.
+
+    Refer to 'flight desktop show ef742a0c' for more details.
+
+    If prompted, you should supply the following password: Nicdaij9
 
 
-    If prompted, you should supply the following password: 5jaHqekY
+More details on the virtual desktop
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We need more info, from the output copy and run the command from the line highlighted above. In this example it's  ``flight desktop show ef742a0c`` but for you the ``ef742a0c`` part will be different, please ensure you copy from the output on your session. As as example the output will look similar to this:
+
+.. code-block:: console
+    :emphasize-lines: 9,17
+
+    == Session details ==
+          Name:
+      Identity: ef742a0c-63e7-4b7e-8aef-fa1bcca92e3f
+          Type: gnome
+       Host IP: 10.0.13.22
+      Hostname: login2
+          Port: 5902
+       Display: :2
+      Password: Nicdaij9
+      Geometry: 1024x768
+
+    This desktop session is not directly accessible from outside of your
+    cluster as it is running on a machine that only provides internal
+    cluster access.  In order to access your desktop session you will need
+    to perform port forwarding using 'ssh':
+
+      ssh -L 5902:10.0.13.22:5902 abc123@
+
+    Once the ssh connection has been established, depending on your
+    client, you can connect to the session using one of:
+
+      vnc://abc123:Nicdaij9@localhost:5902
+      localhost:5902
+      localhost:2
+
+    If, when connecting, you receive a warning as follows, try again with
+    a different port number, e.g. 5903, 5904 etc.:
+
+      channel_setup_fwd_listener_tcpip: cannot listen to port: 5902
+
+    If prompted, you should supply the following password: Nicdaij9
+
+
+Create the ``ssh`` tunnel
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The virtual desktop isn't running on the login node, so we need a way to *tunnel* a connection from your computer to the login node, the command highlighted in the output above is incomplete but on Linux and MacOS from a terminal you would need to run the following:
+
+.. code-block:: console
+    :caption: substitute ``abc123`` for your actual username
+
+    $ ssh -L 5902:10.0.13.22:5902 abc123@viking.york.ac.uk
+
+Notice we added the ``viking.york.ac.uk`` address after ``abc123@``, ensure you substitute in your own username. Leave this terminal open, it will function as our ``ssh tunnel``.
 
 
 Connect to the virtual desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. It will ask for a password (in my example this is ``5jaHqekY``), yours will be whatever was displayed in the previous step.
+Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. It will ask for a password (in my example this is ``Nicdaij9``), yours will be whatever was displayed in the previous step.
 
-Windows
-"""""""
-
-On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.php>`_. Using the above as an example (your details will be different), the ``Remote Host`` would be:
-
-.. code-block:: console
-
-    144.32.247.22:5938
+.. Windows
+.. """""""
+..
+.. On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.php>`_. Using the above as an example (your details will be different), the ``Remote Host`` would be:
+..
+.. .. code-block:: console
+..
+..     localhost:5902
 
 Linux
 """"""
@@ -63,7 +129,7 @@ Linux
 
 .. code-block:: console
 
-     144.32.247.22:5938
+     localhost:5902
 
 
 MacOS
@@ -73,7 +139,7 @@ MacOS
 
 .. code-block:: console
 
-    vnc://144.32.247.22:5938
+    vnc://localhost:5902
 
 
 .. _virtual_desktop:
@@ -97,17 +163,18 @@ List all the current virtual desktops you have running with the following comman
 
 .. code-block:: console
 
-    $ alces session list
+    $ flight desktop list
 
 And you'll be presented with a list similar to mine below:
 
 .. code-block:: console
 
-    +----------+------------+--------------------+-----------------+---------+------+----------+
-    | Identity | Type       | Host name          | Host address    | Display | Port | Password |
-    +----------+------------+--------------------+-----------------+---------+------+----------+
-    | 743178ce | gnome      | login2             | 144.32.247.22   |     :38 | 5938 | 5jaHqekY |
-    +----------+------------+--------------------+-----------------+---------+------+----------+
+    ┌──────┬──────────┬───────┬───────────┬────────────┬────────────────┬──────────┬────────┐
+    │ Name │ Identity │ Type  │ Host name │ IP address │ Display (Port) │ Password │ State  │
+    ├──────┼──────────┼───────┼───────────┼────────────┼────────────────┼──────────┼────────┤
+    │      │ ef742a0c │ gnome │ login2    │ 10.0.13.22 │ :2 (5902)      │ Nicdaij9 │ Active │
+    └──────┴──────────┴───────┴───────────┴────────────┴────────────────┴──────────┴────────┘
+
 
 .. _kill_sessions:
 
@@ -118,7 +185,7 @@ To kill a session you need to use the ``Identity`` code from the output above, u
 
 .. code-block:: console
 
-    $ alces session kill 743178ce
+    $ flight desktop kill ef742a0c
 
 Your ``Identity`` code will be different to mine, this is just an example.
 

@@ -1,7 +1,7 @@
 Virtual desktops
 ================
 
-.. attention::
+.. warning::
 
     This page is being updated and the process of starting and connecting to a virtual desktop on Viking is being worked on. Some of this page may be inaccurate or not work at times.
 
@@ -16,9 +16,9 @@ You can create virtual desktop sessions to run graphical programs. There two mai
 Login node
 ----------
 
-.. code-block:: console
-
 Run the following line from within a login node
+
+.. code-block:: console
 
     $ flight desktop start gnome
 
@@ -118,7 +118,7 @@ On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.ph
 
 .. code-block:: console
 
-    144.32.247.22:5938
+    localhost:5902
 
 Linux
 """"""

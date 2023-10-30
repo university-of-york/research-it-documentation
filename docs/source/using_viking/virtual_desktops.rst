@@ -25,6 +25,7 @@ Run the following line from within a login node
 And you will be presented with information similar to mine below:
 
 .. code-block:: console
+    :emphasize-lines: 23
 
     Starting a 'gnome' desktop session:
 
@@ -56,7 +57,7 @@ And you will be presented with information similar to mine below:
 More details on the virtual desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We need more info, from the output copy and run the command ``flight desktop show ef742a0c`` (in your example the ``ef742a0c`` part will be different, please ensure you copy from the output on your session). As as example the output will look similar to this:
+We need more info, from the output copy and run the command from the line highlighted above. In this example it's  ``flight desktop show ef742a0c`` but for you the ``ef742a0c`` part will be different, please ensure you copy from the output on your session. As as example the output will look similar to this:
 
 .. code-block:: console
     :emphasize-lines: 9,17
@@ -104,21 +105,22 @@ The virtual desktop isn't running on the login node, so we need a way to *tunnel
 
     $ ssh -L 5902:10.0.13.22:5902 abc123@viking.york.ac.uk
 
-Notice we added the ``viking.york.ac.uk`` address after ``abc123@``, ensure you substitute in your own username. Leave this termainl open, it will function as our ``ssh tunnel``.
+Notice we added the ``viking.york.ac.uk`` address after ``abc123@``, ensure you substitute in your own username. Leave this terminal open, it will function as our ``ssh tunnel``.
+
 
 Connect to the virtual desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. It will ask for a password (in my example this is ``Nicdaij9``), yours will be whatever was displayed in the previous step.
 
-Windows
-"""""""
-
-On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.php>`_. Using the above as an example (your details will be different), the ``Remote Host`` would be:
-
-.. code-block:: console
-
-    localhost:5902
+.. Windows
+.. """""""
+..
+.. On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.php>`_. Using the above as an example (your details will be different), the ``Remote Host`` would be:
+..
+.. .. code-block:: console
+..
+..     localhost:5902
 
 Linux
 """"""

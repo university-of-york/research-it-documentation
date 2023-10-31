@@ -22,8 +22,12 @@ For the time being if you are using the ``eduroam`` WiFi you need to connect to 
 Terminal access
 ---------------
 
-Linux and macOS
-^^^^^^^^^^^^^^^
+Linux, MacOS and Windows PowerShell
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. hint::
+
+    The latest builds of Windows 10 and Windows 11 include a built-in ``ssh`` client, so you can run ``ssh`` commands directly from a ``CMD`` or ``PowerShell`` window. To run either of these search for ``CMD`` or ``PowerShell`` from the Windows search box and then type in the below command. If you're using a personal device and need to install the ``ssh`` client please follow the `Microsoft website <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui#install-openssh-for-windows>`_. Alternatively you can install ``PuTTY`` and use it as :ref:`described below <connecting-via-windows>`.
 
 To log in from a terminal emulator, use the following command:
 
@@ -34,18 +38,20 @@ To log in from a terminal emulator, use the following command:
 You will be prompted for your IT Services password. If you're using a personal device then you'll need to add your IT Services username for example:
 
 .. code-block:: console
+    :caption: remember to substitute 'abc123' for your own username
 
     $ ssh abc123@viking.york.ac.uk
 
 .. hint::
     X11 forwarding will only work on the Viking login nodes, which means that you won't be able to run graphical applications e.g. MATLAB on the Viking compute nodes using X11 forwarding. Details about virtual desktop sessions on Viking :doc:`can be found here </using_viking/virtual_desktops>`.
 
+
 .. _connecting-via-windows:
 
 Windows
 ^^^^^^^
 
-For terminal access to Viking from a Windows desktop, you will need to install `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/>`_ (or comparable software).
+Alternatively, for terminal access to Viking from a Windows desktop, you can install `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/>`_ (or comparable software).
 
 
 Configuring PuTTY to connect to viking

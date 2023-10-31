@@ -41,6 +41,12 @@ Find the software you need
 
 .. FIXME: add example output
 
+There is lots of output as Python is mentioned in lots of modules. For more control over the search you can use `regular expressions <https://datasciencedojo.com/blog/regular-expression-101/#>`_ with the ``-r`` option, for example:
+
+.. code-block:: console
+
+    $ module -r spider '^Python'
+
 
 Load a module
 --------------

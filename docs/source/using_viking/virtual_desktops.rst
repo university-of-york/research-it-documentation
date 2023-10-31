@@ -95,17 +95,17 @@ We need more info, from the output copy and run the command from the line highli
     If prompted, you should supply the following password: Nicdaij9
 
 
-Create the ``ssh`` tunnel
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Create the ssh tunnel
+^^^^^^^^^^^^^^^^^^^^^
 
-The virtual desktop isn't running on the login node, so we need a way to *tunnel* a connection from your computer to the login node, the command highlighted in the output above is incomplete but on Linux and MacOS from a terminal you would need to run the following:
+The virtual desktop isn't running on the login node, so we need a way to *tunnel* a connection from your computer to the login node, the command highlighted in the output above is incomplete but on Linux and MacOS from a terminal or in a PowerShell on an up to date Windows 10 or 11 system you would need to run the following:
 
 .. code-block:: console
     :caption: substitute ``abc123`` for your actual username
 
-    $ ssh -L 5902:10.0.13.22:5902 abc123@viking.york.ac.uk
+    ssh -L 5902:10.0.13.22:5902 abc123@viking.york.ac.uk
 
-Notice we added the ``viking.york.ac.uk`` address after ``abc123@``, ensure you substitute in your own username. Leave this terminal open, it will function as our ``ssh tunnel``.
+Notice we added the ``viking.york.ac.uk`` address after ``abc123@``, this is a temporary issue we will shortly correct. Please ensure you substitute in your own username in place of ``abc123``. **Leave this terminal open**, it will function as our ``ssh tunnel``.
 
 
 Connect to the virtual desktop
@@ -113,14 +113,14 @@ Connect to the virtual desktop
 
 Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. It will ask for a password (in my example this is ``Nicdaij9``), yours will be whatever was displayed in the previous step.
 
-.. Windows
-.. """""""
-..
-.. On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.php>`_. Using the above as an example (your details will be different), the ``Remote Host`` would be:
-..
-.. .. code-block:: console
-..
-..     localhost:5902
+Windows
+"""""""
+
+On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.php>`_. Using the above as an example, the ``Remote Host`` would be:
+
+.. code-block:: console
+
+    localhost:5902
 
 Linux
 """"""
@@ -198,6 +198,10 @@ Your ``Identity`` code will be different to mine, this is just an example.
 
 Compute node
 -------------
+
+.. attention::
+
+    This does not currently work and it being worked on, please bear with us.
 
 The above method is great for light work like checking results but what if you want to do the heavy work with a GUI application? It's easy, when you get the the virtual desktop :ref:`like above <virtual_desktop>`, then you ask for some resources on a compute node, this is exactly the same as using the ``srun`` command however we use a special wrapper called ``start-interactive-session.sh`` in the terminal in the virtual desktop, for example:
 

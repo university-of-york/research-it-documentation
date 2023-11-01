@@ -4,8 +4,6 @@ Quickstart
 .. attention::
     Please ensure you are on the campus network or :ref:`connected to the University VPN <connecting-off-campus>`. If you haven't already please :ref:`create an account <creating-an-account>`.
 
-    For the time being if you are using the ``eduroam`` WiFi you need to connect to Viking as if you are off campus and use the University VPN.
-
 .. attention::
 
     The ``ssh fingerprints`` for the two login nodes are listed below. If you connected to the old Viking previously then you will probably see a warning that the fingerprint has changed. The correct fingerprints for the two login nodes are:
@@ -22,13 +20,13 @@ Log in to viking
 ----------------
 
 .. code-block:: console
-    :caption: from a Linux / MacOS terminal
+    :caption: from a Linux or MacOS terminal or Windows PowerShell with OpenSSH installed
 
     $ ssh viking.york.ac.uk
 
 .. admonition:: Windows Users
 
-    It's a little bit more involved than the one line above but we have :ref:`nice breakdown here <connecting-via-windows>`.
+    The latest builds of Windows 10 and Windows 11 include a built-in ``ssh`` client, so you can run ``ssh`` commands directly from a ``CMD`` or ``PowerShell`` window. To run either of these search for ``CMD`` or ``PowerShell`` from the Windows search box and then type in the above command. If you're on a personal device and need to install the ``ssh`` client please follow the `Microsoft website <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui#install-openssh-for-windows>`_. Alternatively you can install ``PuTTY`` which is only a little bit more involved than the one line above but we have :ref:`nice breakdown here <connecting-via-windows>` to help.
 
 
 Find the software you need
@@ -40,6 +38,12 @@ Find the software you need
 
 
 .. FIXME: add example output
+
+There is lots of output as Python is mentioned in lots of modules. For more control over the search you can use `regular expressions <https://datasciencedojo.com/blog/regular-expression-101/#>`_ with the ``-r`` option, for example:
+
+.. code-block:: console
+
+    $ module -r spider '^Python'
 
 
 Load a module

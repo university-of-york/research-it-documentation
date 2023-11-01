@@ -4,8 +4,6 @@ Quickstart
 .. attention::
     Please ensure you are on the campus network or :ref:`connected to the University VPN <connecting-off-campus>`. If you haven't already please :ref:`create an account <creating-an-account>`.
 
-    For the time being if you are using the ``eduroam`` WiFi you need to connect to Viking as if you are off campus and use the University VPN.
-
 .. attention::
 
     The ``ssh fingerprints`` for the two login nodes are listed below. If you connected to the old Viking previously then you will probably see a warning that the fingerprint has changed. The correct fingerprints for the two login nodes are:

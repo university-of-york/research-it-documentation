@@ -6,7 +6,6 @@ Connecting to viking
 
 To access Viking you'll need to be on the campus network or using the VPN :doc:`which you can read about here. </getting_started/connecting_off_campus>`
 
-For the time being if you are using the ``eduroam`` WiFi you need to connect to Viking as if you are off campus and use the University VPN.
 
 .. attention::
 

@@ -20,8 +20,13 @@ If you connected to the old Viking then your computer may have stored the old ``
 If you're using Linux or MacOS to connect to Viking then running ``ssh-keygen -R viking.york.ac.uk`` will remove the old ``ssh fingerprint`` stored in your ``~/.ssh/known_hosts`` file. Connecting again with ``ssh abc123@viking.york.ac.uk`` (with your username in place of ``abc123``) should give you the option to check the new ``ssh fingerprint``, confirm it matches one of the above, and if so, accept the new ``ssh fingerprint``. You should then be connected and no longer receive the warnings about the ``ssh fingerprint``.
 
 
-I cannot connect when using the eduroam WiFi
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+I need a shared folder for our team to able to access
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Currently this is being worked on and we hope to have a solution soon. In the meantime please use a wired connection on campus or first connect to the `University VPN <https://www.york.ac.uk/it-services/services/vpn/>`_.
+We can create a folder in the ``/mnt/scratch/projects`` folder for you where user access can be controlled by one or more people in your team acting as 'admins' to the shared folder. Please email us to request a shared folder: itsupport@york.ac.uk
 
+
+Can you increase my quota on '/mnt/scratch/users/'?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Absolutely, please email itsupport@york.ac.uk to request we increase your quota. Please try to keep it to what you will use and if you no longer need it please let us know so we can adjust it back. Please remember to take time to arrange for :doc:`regular back ups </getting_started/backing_up>` of your data as nothing on the ``scratch`` file system is backed up automatically. If your data is no longer needed, please delete it to free up space on the file system.

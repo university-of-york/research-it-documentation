@@ -14,6 +14,7 @@ Quickstart
         SHA256:jn1KdPw+M9iws+uEwsnuqC5NVph4eNT095m22RFz4Mw (ECDSA)
         SHA256:TztJ/bGgPiK6bIGfQqRQnxfg/nVhw978T6kyy9HhJTQ (ED25519)
 
+    More detailed information can be found in the :doc:`FAQ </faq/faq>`
 
 
 Log in to viking

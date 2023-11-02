@@ -38,6 +38,13 @@ Welcome to the Viking Documentation!
    using_viking/virtual_environments
 
 .. toctree::
+   :titlesonly:
+   :caption: Frequently asked questions
+   :hidden:
+
+   faq/faq
+
+.. toctree::
    :maxdepth: 1
    :caption: Beginners Guides
    :hidden:

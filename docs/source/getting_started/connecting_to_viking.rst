@@ -17,6 +17,8 @@ To access Viking you'll need to be on the campus network or using the VPN :doc:`
         SHA256:jn1KdPw+M9iws+uEwsnuqC5NVph4eNT095m22RFz4Mw (ECDSA)
         SHA256:TztJ/bGgPiK6bIGfQqRQnxfg/nVhw978T6kyy9HhJTQ (ED25519)
 
+    More detailed information can be found in the :doc:`FAQ </faq/faq>`
+
 
 Terminal access
 ---------------

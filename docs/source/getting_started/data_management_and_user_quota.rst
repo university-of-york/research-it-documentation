@@ -104,6 +104,31 @@ It's possible to be logged into Viking and directly copy data across from your `
 
 The dot ``.`` at the end tells ``scp`` to copy the folder to the current directory, in this case it's ``<filestore>`` but you should change that to the correct folder path on the shared storage. You can change the ``.`` to any path you have access to (normally within your home folder).
 
+Personal filestore
+""""""""""""""""""
+
+Other paths which you may need are for your `personal filestore <https://www.york.ac.uk/it-services/filestore/>`_ or the ``bioldata`` server:
+
+.. code-block:: console
+
+    $ scp -r scp.york.ac.uk:/home/userfs/a/abc123 .
+
+Where ``a`` and ``abc123`` are the first letter of your username followed by your username. This is your `personal filestore <https://www.york.ac.uk/it-services/filestore/>`_.
+
+
+Bioldata filestore
+"""""""""""""""""""
+
+For ``bioldata`` filestores the paths are either:
+
+.. code-block:: console
+
+    $ scp -r scp.york.ac.uk:/shared/biology/bioldata1/<filestore> .
+    $ scp -r scp.york.ac.uk:/shared/biology/bioldata2/<filestore> .
+
+Replace ``<filestore>`` is the rest of the path the your data. You can check this path by logging onto one or the `interactive research servers <https://wiki.york.ac.uk/display/RCS/Interactive+Research+Linux+Service>`_ and looking for the path in ``/shared/biology/bioldata1/`` and ``/shared/biology/bioldata1/``
+
+
 
 Transferring data to Viking from another computer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

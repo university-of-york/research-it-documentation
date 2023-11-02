@@ -218,7 +218,7 @@ Login to Viking and navigate to an area on your scratch folder, then load the ``
 
 .. code-block:: console
 
-    $ module load tools/rclone
+    $ module load rclone
 
 Next, for the first time using rclone, you will need to configure it using the following command
 

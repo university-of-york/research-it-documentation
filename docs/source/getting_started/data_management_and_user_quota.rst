@@ -107,7 +107,7 @@ The dot ``.`` at the end tells ``scp`` to copy the folder to the current directo
 Personal filestore
 """"""""""""""""""
 
-Other paths which you may need are for your `personal filestore <https://www.york.ac.uk/it-services/filestore/>`_ or the ``bioldata`` server:
+The following is the path for your `personal filestore <https://www.york.ac.uk/it-services/filestore/>`_:
 
 .. code-block:: console
 

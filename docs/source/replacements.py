@@ -40,6 +40,7 @@ variable_replacements = {
     "{MOD_APPTAINER}": "Singularity/3.5.3",  # has own page
     "{NAME_APPTAINER}": "singularity",
     "{MOD_MINICONDA}": "Miniconda3/23.5.2-0",
+    "{MOD_RCLONE}": "rclone",
 
 }
 

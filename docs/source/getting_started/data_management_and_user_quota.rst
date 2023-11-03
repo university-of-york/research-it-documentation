@@ -28,11 +28,6 @@ Where ``abc123`` will be replaced by your username. This ``home`` directory has 
 .. FIXME: needs size
 
 
-.. attention::
-
-    You should run all your jobs on Viking from ``scratch`` as it is faster and has more relaxed file limits than the home directory. However, it is **not backed up**.
-
-
 .. tip::
     If you need more ``scratch`` storage space, please email us at itsupport@york.ac.uk, we are more than happy to accommodate large projects.
 

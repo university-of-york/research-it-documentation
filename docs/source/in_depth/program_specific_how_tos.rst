@@ -149,6 +149,6 @@ VSCode
 
 .. tip::
 
-    If you at some point VSCode refuses to connect and it's not obvious why, sometimes the files it installs on Viking have become corrupted. You can log into Viking in your ususal way without VSCode, and delete the following directory ``~/.vscode-server``. The next time VSCode connects to Viking it will reiinstall the files and hopefully will fix the problem.
+    If at some point VSCode refuses to connect and it's not obvious why, sometimes the files it installs on Viking have become corrupted. You can log into Viking in your usual way without VSCode, and delete the following directory ``~/.vscode-server``. The next time VSCode connects to Viking it will reinstall the files and hopefully will fix the problem.
 
 

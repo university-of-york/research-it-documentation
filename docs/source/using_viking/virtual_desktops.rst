@@ -103,9 +103,9 @@ The virtual desktop isn't running on the login node, so we need a way to *tunnel
 .. code-block:: console
     :caption: substitute ``abc123`` for your actual username
 
-    ssh -L 5902:10.0.13.22:5902 abc123@viking.york.ac.uk
+    ssh -L 5902:10.0.13.22:5902 abc123@10.0.13.22
 
-Notice we added the ``viking.york.ac.uk`` address after ``abc123@``, this is a temporary issue we will shortly correct. Please ensure you substitute in your own username in place of ``abc123``. **Leave this terminal open**, it will function as our ``ssh tunnel``.
+Notice we added in the ``10.0.13.22`` IP address after ``abc123@``, this is a temporary issue we will shortly correct. Please ensure you substitute in your own username in place of ``abc123``. **Leave this terminal open**, it will function as our ``ssh tunnel``.
 
 
 Connect to the virtual desktop

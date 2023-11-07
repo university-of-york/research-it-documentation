@@ -105,7 +105,7 @@ The virtual desktop isn't running on the login node, so we need a way to *tunnel
 
     ssh -L 5902:10.0.13.22:5902 abc123@10.0.13.22
 
-Notice we added in the ``10.0.13.22`` IP address after ``abc123@``, this is a temporary issue we will shortly correct. Please ensure you substitute in your own username in place of ``abc123``. **Leave this terminal open**, it will function as our ``ssh tunnel``.
+Notice we copied over the same ``10.0.13.22`` IP address and placed it after ``abc123@``, this is a temporary issue we will shortly correct. Please ensure you substitute in your own username in place of ``abc123`` and copy the IP address from your screen output as it may be different to this example. **Leave this terminal open**, it will function as our ``ssh tunnel``.
 
 
 Connect to the virtual desktop

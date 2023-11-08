@@ -64,7 +64,6 @@ Conda (multi-language)
 
 Viking provides the ``conda`` utility program, as part of the ``Miniconda`` module, to allow you to create and manage virtual environments. This page describes the basics of using ``conda``, as well as some Viking-specific configuration that you are likely to find useful. The full documentation of ``conda`` can be found in the `conda online documentation <https://docs.conda.io/projects/conda/en/latest/index.html>`_.
 
-.. _conda_setup:
 
 Load the Miniconda module
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,6 +147,7 @@ You have now activated the ``my_first_environment`` environment, which changes t
 If you wish to add more packages into ``my_first_environment``, you can use both conda or pip to install them. You must activate ``my_first_environment`` first, though! Taking ``pytest`` as an example, you first see that it is not available in your environment:
 
 .. code-block:: console
+    :emphasize-lines: 9
 
     (my_first_environment) $ python
 
@@ -169,7 +169,7 @@ You can then install it using conda:
 
     ## Package Plan ##
 
-    environment location: /users/nd996/.conda/envs/my_first_environment
+    environment location: /users/abc123/.conda/envs/my_first_environment
 
       added / updated specs:
         - pytest
@@ -213,7 +213,7 @@ Here ``conda`` has to download and install some dependencies for the new package
 
 .. code-block:: console
 
-    (my_first_environment) [nd996@login2[viking2] ~]$ python
+    (my_first_environment) [abc123@login2[viking2] ~]$ python
 
     Python 3.11.6 | packaged by conda-forge | (main, Oct  3 2023, 10:40:35) [GCC 12.3.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.

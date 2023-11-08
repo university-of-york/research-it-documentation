@@ -56,7 +56,6 @@ Conda (multi-language)
     Currently performance might be poor if ``conda`` includes MPI in the stack. This is being investigated.
 
 
-
 ``Conda`` provides similar functionality to ``venv`` but with some additional useful features:
 
     - it is language-agnostic rather than being restricted to Python
@@ -67,46 +66,14 @@ Viking provides the ``conda`` utility program, as part of the ``Miniconda`` modu
 
 .. _conda_setup:
 
-Initial setup
-^^^^^^^^^^^^^
+Load the Miniconda module
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Before you get started using ``conda`` on Viking, there is a small amount of configuration that you can set up to make working with multiple environments much more straightforward. By default, ``conda`` will create environments and install packages into subdirectories of your ``HOME`` directory, namely:
-
-.. code-block:: console
-
-    /users/USERNAME/.conda/envs
-    /users/USERNAME/.conda/pkgs
-
-These directories inevitably end up containing many files, and Viking sets a quota on the number of files a user can have in their home directory of 100,000 files (this is to mitigate potential filesystem performance issues). In order for you to avoid hitting this 100,000 files limit, you can tell ``conda`` to create environments and install packages into a subdirectory of your ``scratch`` space instead of your ``HOME`` directory. To do this, you need to complete a few simple tasks:
-
-1. Create directories in your scratch space to contain your Conda environments and packages. An example of this is: ``/users/USERNAME/scratch/conda_environments/envs`` and ``/users/USERNAME/scratch/conda_environments/pkgs``
-
-.. code-block:: console
-
-    $ cd ~
-    $ mkdir -p scratch/conda_environments/envs
-    $ mkdir -p scratch/conda_environments/pkgs
-
-
-2. Create a conda configuration file in your ``HOME`` directory, specifically: ``/users/USERNAME/.condarc``
-
-3. Add content to the newly-created ``.condarc`` configuration file to tell ``conda`` where to create environments and install packages. Using the example directory names from step 1, this would look like:
-
-.. code-block:: console
-
-    envs_dirs:
-    - /users/USERNAME/scratch/conda_environments/envs
-    pkgs_dirs:
-    - /users/USERNAME/scratch/conda_environments/pkgs
-
-You will also need to load the Miniconda module, which will enable you to make use of the ``conda`` tools. You can do this by running:
+Load the Miniconda module, which will enable you to make use of the ``conda`` tools. You can do this by running the following in a Viking shell:
 
 .. code-block:: console
 
    $ module load {MOD_MINICONDA}
-
-
-in a Viking shell. At this point, you are ready to use the ``conda`` utility with no risk of hitting the 100,000 files quota on your ``HOME`` directory.
 
 
 Creating an environment
@@ -152,8 +119,8 @@ Here you are telling ``conda`` to create a new environment using the file (``-f`
     $ conda info --envs
     # conda environments:
     #
-    base                  *  /opt/apps/easybuild/software/lang/Miniconda3/4.4.10
-    my_first_environment     /users/klcm500/scratch/conda_environments/envs/my_first_environment
+    base                  *  /opt/apps/eb/software/Miniconda3/23.5.2-0
+    my_first_environment     /users/abc123/.conda/envs/my_first_environment
 
 
 At this point, the environment ``my_first_environment`` has been created, and is ready to be used. Note: the asterisk in the output of ``conda info --envs`` indicates *which* conda environment is currently activated. As you haven't yet activated your new environment, the ``base`` environment (the default environment over which you have no control) is activated.
@@ -167,12 +134,12 @@ Once an environment has been created, you can activate it using the ``source act
 .. code-block:: console
 
     $ command -v python
-    /opt/apps/easybuild/software/lang/Miniconda3/4.4.10/bin/python
+    /opt/apps/eb/software/Miniconda3/23.5.2-0/bin/python
 
     $ source activate my_first_environment
 
     (my_first_environment) $ command -v python
-    /users/klcm500/scratch/Python/envs/my_first_environment/bin/python
+    /users/abc123/.conda/envs/my_first_environment/bin/python
 
 The execution of ``command -v python`` is not necessary, it is just used to illustrate that the Python environment has changed from ``base`` to ``my_first_environment``.
 
@@ -182,11 +149,10 @@ If you wish to add more packages into ``my_first_environment``, you can use both
 
 .. code-block:: console
 
-   (my_first_environment) $ python
+    (my_first_environment) $ python
 
-   Python 3.7.1 | packaged by conda-forge | (default, Mar 13 2019, 12:57:14)
-   [GCC 7.3.0] :: Anaconda, Inc. on linux
-   Type "help", "copyright", "credits" or "license" for more information.
+    Python 3.11.6 | packaged by conda-forge | (main, Oct  3 2023, 10:40:35) [GCC 12.3.0] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
 
     >>> import pytest
     Traceback (most recent call last):
@@ -203,76 +169,61 @@ You can then install it using conda:
 
     ## Package Plan ##
 
-    environment location: /users/klcm500/scratch/Python/envs/my_first_environment
+    environment location: /users/nd996/.conda/envs/my_first_environment
 
       added / updated specs:
         - pytest
 
 
-   The following packages will be downloaded:
+    The following packages will be downloaded:
 
         package                    |            build
         ---------------------------|-----------------
-        certifi-2019.3.9           |           py37_0         155 KB
-        pluggy-0.9.0               |           py37_0          30 KB
-        attrs-19.1.0               |             py_0          35 KB
-        more-itertools-6.0.0       |           py37_0          89 KB
-        pytest-4.3.0               |           py37_0         349 KB
-        py-1.8.0                   |           py37_0         140 KB
-        atomicwrites-1.3.0         |             py_0           9 KB
+        ca-certificates-2023.08.22 |       h06a4308_0         123 KB
+        iniconfig-1.1.1            |     pyhd3eb1b0_0           8 KB
+        packaging-23.1             |  py311h06a4308_0         100 KB
+        pytest-7.4.0               |  py311h06a4308_0         711 KB
         ------------------------------------------------------------
-                                               Total:         808 KB
+                                               Total:         941 KB
 
     The following NEW packages will be INSTALLED:
 
-        atomicwrites:    1.3.0-py_0
-        attrs:           19.1.0-py_0
-        more-itertools:  6.0.0-py37_0
-        pluggy:          0.9.0-py37_0
-        py:              1.8.0-py37_0
-        pytest:          4.3.0-py37_0
+      iniconfig          pkgs/main/noarch::iniconfig-1.1.1-pyhd3eb1b0_0
+      packaging          pkgs/main/linux-64::packaging-23.1-py311h06a4308_0
+      pluggy             pkgs/main/linux-64::pluggy-1.0.0-py311h06a4308_1
+      pytest             pkgs/main/linux-64::pytest-7.4.0-py311h06a4308_0
 
     The following packages will be UPDATED:
 
-        certifi:         2019.3.9-py37_0     conda-forge --> 2019.3.9-py37_0
-        openssl:         1.1.1b-h14c3975_1   conda-forge --> 1.1.1b-h7b6447c_1
+      ca-certificates    conda-forge::ca-certificates-2023.7.2~ --> pkgs/main::ca-certificates-2023.08.22-h06a4308_0
 
-    The following packages will be DOWNGRADED:
 
-        ca-certificates: 2019.3.9-hecc5488_0 conda-forge --> 2019.1.23-0
+    Proceed ([y]/n)?
 
-    Proceed ([y]/n)? y
 
     Downloading and Extracting Packages
-    certifi 2019.3.9: ################################################################## | 100%
-    pluggy 0.9.0: ###################################################################### | 100%
-    attrs 19.1.0: ###################################################################### | 100%
-    more-itertools 6.0.0: ############################################################## | 100%
-    pytest 4.3.0: ###################################################################### | 100%
-    py 1.8.0: ########################################################################## | 100%
-    atomicwrites 1.3.0: ################################################################ | 100%
+
     Preparing transaction: done
     Verifying transaction: done
     Executing transaction: done
+    (my_first_environment) [abc123@login2[viking2] ~]$
 
 Here ``conda`` has to download and install some dependencies for the new package pytest, as well as solve some dependency issues that result in a couple of already installed packages needing to be downgraded. Once this process is complete, you can immediately use the new ``pytest`` package in your environment:
 
 
 .. code-block:: console
 
-    (my_first_environment) $ python
+    (my_first_environment) [nd996@login2[viking2] ~]$ python
 
-    Python 3.7.1 | packaged by conda-forge | (default, Mar 13 2019, 12:57:14)
-    [GCC 7.3.0] :: Anaconda, Inc. on linux
+    Python 3.11.6 | packaged by conda-forge | (main, Oct  3 2023, 10:40:35) [GCC 12.3.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
-
     >>> import pytest
     >>>
 
 
 If the package that you wanted to install was not available through ``conda install``, you could just have easily installed it using ``pip install`` instead.
 
-Once you are finished using your environment, it can be easily exited using the source deactivate command:
+Once you are finished using your environment, it can be easily exited using the ``source deactivate`` command:
 
 .. code-block:: console
 
@@ -280,12 +231,12 @@ Once you are finished using your environment, it can be easily exited using the 
    $
 
 
-You will notice that the first section of the bash prompt - ``(my_first_environment)`` - disappears after the source deactivate command successfully runs. This lets you know that you have left ``my_first_environment``. Sure enough, the Python executable that is in the ``PATH`` is no longer the one from ``my_first_environment``:
+You will notice that the first section of the bash prompt - ``(my_first_environment)`` - disappears after the ``source deactivate`` command successfully runs. This lets you know that you have left ``my_first_environment``. Sure enough, the Python executable that is in the ``PATH`` is no longer the one from ``my_first_environment``:
 
 .. code-block:: console
 
    $ command -v python
-   /opt/apps/easybuild/software/lang/Miniconda3/4.4.10/bin/python
+   /opt/apps/eb/software/Miniconda3/23.5.2-0/bin/python
 
 
 At this point, we can specify and create virtual environments with ``conda``, we can switch between them, use them, and update them with any necessary new packages.

@@ -48,14 +48,14 @@ gpu
     Partition for running jobs that require GPUs, see documentation for details about how to request GPUs.
 
     - Each of the 16 nodes house three **nVidia A40 GPUs**
-    - Your job script must request at least one GPU
+    - Your job script must request at least one GPU (eg ``#SBATCH --gres=gpu:1``)
     - You are limited to **no more than six GPUs** at a time across all of your jobs running in the ``gpu`` partition
 
 gpuplus
     Partition for running jobs that require more GPU power, see documentation for details about how to request GPUs.
 
     - Each of the six nodes house two **nVidia H100 GPUs**
-    - Your job script must request at least one GPU
+    - Your job script must request at least one GPU (eg ``#SBATCH --gres=gpu:1``)
     - You are limited to **no more than two GPUs** at a time across all of your jobs running in the ``gpuplus`` partition
 
 himem

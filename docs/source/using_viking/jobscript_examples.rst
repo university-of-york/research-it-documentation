@@ -171,3 +171,98 @@ The ``$SLURM_ARRAY_TASK_ID`` environmental variable represents the array index, 
 
     # Commands to run
     Rscript --vanilla some_job_array_script.R $SLURM_ARRAY_TASK_ID
+
+
+
+GPU jobs
+--------
+
+Viking has two GPU :doc:`partitions </using_viking/resource_partitions>`, one with 48 nVidia A40 GPUs and another with twelve nVidia H100 GPUs. Requesting access to a GPU requires you to select the corresponding partition and also request the number of GPUs, for example those lines in a job script looks like:
+
+.. code-block:: bash
+
+    #SBATCH --partition=gpu
+    #SBATCH --gres=gpu:1
+
+In this example we select the ``gpu`` :doc:`partition </using_viking/resource_partitions>` and with ``gres=gpu:1`` we describe how many resources you require **per node** - so in this case it's one gpu from the ``gpu`` partition, which is one A40 GPU overall.
+
+If you wanted one of the H100s then the lines would be:
+
+.. code-block:: bash
+
+    #SBATCH --partition=gpuplus
+    #SBATCH --gres=gpu:1
+
+Read through the GPU limits for each of the GPU :doc:`partitions </using_viking/resource_partitions>` and understand how many GPUs are on each node. For example, if you wanted six A40 GPUs then you could request it over two nodes:
+
+.. code-block:: bash
+
+    #SBATCH --nodes=2
+    #SBATCH --partition=gpu
+    #SBATCH --gres=gpu:3
+
+This is because each node in the ``gpu`` partition has only three GPUs, so if you need six, you must specify using two nodes with ``nodes=2``. The ``gres=gpu:3`` specifies three GPUs **per node**, which in total here is six.
+
+Example jobscripts
+""""""""""""""""""
+
+Here are two example job scripts for the ``gpu`` partition and the ``gpuplus`` partition to use as a starting point. Firstly for the ``gpu`` partition with the nVidia A40s:
+
+.. code-block:: bash
+    :caption: my_gpu.job
+    :linenos:
+
+    {SHEBANG}
+    #SBATCH --job-name=my_job               # Job name
+    #SBATCH --nodes=1                       # Number of nodes
+    #SBATCH --ntasks=1                      # Number of MPI tasks to request
+    #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
+    #SBATCH --mem=8G                        # Total memory to request
+    #SBATCH --time=0-00:15:00               # Time limit (DD-HH:MM:SS)
+    #SBATCH --account=dept-proj-year        # Project account to use
+    #SBATCH --mail-type=END,FAIL            # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=abc123@york.ac.uk   # Where to send mail
+    #SBATCH --output=%x-%j.log              # Standard output log
+    #SBATCH --error=%x-%j.err               # Standard error log
+    #SBATCH --partition=gpu                 # Which partition to use
+    #SBATCH --gres=gpu:1                    # Generic resources required per node
+
+    # Abort if any command fails
+    set -e
+
+    # purge any existing modules
+    module purge
+
+    # Commands to run
+    nvidia-smi
+
+
+And alternatively, the ``gpuplus`` partition with the nVidia H100s:
+
+.. code-block:: bash
+    :caption: my_gpuplus.job
+    :linenos:
+
+    {SHEBANG}
+    #SBATCH --job-name=my_gpuplus_job       # Job name
+    #SBATCH --nodes=1                       # Number of nodes
+    #SBATCH --ntasks=1                      # Number of MPI tasks to request
+    #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
+    #SBATCH --mem=8G                        # Total memory to request
+    #SBATCH --time=0-00:15:00               # Time limit (DD-HH:MM:SS)
+    #SBATCH --account=its-system-2018       # Project account to use
+    #SBATCH --mail-type=END,FAIL            # Mail events (NONE, BEGIN, END, FAIL, ALL)
+    #SBATCH --mail-user=nd996@york.ac.uk    # Where to send mail
+    #SBATCH --output=%x-%j.log              # Standard output log
+    #SBATCH --error=%x-%j.err               # Standard error log
+    #SBATCH --partition=gpuplus             # Which partition to use
+    #SBATCH --gres=gpu:1                    # Generic resources required per node
+
+    # Abort if any command fails
+    set -e
+
+    # purge any existing modules
+    module purge
+
+    # Commands to run
+    nvidia-smi

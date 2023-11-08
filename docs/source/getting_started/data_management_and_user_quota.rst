@@ -78,9 +78,6 @@ When you login to Viking you will be told if you are over quota. If this is in u
 
 If you are over quota in the ``scratch`` area and need more space please email itsupport@york.ac.uk where we can increase your quota. **There is a grace period of 7 days after which you will lose access to Viking.**
 
-.. tip::
-    The most common reason for exceeding your quota in your home directory is by storing ``conda`` environments directly in your home directory. The solution for that is to :ref:`set up your Conda environment first <conda_setup>`.
-
 
 Copying and moving your data to viking
 --------------------------------------

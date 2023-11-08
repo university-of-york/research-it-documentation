@@ -49,22 +49,14 @@ Here we have an interactive ``bash`` session on the ``node112`` compute node, wi
             http://localhost:8888/?token=9b0f6d6918f238c0e8543257a842b65cd4671ee1b55a4e3c
          or http://127.0.0.1:8888/?token=9b0f6d6918f238c0e8543257a842b65cd4671ee1b55a4e3c
 
-The server is running and listening on port ``8888``. We cannot access that port directly from our local computer so we set up the two ``ssh tunnnels``. In a new terminal, connect to Viking again and then from that session, on the login node type the following and this will forward the port ``8888`` from the login node to the ``node112`` where the ``Jupyter`` server is running:
+The server is running and listening on port ``8888``. We cannot access that port directly from our local computer so we set up the an ``ssh tunnnel`` to the login node then then from there to the compute node, where the ``Jupyter`` notebook server is actually running. You can do this with one command locally on your computer:
 
 .. code-block:: console
+    :caption: remember to change 'node112' to the node you are running Jupyter from
 
-    [abc123@login1[viking2] ~]$ ssh -N -L localhost:8888:localhost:8888 abc123@node112
+    $ ssh -L 8888:localhost:8889 viking.york.ac.uk ssh -N -L 8889:localhost:8888 node112
 
-Remember to change the username ``abc123`` to your own username at the end of the command. Note which login node you are on, in this case it's ``login1``, shown at the beginning of the login prompt above.
-
-Next we need to set up the second ``ssh tunnel``  to forward port ``8888`` from your local computer to the same login node that we just logged into. From your local machine, in a new terminal type:
-
-.. code-block:: console
-
-    $ ssh -N -L localhost:8888:localhost:8888 abc123@viking-login1.york.ac.uk
-
-
-It's important that the address at the end has either ``login1`` or ``login2`` to correspond with the same login node you were using in the previous step.
+The above command opens up one ``ssh tunnel``, forwarding your local port ``8888`` to the Viking login node port ``8889``. Then it opens up another ``ssh tunnel`` from the login node's port ``8889`` to the compute node112's port ``8888`` - where the ``Jupyter`` server is listening.
 
 Finally ``Ctrl + left mouse click``  on the link from the first terminal session on ``node112``, highlighted above. Either the ``http://localhost:8888/?token=...`` or the ``http://127.0.0.1:8888/?token=...`` links. Your browser should open and connected to the ``Jupyter`` server running on Viking.
 

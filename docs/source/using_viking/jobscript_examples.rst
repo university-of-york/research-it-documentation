@@ -250,9 +250,9 @@ And alternatively, the ``gpuplus`` partition with the nVidia H100s:
     #SBATCH --cpus-per-task=1               # Number of CPU cores per MPI task
     #SBATCH --mem=8G                        # Total memory to request
     #SBATCH --time=0-00:15:00               # Time limit (DD-HH:MM:SS)
-    #SBATCH --account=its-system-2018       # Project account to use
+    #SBATCH --account=dept-proj-year        # Project account to use
     #SBATCH --mail-type=END,FAIL            # Mail events (NONE, BEGIN, END, FAIL, ALL)
-    #SBATCH --mail-user=nd996@york.ac.uk    # Where to send mail
+    #SBATCH --mail-user=abc123@york.ac.uk   # Where to send mail
     #SBATCH --output=%x-%j.log              # Standard output log
     #SBATCH --error=%x-%j.err               # Standard error log
     #SBATCH --partition=gpuplus             # Which partition to use

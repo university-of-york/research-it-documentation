@@ -29,19 +29,19 @@ And you will be presented with information similar to mine below:
 
     Starting a 'gnome' desktop session:
 
-        > ✅ Starting session
+    > ✅ Starting session
 
     A 'gnome' desktop session has been started.
 
     == Session details ==
           Name:
-      Identity: ef742a0c-63e7-4b7e-8aef-fa1bcca92e3f
+      Identity: 2c4611f2-bec8-4ae9-a997-185f306e96d8
           Type: gnome
        Host IP: 10.0.13.22
       Hostname: login2
-          Port: 5902
-       Display: :2
-      Password: Nicdaij9
+          Port: 5906
+       Display: :6
+      Password: muAtEks5
       Geometry: 1024x768
 
     This desktop session is not directly accessible from outside of your
@@ -49,28 +49,28 @@ And you will be presented with information similar to mine below:
     cluster access.  In order to access your desktop session you will need
     to perform port forwarding using 'ssh'.
 
-    Refer to 'flight desktop show ef742a0c' for more details.
+    Refer to 'flight desktop show 2c4611f2' for more details.
 
-    If prompted, you should supply the following password: Nicdaij9
+    If prompted, you should supply the following password: muAtEks5
 
 
 More details on the virtual desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We need more info, from the output copy and run the command from the line highlighted above. In this example it's  ``flight desktop show ef742a0c`` but for you the ``ef742a0c`` part will be different, please ensure you copy from the output on your session. As as example the output will look similar to this:
+We need more info, from the output copy and run the command from the line highlighted above. In this example it's  ``flight desktop show 2c4611f2`` but for you the ``2c4611f2`` part will be different, please ensure you copy from the output on your session. As as example the output will look similar to this:
 
 .. code-block:: console
-    :emphasize-lines: 9,17
+    :emphasize-lines: 7,9,17
 
     == Session details ==
           Name:
-      Identity: ef742a0c-63e7-4b7e-8aef-fa1bcca92e3f
+      Identity: 2c4611f2-bec8-4ae9-a997-185f306e96d8
           Type: gnome
        Host IP: 10.0.13.22
       Hostname: login2
-          Port: 5902
-       Display: :2
-      Password: Nicdaij9
+          Port: 5906
+       Display: :6
+      Password: muAtEks5
       Geometry: 1024x768
 
     This desktop session is not directly accessible from outside of your
@@ -78,21 +78,21 @@ We need more info, from the output copy and run the command from the line highli
     cluster access.  In order to access your desktop session you will need
     to perform port forwarding using 'ssh':
 
-      ssh -L 5902:10.0.13.22:5902 abc123@
+      ssh -L 5906:10.0.13.22:5906 abc123@
 
     Once the ssh connection has been established, depending on your
     client, you can connect to the session using one of:
 
-      vnc://abc123:Nicdaij9@localhost:5902
-      localhost:5902
-      localhost:2
+      vnc://abc123:muAtEks5@localhost:5906
+      localhost:5906
+      localhost:6
 
     If, when connecting, you receive a warning as follows, try again with
-    a different port number, e.g. 5903, 5904 etc.:
+    a different port number, e.g. 5907, 5908 etc.:
 
-      channel_setup_fwd_listener_tcpip: cannot listen to port: 5902
+      channel_setup_fwd_listener_tcpip: cannot listen to port: 5906
 
-    If prompted, you should supply the following password: Nicdaij9
+    If prompted, you should supply the following password: muAtEks5
 
 
 Create the ssh tunnel
@@ -103,7 +103,7 @@ The virtual desktop isn't running on the login node, so we need a way to *tunnel
 .. code-block:: console
     :caption: substitute ``abc123`` for your actual username
 
-    ssh -L 5902:10.0.13.22:5902 abc123@10.0.13.22
+    ssh -L 5906:10.0.13.22:5906 abc123@10.0.13.22
 
 Notice we copied over the same ``10.0.13.22`` IP address and placed it after ``abc123@``, this is a temporary issue we will shortly correct. Please ensure you substitute in your own username in place of ``abc123`` and copy the IP address from your screen output as it may be different to this example. **Leave this terminal open**, it will function as our ``ssh tunnel``.
 
@@ -111,7 +111,7 @@ Notice we copied over the same ``10.0.13.22`` IP address and placed it after ``a
 Connect to the virtual desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. It will ask for a password (in my example this is ``Nicdaij9``), yours will be whatever was displayed in the previous step.
+Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. Note the ``port`` from the earlier output, in my case this was ``5906``, yours may be similar but will likely be different. It will ask for a password (in my example this is ``muAtEks5``), yours will be whatever was displayed in the previous step.
 
 Windows
 """""""
@@ -120,7 +120,7 @@ On Windows you can connect using `TightVNC <https://www.tightvnc.com/download.ph
 
 .. code-block:: console
 
-    localhost:5902
+    localhost:5906
 
 Linux
 """"""
@@ -129,7 +129,7 @@ Linux
 
 .. code-block:: console
 
-     localhost:5902
+     localhost:5906
 
 
 MacOS
@@ -139,7 +139,7 @@ MacOS
 
 .. code-block:: console
 
-    vnc://localhost:5902
+    vnc://localhost:5906
 
 
 .. _virtual_desktop:
@@ -172,7 +172,7 @@ And you'll be presented with a list similar to mine below:
     ┌──────┬──────────┬───────┬───────────┬────────────┬────────────────┬──────────┬────────┐
     │ Name │ Identity │ Type  │ Host name │ IP address │ Display (Port) │ Password │ State  │
     ├──────┼──────────┼───────┼───────────┼────────────┼────────────────┼──────────┼────────┤
-    │      │ ef742a0c │ gnome │ login2    │ 10.0.13.22 │ :2 (5902)      │ Nicdaij9 │ Active │
+    │      │ 2c4611f2 │ gnome │ login2    │ 10.0.13.22 │ :6 (5906)      │ muAtEks5 │ Active │
     └──────┴──────────┴───────┴───────────┴────────────┴────────────────┴──────────┴────────┘
 
 
@@ -185,7 +185,7 @@ To kill a session you need to use the ``Identity`` code from the output above, u
 
 .. code-block:: console
 
-    $ flight desktop kill ef742a0c
+    $ flight desktop kill 2c4611f2
 
 Your ``Identity`` code will be different to mine, this is just an example.
 

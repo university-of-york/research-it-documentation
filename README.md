@@ -18,26 +18,37 @@ The source markdown files are stored in `docs` and the content is deployed via G
 
 ## Development
 
-Clone the repo, install `sphinx` through
+There isn't a development server that auto-builds bundled with Sphinx. Create a new branch and make your changes.
+When your changes are ready to be deployed, submit a PR and request approval. Upon a merge the site is built and deployed to an S3 bucket and the CloudFlare cache is invalidated through GitHub actions.
 
-`pip install sphinx sphinx-rtd-theme`
+### Quickstart
 
-**Compile the web pages**
+To clone the repo, create a Python virtual environment and activate it. Install the required packages and build the site.
 
-`sphinx-build -b html docs/source site/`
+    git clone git@github.com:university-of-york/research-it-documentation.git
+    cd research-it-documentation/
+    python3 -m venv .venv
+    source .venv/bin/activate
+    python3 -m pip install sphinx-rtd-theme sphinx
+    sphinx-build -b html docs/source site/ -a
 
-**View the website**
+Then simply open the built `site/index.html` in your browser.
 
-Open `site/index.html` in a web browser.
+**Compile all the web pages**
+
+`sphinx-build -b html docs/source site/ -a`
+
+Remove the `-a` option to only compile changes.
 
 **Check links are valid**
 
 `sphinx-build -b linkcheck docs/source site/`
 
-There isn't a development server that auto-builds bundled with Sphinx.
-When your changes are ready to be deployed, submit a PR and request approval.
+**View the website**
 
-**Replacement**
+Open `site/index.html` in a web browser.
+
+**Replacements**
 
 The `docs/source/replacements.py` file contains a dictionary of replacement words to use throughout the docs. For exmaple, all the module versions to load in the jobscript examples. This makes it simple to update that part of the docs in the future.
 

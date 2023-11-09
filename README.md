@@ -53,6 +53,10 @@ Found in the `docs/source/_static/css/custom.css` file. Only a minimal set of CS
 
 Located in the `assets/img` and `assets/data` folders. The `csv` files in the `data` folder are useful for displaying tables with better formatting.
 
+**Example template**
+
+To help quickly make a new page, `docs/source/template.rst` can be used as a base.
+
 ## Reference
 
 For `Re Structured Text` help:

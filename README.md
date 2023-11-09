@@ -34,11 +34,11 @@ To clone the repo, create a Python virtual environment and activate it. Install 
 
 Then simply open the built `site/index.html` in your browser.
 
-**Compile all the web pages**
+**Build all the web pages**
 
 `sphinx-build -b html docs/source site/ -a`
 
-Remove the `-a` option to only compile changes.
+Remove the `-a` option to only build changes.
 
 **Check links are valid**
 

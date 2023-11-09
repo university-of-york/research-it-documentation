@@ -34,6 +34,8 @@ To clone the repo, create a Python virtual environment and activate it. Install 
 
 Then simply open the built `site/index.html` in your browser.
 
+### Useful commands
+
 **Build all the web pages**
 
 `sphinx-build -b html docs/source site/ -a`
@@ -47,6 +49,8 @@ Remove the `-a` option to only build changes.
 **View the website**
 
 Open `site/index.html` in a web browser.
+
+## Features
 
 **Replacements**
 
@@ -68,7 +72,7 @@ Located in the `assets/img` and `assets/data` folders. The `csv` files in the `d
 
 To help quickly make a new page, `docs/source/template.rst` can be used as a base.
 
-## Reference
+## Reference links
 
 For `Re Structured Text` help:
 

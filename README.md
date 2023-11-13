@@ -45,6 +45,8 @@ Python can be installed via Anaconda3 from the Software Center on a managed Wind
     python -m pip install sphinx-rtd-theme sphinx
     sphinx-build -b html docs/source site/ -a
 
+Then simply open the built `site/index.html` in your browser.
+
 ### Useful commands
 
 **Build all the web pages**

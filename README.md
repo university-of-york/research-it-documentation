@@ -34,6 +34,19 @@ To clone the repo, create a Python virtual environment and activate it. Install 
 
 Then simply open the built `site/index.html` in your browser.
 
+#### Windows quickstart
+
+Python can be installed via Anaconda3 from the Software Center on a managed Windows PC (Git should already be installed), then from a PowerShell:
+
+    git clone https://github.com/university-of-york/research-it-documentation.git
+    cd research-it-documentation/
+    python -m venv .venv
+    .\.venv\Scripts\Activate.ps1
+    python -m pip install sphinx-rtd-theme sphinx
+    sphinx-build -b html docs/source site/ -a
+
+Then simply open the built `site/index.html` in your browser.
+
 ### Useful commands
 
 **Build all the web pages**

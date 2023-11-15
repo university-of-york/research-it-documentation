@@ -97,7 +97,7 @@ The above file, ``my_first_environment.yaml``, has the following attributes:
 
     - **name**: the name of the Conda environment.
     - **channels**: the `Anaconda <https://anaconda.cloud/>`_ Cloud channels that should be used to find packages for this environment. There are many channels available, but the two most common that you will see are ``defaults``, which contains stable packages curated by the Anaconda team, and `conda-forge <https://conda-forge.org/>`_, a community-led channel containing a wide range of high-quality packages that are often of a more recent version than those in ``defaults``
-    - **dependencies**: the dependencies of the environment that you want to create. In the example above, we have specified a Python version that we want to use (3.7), some packages to be installed from the ``conda-forge`` channel that we named earlier in the environment file, and a package to be installed from `PyPI <https://pypi.org/>`_ through ``pip``, as the package is not available from ``conda-forge``
+    - **dependencies**: the dependencies of the environment that you want to create. In the example above, we have specified a Python version that we want to use (3.11), some packages to be installed from the ``conda-forge`` channel that we named earlier in the environment file, and a package to be installed from `PyPI <https://pypi.org/>`_ through ``pip``, as the package is not available from ``conda-forge``
 
 You can read more about environment files in the `conda user guide <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually>`_.
 

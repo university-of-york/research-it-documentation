@@ -143,6 +143,11 @@ Submitting this file to Slurm has the same effect as running ``sbatch my_array.j
 Job arrays aren't restricted to running identical copies of a program either.
 The ``$SLURM_ARRAY_TASK_ID`` environmental variable represents the array index, which can be passed into your program as an argument to allow for iteration-specific behaviour, e.g. using 100 different parameter settings, or 100 different input data files.
 
+.. attention::
+
+    You can only request a maximum of 10,000 iterations in a single array job submission; if you want more you'll need to submit the job multiple times.
+    You also can't have an index of more than 10,000, so ``--array 9999-10001`` would fail because the final index is > 10,001, even though only 3 iterations are requested.
+
 .. code-block:: bash
     :caption: my_array.job
     :linenos:

@@ -428,9 +428,9 @@ The following demonstrates how you could run ``MATLAB`` interactively without th
     $ matlab -nojvm -nodisplay -nosplash
 
                             < M A T L A B (R) >
-                  Copyright 1984-2018 The MathWorks, Inc.
-                   R2018a (9.4.0.813654) 64-bit (glnxa64)
-                             February 23, 2018
+                  Copyright 1984-2023 The MathWorks, Inc.
+                   R2023b (23.2.0.2391609) 64-bit (glnxa64)
+                            September 22, 2023
 
     For online documentation, see http://www.mathworks.com/support
     For product information, visit www.mathworks.com.
@@ -465,7 +465,7 @@ The following job script could be used to submit a ``MATLAB`` script to the clus
     #SBATCH --ntasks=1                             # Run a single task
     #SBATCH --cpus-per-task=1                      # Number of cores per task
     #SBATCH --mem=4800MB                           # Job memory request
-    #SBATCH --time=00:02:00                        # Time limit hrs:min:sec
+    #SBATCH --time=02:00:00                        # Time limit hrs:min:sec
     #SBATCH --output=%x.log                        # Standard output and error log
     #SBATCH --mail-type=ALL                        # Events to receive emails about
     #SBATCH --mail-user=a.user@york.ac.uk          # Where to send mail
@@ -531,8 +531,6 @@ If you encounter the following error it is because the compiler has detected tha
     file. Use the MATLAB function "isdeployed" in your MATLAB startup file to
     determine the appropriate execution environment when including file and folder
     paths, and recompile your application.
-
-Certain ``MATLAB`` features are not available in standalone programs, so it is worth being aware of what these are to avoid trouble when running your program. You can find a list of ineligible features here, and comprehensive documentation of supported features `in the Mathworks docs <https://uk.mathworks.com/products/compiler/compiler_support.html?s_tid=srchtitle>`_.
 
 
 Running standalone programs

@@ -41,9 +41,8 @@ Welcome to the Viking Documentation!
    :maxdepth: 1
    :caption: Application Guides
    :hidden:
-   :glob:
 
-   applications/*
+   Specific application guides <applications/app_index>
 
 .. toctree::
    :titlesonly:

@@ -43,7 +43,7 @@ Welcome to the Viking Documentation!
    :hidden:
    :glob:
 
-   applications/*
+   Specific application guides <applications/app_index>
 
 .. toctree::
    :titlesonly:

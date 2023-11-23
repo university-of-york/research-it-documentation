@@ -39,7 +39,7 @@ Welcome to the Viking Documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Applcation Guides
+   :caption: Application Guides
    :hidden:
    :glob:
 

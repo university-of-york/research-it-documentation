@@ -1,7 +1,7 @@
 Mathematica
 ===========
 
-`Mathematica <https://www.wolfram.com/mathematica>`_ is a computational software program used in many scientific, engineering, mathematical and computing fields. Whilst it is possible to use `wolframscript <https://reference.wolfram.com/language/workflow/RunWolframLanguageCodeFromTheCommandLine.html>`_ on the command line, you can use the GUI on Viking and harness Viking's powerful compute nodes in the process.
+`Mathematica <https://www.wolfram.com/mathematica>`_ is a computational software program used in many scientific, engineering, mathematical and computing fields. Whilst it is possible to use `wolfram <https://reference.wolfram.com/language/tutorial/UsingATextBasedInterface.html>`_ on the command line, you can use the GUI on Viking and harness Viking's powerful compute nodes in the process.
 
 As mentioned previously, when you first log into Viking you are logged into one of the two ``login nodes``. These are for light work and simple testing so to use ``Mathematica`` on a compute node we will need to:
 

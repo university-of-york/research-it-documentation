@@ -41,7 +41,6 @@ Welcome to the Viking Documentation!
    :maxdepth: 1
    :caption: Application Guides
    :hidden:
-   :glob:
 
    Specific application guides <applications/app_index>
 

@@ -3,7 +3,7 @@ Mathematica
 
 `Mathematica <https://www.wolfram.com/mathematica>`_ is a computational software program used in many scientific, engineering, mathematical and computing fields. Whilst it is possible to use `wolframscript <https://reference.wolfram.com/language/workflow/RunWolframLanguageCodeFromTheCommandLine.html>`_ on the command line, you can use the GUI on Viking and harness Viking's powerful compute nodes in the process.
 
-As mentioned previously, when you first log into Viking you are on one of the two ``login nodes``. These are for light work and simple testing so to use Mathematica on a compute node we will need to:
+As mentioned previously, when you first log into Viking you are logged into one of the two ``login nodes``. These are for light work and simple testing so to use ``Mathematica`` on a compute node we will need to:
 
 1. Log into Viking with ``X11 forwarding`` e.g. ``ssh -X viking.york.ac.uk``
 2. Request a compute node with the ``salloc`` command
@@ -20,7 +20,7 @@ As mentioned previously, when you first log into Viking you are on one of the tw
 SSH forwarding
 --------------
 
-Log into Viking with the ``-X`` option: ``ssh -X abc123@viking.york.ac.uk`` replacing ``abc123`` with your username. This option enables the ``X11 Forwarding`` over the ``ssh`` connection. This allows a program to run on Viking yet *forward* the window to our local machine where it is diplayed.
+Log into Viking with the ``-X`` option: ``ssh -X abc123@viking.york.ac.uk`` replacing ``abc123`` with your username. This option enables the ``X11 Forwarding`` over the ``ssh`` connection. This allows a program to run on Viking yet *forward* the window to our local machine where it is displayed.
 
 
 Request resources
@@ -29,7 +29,7 @@ Request resources
 Use the ``salloc`` command to request some resources on Viking for example:
 
 .. code-block:: console
-    :caption: this describes one node, one task, eight CPU cores, 16G or memory for two hours
+    :caption: this describes one node, one task, eight CPU cores, 16G of memory for two hours
 
     $ salloc --nodes=1 --ntasks=1 --cpus-per-task=8 --mem=16g --time=2:0:0
 
@@ -39,7 +39,7 @@ The resources may take a few minutes depending on your request and how busy Viki
 SSH into the node
 -----------------
 
-We have only been allocated the resources, currently we are still on the login node. To access the allocated resources we ``ssh`` into them, again with the ``-X`` option. Slurm has a handy environment variable to help here ``$SLURM_NODELIST`` which we can use as follows:
+We have only been allocated the resources, currently we are still on the login node. To access the allocated resources we ``ssh`` into the corresponding node, again with the ``-X`` option. Slurm has a handy environment variable to help here ``$SLURM_NODELIST`` which we can use as follows:
 
 .. code-block:: console
 

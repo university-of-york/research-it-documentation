@@ -1,11 +1,5 @@
-Program specific how-tos
-========================
-
-Here we will share some guides on getting started with some specific applications. In many cases there are multiple ways to accomplish things so you can treat this as a starting point. If you found a good guide elsewhere which you successfully followed or if you would like your own guide added please feel free to `let us know <itsupport@york.ac.uk>`_.
-
-
 Jupyter notebooks
------------------
+=================
 
 The `Jupyter notebook <https://docs.jupyter.org/en/latest/>`_ is a web-based notebook environment for interactive computing. Running a ``Jupyter notebook`` server remotely on Viking and connecting to it from your local web browser is certainly possible.
 There are a few steps to ensure that your notebook is running on a compute node (not a login node) and you can remotely connect to it.
@@ -109,7 +103,7 @@ Finally ``Ctrl + left mouse click``  on the link from the first terminal session
 ..
 
 Jupyter notebooks using VSCode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 Using some of the above guide as reference, another way to so this is with VSCode. You do it all in VSCode and the inbuilt terminals in VSCode. If you're interested in this method it's similar to the above in many ways:
 
@@ -121,26 +115,3 @@ Using some of the above guide as reference, another way to so this is with VSCod
     6. In VSCode, open a new ``Jupyter`` notebook: ``(Ctrl+Shift+P)`` and type ``Jupyter: Create New Jupyter Notebook.``
     7. In VSCode, press ``select kernel`` in the top right then select ``Existing Jupyter server``
     8. Paste in the URL of the notebook, just like the guide above, follow the prompts in VSCode to name the notebook and select the available kernel
-
-
-VSCode
-------
-
-``VSCode`` is a modern text editor from Microsoft. It's possible to use many extensions with it to extend its capabilities but here we'll explain how to use it to connect to Viking over ``ssh`` and allow you to remotely edit text files, which can be very handy.
-
-
-    1. Install `VSCode <https://code.visualstudio.com/>`_ for your operating system
-    2. Follow the instructions to install the `Remote - SSH <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_ extension in VSCode
-    3. Follow the instructions to `getting started <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh#getting-started>`_ to connect to viking, the address is ``viking.york.ac.uk``
-    4. Enter your password when prompted and you should soon be connected and be able to edit and save files through VSCode.
-
-.. tip::
-
-    ``Ctrl + ``` (backtick) Opens a terminal in ``VSCode``
-
-
-.. tip::
-
-    If at some point VSCode refuses to connect and it's not obvious why, sometimes the files it installs on Viking have become corrupted. You can log into Viking in your usual way without VSCode, and delete the following directory ``~/.vscode-server``. The next time VSCode connects to Viking it will reinstall the files and hopefully will fix the problem.
-
-

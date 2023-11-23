@@ -42,6 +42,7 @@ variable_replacements = {
     "{MOD_MINICONDA}": "Miniconda3/23.5.2-0",
     "{MOD_RCLONE}": "rclone",
     "{MOD_JUPYTER}": "JupyterLab/3.1.6-GCCcore-11.2.0",
+    "{MOD_MATHEMATICA}": "Mathematica/13.3.1",
 
 }
 

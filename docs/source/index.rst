@@ -38,6 +38,14 @@ Welcome to the Viking Documentation!
    using_viking/virtual_environments
 
 .. toctree::
+   :maxdepth: 1
+   :caption: Applcation Guides
+   :hidden:
+   :glob:
+
+   applications/*
+
+.. toctree::
    :titlesonly:
    :caption: Frequently asked questions
    :hidden:
@@ -50,13 +58,6 @@ Welcome to the Viking Documentation!
    :hidden:
 
    beginners_guide/linux_shell
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Other Guides
-   :hidden:
-
-   in_depth/program_specific_how_tos
 
 
 **Viking** is a large, Linux compute cluster with many nodes, CPUs, GPUs, lots of storage and boat loads of memory. Viking is housed in Sweden (of course!) in the forward thinking `EcoDataCentre <https://ecodatacenter.tech/>`_, which is one of the most sustainable data centres in the whole world. 🌍🥰

@@ -85,6 +85,10 @@ Located in the `assets/img` and `assets/data` folders. The `csv` files in the `d
 
 To help quickly make a new page, `docs/source/template.rst` can be used as a base.
 
+**Application guides**
+
+Any `.rst` files dropped into the `docs/source/applications` folder will automatically be `globbed` and added to that section by the `toctree` directive in the `docs/source/applications/index.rst` page.
+
 ## Reference links
 
 For `Re Structured Text` help:

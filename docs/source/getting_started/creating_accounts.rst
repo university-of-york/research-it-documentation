@@ -19,7 +19,7 @@ In order to use Viking, the project PI (or supervisor) must apply for a Viking p
 
 Once the application has been approved, a new Viking project code will be supplied to you. You should then distribute the project code to all research team members before they apply for user accounts.
 
-`The Project Application Form can be found here <https://docs.google.com/forms/d/e/1FAIpQLSdyldpc8nBtbsFaY5BDLHo9542-A1Y7segJ7d4Fwjl2yj7mxw/viewform>`_.
+`The project application form can be found here <https://docs.google.com/forms/d/e/1FAIpQLSdyldpc8nBtbsFaY5BDLHo9542-A1Y7segJ7d4Fwjl2yj7mxw/viewform>`_.
 
 User account application
 ------------------------

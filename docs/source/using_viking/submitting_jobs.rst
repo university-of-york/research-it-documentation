@@ -50,7 +50,7 @@ Below is an example jobscript to run a Python script, let's save it as ``jobscri
 
 It uses ``bash`` syntax and importantly has a set of ``SBATCH`` specific options **before** the commands which need to be run.
 Here is a quick summary of the most important ``SBATCH`` options as these determine the computational resources you are requesting, which will impact both on your queueing time (if you request more resources you will experience longer waits), but also on your job performance, however, there are far more possible options than we can go into here.
-The `Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all, and please refer to the :doc:`jobscript for specific applications section </using_viking/jobscripts_program_specific>` for more advanced and specialised jobscript examples.
+The `Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_ is a great place to see them all, and please refer to the :doc:`Specific application guides </applications/app_index>` section for more some specialised jobscript examples.
 
     - ``--partition``: The compute nodes on Viking are grouped into different *partitions* based on different use cases. For most general computing the ``nodes`` partition will be sufficient. See the :doc:`Resource Partition page </using_viking/resource_partitions>` for more details
     - ``--time``: How long your job will take to run; if your job exceeds this time it will be killed. It can be omitted in which case the default time is 8 hours. Specifying a shorter and more accurate time will allow your job to start execution sooner. In the format ``DD-HH:MM:SS``

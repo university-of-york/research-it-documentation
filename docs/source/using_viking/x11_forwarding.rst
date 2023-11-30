@@ -1,7 +1,9 @@
 X11 Forwarding
 ==============
 
-X11 Forwarding is used to *forward* an *X11* type window from Viking, to your local computer. This is useful for running graphical programs, or GUIs, on Viking but having them display on your local machine. For most Linux distros this will work out of the box, for Mac OSX 10.8 and up, you'll need to install `XQuartz <https://www.xquartz.org/>`_. For Windows `Xming <https://sourceforge.net/projects/xming/>`_ will need to be installed.
+X11 Forwarding is used to *forward* an *X11* type window from Viking, to your local computer. This is useful for running graphical programs, or GUIs, on Viking but having them display on your local machine. For most Linux distros this will work out of the box, for Mac OSX 10.8 and up, you'll need to install `XQuartz <https://www.xquartz.org/>`_.
+
+.. For Windows `Xming <https://sourceforge.net/projects/xming/>`_ will need to be installed.
 
 By default when you log into Viking you'll be logged into one of the two login nodes. As mentioned in the :doc:`/getting_started/code_of_conduct` page, we don't want to run big jobs on the login nodes as they are shared with other users and this may affect others.
 

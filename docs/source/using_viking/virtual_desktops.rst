@@ -199,23 +199,54 @@ Your ``Identity`` code will be different to mine, this is just an example.
 Compute node
 -------------
 
-.. attention::
-
-    This does not currently work and it being worked on, please bear with us.
-
-The above method is great for light work like checking results but what if you want to do the heavy work with a GUI application? It's easy, when you get the the virtual desktop :ref:`like above <virtual_desktop>`, then you ask for some resources on a compute node, this is exactly the same as using the ``srun`` command however we use a special wrapper called ``start-interactive-session.sh`` in the terminal in the virtual desktop, for example:
+The above method is great for light work like checking results but if you want to do heavier work with a graphical application then you need to use a compute node. When you've logged into the the virtual desktop :ref:`like above <virtual_desktop>`, you then request resources on a compute node using the `salloc <https://slurm.schedmd.com/salloc.html>`_ command. This takes the same options as the ``srun`` and ``sbatch`` commands so this should be familiar, here is an example:
 
 .. code-block:: console
-    :caption: like ``srun``, this describes 1 node, 20 tasks, for 4 hours and runs a bash shell
+    :caption: this describes one node, one tasks and eight CPU cores for four hours
 
-    $ start-interactive-session.sh -N 1 -n 20 -t 4:0:0 --pty /bin/bash
+    $ salloc --nodes=1 --ntasks=1 --cpus-per-task=8 --time=04:00:00
 
-You'll have to wait for the resources and you'll get output similar to that below:
+You'll have to wait for the resources but when they are allocated you'll get output similar to that below:
 
 .. code-block:: console
 
-    srun: job 25363864 queued and waiting for resources
-    srun: job 25363864 has been allocated resources
-    Enabling login2 to accept our X-connection... node001 being added to access control list
+    [abc123@login2[viking2] ~]$ salloc --nodes=1 --ntasks=1 --cpus-per-task=8 --time=04:00:00
+    salloc: Pending job allocation 689814
+    salloc: job 689814 queued and waiting for resources
+    salloc: job 689814 has been allocated resources
+    salloc: Granted job allocation 689814
+    flight start: Flight Direct environment is already active.
+    [abc123@login2[viking2] ~]$
 
-After this you'll have a new session on one of the compute nodes. Stay in this terminal, load your modules and run your program and it will be running on the compute node. After you're done close everything down and remember to kill the virtual desktop just like we showed :ref:`before <kill_sessions>`.
+There is one extra step, after requesting resources we need to manually ``ssh`` into the node where the resources have been allocated and ensure we use the ``-X`` option, we can easily do this using the ``$SLURM_NODELIST`` variable which Slurm sets for us:
+
+.. code-block:: console
+
+    [abc123@login2[viking2] ~]$ ssh -X $SLURM_NODELIST
+
+Very shortly you'll be logged into the compute node, with all the login welcome text and then your prompt should look something like this:
+
+.. code-block:: console
+
+    [abc123@node064[viking2] ~]$
+
+In this example I'm logged into ``node064``.
+
+
+Run your program
+----------------
+
+Once you're logged into the compute node, you can now load the modules and run your graphical program. In this example we run MATLAB:
+
+.. code-block:: console
+
+    $ module load MATLAB/2023b
+    $ matlab
+
+After a few moments, the window for MATLAB should appear in your virtual desktop yet it's running on the compute node.
+
+
+Tidy up
+-------
+
+After you're done close everything down and remember to :ref:`kill the virtual desktop <kill_sessions>` just like we showed before.

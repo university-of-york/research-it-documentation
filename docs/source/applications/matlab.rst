@@ -1,25 +1,36 @@
 MATLAB
 ======
 
-``MATLAB`` can be loaded using the following command:
+MATLAB can be used with Viking in several different ways. These include:
+
+* Interactively without a GUI (MATLAB command line)
+* Interactively with a GUI (full MATLAB GUI)
+* Batch mode - submit jobs from your local MATLAB GUI
+* Batch mode - submit jobs from the Viking terminal
+
+The instructions for each of these methods are provided below.
+
+Running interactively without a GUI
+-----------------------------------
+
+Once you have :doc:`connected to one of the login nodes via SSH <../getting_started/connecting_to_viking>`, the first step is to create an interactive session on the compute nodes. Please ensure that you don't run MATLAB on :doc:`Viking's login nodes <../getting_started/code_of_conduct>`.
+
+To create an interactive session on a compute node for 30 minutes, with 4 cores and 8 GB of memory enter the following command in the terminal:
 
 .. code-block:: console
 
-    $ module load {MOD_MATLAB}
+    $ srun --ntasks=1 --cpus-per-task=4 --mem=8GB --time=00:30:00 --pty bash
 
-
-Running interactively
----------------------
-
-``MATLAB`` can be run interactively both with and without a Graphical User Interface (GUI). When running ``MATLAB`` interactively, please ensure that you are doing so inside an :ref:`interactive cluster session <virtual_session_compute_node>`, rather than on :doc:`Viking's login nodes <../getting_started/code_of_conduct>`.
-
-The following demonstrates how you could run ``MATLAB`` interactively without the GUI:
+Once the resources have been assinged, you need to load the MATLAB module, then start MATLAB without a GUI.
 
 .. code-block:: console
 
-    $ srun --ntasks=1 --mem-per-cpu=4800MB --time=00:30:00 --pty bash
     $ module load {MOD_MATLAB}
     $ matlab -nojvm -nodisplay -nosplash
+
+MATLAB will show you the following information and you will be at the MATLAB command prompt. You can now use the MATLAB command line as normal.
+
+.. code-block:: console
 
                             < M A T L A B (R) >
                   Copyright 1984-2023 The MathWorks, Inc.
@@ -29,20 +40,37 @@ The following demonstrates how you could run ``MATLAB`` interactively without th
     For online documentation, see http://www.mathworks.com/support
     For product information, visit www.mathworks.com.
 
-To run ``MATLAB`` interactively with the graphical user interface, you must first set up a :ref:`virtual desktop session on a compute mode <virtual_session_compute_node>`. Ensure that you use the command ``start-interactive-session.sh`` to set up your interactive job, rather than ``srun``. Note that these commands take the same parameters.
+    >>
+
+To close MATLAB just type ``exit`` at the MATLAB prompt. To end the interactive session and release your resources to other users type ``exit`` again or ``Ctrl+D`` and you will be returned to a login node. Please note that once your requested time has expired the interactive session and MATLAB will end and any unsaved data will be lost.
+
+Different resources can be assigned to the interactive session by changing the srun command options. This includes the :doc:`partition <../using_viking/resource_partitions>`. For example, to request a GPU compute node with one GPU use:
 
 .. code-block:: console
-    :caption: using ``start-interactive-session.sh`` as opposed to ``srun`` for the interactive session
+    
+    $ srun --partition=gpu --gres=gpu:1 --ntasks=1 --cpus-per-task=4 --mem=8GB --time=00:30:00 --pty bash
 
-    $ start-interactive-session.sh --ntasks=1 --mem-per-cpu=4800MB --time=00:30:00 --pty bash
-    $ module load {MOD_MATLAB}
-    $ matlab
+Running interactively with a GUI
+--------------------------------
 
-In your virtual desktop session, you should now see the ``MATLAB`` graphical interface which is running on a compute node.
+The :doc:`Virtual desktops <../using_viking/virtual_desktops>` page and specifically the section on :doc:`Compute nodes <../using_viking/virtual_desktops#compute-node>` explain how to run MATLAB in a virtual desktop on Viking. This gives you access to the normal MATLAB GUI and all of its graphical functionality.
+
+Batch mode - submit jobs from your local MATLAB GUI
+---------------------------------------------------
+
+There are some prerequisites before you can use this method of interacting with Viking:
+
+* An account on Viking - see XXX for information on how to get an account
+* You must either be on campus or connected via the VPN for this method to work
+* A version of MATLAB on your local computer which matches a version on Viking - currently ``2023a`` and ``2023b`` 
+* MATLAB Parallel Computing Toolbox installed on your local MATLAB instance. This should be present by default on managed devices
+
+.. Note::
+    These instructions will be completed soon!
 
 
-Running in batch mode
----------------------
+Batch mode - submit jobs from the Viking terminal
+-------------------------------------------------
 
 ``MATLAB`` (2019a and newer) can also be run in batch mode, i.e non-interactively. This model of execution fits nicely with HPC systems like Viking, where work can be submitted to the scheduler to be executed.
 

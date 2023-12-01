@@ -224,7 +224,11 @@ You'll have to wait for the resources but when they are allocated you'll get out
     flight start: Flight Direct environment is already active.
     [abc123@login2[viking2] ~]$
 
-There is one extra step, after requesting resources we need to manually ``ssh`` into the node where the resources have been allocated and ensure we use the ``-X`` option, we can easily do this using the ``$SLURM_NODELIST`` variable which Slurm sets for us:
+
+ssh into the compute node
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There is an extra step, after requesting resources we need to manually ``ssh`` into the node where the resources have been allocated and ensure we use the ``-X`` option, we can easily do this using the ``$SLURM_NODELIST`` variable which Slurm sets for us:
 
 .. code-block:: console
 
@@ -240,7 +244,7 @@ In this example I'm logged into ``node064``.
 
 
 Run your program
-----------------
+^^^^^^^^^^^^^^^^
 
 Once you're logged into the compute node, you can now load the modules and run your graphical program. In this example we run MATLAB:
 
@@ -253,6 +257,6 @@ After a few moments, the window for MATLAB should appear in your virtual desktop
 
 
 Tidy up
--------
+^^^^^^^
 
 After you're done close everything down and remember to :ref:`kill the virtual desktop <kill_sessions>` just like we showed before.

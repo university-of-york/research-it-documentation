@@ -259,4 +259,10 @@ After a few moments, the window for MATLAB should appear in your virtual desktop
 Tidy up
 ^^^^^^^
 
-After you're done close everything down and remember to :ref:`kill the virtual desktop <kill_sessions>` just like we showed before.
+When you're finished, close everything down and remember to :ref:`kill the virtual desktop <kill_sessions>` just like we showed before. Doing this will also ensure that the resources allocated from the ``salloc`` command will be relinquished.
+
+Alternatively, you can manually relinquish the resources by pressing ``Ctrl + d`` twice from the terminal with your ``ssh`` session on the compute node. Once to exit the ``ssh`` session, and the second time to relinquish the job allocation from the ``salloc`` command, and you should see confirmation of this. From here you could then type a new ``salloc`` command and continue from that step if you wish, this could be useful for requesting different resources.
+
+If for any reason you need to manually kill a job, type ``squeue -u $USER`` on Viking to show all the jobs you have on Viking and then type ``scancel JOBID`` where ``JOBID`` is the job you wish to cancel found from the previous command.
+
+

@@ -95,6 +95,12 @@ We need more info, from the output copy and run the command from the line highli
     If prompted, you should supply the following password: muAtEks5
 
 
+
+.. tip::
+
+    You can change the size of the virtual desktop 'display' once you're logged into the virtual desktop by clicking in the top right symbols, to the right of the time and date to open a small pop up menu. Then click on the spanner button, then the control panel will appear. Click on ``Devices`` then ``Displays`` and you can adjust the setting there but not all settings will be usable. Alternatively, you can set the ``geometry`` with the ``-g`` option when you run the ``flight`` command for example: ``flight desktop start gnome -g 1600x1200``.
+
+
 Create the ssh tunnel
 ^^^^^^^^^^^^^^^^^^^^^
 

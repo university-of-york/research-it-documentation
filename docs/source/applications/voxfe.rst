@@ -8,7 +8,7 @@ VOX-FE
     $ module load module load {MOD_VOXFE}
 
 
-An example job script can be found here. This script takes 40 CPUs, 1 GB of memory and 2 hours. Remember to update the account code and email address provided to ``slurm`` to your own details.
+An example job script can be found here. This script takes 96 CPU cores, 1 GB of memory and 2 hours. Remember to update the account code and email address provided to ``slurm`` to your own details.
 
 .. code-block:: bash
 
@@ -16,11 +16,10 @@ An example job script can be found here. This script takes 40 CPUs, 1 GB of memo
     #SBATCH --job-name=VOX-FE_CPU_example       # Job name
     #SBATCH --mail-type=BEGIN,END,FAIL          # Mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user=abc123@york.ac.uk       # Where to send mail to
-    #SBATCH --ntasks=40
-    #SBATCH --cpus-per-task=1
     #SBATCH --nodes=1
-    #SBATCH --ntasks-per-node=40
-    #SBATCH --ntasks-per-socket=20
+    #SBATCH --ntasks=96
+    #SBATCH --cpus-per-task=1
+    #SBATCH --ntasks-per-node=96
     #SBATCH --mem-per-cpu=1gb
     #SBATCH --time=02:00:00
     #SBATCH --output=logs/VOX-FE_CPU_example-node-%j.log

@@ -28,7 +28,7 @@ variable_replacements = {
     "{MOD_GAUSSIAN}": "Gaussian/G16a03",
     "{MOD_MATLAB}": "MATLAB/2023b",
     "{MOD_MONGODB}": "MongoDB/4.2.3",
-    "{MOD_VOXFE}": "VOX-FE/2.0.1-foss-2022b",
+    "{MOD_VOXFE}": "VOX-FE/2.0.1-foss-2022b",  # need to update the OpenMPI on same page
     "{MOD_RELION}": "RELION/4.0.1-foss-2021a",
     "{MOD_ALPHAFOLD_CPU}": "AlphaFold/2.3.1-foss-2022a",
     "{MOD_ALPHAFOLD_GPU}": "AlphaFold/2.3.1-foss-2022a-CUDA-11.7.0",

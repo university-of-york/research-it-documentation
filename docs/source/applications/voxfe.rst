@@ -8,7 +8,7 @@ VOX-FE
     $ module load module load {MOD_VOXFE}
 
 
-An example job script can be found here. This script described using a whole node with 96 cores exclusively for two hours. Remember to update the account code and email address provided to ``slurm`` to your own details.
+An example job script can be found here. This script described using a whole node with 96 cores exclusively for two hours. Remember to update the account code and email address provided to ``slurm`` to your own details and be sure to substitute ``Script.txt`` with the path to your script.
 
 .. code-block:: bash
 
@@ -19,7 +19,7 @@ An example job script can be found here. This script described using a whole nod
     #SBATCH --nodes=1                           # Number of nodes
     #SBATCH --exclusive                         # Exclusively use the whole node
     #SBATCH --time=02:00:00                     # Time of the job in HH:MM:SS
-    #SBATCH --output=logs/VOX-FE_CPU_example-node-%j.log
+    #SBATCH --output=VOX-FE_CPU_example-%j.log  # Output file
     #SBATCH --account=dept-proj-year            # Project account to use
 
     # Abort if any command fails
@@ -34,7 +34,7 @@ An example job script can be found here. This script described using a whole nod
     echo
 
     date
-    mpirun -np $SLURM_JOB_CPUS_PER_NODE PARA_BMU Script.txt
+    mpirun -np $SLURM_JOB_CPUS_PER_NODE voxfe_solver Script.txt
     date
 
 .. note::

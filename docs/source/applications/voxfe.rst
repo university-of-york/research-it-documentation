@@ -27,7 +27,7 @@ An example job script can be found here. This script described using a whole nod
 
     module purge                                # purge any loaded modules
     module load OpenMPI/4.1.4-GCC-12.2.0
-    module load module load {MOD_VOXFE}
+    module load {MOD_VOXFE}
 
     echo "Running small-vox-fe on $SLURM_JOB_CPUS_PER_NODE CPU cores"
     echo "Nodes allocated to job: " $SLURM_JOB_NUM_NODES "(" $SLURM_JOB_NODELIST ")"

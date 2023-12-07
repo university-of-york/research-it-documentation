@@ -47,13 +47,13 @@ To close MATLAB just type ``exit`` at the MATLAB prompt. To end the interactive 
 Different resources can be assigned to the interactive session by changing the srun command options. This includes the :doc:`partition <../using_viking/resource_partitions>`. For example, to request a GPU compute node with one GPU use:
 
 .. code-block:: console
-    
+
     $ srun --partition=gpu --gres=gpu:1 --ntasks=1 --cpus-per-task=4 --mem=8GB --time=00:30:00 --pty bash
 
 Running interactively with a GUI
 --------------------------------
 
-The :doc:`Virtual desktops <../using_viking/virtual_desktops>` page and specifically the section on :doc:`Compute nodes <../using_viking/virtual_desktops#compute-node>` explain how to run MATLAB in a virtual desktop on Viking. This gives you access to the normal MATLAB GUI and all of its graphical functionality.
+The :doc:`Virtual desktops <../using_viking/virtual_desktops>` page and specifically the section on :ref:`Compute nodes <virtual_session_compute_node>` explain how to run MATLAB in a virtual desktop on Viking. This gives you access to the normal MATLAB GUI and all of its graphical functionality.
 
 Batch mode - submit jobs from your local MATLAB GUI
 ---------------------------------------------------
@@ -62,7 +62,7 @@ There are some prerequisites before you can use this method of interacting with 
 
 * An account on Viking - see XXX for information on how to get an account
 * You must either be on campus or connected via the VPN for this method to work
-* A version of MATLAB on your local computer which matches a version on Viking - currently ``2023a`` and ``2023b`` 
+* A version of MATLAB on your local computer which matches a version on Viking - currently ``2023a`` and ``2023b``
 * MATLAB Parallel Computing Toolbox installed on your local MATLAB instance. This should be present by default on managed devices
 
 .. Note::

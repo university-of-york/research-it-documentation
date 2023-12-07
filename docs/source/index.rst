@@ -36,7 +36,6 @@ Welcome to the Viking Documentation!
    using_viking/virtual_environments
    using_viking/x11_forwarding
    using_viking/project_folders
-.. using_viking/apptainer
 
 
 .. toctree::

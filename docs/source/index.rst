@@ -37,6 +37,17 @@ Welcome to the Viking Documentation!
    using_viking/x11_forwarding
    using_viking/project_folders
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Data management
+   :hidden:
+
+   data_management/filestore
+   data_management/vault
+   data_management/google_drive
+   data_management/drop_off
+   data_management/other_locations
+
 
 .. toctree::
    :maxdepth: 1

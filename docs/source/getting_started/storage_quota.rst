@@ -1,5 +1,5 @@
-Data management and user quota
-==============================
+Storage quota
+=============
 
 .. FIXME: This uses OLD information
 
@@ -10,7 +10,7 @@ Viking is a self-contained machine, therefore you will notice your normal UoY ho
 - UoY home directories are not designed for high-performance computing. Instead Viking has its own filesystem designed for high-performance
 
 
-Your area on viking explained
+Your area on Viking explained
 -----------------------------
 
 When you log in to Viking, you will land in your home directory, specifically:

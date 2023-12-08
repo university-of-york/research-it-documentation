@@ -19,7 +19,7 @@ Welcome to the Viking Documentation!
    getting_started/creating_accounts
    getting_started/connecting_to_viking
    getting_started/connecting_off_campus
-   getting_started/data_management_and_user_quota
+   getting_started/storage_quota
    getting_started/backing_up
 
 .. toctree::

@@ -7,7 +7,7 @@ The :doc:`Vault </data_management/vault>` provides unlimited cold storage and is
 
 The :doc:`Filestore </data_management/filestore>` is more readily accessible, if you need more space please contact itsupport@york.ac.uk. If you use the Filestore for backing up, usually the data will be transferred to the Vault for archiving later.
 
-Other options are available, please browse through the **DATA MANAGEMENT** section in the main navigation menu to see some common examples.
+Other options are available, please browse through the **DATA MANAGEMENT** section in the main navigation menu to see some common methods, for example the :doc:`Filestore </data_management/filestore>` and :doc:`Vault </data_management/vault>` or :doc:`Google drive </data_management/google_drive>` options.
 
 .. warning::
 

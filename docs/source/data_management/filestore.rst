@@ -1,14 +1,14 @@
 Filestore ("Storage")
 =====================
 
-Please see the University's `Filestore guide <https://www.york.ac.uk/it-services/filestore/rented/>`_ for more information about accessing and using this service.
+Please see the University's `filestore guide <https://www.york.ac.uk/it-services/filestore/rented/>`_ for more information about accessing and using this service.
 
 
-Send data to the Filestore
+Send data to the filestore
 --------------------------
 
 
-To move your data from Viking and to the Filestore ("Storage"), the address you need to use as an example is::
+To move your data from Viking to the filestore ("Storage"), the address you need to use as an example is::
 
     sftp.york.ac.uk:/shared/storage/<filestore>
 
@@ -23,36 +23,52 @@ You can use ``PuTTY`` on Windows and the command line on Linux and MacOS with co
 Using the ``scp`` command
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To copy a file 'filename' to your filestore
-"""""""""""""""""""""""""""""""""""""""""""
+``scp`` copies files between hosts on a network.  It uses ``ssh`` for data transfer, and uses the same authentication and provides the same security as ``ssh``. ``scp`` will ask for passwords or passphrases if they are needed for authentication.
+
+To copy a file to your filestore
+""""""""""""""""""""""""""""""""
+
+Replace  ``<filename>`` with the name of your file and ``<filestore>`` with the path to your filestore:
+
 .. code-block:: console
 
-    $ scp filename scp.york.ac.uk:/shared/storage/<filestore>
+    $ scp <filename> scp.york.ac.uk:/shared/storage/<filestore>
 
-To copy a directory 'dirname' to your filestore
-"""""""""""""""""""""""""""""""""""""""""""""""
+To copy a directory to your filestore
+""""""""""""""""""""""""""""""""""""""
+
+Replace  ``<dirname>`` with the name of your folder and ``<filestore>`` with the path to your filestore:
+
 .. code-block:: console
 
-    $ scp -r dirname scp.york.ac.uk:/shared/storage/<filestore>
+    $ scp -r <dirname> scp.york.ac.uk:/shared/storage/<filestore>
 
 The ``-r`` option means it copies the directory recursively.
 
 Using the ``rsync`` command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To copy a file 'filename' to your filestore
-""""""""""""""""""""""""""""""""""""""""""""
+``rsync`` is a fast and extraordinarily versatile file copying tool. It can copy locally, to/from another host over any remote shell, or to/from a remote rsync daemon. It offers a large number of options that control every aspect of its behaviour and permit very flexible specification of the set of files to be copied.
+
+To copy a file to your filestore
+""""""""""""""""""""""""""""""""
+
+Replace ``<filename>`` with the name of your file and ``<filestore>`` with the path to your filestore:
+
 .. code-block:: console
 
-    $ rsync -P --append filename sftp.york.ac.uk:/shared/storage/<filestore>
+    $ rsync -P --append <filename> sftp.york.ac.uk:/shared/storage/<filestore>
 
 Option ``-P`` sets the ``--partial`` and ``--progress`` options, which will *keep partially transferred files* and shows *progress*. The ``--append`` option will *append data onto shorter files*. Together this is handy if a large file needs to be transferred but for some reason could get interrupted. Rerunning this command should pick up where it left off.
 
-To copy a directory 'dirname' to your filestore
-"""""""""""""""""""""""""""""""""""""""""""""""
+To copy a directory to your filestore
+"""""""""""""""""""""""""""""""""""""
+
+Replace  ``<dirname>`` with the name of your folder and ``<filestore>`` with the path to your filestore:
+
 .. code-block:: console
 
-    $ rsync -av dirname sftp.york.ac.uk:/shared/storage/<filestore>
+    $ rsync -av <dirname> sftp.york.ac.uk:/shared/storage/<filestore>
 
 Options ``a`` set up a number of options useful for *archiving*, ``v`` for *verbose* so you can monitor the process.
 
@@ -61,7 +77,7 @@ Options ``a`` set up a number of options useful for *archiving*, ``v`` for *verb
     If you use the above commands on Viking to transfer files why not look into using :doc:`tmux or screen </using_viking/terminal_multiplexing>`, and this will allow you to ``detach`` from the terminal where it will continue to run ready for your return later.
 
 
-Retrieve data from the Filestore
+Retrieve data from the filestore
 --------------------------------
 
 If you need to transfer data to Viking from your department's shared storage space one of the fastest ways is doing this is by being logged into Viking and initiating the transfer there.
@@ -71,8 +87,8 @@ It's possible to be logged into Viking and directly copy data across from your `
 Using the ``scp`` command
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To copy a file 'filename' from your filestore
-"""""""""""""""""""""""""""""""""""""""""""""
+To copy a file from your filestore
+""""""""""""""""""""""""""""""""""
 
 Replace ``<filestore>`` with the path to your filestore and ``<filename>`` with the name of your file:
 
@@ -81,8 +97,8 @@ Replace ``<filestore>`` with the path to your filestore and ``<filename>`` with 
     $ scp scp.york.ac.uk:/shared/storage/<filestore>/<filename> .
 
 
-To copy a directory 'dirname' from your filestore
-"""""""""""""""""""""""""""""""""""""""""""""""""
+To copy a directory from your filestore
+"""""""""""""""""""""""""""""""""""""""
 
 Replace ``<filestore>`` with the path to your filestore and ``<dirname>`` with the name of the folder you with to copy to Viking:
 
@@ -98,8 +114,8 @@ Replace ``<filestore>`` with the path to your filestore and ``<dirname>`` with t
 Using the ``rsync`` command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To copy a file 'filename' from your filestore
-"""""""""""""""""""""""""""""""""""""""""""""
+To copy a file from your filestore
+""""""""""""""""""""""""""""""""""
 
 Replace ``<filestore>`` with the path to your filestore and ``<filename>`` with the name of your file:
 
@@ -108,8 +124,8 @@ Replace ``<filestore>`` with the path to your filestore and ``<filename>`` with 
     $ rsync -P --append sftp.york.ac.uk:/shared/storage/<filestore>/<filename> .
 
 
-To copy a directory 'dirname' from your filestore
-"""""""""""""""""""""""""""""""""""""""""""""""""
+To copy a directory from your filestore
+"""""""""""""""""""""""""""""""""""""""
 
 Replace ``<filestore>`` with the path to your filestore and ``<dirname>`` with the name of the folder you with to copy to Viking:
 

@@ -99,7 +99,13 @@ Or copy a single file:
 Reconnect rclone to Google drive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If it's been a while since you last used ``rclone`` you'll need to reconnect it to your google drive, here is an example:
+If it's been a while since you last used ``rclone`` you'll need to reconnect it to your google drive, here is an example from Viking. First ensure the ``rclone`` module is loaded:
+
+.. code-block:: console
+
+    $ module load {MOD_RCLONE}
+
+Then begin the process of reconnecting ``rclone``:
 
 .. code-block:: console
 
@@ -128,7 +134,7 @@ You should then see similar output asking you to copy and paste the following li
     config_token>
 
 
-Paste it to a **local terminal** and run it, you may need to just try ``rclone authorize "drive"`` if it fails the first time and you're running an older version of ``rclone`` on your local device. A browser window should pop up, authenticate with google and in the local terminal you will receive a token like this:
+Paste it to a **local terminal** (on your device not Viking) and press ``Enter`` to run it, you may need to just try ``rclone authorize "drive"`` if you're running an older version of ``rclone`` on your local device and receive an error. A browser window should pop up, authenticate with Google and in the local terminal you will receive a token like this:
 
 .. code-block:: console
 

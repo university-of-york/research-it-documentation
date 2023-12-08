@@ -19,7 +19,7 @@ There are many other ways you can copy data to and from Viking and so we will on
 Windows
 """""""
 
-If you are copying data from a Windows device it is recommended that you use `WinSCP <https://winscp.net/>`_ and their website has some good `tutorials for uploading and downloading files <https://winscp.net/eng/docs/task_index>`_ and other uses. Using the your ``username`` and the ``hostname``, ``port`` and ``protocol`` shown above, you should be able to connect to Viking and start moving files!
+If you are copying data from a Windows device it is recommended that you use `WinSCP <https://winscp.net/>`_ and their website has some good `tutorials for uploading and downloading files <https://winscp.net/eng/docs/task_index>`_ and other uses. Using your ``username`` and the ``hostname``, ``port`` and ``protocol`` shown above, you should be able to connect to Viking and start moving files.
 
 
 .. _transfer_files_linux:

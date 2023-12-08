@@ -19,7 +19,7 @@ Welcome to the Viking Documentation!
    getting_started/creating_accounts
    getting_started/connecting_to_viking
    getting_started/connecting_off_campus
-   getting_started/data_management_and_user_quota
+   getting_started/storage_quota
    getting_started/backing_up
 
 .. toctree::
@@ -36,6 +36,18 @@ Welcome to the Viking Documentation!
    using_viking/virtual_environments
    using_viking/x11_forwarding
    using_viking/project_folders
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Data management
+   :hidden:
+   :glob:
+
+   data_management/filestore
+   data_management/vault
+   data_management/google_drive
+   data_management/drop_off
+   data_management/other_locations
 
 
 .. toctree::

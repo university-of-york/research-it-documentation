@@ -25,8 +25,6 @@ Where ``abc123`` will be replaced by your username. This ``home`` directory has 
 
     /mnt/scratch/users/abc123/
 
-.. FIXME: needs size
-
 
 .. tip::
     If you need more ``scratch`` storage space, please email us at itsupport@york.ac.uk, we are more than happy to accommodate large projects.
@@ -61,8 +59,8 @@ Which will produce something similar to the following result:
     Disk quotas for usr abc123 (uid 12345):
          Filesystem    used   quota   limit   grace   files   quota   limit   grace
        /mnt/scratch      4k      2T    2.1T       -       1       0       0       -
-    uid 12860 is using default block quota setting
-    uid 12860 is using default file quota setting
+    uid 12345 is using default block quota setting
+    uid 12345 is using default file quota setting
 
     Home quota:
     Disk quotas for user abc123 (uid 12345):
@@ -72,8 +70,14 @@ Which will produce something similar to the following result:
 
 
 What happens if you exceed your quota
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 When you login to Viking you will be told if you are over quota. If this is in users area with the **100GB** or **200,000** files limit you will need to delete or move your files to your ``scratch`` area.  **There is a grace period of 7 days after which you will lose access to Viking.**
 
 If you are over quota in the ``scratch`` area and need more space please email itsupport@york.ac.uk where we can increase your quota. **There is a grace period of 7 days after which you will lose access to Viking.**
+
+
+Transferring file to and from Viking or backing up
+--------------------------------------------------
+
+Please see the **DATA MANAGEMENT** section with links to various locations and methods to transfer data to a from Viking for more information.

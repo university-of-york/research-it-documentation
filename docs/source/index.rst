@@ -41,6 +41,7 @@ Welcome to the Viking Documentation!
    :maxdepth: 1
    :caption: Data management
    :hidden:
+   :glob:
 
    data_management/filestore
    data_management/vault

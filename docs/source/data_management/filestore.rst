@@ -1,10 +1,10 @@
-Storage
--------
+Filestore
+=========
 
 If you need to transfer data to Viking from your department's shared storage space one of the fastest ways is doing this is by being logged into Viking and initiating the transfer there.
 
 Transfer data from the shared storage directly to Viking
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------------
 
 It's possible to be logged into Viking and directly copy data across from your `shared filestore <https://www.york.ac.uk/it-services/filestore/rented/>`_ over `scp, sftp or rsync <https://www.york.ac.uk/it-services/services/file-transfer/>`_. You'll need to know the path to the folder but an example is shown below. Here we use ``scp`` to copy a folder to the current folder on Viking:
 
@@ -16,7 +16,7 @@ It's possible to be logged into Viking and directly copy data across from your `
 The dot ``.`` at the end tells ``scp`` to copy the folder to the current directory, in this case it's ``<filestore>`` but you should change that to the correct folder path on the shared storage. You can change the ``.`` to any path you have access to (normally within your home folder).
 
 Personal filestore
-""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 The following is the path for your `personal filestore <https://www.york.ac.uk/it-services/filestore/>`_:
 
@@ -28,7 +28,7 @@ Where ``a`` and ``abc123`` are the first letter of your username followed by you
 
 
 Bioldata filestore
-"""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 For ``bioldata`` filestores the paths are either:
 
@@ -38,3 +38,52 @@ For ``bioldata`` filestores the paths are either:
     $ scp -r scp.york.ac.uk:/shared/biology/bioldata2/<filestore> .
 
 Replace ``<filestore>`` is the rest of the path the your data. You can check this path by logging onto one or the `interactive research servers <https://wiki.york.ac.uk/display/RCS/Interactive+Research+Linux+Service>`_ and looking for the path in ``/shared/biology/bioldata1/`` and ``/shared/biology/bioldata1/``
+
+
+
+Filestore
+---------
+
+Please see the University's `Filestore guide <https://www.york.ac.uk/it-services/filestore/rented/>`_ for more information about accessing and using this service.
+To move your data from Viking and to the Filestore ("Storage"), the address you need to use as an example is::
+
+    sftp.york.ac.uk:/shared/storage/<filestore>
+
+
+.. tip::
+
+    Please speak to your department if you need access to your department's shared filestore.
+
+
+You can use ``PuTTY`` on Windows and the command line on Linux and MacOS with commands such as ``rsync``  and ``scp`` much like the examples on the :ref:`Data Management page <transfer_files_linux>`, examples below.
+
+.. code-block:: console
+    :caption: copies a file 'filename' to your filestore
+
+    $ scp filename scp.york.ac.uk:/shared/storage/<filestore>
+
+.. code-block:: console
+    :caption: copies a directory 'dirname' to your filestore
+
+    $ scp -r dirname scp.york.ac.uk:/shared/storage/<filestore>
+
+The ``-r`` option means it copies the directory recursively.
+
+.. code-block:: console
+    :caption: copies a directory 'dirname' to your filestore
+
+    $ rsync -av dirname sftp.york.ac.uk:/shared/storage/<filestore>
+
+Options ``a`` set up a number of options useful for *archiving*, ``v`` for *verbose* so you can monitor the process.
+
+.. code-block:: console
+    :caption: copies a file 'filename' to your filestore
+
+    $ rsync -P --append filename sftp.york.ac.uk:/shared/storage/<filestore>
+
+Option ``-P`` sets the ``--partial`` and ``--progress`` options, which will *keep partially transferred files* and shows *progress*. The ``--append`` option will *append data onto shorter files*. Together this is handy if a large file needs to be transferred but for some reason could get interrupted. Rerunning this command should pick up where it left off.
+
+
+.. hint::
+
+    If you use the above commands on Viking to transfer files why not look into using :doc:`tmux or screen </using_viking/terminal_multiplexing>`, and this will allow you to ``detach`` from the terminal where it will continue to run ready for your return later.

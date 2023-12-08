@@ -13,7 +13,7 @@ To load ``apptainer`` on Viking run
 Build a container
 -----------------
 
-It's possible to build the containers on Viking directly, here we will give a very simple example where we build and then run a container from Docker Hub, more information can be found in the `Apptainer docs <https://apptainer.org/docs/user/main/docker_and_oci.html>`_.
+It's possible to build the containers on Viking directly, here we will give a very simple example where we build and then run a container from `Docker Hub <https://hub.docker.com/>`_, more information can be found in the `Apptainer docs <https://apptainer.org/docs/user/main/docker_and_oci.html>`_.
 
 .. code-block:: console
 

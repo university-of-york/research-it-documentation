@@ -60,7 +60,13 @@ If you login into Google Drive you should see the files from ``directory_to_copy
 
 .. code-block:: console
 
-    2021/08/16 11:33:23 Fatal error: listing Team Drives failed: googleapi: Error 403: Insufficient Permission: Request had insufficient authentication scopes., insufficientPermissions
+    2021/08/16 11:33:23 Fatal error: listing Team Drives failed: googleapi: Error 403:
+    Insufficient Permission: Request had insufficient authentication scopes.,
+    insufficientPermissions
+
+.. tip::
+
+    There are lots of commands available to use with ``rclone``, please see their `documentation <https://rclone.org/commands/>`_ for such commands as `mkdir <https://rclone.org/commands/rclone_mkdir/>`_ and `sync <https://rclone.org/commands/rclone_sync/>`_ to name but a few.
 
 
 Retrieve data from Google drive
@@ -107,7 +113,7 @@ Then answer the following questions:
 You should then see similar output asking you to copy and paste the following line to your local machine to allow you to authenticate with Google. Make sure you copy the output from your terminal (not from the example below):
 
 .. code-block:: console
-    :emphasize-lines: 7
+    :emphasize-lines: 7-9
 
     Option config_token.
     For this to work, you will need rclone available on a machine that has
@@ -115,7 +121,9 @@ You should then see similar output asking you to copy and paste the following li
     For more help and alternate methods see: https://rclone.org/remote_setup/
     Execute the following on the machine with the web browser (same rclone
     version recommended):
-    	rclone authorize "drive" "eyJjbGllbnRfc2VjcmpBdmZqRnhNG1kZ2dyMXZrbGguYXBwOV0IjoiR09DU1BYLXFmRUpBDktbjAzNXaTY4VHZMaGNjb2MyQ3BwdWkzZ2cy5nbI1NzUyNTU229nbGV1c2VyY29udGVudC5jb20iLCJjbGlfaWQiOiOTAwp1MW9qbDl2ZWprdlbnR
+    	rclone authorize "drive" "eyJjbGllbnRfc2VjcmpBdmZqRnhNG1kZ2dyMXZrbGguYXBwOV0IjoiR09DU1
+        XFmRUpBDktbjAzNXaTY4VHZMaGNjb2MyQ3BwdWkzZ2cy5nbI1NzUyNTU229nbGV1c2VyY29udGVudC5jb20iLC
+        JjbGlfaWQiOiOTAwp1MW9qbDl2ZWprdlbnR
     Enter a value.
     config_token>
 
@@ -124,7 +132,11 @@ Paste it to a **local terminal** and run it, you may need to just try ``rclone a
 
 .. code-block:: console
 
-    {"access_token":"ys29.a2AfB_byA7dScgqO-Mmb3inj_vA4ekXEZeArV4DaXJquZlaOffvJb-6KrWJXtqP0ldI74NFf7vWN5_W2-jBBx1sIe_cpJucmS4PhKb2XJgVg_9WoBLSxLW_ptYjyIoI-j9fTa3TtTUEWkm2lIXKutr0I_I6Uv5GQXJIQV9aCgYdAc0SARISFQHGX2Mi-mGIzGP0lg0171-WkSxrrcBuvj","token_type":"Bearer","refresh_token":"1//03mj2JasEkNTQsgYIARAAGAMSNwF-L9Irw3sdt-H2jRP6o6sJzXqiNHgUjDSIOXDsnMthsW5yBCrKi3IymwWr7uLZwy0mmmcqsGc","expiry":"2023-12-25T11:00:24.685141432Z"}
+    {"access_token":"ys29.a2AfB_byA7dScgqO-Mmb3inj_vA4ekXEZeArV4DaXJquZlaOffvJb-6KrWJXtqP0ldI74N
+    f7vWN5_W2-jBBx1sIe_cpJucmS4PhKb2XJgVg_9WoBLSxLW_ptYjyIoI-j9fTa3TtTUEWkm2lIXKutr0I_I6Uv5GQXJI
+    V9aCgYdAc0SARISFQHGX2Mi-mGIzGP0lg0171-WkSxrrcBuvj","token_type":"Bearer","refresh_token":"1/
+    03mj2JasEkNTQsgYIARAAGAMSNwF-L9Irw3sdt-H2jRP6o6sJzXqiNHgUjDSIOXDsnMthsW5yBCrKi3IymwWr7uLZwy0
+    mmcqsGc","expiry":"2023-12-25T11:00:24.685141432Z"}
 
 
 Copy and paste that in the **Viking terminal**, press ``Enter`` and complete the final question about a 'team drive' (enter ``n`` if unsure). You can then run ``rclone config show`` to should show your token, you can now use ``rclone`` again.

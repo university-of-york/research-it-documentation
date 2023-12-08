@@ -14,7 +14,7 @@ As mentioned previously, when you first log into Viking you are logged into one 
 
 .. note::
 
-    For this to work you must be running an ``xserver`` on your local machine which will display the ``Mathematica`` window. On Linux and MacOS this is most likely included and for Windows 10 / 11 `Xming <https://sourceforge.net/projects/xming/files/latest/download>`_ is a great solution. Without a locally running ``xserver`` this will not work.
+    For this to work you must be running an ``xserver`` on your local machine which will display the ``Mathematica`` window. On Linux this is most likely included and on Mac OSX 10.8 and up, you'll need to install `XQuartz <https://www.xquartz.org/>`_.  For Windows 10 / 11 `Xming <https://sourceforge.net/projects/xming/files/latest/download>`_ is one solution however, it may be more problematic to get running on Windows so you may want to run a :doc:`virtual desktop </using_viking/virtual_desktops>` instead. Without a locally running ``xserver`` this will not work.
 
 
 SSH forwarding

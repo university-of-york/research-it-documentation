@@ -165,7 +165,7 @@ You should soon be presented with a virtual desktop running on Viking. Click the
 List sessions
 ^^^^^^^^^^^^^
 
-List all the current virtual desktops you have running with the following command:
+Back in your regular Viking session (not in the terminal in the virtual desktop) you can list all the current virtual desktops you have running with the following command:
 
 .. code-block:: console
 
@@ -205,7 +205,7 @@ Your ``Identity`` code will be different to mine, this is just an example.
 Compute node
 -------------
 
-The above method is great for light work like checking results but if you want to do heavier work with a graphical application then you need to use a compute node. When you've logged into the the virtual desktop :ref:`like above <virtual_desktop>`, you then request resources on a compute node using the `salloc <https://slurm.schedmd.com/salloc.html>`_ command. This takes the same options as the ``srun`` and ``sbatch`` commands so this should be familiar, here is an example:
+The above method is great for light work like checking results but if you want to do heavier work with a graphical application then you need to use a compute node. When you've logged into the the virtual desktop and opened up a new terminal within the virtual desktop, :ref:`like above <virtual_desktop>`, you then request resources on a compute node using the `salloc <https://slurm.schedmd.com/salloc.html>`_ command. This takes the same options as the ``srun`` and ``sbatch`` commands so this should be familiar, here is an example:
 
 .. code-block:: console
     :caption: this describes one node, one tasks and eight CPU cores for four hours

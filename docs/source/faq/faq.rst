@@ -32,7 +32,7 @@ Can you increase my quota on '/mnt/scratch/users/'?
 Absolutely, please email itsupport@york.ac.uk to request we increase your quota. Please try to keep it to what you will use and if you no longer need it please let us know so we can adjust it back. Please remember to take time to arrange for :doc:`regular back ups </getting_started/backing_up>` of your data as nothing on the ``scratch`` file system is backed up automatically. If your data is no longer needed, please delete it to free up space on the file system.
 
 
-WinSCP shows "Error Listing Directory '/mnt/lustre/users/'"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WinSCP shows "Error Listing Directory /mnt/lustre/users/"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is due to WinSCP using the folder path from the old Viking when trying to connect to the new Viking, which it saved from a previous session. As the folder path has changed slightly on the new Viking, WinSCP exits with this, or a similar error. To fix this please change the path to ``/mnt/scratch/users/abc123`` where ``abc123`` is your username.

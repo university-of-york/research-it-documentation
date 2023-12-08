@@ -13,7 +13,7 @@ To load ``apptainer`` on Viking run
 Build a container
 -----------------
 
-It's possible to build the containers on Viking directly, here we will give a very simple example where we build and then run a container from Docker Hub, more information can be found in the `apptainer docs <https://apptainer.org/docs/user/main/docker_and_oci.html>`_.
+It's possible to build the containers on Viking directly, here we will give a very simple example where we build and then run a container from `Docker Hub <https://hub.docker.com/>`, more information can be found in the `apptainer docs <https://apptainer.org/docs/user/main/docker_and_oci.html>`_.
 
 .. code-block:: console
 
@@ -42,9 +42,9 @@ Here is an example use of building and running a program through ``apptainer`` s
 
 On Viking, from the command line:
 
-    .. code-block:: console
+.. code-block:: console
 
-        $ module load {MOD_APPTAINER}
+    $ module load {MOD_APPTAINER}
 
 On the Viking command line we build the image. The ``docker://proteomicsunitcrg/dia-nn:latest`` was made by putting ``docker://`` in front of the container ``repository`` and ``tag`` as explained in the `documentation <https://apptainer.org/docs/user/main/docker_and_oci.html#public-containers>`_.
 

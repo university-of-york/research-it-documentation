@@ -39,7 +39,7 @@ Next, for the first time using rclone, you will need to configure it using the f
     14. ``q``
 
 Send data to Google drive
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 You are now ready to transfer files from Viking to your Google Drive.  This can be done with the following command
 
@@ -70,7 +70,7 @@ If you login into Google Drive you should see the files from ``directory_to_copy
 
 
 Retrieve data from Google drive
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 If you have data you wish to retrieve from your Google drive then using the above example folder, on Viking first ensure the ``rclone`` module is loaded:
 
@@ -97,7 +97,7 @@ Or copy a single file:
 
 
 Reconnect rclone to Google drive
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 If it's been a while since you last used ``rclone`` you'll need to reconnect it to your google drive, here is an example from Viking. First ensure the ``rclone`` module is loaded:
 

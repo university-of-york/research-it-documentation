@@ -32,8 +32,8 @@ variable_replacements = {
     "{MOD_RELION}": "RELION/4.0.1-foss-2021a",
     "{MOD_ALPHAFOLD_CPU}": "AlphaFold/2.3.1-foss-2022a",
     "{MOD_ALPHAFOLD_GPU}": "AlphaFold/2.3.1-foss-2022a-CUDA-11.7.0",
-    "{ALPHAFOLD_DB_PATH}": "/mnt/bb/striped/alphafold_db/",
-    "{APLHPFOLD_DB_DATE}": "20230518",
+    "{ALPHAFOLD_DB_PATH}": "/mnt/scratch/projects/alphafold-db/",
+    "{APLHPFOLD_DB_DATE}": "latest",
     "{MOD_VASP}": "VASP/5.4.4-intel-2023a",
     "{MOD_TOOLCHAIN_FOSS}": "foss/2023a",  # used in the AtChem2 example
     "{MOD_CMAKE}": "CMake/3.26.3-GCCcore-12.3.0",  # used in the AtChem2 example

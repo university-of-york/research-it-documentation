@@ -103,11 +103,11 @@ To avoid needless duplication of large databases across the cluster, these have 
 
     {ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}
 
-The name of the subdirectory ``{APLHPFOLD_DB_DATE}`` indicates the date that the databases were downloaded. The files are hosted on the burst buffer (``/mnt/bb``) - a shared filesystem powered by fast SSDs - which is recommended for ``AlphaFold`` due to the random I/O access patterns. As seen below this can cause jobs to run up to **2x faster** than if the databases were stored on the disk-based lustre filesystem.
+The name of the subdirectory ``{APLHPFOLD_DB_DATE}`` is a symlink which points to the latest databases which have been downloaded. You can see all the sets within the ``{ALPHAFOLD_DB_PATH}`` directory. The files are hosted on the  fast SSDs - which is recommended for ``AlphaFold`` due to the random I/O access patterns. As seen below this can cause jobs to run up to **2x faster** than if the databases were stored on the disk-based lustre filesystem.
 
 It is important to note that we have made a few enhancements to the installation to facilitate easier usage:
 
-- The location to the AlphaFold data can be specified via the ``$ALPHAFOLD_DATA_DIR``  environment variable, so you should define this variable in your AlphaFold job script: ``export ALPHAFOLD_DATA_DIR=/mnt/bb/striped/alphafold-db/20210908``
+- The location to the AlphaFold data can be specified via the ``$ALPHAFOLD_DATA_DIR``  environment variable, so you should define this variable in your AlphaFold job script: ``export ALPHAFOLD_DATA_DIR={ALPHAFOLD_DB_PATH}{APLHPFOLD_DB_DATE}``
 - A symbolic link named ``alphafold`` , which points to the ``run_alphafold.py script`` , is included. This means you can just use ``alphafold``  instead of ``run_alphafold.py`` or ``python run_alphafold.py``.
 - The ``run_alphafold.py``  script has been slightly modified such that defining ``$ALPHAFOLD_DATA_DIR``  is sufficient to pick up all the data provided in that location, meaning that you don't need to use options like ``--data_dir``  to specify the location of the data.
 - Similarly, the ``run_alphafold.py``  script was tweaked such that the location to commands like ``hhblits``, ``hhsearch``, ``jackhmmer`` or ``kalign`` are already correctly set, and thus options like ``--hhblits_binary_path``  are not required.
@@ -129,7 +129,7 @@ Shown below are the results of using the ``T1050.fasta`` example mentioned in th
 
 This highlights the importance of requesting resources when using ``AlphaFold``. These results suggest:
 
-  - It is faster for almost all jobs to use the ``AlphaFold`` with the database stored on the burst buffer, ``/mnt/bb``
+  - It is faster for almost all jobs to use the ``AlphaFold`` with the database stored on the SSDs
   - Using a GPU can considerably increase the speed at which a job completes (up to 6x)
   - Using a second GPU does not significantly reduce the runtime for a job
   - Counter intuitively, using more cores can lower performance

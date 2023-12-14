@@ -59,7 +59,7 @@ Example job scripts
     alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
 
 .. important::
-    The CUDA enabled GPU module will only work on the ``gpu`` or ``gppu_week`` partitions with the nVidia A40 GPUs, it won't work on the ``gpu_plus`` partition with the H100 GPUs as they require CUDA 11.8
+    The CUDA enabled GPU module will only work on the ``gpu`` or ``gpu_week`` partitions with the nVidia A40 GPUs, it won't work on the ``gpu_plus`` partition with the H100 GPUs as they require CUDA 11.8
 
 .. code-block:: bash
     :caption: using a GPU in addition to 10 CPUs for up to 4 hours

@@ -182,7 +182,7 @@ The ``$SLURM_ARRAY_TASK_ID`` environmental variable represents the array index, 
 GPU jobs
 --------
 
-Viking has two GPU :doc:`partitions </using_viking/resource_partitions>`, one with 48 nVidia A40 GPUs and another with twelve nVidia H100 GPUs. Requesting access to a GPU requires you to select the corresponding partition and also request the number of GPUs, for example those lines in a job script looks like:
+Viking has three GPU :doc:`partitions </using_viking/resource_partitions>`, two with access to 48 nVidia A40 GPUs for either up to three days or a week, and another with access to twelve nVidia H100 GPUs for up to three days. Requesting access to a GPU requires you to select the corresponding partition and also request the number of GPUs, for example those lines in a job script looks like:
 
 .. code-block:: bash
 

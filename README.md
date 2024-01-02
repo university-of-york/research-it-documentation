@@ -63,6 +63,8 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#windows-installation">Windows Installation</a></li>
+        <li><a href="#manual-dependency-install">Manual Dependency Install</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -117,7 +119,7 @@ When your changes are ready to be deployed, submit a PR and request approval. Up
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Brief write up...
+Below is a step by step guide to getting up and running on Linux followed by an example on Windows. The built pages are static so once built the site is easily viewable in any web browser.
 
 ### Prerequisites
 
@@ -153,7 +155,7 @@ Python 3 and git.
 
 5. To view the site simply open the newly built `site/index.html` in your browser
 
-### Windows
+### Windows Installation
 
 Python can be installed via Anaconda3 from the Software Center on a managed Windows PC (Git should already be installed), then from a PowerShell:
 
@@ -254,6 +256,14 @@ Project Link: [https://github.com/university-of-york/research-it-documentation](
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- REFERENCE -->
+## Reference
+
+* [Sphinx Documentation](https://www.sphinx-doc.org/en/master/index.html)
+* [Re Structured Text Specs](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
@@ -263,15 +273,6 @@ Project Link: [https://github.com/university-of-york/research-it-documentation](
 * []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- REFERENCE -->
-## Reference
-
-* [Sphinx Documentation](https://www.sphinx-doc.org/en/master/index.html)
-* [Re Structured Text Specs](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -285,10 +286,10 @@ Project Link: [https://github.com/university-of-york/research-it-documentation](
 [issues-shield]: https://img.shields.io/github/issues/university-of-york/research-it-documentation.svg?style=for-the-badge
 [issues-url]: https://github.com/university-of-york/research-it-documentation/issues
 [product-screenshot]: images/screenshot.png
-[Python]: https://img.shields.io/badge/Python-blue?style=for-the-badge&logo=Python&logoColor=white
+[Python]: https://img.shields.io/badge/Python-3776ab?style=for-the-badge&logo=Python&logoColor=white
 [Python-url]: https://www.python.org/
-[Read-the-docs]: https://img.shields.io/badge/Read_the_Docs-green?style=for-the-badge&logo=read%20the%20docs&logoColor=white
+[Read-the-docs]: https://img.shields.io/badge/Read_the_Docs-2980b9?style=for-the-badge&logo=read%20the%20docs&logoColor=white
 [Read-the-docs-url]: https://docs.readthedocs.io/en/stable/index.html
-[Sphinx]: https://img.shields.io/badge/Sphinx-navy?style=for-the-badge&logo=Sphinx&logoColor=white
+[Sphinx]: https://img.shields.io/badge/Sphinx-0A507A?style=for-the-badge&logo=Sphinx&logoColor=white
 [Sphinx-url]: https://www.sphinx-doc.org/
 

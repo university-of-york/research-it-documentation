@@ -68,8 +68,8 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#reference">Reference</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -94,7 +94,7 @@ The certificate is validated through DNS by adding the CNAMEs it provides, this 
 The content is generated using `sphinx` with the `rtd` theme.
 The source markdown files are stored in `docs` and the content is deployed via GitHub Actions.
 
-### Development
+#### Development
 
 There isn't a development server that auto-builds bundled with Sphinx. Create a new branch and make your changes.
 When your changes are ready to be deployed, submit a PR and request approval. Upon a merge the site is built and deployed to an S3 bucket and the CloudFlare cache is invalidated through GitHub actions.
@@ -117,9 +117,11 @@ When your changes are ready to be deployed, submit a PR and request approval. Up
 <!-- GETTING STARTED -->
 ## Getting Started
 
+Brief write up...
 
+### Prerequisites
 
-
+Python 3 and git.
 
 ### Installation
 
@@ -155,14 +157,12 @@ When your changes are ready to be deployed, submit a PR and request approval. Up
 
 Python can be installed via Anaconda3 from the Software Center on a managed Windows PC (Git should already be installed), then from a PowerShell:
 
-    ```
     git clone https://github.com/university-of-york/research-it-documentation.git
     cd research-it-documentation/
     python -m venv .venv
     .\.venv\Scripts\Activate.ps1
     python -m pip install -r requirements.txt
     sphinx-build -b html docs/source site/ -a
-    ```
 
 To view the site simply open the newly built `site/index.html` in your browser
 
@@ -170,9 +170,7 @@ To view the site simply open the newly built `site/index.html` in your browser
 
 If needed, you can manually install the two required Python packages `sphinx-rtd-theme` and `sphinx` with:
 
-    ```
     python3 -m pip install sphinx-rtd-theme sphinx
-    ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -211,15 +209,17 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Get ready for Pull Requests
-    - [x] Update README.md to new format
-    - [ ] Check PR rules are set up
+- [x] Move site to AWS
+- [x] Fix issue with CloudFront cache invalidation
 - [x] Create 'Data Management' section
 - [x] Merge all application specific pages to one section
 - [x] Add X11 Forwarding page
 - [x] Update Virtual desktops page
 - [ ] Update RELION jobscript
-- [ ] Update FAQ page
+- [ ] Update FAQ page with common issues
+- [ ] Get ready for Pull Requests
+    - [ ] Update README.md to new format
+    - [ ] Check PR rules are set up
 
 See the [open issues](https://github.com/university-of-york/research-it-documentation/issues) for a full list of proposed features (and known issues).
 
@@ -264,8 +264,8 @@ Project Link: [https://github.com/university-of-york/research-it-documentation](
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- REFERENCES -->
-## References
+<!-- REFERENCE -->
+## Reference
 
 * [Sphinx Documentation](https://www.sphinx-doc.org/en/master/index.html)
 * [Re Structured Text Specs](https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html)

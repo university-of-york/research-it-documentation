@@ -74,6 +74,8 @@ External Links
 Internal Links
 ^^^^^^^^^^^^^^
 
+Implicit internal links to a heading eg: `link text <#styles>`_ must be the same as the heading text
+
 To link to an anchor point:
 
 .. _link-target:

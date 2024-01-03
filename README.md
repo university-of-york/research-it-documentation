@@ -203,8 +203,6 @@ To help quickly make a new page, `docs/source/template.rst` can be used as a bas
 Any `.rst` files dropped into the `docs/source/applications` folder will automatically be `globbed` and added to that section by the `toctree` directive in the `docs/source/applications/index.rst` page.
 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -269,9 +267,7 @@ Project Link: [https://github.com/university-of-york/research-it-documentation](
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [othneildrew](https://github.com/othneildrew/Best-README-Template) for the README.md template
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -213,7 +213,8 @@ Any `.rst` files dropped into the `docs/source/applications` folder will automat
 - [x] Move site to AWS
 - [x] Fix issue with CloudFront cache invalidation
 - [x] Create 'Data Management' section
-- [x] Merge all application specific pages to one section
+- [x] Move all application specific pages to one section
+  - [x] Split up into separate pages
 - [x] Add X11 Forwarding page
 - [x] Update Virtual desktops page
 - [ ] Update RELION jobscript

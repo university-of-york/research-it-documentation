@@ -219,7 +219,7 @@ Any `.rst` files dropped into the `docs/source/applications` folder will automat
 - [ ] Update RELION jobscript
 - [ ] Update FAQ page with common issues
 - [ ] Get ready for Pull Requests
-    - [ ] Update README.md to new format
+    - [x] Update README.md to new format
     - [ ] Check PR rules are set up
 
 See the [open issues](https://github.com/university-of-york/research-it-documentation/issues) for a full list of proposed features (and known issues).

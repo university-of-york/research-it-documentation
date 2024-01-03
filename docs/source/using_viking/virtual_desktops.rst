@@ -104,20 +104,24 @@ We need more info, from the output copy and run the command from the line highli
 Create the ssh tunnel
 ^^^^^^^^^^^^^^^^^^^^^
 
-The virtual desktop isn't running on the login node, so we need a way to *tunnel* a connection from your computer to the login node, the command highlighted in the output above is incomplete but on Linux and MacOS from a terminal or in a PowerShell on an up to date Windows 10 or 11 system you would need to run the following:
+The virtual desktop isn't running on the login node, so we need a way to *tunnel* a connection from your computer to the login node, the command highlighted in the output above is incomplete but in a terminal on your local PC/laptop running Linux or MacOS, or in a PowerShell on an up to date Windows 10 or 11 system you would need to run the following:
 
 .. code-block:: console
     :caption: substitute ``abc123`` for your actual username
 
     ssh -L 5906:10.0.13.22:5906 abc123@10.0.13.22
 
-Notice we copied over the same ``10.0.13.22`` IP address and placed it after ``abc123@``, this is a temporary issue we will shortly correct. Please ensure you substitute in your own username in place of ``abc123`` and copy the IP address from your screen output as it may be different to this example. **Leave this terminal open**, it will function as our ``ssh tunnel``.
+Notice we copied over the same ``10.0.13.22`` IP address and placed it after ``abc123@``. Please ensure you substitute in your own username in place of ``abc123`` and copy the IP address from your screen output as it may be different to this example. **Leave this terminal open**, it will function as our ``ssh tunnel``.
+
+.. note::
+
+    This command is run on your local computer, e.g. your PC or laptop and not on Viking.
 
 
 Connect to the virtual desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the appropriate application for your operating system (examples listed below), log into the virtual desktop. Note the ``port`` from the earlier output, in my case this was ``5906``, yours may be similar but will likely be different. It will ask for a password (in my example this is ``muAtEks5``), yours will be whatever was displayed in the previous step.
+Again on your local PC/laptop, using the appropriate application for your operating system (examples listed below), log into the virtual desktop. Note the ``port`` from the earlier output, in my case this was ``5906``, yours may be similar but will likely be different. It will ask for a password (in my example this is ``muAtEks5``), yours will be whatever was displayed in the previous step.
 
 Windows
 """""""

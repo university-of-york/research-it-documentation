@@ -274,13 +274,13 @@ Project Link: [https://github.com/university-of-york/research-it-documentation](
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/badge/contributors-🤝-grey?style=for-the-badge
+[contributors-shield]: https://img.shields.io/badge/contributors-🤝-0f5323?style=for-the-badge
 [contributors-url]: https://github.com/university-of-york/research-it-documentation/graphs/contributors
-[forks-shield]: https://img.shields.io/badge/forks-🍴-grey?style=for-the-badge
+[forks-shield]: https://img.shields.io/badge/forks-🍴-bb8009?style=for-the-badge
 [forks-url]: https://github.com/university-of-york/research-it-documentation/network/members
-[stars-shield]: https://img.shields.io/badge/stars-🌟-grey?style=for-the-badge
+[stars-shield]: https://img.shields.io/badge/stars-⭐-553098?style=for-the-badge
 [stars-url]: https://github.com/university-of-york/research-it-documentation/stargazers
-[issues-shield]: https://img.shields.io/badge/issues-🐛-grey?style=for-the-badge
+[issues-shield]: https://img.shields.io/badge/issues-🐛-0d419d?style=for-the-badge
 [issues-url]: https://github.com/university-of-york/research-it-documentation/issues
 [product-screenshot]: images/screenshot.png
 [Python]: https://img.shields.io/badge/Python-3776ab?style=for-the-badge&logo=Python&logoColor=white

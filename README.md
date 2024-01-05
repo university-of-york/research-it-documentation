@@ -28,7 +28,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/university-of-york/research-it-documentation">
-    <img src="images/logo_white_bg.png" alt="Logo" width="200" height="200">
+    <img src="images/logo.png" alt="Logo" width="200" height="200">
   </a>
 
 <h3 align="center">Viking Documentation</h3>

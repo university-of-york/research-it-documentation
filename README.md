@@ -28,7 +28,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/university-of-york/research-it-documentation">
-    <img src="images/logo_white_bg.png" alt="Logo" width="200" height="200">
+    <img src="images/logo.png" alt="Logo" width="200" height="200">
   </a>
 
 <h3 align="center">Viking Documentation</h3>
@@ -240,7 +240,10 @@ Don't forget to give the project a star! Thanks again!
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+5. Open a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
+
+> [!NOTE]
+> You may need to [keep your pull request in sync with the base branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/keeping-your-pull-request-in-sync-with-the-base-branch) if other updates are also being added around the same time.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

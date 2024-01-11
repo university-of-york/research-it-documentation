@@ -101,6 +101,7 @@ Filename patterns
 
 There are several useful placeholders similar to ``%j`` that can be used in filenames which will be automatically filled in by ``Slurm``. The full list of these can be found in the ``sbatch`` man page, under the ``filename pattern`` heading or in the `online documentation <https://slurm.schedmd.com/sbatch.html#lbAH>`_.
 
+.. _interactive-jobs:
 
 Interactive jobs
 ----------------

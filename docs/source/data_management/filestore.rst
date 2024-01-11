@@ -131,7 +131,7 @@ Replace ``<filestore>`` with the path to your filestore and ``<dirname>`` with t
 
 .. code-block:: console
 
-    $ rsync -av sftp.york.ac.uk:/shared/storage/<filestore>/<dirname>
+    $ rsync -av sftp.york.ac.uk:/shared/storage/<filestore>/<dirname> .
 
 
 

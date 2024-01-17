@@ -36,3 +36,24 @@ WinSCP shows "Error Listing Directory /mnt/lustre/users/"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is due to WinSCP using the folder path from the old Viking when trying to connect to the new Viking, which it saved from a previous session. As the folder path has changed slightly on the new Viking, WinSCP exits with this, or a similar error. To fix this please change the path to ``/mnt/scratch/users/abc123`` where ``abc123`` is your username.
+
+
+How to ensure a particular node isn't used for my job?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you come across an issue with a particular node, perhaps something on that node has crashed, and your job suddenly fails on one particular node - let us know through itsupport@york.ac.uk. You can still continue your work by using the `exclude <https://slurm.schedmd.com/sbatch.html#OPT_exclude>`_ option to exclude the troubled node form being allocated. This will allow you to continue your work whilst we fix the problem.
+
+If you're using a jobscript then add the following line:
+
+.. code-block:: shell
+   :caption: replace 'node123' with the name of the node to be excluded
+
+   #SBATCH --exclude=node123
+
+Or if you're using the `srun <https://slurm.schedmd.com/srun.html>`_ or `salloc <https://slurm.schedmd.com/salloc.html>`_ commands, then adding either of the following options will do:
+
+.. code-block:: shell
+   :caption: replace 'node123' with the name of the node to be excluded
+
+   --exclude=node123
+   -x node123

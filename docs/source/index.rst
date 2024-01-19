@@ -16,6 +16,7 @@ Welcome to the Viking Documentation!
 
    getting_started/quickstart
    getting_started/code_of_conduct
+   getting_started/acknowledgements
    getting_started/creating_accounts
    getting_started/connecting_to_viking
    getting_started/connecting_off_campus

@@ -1,5 +1,5 @@
-Grants and acknowledgements
-===========================
+Grants & acknowledgements
+=========================
 
 Acknowledgement
 ---------------

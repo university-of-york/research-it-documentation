@@ -1,11 +1,6 @@
 Virtual desktops
 ================
 
-.. warning::
-
-    This page is being updated and the process of starting and connecting to a virtual desktop on Viking is being worked on. Some of this page may be inaccurate or not work at times.
-
-
 You can create virtual desktop sessions to run graphical programs. There two main ways you can do this, on the login node and on a compute node.
 
 .. attention::

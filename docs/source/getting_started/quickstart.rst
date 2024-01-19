@@ -4,19 +4,6 @@ Quickstart
 .. attention::
     Please ensure you are on the campus network or :ref:`connected to the University VPN <connecting-off-campus>`. If you haven't already please :ref:`create an account <creating-an-account>`.
 
-.. attention::
-
-    The ``ssh fingerprints`` for the two login nodes are listed below. If you connected to the old Viking previously then you will probably see a warning that the fingerprint has changed. The correct fingerprints for the two login nodes are:
-
-    .. code-block:: console
-
-        SHA256:e6QUl1pE1RK55unuALoNDXaEvJLcam4LJo6P07nbGcs (RSA)
-        SHA256:jn1KdPw+M9iws+uEwsnuqC5NVph4eNT095m22RFz4Mw (ECDSA)
-        SHA256:TztJ/bGgPiK6bIGfQqRQnxfg/nVhw978T6kyy9HhJTQ (ED25519)
-
-    More detailed information can be found in the :doc:`FAQ </faq/faq>`
-
-
 Log in to viking
 ----------------
 
@@ -24,6 +11,11 @@ Log in to viking
     :caption: from a Linux or MacOS terminal or Windows PowerShell with OpenSSH installed
 
     $ ssh viking.york.ac.uk
+
+.. hint::
+
+    If you previously connected to the old Viking then you may see a warning that the fingerprint has changed. Please see the :doc:`FAQ </faq/faq>` for how to overcome this.
+
 
 .. admonition:: Windows Users
 

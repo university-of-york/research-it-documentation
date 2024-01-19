@@ -1,23 +1,10 @@
 Connecting to viking
 ====================
 
-.. hint::
+.. attention::
     Before you can connect to Viking you'll need a :ref:`project code and a user account<creating-an-account>`.
 
 To access Viking you'll need to be on the campus network or using the VPN :doc:`which you can read about here. </getting_started/connecting_off_campus>`
-
-
-.. attention::
-
-    The ``ssh fingerprints`` for the two login nodes are listed below. If you connected to the old Viking previously then you will probably see a warning that the fingerprint has changed. The correct fingerprints for the two login nodes are:
-
-    .. code-block:: console
-
-        SHA256:e6QUl1pE1RK55unuALoNDXaEvJLcam4LJo6P07nbGcs (RSA)
-        SHA256:jn1KdPw+M9iws+uEwsnuqC5NVph4eNT095m22RFz4Mw (ECDSA)
-        SHA256:TztJ/bGgPiK6bIGfQqRQnxfg/nVhw978T6kyy9HhJTQ (ED25519)
-
-    More detailed information can be found in the :doc:`FAQ </faq/faq>`
 
 
 Terminal access
@@ -26,7 +13,7 @@ Terminal access
 Linux, MacOS and Windows PowerShell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. hint::
+.. tip::
 
     The latest builds of Windows 10 and Windows 11 include a built-in ``ssh`` client, so you can run ``ssh`` commands directly from a ``CMD`` or ``PowerShell`` window. To run either of these search for ``CMD`` or ``PowerShell`` from the Windows search box and then type in the below command. If you're using a personal device and need to install the ``ssh`` client please follow the `Microsoft website <https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui#install-openssh-for-windows>`_. Alternatively you can install ``PuTTY`` and use it as :ref:`described below <connecting-via-windows>`.
 
@@ -43,6 +30,10 @@ You will be prompted for your IT Services password. If you're using a personal d
 
     $ ssh abc123@viking.york.ac.uk
 
+
+.. note::
+
+    If you previously connected to the old Viking then you may see a warning that the fingerprint has changed. Please see the :doc:`FAQ </faq/faq>` for how to overcome this.
 
 .. _connecting-via-windows:
 

@@ -24,7 +24,7 @@ variable_replacements = {
     "{MOD_COMPILER}": "GCC/12.3.0",
     "{MOD_R}": "R/4.2.1-foss-2022a",
     "{MOD_AMBER_CPU}": "Amber/22.3-foss-2022b-AmberTools-23.0",
-    "{MOD_AMBER_GPU}": "Amber/16-foss-2018a-AmberTools-17-CUDA",
+    "{MOD_AMBER_GPU}": "Amber/22.4-foss-2022a-AmberTools-22.5-CUDA-11.7.0",
     "{MOD_GAUSSIAN}": "Gaussian/G16a03",
     "{MOD_MATLAB}": "MATLAB/2023b",
     "{MOD_MONGODB}": "MongoDB/4.2.3",

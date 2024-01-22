@@ -42,4 +42,12 @@ To avoid manual entering the hostname when using the SSH gateway, it's also poss
 
 .. hint::
 
-    You will still need to enter your password, and then complete the 2FA.
+    You will still need to enter your password, and then complete the 2FA
+
+.. note::
+
+    If you're using a personal device you should specify your IT Services username before the 'viking' address, for example:
+
+    .. code-block:: console
+
+        ssh -J abc123@ssh.york.ac.uk abc123@viking

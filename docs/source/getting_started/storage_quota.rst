@@ -72,7 +72,7 @@ Which will produce something similar to the following result:
 What happens if you exceed your quota
 -------------------------------------
 
-When you login to Viking you will be told if you are over quota. If this is in users area with the **100GB** or **200,000** files limit you will need to delete or move your files to your ``scratch`` area.  **There is a grace period of 7 days after which you will lose access to Viking.**
+When you login to Viking you will be told if you are over quota. If this is in users area with the **100GB** or **400,000** files limit you will need to delete or move your files to your ``scratch`` area.  **There is a grace period of 7 days after which you will lose access to Viking.**
 
 If you are over quota in the ``scratch`` area and need more space please email itsupport@york.ac.uk where we can increase your quota. **There is a grace period of 7 days after which you will lose access to Viking.**
 

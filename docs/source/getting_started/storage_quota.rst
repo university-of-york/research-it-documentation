@@ -19,7 +19,7 @@ When you log in to Viking, you will land in your home directory, specifically:
 
     /users/abc123
 
-Where ``abc123`` will be replaced by your username. This ``home`` directory has a size of **100GB** and a file limit of **200,000**. From within the ``home`` directory, you can access your ``scratch`` directory, which is a special high-performance filestore with a default size of **2TB** and **no limit** on the number of files.
+Where ``abc123`` will be replaced by your username. This ``home`` directory has a size of **100GB** and a file limit of **400,000**. From within the ``home`` directory, you can access your ``scratch`` directory, which is a special high-performance filestore with a default size of **2TB** and **no limit** on the number of files.
 
 .. code-block:: console
 

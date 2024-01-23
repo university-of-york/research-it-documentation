@@ -66,7 +66,7 @@ Which will produce something similar to the following result:
     Disk quotas for user abc123 (uid 12345):
          Filesystem   space   quota   limit   grace   files   quota   limit   grace
     10.10.0.15:/export/users
-                       232K    100G    110G              57    200k    250k
+                       232K    100G    110G              57    400k    500k
 
 
 What happens if you exceed your quota

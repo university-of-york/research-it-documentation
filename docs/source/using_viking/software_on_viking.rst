@@ -1,4 +1,4 @@
-Software on viking
+Software on Viking
 ==================
 
 .. admonition:: Did you know...

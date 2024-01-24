@@ -42,13 +42,13 @@ Make a copy of the AtChem2 Makefile template - this will be used by the model bu
     $ cp tools/install/Makefile.skel ./Makefile
 
 
-Open the Makefile in a text editor (if you're not sure how to do this, see `this tutorial <https://swcarpentry.github.io/shell-novice/03-create/index.html#create-a-text-file>`_), and change the values of ``CVODELIB`` and ``OPENLIBMDIR`` to correspond with the Viking module environment, i.e:
+Open the Makefile in a text editor (if you're not sure how to do this, see `this tutorial <https://swcarpentry.github.io/shell-novice/03-create/index.html#create-a-text-file>`_), and change the values of ``CVODELIBDIR`` and ``OPENLIBMDIR`` to correspond with the Viking module environment, i.e:
 
 .. code-block:: bash
     :caption: Default Makefile parameters
 
-    CVODELIB     = cvode/lib
-    OPENLIBMDIR  = openlibm-0.4.1
+    CVODELIBDIR     = cvode/lib
+    OPENLIBMDIR     = openlibm-0.4.1
 
 becomes:
 
@@ -56,8 +56,8 @@ becomes:
 .. code-block:: bash
     :caption: Makefile parameters after changing
 
-    CVODELIB     = /opt/apps/eb/software/SUNDIALS/2.7.0-foss-2021b/lib
-    OPENLIBMDIR  = /opt/apps/eb/software/OpenLibm/0.8.1-GCC-11.2.0/lib
+    CVODELIBDIR     = /opt/apps/eb/software/SUNDIALS/2.7.0-foss-2021b/lib
+    OPENLIBMDIR     = /opt/apps/eb/software/OpenLibm/0.8.1-GCC-11.2.0/lib
 
 
 Run the AtChem2 build script, giving it the location of a `FACSIMILE format <https://www.mcpa-software.com/>`_ mechanism with which to build your model (for this example, we are using the test mechanism supplied with AtChem2):

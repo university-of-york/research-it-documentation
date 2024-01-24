@@ -1,6 +1,6 @@
 .. _connecting-off-campus:
 
-Connecting to viking off campus
+Connecting to Viking off campus
 ===============================
 
 Viking has been configured to only allow connections from the University network. Therefore, in order to access Viking off-campus, you must first connect to either the VPN service, or create an ``ssh`` tunnel. These re-route your traffic through the University network allowing you to connect to Viking as if you were on campus.

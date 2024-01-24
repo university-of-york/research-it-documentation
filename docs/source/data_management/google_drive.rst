@@ -3,7 +3,7 @@ Google drive
 
 We know a number of Viking users like to store data on Google Drive.  It is possible to copy data directly from Viking to your Google Drive folder. Below we will provide instructions on how to set this up.
 
-Setting up rclone on viking
+Setting up rclone on Viking
 ---------------------------
 
 In order to use ``rclone``, you will need a ``client-id``, the steps for which can be found on the `rclone website <https://rclone.org/drive/#making-your-own-client-id>`_.

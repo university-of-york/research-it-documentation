@@ -95,7 +95,7 @@ Example job scripts
     alphafold --fasta_paths=T1050.fasta --max_template_date=2020-05-14 --preset=full_dbs --output_dir=$PWD --model_names=model_1,model_2,model_3,model_4,model_5
 
 
-Notes for using AlphaFold on viking
+Notes for using AlphaFold on Viking
 -----------------------------------
 
 ``AlphaFold`` currently requires access to various genetic databases such as ``UniRef90``, ``MGnify``, ``BFD``, ``Uniclust30``, ``PDB70`` and ``PDB``.

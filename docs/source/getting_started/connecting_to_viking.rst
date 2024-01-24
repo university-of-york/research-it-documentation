@@ -1,4 +1,4 @@
-Connecting to viking
+Connecting to Viking
 ====================
 
 .. attention::
@@ -43,7 +43,7 @@ Windows
 Alternatively, for terminal access to Viking from a Windows desktop, you can install `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/>`_ (or comparable software).
 
 
-Configuring PuTTY to connect to viking
+Configuring PuTTY to connect to Viking
 """""""""""""""""""""""""""""""""""""""
 
 Open PuTTY and configure it to connect to Viking:
@@ -55,7 +55,7 @@ Open PuTTY and configure it to connect to Viking:
 
 .. image:: ../assets/img/putty1.png
 
-Connecting to viking
+Connecting to Viking
 """""""""""""""""""""
 
 1. Start PuTTY

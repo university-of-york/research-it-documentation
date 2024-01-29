@@ -57,3 +57,34 @@ Or if you're using the `srun <https://slurm.schedmd.com/srun.html>`_ or `salloc 
 
    --exclude=node123
    -x node123
+
+
+How do I know what CPU or memory resources to use in my jobscript?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There is no 'one size fits all' answer here however if the program you intend on using isn't giving you any clues where to start then a good starting point would be to use the default ``nodes`` partition, a single node exclusively for the maximum 48hrs and then when the job is complete, check the log and look at the time, CPU and memory utilisation and efficiency. Using that information, adjust your next jobscript accordingly. For example, here is template jobscript:
+
+.. code-block:: shell
+   :emphasize-lines: 3,4
+
+   #!/usr/bin/env bash
+   #SBATCH --job-name=my_test_job
+   #SBATCH --exclusive
+   #SBATCH --time=2-00:00:00
+   #SBATCH --account=dept-proj-year
+   #SBATCH --mail-type=END,FAIL
+   #SBATCH --mail-user=abc123@york.ac.uk
+   #SBATCH --output=%x-%j.log
+   #SBATCH --error=%x-%j.err
+
+   # Abort if any command fails
+   set -e
+
+   # Purge any previously loaded modules
+   module purge
+
+   # Load modules
+   module load Python/3.11.3-GCCcore-12.3.0
+
+   # Commands to run
+   python my_script.py

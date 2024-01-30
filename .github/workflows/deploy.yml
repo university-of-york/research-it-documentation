@@ -10,19 +10,40 @@ on:
 jobs:
   infra:
     runs-on: ubuntu-latest
+    outputs:
+      env-name: ${{ steps.env-name.outputs.environment }}
     steps:
-    - uses: actions/checkout@v3
-    - name: Deploy CloudFormation Stack
-      uses: university-of-york/aws-cfn-deploy-action@v1.1
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      id: creds
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-1
+
+    - name: Configure environment name
+      id: env-name
       env:
-        TEMPLATE: cloudformation.yaml
-        AWS_STACK_NAME: ResearchITWebsiteStack
-        AWS_REGION: eu-west-1
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        CAPABILITIES: CAPABILITY_IAM CAPABILITY_NAMED_IAM
-        ROLE_ARN: arn:aws:iam::${{ secrets.AWS_USER_ID }}:role/GithubActionsDeploymentRole
-        TAGS: group=RESEARCHIT project=website status=prod pushed_by=githubaction defined_in=cloudformation repo_name=uoy-research/research-it-website-infrastructure user=sl561 team=rhpc
+        REPO: ${{ github.repository }}
+      run: |
+        ENVIRONMENT=`echo $REPO | tr "/" "-"`
+        echo "Environment name: $ENVIRONMENT"
+        echo "environment=$ENVIRONMENT" >> $GITHUB_OUTPUT
+
+    - name: Deploy to AWS CloudFormation
+      id: cf-infra
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
+      with:
+        name: ${{ steps.env-name.outputs.environment }}-infra
+        template: cloudformation.yaml
+        no-fail-on-empty-changeset: "1"
+        capabilities: CAPABILITY_IAM,CAPABILITY_NAMED_IAM
+        role-arn: arn:aws:iam::${{ secrets.AWS_USER_ID }}:role/GithubActionsDeploymentRole
+        tags: [{ "group": "RESEARCHIT", "project": "website", "status": "prod", "pushed_by": "githubaction", "defined_in": "cloudformation", "repo_name": "uoy-research/research-it-website-infrastructure", "user": "sl561", "team": "rhpc" }]
+
   content:
     runs-on: ubuntu-latest
     steps:

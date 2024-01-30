@@ -204,23 +204,25 @@ Any `.rst` files dropped into the `docs/source/applications` folder will automat
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Move site to AWS
-- [x] Fix issue with CloudFront cache invalidation
-- [x] Create 'Data Management' section
-- [x] Move all application specific pages to one section
-  - [x] Split up into separate pages
-- [x] Add X11 Forwarding page
-- [x] Update Virtual desktops page
-- [ ] Update RELION jobscript
-- [ ] Update FAQ page with common issues
-- [ ] Get ready for Pull Requests
+- [x] Infrastructure
+    - [x] Move site to AWS
+    - [x] Fix issue with CloudFront cache invalidation
+- [x] Get ready for Pull Requests:
     - [x] Update README.md to new format
-    - [ ] Check PR rules are set up
+    - [x] Use public actions for workflow
+- [ ] New pages:
+    - [x] Create 'Data Management' section
+    - [x] Add X11 Forwarding page
+    - [ ] Slurm common commands page
+- [ ] Update pages:
+    - [x] Update Virtual desktops page
+    - [x] Move all application specific pages to one section
+      - [x] Split up into separate pages
+    - [ ] FAQ page with common issues
+    - [ ] RELION jobscript
 
 See the [open issues](https://github.com/university-of-york/research-it-documentation/issues) for a full list of proposed features (and known issues).
 

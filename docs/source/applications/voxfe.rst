@@ -26,7 +26,7 @@ An example job script can be found here. This script described using a whole nod
     set -e
 
     module purge                                # purge any loaded modules
-    module load OpenMPI/4.1.4-GCC-12.2.0
+    module load OpenMPI/3.1.4-GCC-8.3.0
     module load {MOD_VOXFE}
 
     echo "Running small-vox-fe on $SLURM_JOB_CPUS_PER_NODE CPU cores"
@@ -34,7 +34,7 @@ An example job script can be found here. This script described using a whole nod
     echo
 
     date
-    mpirun -np $SLURM_JOB_CPUS_PER_NODE voxfe_solver Script.txt
+    mpirun -np $SLURM_JOB_CPUS_PER_NODE PARA_BMU Script.txt
     date
 
 .. note::

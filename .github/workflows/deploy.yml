@@ -37,7 +37,7 @@ jobs:
       id: cf-infra
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
-        name: ${{ steps.env-name.outputs.environment }}-infra
+        name: ResearchITWebsiteStack
         template: cloudformation.yaml
         no-fail-on-empty-changeset: "1"
         capabilities: CAPABILITY_IAM,CAPABILITY_NAMED_IAM

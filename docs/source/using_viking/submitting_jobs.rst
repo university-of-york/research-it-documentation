@@ -122,7 +122,7 @@ Srun command
 ^^^^^^^^^^^^
 
 Running the command below will request a Bash shell on a compute node in the interactive partition for 8 hours.
-The same options available to ``sbatch`` are available to ``srun`` so please see the `Slurm documentation <https://slurm.schedmd.com/sbatch.html>`_ for more options and in depth descriptions.
+The same options available to ``sbatch`` are available to ``srun`` so please see the `Slurm documentation <https://slurm.schedmd.com/srun.html>`_ for more options and in depth descriptions.
 
 .. code-block:: console
     :caption: describes a job to run on: the interactive partition for 8 hours, and the program to run is ``/bin/bash``

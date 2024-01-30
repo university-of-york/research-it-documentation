@@ -43,7 +43,6 @@ jobs:
         capabilities: CAPABILITY_IAM,CAPABILITY_NAMED_IAM
         role-arn: arn:aws:iam::${{ secrets.AWS_USER_ID }}:role/GithubActionsDeploymentRole
         tags: '[{"Key": "group", "Value": "RESEARCHIT"}, {"Key": "project", "Value": "website"}, {"Key": "status", "Value": "prod"}, {"Key": "pushed_by", "Value": "githubaction"}, {"Key": "defined_in", "Value": "cloudformation"}, {"Key": "repo_name", "Value": "uoy-research/research-it-website-infrastructure"}, {"Key": "user", "Value": "sl561"}, {"Key": "team", "Value": "rhpc"}]'
-        timeout-in-minutes: 10
 
   content:
     runs-on: ubuntu-latest

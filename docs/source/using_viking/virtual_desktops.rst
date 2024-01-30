@@ -108,9 +108,9 @@ The virtual desktop isn't running on the login node, so we need a way to *tunnel
 
 Notice we copied over the same ``10.0.13.22`` IP address and placed it after ``abc123@``. Please ensure you substitute in your own username in place of ``abc123`` and copy the IP address from your screen output as it may be different to this example. **Leave this terminal open**, it will function as our ``ssh tunnel``.
 
-.. note::
+.. attention::
 
-    This command is run on your local computer, e.g. your PC or laptop and not on Viking.
+    This command above is run on your local computer, e.g. your PC or laptop and *not* on Viking.
 
 
 Connect to the virtual desktop

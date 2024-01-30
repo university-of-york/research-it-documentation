@@ -42,7 +42,7 @@ jobs:
         no-fail-on-empty-changeset: "1"
         capabilities: CAPABILITY_IAM,CAPABILITY_NAMED_IAM
         role-arn: arn:aws:iam::${{ secrets.AWS_USER_ID }}:role/GithubActionsDeploymentRole
-        tags: '[{"key": "group", "value": "RESEARCHIT"}, {"key": "project", "value": "website"}, {"key": "status", "value": "prod"}, {"key": "pushed_by", "value": "githubaction"}, {"key": "defined_in", "value": "cloudformation"}, {"key": "repo_name", "value": "uoy-research/research-it-website-infrastructure"}, {"key": "user", "value": "sl561"}, {"key": "team", "value": "rhpc"}]'
+        tags: '[{"Key": "group", "Value": "RESEARCHIT"}, {"Key": "project", "Value": "website"}, {"Key": "status", "Value": "prod"}, {"Key": "pushed_by", "Value": "githubaction"}, {"Key": "defined_in", "Value": "cloudformation"}, {"Key": "repo_name", "Value": "uoy-research/research-it-website-infrastructure"}, {"Key": "user", "Value": "sl561"}, {"Key": "team", "Value": "rhpc"}]'
 
   content:
     runs-on: ubuntu-latest

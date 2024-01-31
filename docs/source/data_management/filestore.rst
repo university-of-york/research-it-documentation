@@ -57,9 +57,9 @@ Replace ``<filename>`` with the name of your file and ``<filestore>`` with the p
 
 .. code-block:: console
 
-    $ rsync -P --append <filename> sftp.york.ac.uk:/shared/storage/<filestore>
+    $ rsync -av <filename> sftp.york.ac.uk:/shared/storage/<filestore>
 
-Option ``-P`` sets the ``--partial`` and ``--progress`` options, which will *keep partially transferred files* and shows *progress*. The ``--append`` option will *append data onto shorter files*. Together this is handy if a large file needs to be transferred but for some reason could get interrupted. Rerunning this command should pick up where it left off.
+Options ``a`` set up a number of options useful for *archiving*, ``v`` for *verbose* so you can monitor the process.
 
 To copy a directory to your filestore
 """""""""""""""""""""""""""""""""""""
@@ -121,7 +121,7 @@ Replace ``<filestore>`` with the path to your filestore and ``<filename>`` with 
 
 .. code-block:: console
 
-    $ rsync -P --append sftp.york.ac.uk:/shared/storage/<filestore>/<filename> .
+    $ rsync -av sftp.york.ac.uk:/shared/storage/<filestore>/<filename> .
 
 
 To copy a directory from your filestore

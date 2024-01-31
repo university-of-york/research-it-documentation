@@ -20,6 +20,11 @@ To move your data from Viking to the filestore ("Storage"), the address you need
 
 You can use ``PuTTY`` on Windows and the command line on Linux and MacOS with commands such as ``rsync``  and ``scp`` much like the examples on the :ref:`Data Management page <transfer_files_linux>`, examples below.
 
+.. tip::
+
+    When transferring large amounts of data it can be a good idea to use :doc:`terminal multiplexing </using_viking/terminal_multiplexing>` such as ``tmux``. This would allow you to leave the transfer running (inside a ``tmux`` session) and not have to stay logged in yourself.
+
+
 Using the ``scp`` command
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -57,9 +62,9 @@ Replace ``<filename>`` with the name of your file and ``<filestore>`` with the p
 
 .. code-block:: console
 
-    $ rsync -P --append <filename> sftp.york.ac.uk:/shared/storage/<filestore>
+    $ rsync -av <filename> sftp.york.ac.uk:/shared/storage/<filestore>
 
-Option ``-P`` sets the ``--partial`` and ``--progress`` options, which will *keep partially transferred files* and shows *progress*. The ``--append`` option will *append data onto shorter files*. Together this is handy if a large file needs to be transferred but for some reason could get interrupted. Rerunning this command should pick up where it left off.
+Options ``a`` set up a number of options useful for *archiving*, ``v`` for *verbose* so you can monitor the process.
 
 To copy a directory to your filestore
 """""""""""""""""""""""""""""""""""""
@@ -121,7 +126,7 @@ Replace ``<filestore>`` with the path to your filestore and ``<filename>`` with 
 
 .. code-block:: console
 
-    $ rsync -P --append sftp.york.ac.uk:/shared/storage/<filestore>/<filename> .
+    $ rsync -av sftp.york.ac.uk:/shared/storage/<filestore>/<filename> .
 
 
 To copy a directory from your filestore

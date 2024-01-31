@@ -34,6 +34,9 @@ You can copy your data from any Linux device to Viking using the following comma
 
 For example, you can run the following commands from a terminal running on your device to move files to Viking.
 
+.. tip::
+
+    When transferring large amounts of data it can be a good idea to use :doc:`terminal multiplexing </using_viking/terminal_multiplexing>` such as ``tmux``. This would allow you to leave the transfer running (inside a ``tmux`` session) and not have to stay logged in yourself.
 
 scp
 """
@@ -74,9 +77,9 @@ This is recommended for a large number of files. Rsync can check what is already
     $ rsync -av dirname viking.york.ac.uk:~/scratch
 
 .. code-block:: console
-    :caption: this can be useful for copying a very large file from your device to your scratch area on Viking as it will allow you continue the transfer if the connection breaks for some reason
+    :caption: this could be useful for copying a very large file from your device to your scratch area on Viking as it will allow you continue the transfer if the connection breaks for some reason
 
-    $ rsync -P --append filename viking.york.ac.uk:~/scratch
+    $ rsync -avP --append filename viking.york.ac.uk:~/scratch
 
 There are many more options you can use with ``rsync``.  To view these options run the following command to view the ``rsync`` manual
 

@@ -20,6 +20,11 @@ To move your data from Viking to the filestore ("Storage"), the address you need
 
 You can use ``PuTTY`` on Windows and the command line on Linux and MacOS with commands such as ``rsync``  and ``scp`` much like the examples on the :ref:`Data Management page <transfer_files_linux>`, examples below.
 
+.. tip::
+
+    When transferring large amounts of data it can be a good idea to use :doc:`terminal multiplexing </using_viking/terminal_multiplexing>` such as ``tmux``. This would allow you to leave the transfer running (inside a ``tmux`` session) and not have to stay logged in yourself.
+
+
 Using the ``scp`` command
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 

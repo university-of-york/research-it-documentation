@@ -25,6 +25,10 @@ If you are an admin of the shared project folder you can add or remove users to 
 
 To manage the groups, log into `permman.york.ac.uk <https://permman.york.ac.uk/>`_, select ``viking`` from the list and then click the ``Go`` button. You'll see a list of all the project folders you can manage. Select the desired folder from the list and click ``Edit access to folder``. You'll be presented with a screen similar to the one below and from here you can add and remove users from the three groups:
 
+.. hint::
+
+    Changes made on the ``permman`` page are reflected on Viking three times a day, so there will be some delay for changes made and may take up to 24hrs to take effect.
+
 .. image:: /assets/img/permman.png
 
 .. hint::

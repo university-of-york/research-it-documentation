@@ -7,6 +7,6 @@ preempt,30 days,No Limit,,,1,5.2G,116
 gpu,3 days,No Limit,,,1,5.2G,16
 gpuplus,3 days,No Limit,,,1,5.2G,6
 gpu_week,7 days,3,,,1,5.2G,16
-himmem,2 days,No Limit,,,1,20G,2
+himem,2 days,No Limit,,,1,20G,2
 himem_week,7 days,No Limit,,,1,20G,1
 interactive,8 hours,1,1,25G,1,10G,1

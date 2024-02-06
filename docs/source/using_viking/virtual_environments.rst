@@ -12,7 +12,7 @@ For simple virtual environments, where you just need to install packages through
 
 .. tip::
 
-    If you want to use the latest Python module on Viking load the module with the following command before you create the virtual environment:
+    To use the latest Python module on Viking load the module with the following command before you create the virtual environment:
 
     .. code-block:: console
 

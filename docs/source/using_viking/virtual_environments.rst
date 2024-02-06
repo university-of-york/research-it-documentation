@@ -21,7 +21,7 @@ Quickstart
     $ python3 -m pip install package1 package2 package3
 
 
-First we create a new directory with ``mkdir new_project`` to house our project and run ``cd new_project`` to change into that directory. Next we create the ``venv`` virtual environment and tell it to store the files in a folder called ``.venv`` with the ``python3 -m venv .venv`` command. The directory called ``.venv`` can be name anything you like, it doesn't have to be ``.venv``.
+First we create a new directory with ``mkdir new_project`` to house our project and run ``cd new_project`` to change into that directory. Next we create the ``venv`` virtual environment and tell it to store the files in a folder called ``.venv`` with the ``python3 -m venv .venv`` command. The directory called ``.venv`` can be named anything you like, it doesn't have to be ``.venv``.
 
 .. admonition:: Info
 

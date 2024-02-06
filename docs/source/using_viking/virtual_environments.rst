@@ -10,6 +10,14 @@ For simple virtual environments, where you just need to install packages through
 
    ``venv`` has been part of the standard library since Python 3.3
 
+.. tip::
+
+    To use the latest Python module on Viking load the module with the following command before you create the virtual environment:
+
+    .. code-block:: console
+
+        $ module load {MOD_PYTHON}
+
 Quickstart
 ^^^^^^^^^^
 .. code-block:: console

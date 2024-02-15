@@ -1,5 +1,5 @@
-Storage & quota
-===============
+Storage quota
+=============
 
 .. attention::
 

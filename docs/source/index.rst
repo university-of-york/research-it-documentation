@@ -21,6 +21,7 @@ Welcome to the Viking Documentation!
    getting_started/connecting_to_viking
    getting_started/connecting_off_campus
    getting_started/storage_quota
+   getting_started/storage_on_viking
    getting_started/backing_up
 
 .. toctree::
@@ -42,7 +43,6 @@ Welcome to the Viking Documentation!
    :maxdepth: 1
    :caption: Data management
    :hidden:
-   :glob:
 
    data_management/filestore
    data_management/vault

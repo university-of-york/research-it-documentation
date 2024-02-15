@@ -1,8 +1,6 @@
 Storage quota
 =============
 
-.. FIXME: This uses OLD information
-
 Viking is a self-contained machine, therefore you will notice your normal UoY home directories are not available. This is intentional for the following reasons:
 
 - If the dedicated network link between campus and Viking goes down, it may cause slowness or jobs to fail. Instead, jobs should continue to run until the link is re-established

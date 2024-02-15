@@ -54,6 +54,13 @@ The above command opens up one ``ssh tunnel``, forwarding your local port ``8888
 
 Finally ``Ctrl + left mouse click``  on the link from the first terminal session on ``node112``, highlighted above. Either the ``http://localhost:8888/?token=...`` or the ``http://127.0.0.1:8888/?token=...`` links. Your browser should open and connected to the ``Jupyter`` server running on Viking.
 
+.. tip::
+
+    If you're using a personal computer, you'll need to tell Viking your username in the above command for example:
+
+    .. code-block:: console
+
+        ssh -L 8888:localhost:8889 abc123@viking.york.ac.uk ssh -N -L 8889:localhost:8888 node112
 
 .. FIXME: below method not working.
 

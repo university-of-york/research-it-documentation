@@ -27,7 +27,7 @@ Storage on Viking
 =================
 
 
-It is vital that users continue to manage their data on the Viking Cluster. There are currently 6 areas where data can be stored. Below details the areas, the type of data you should store there and what is/isn't backed up.
+It is vital that users continue to manage their data on the Viking cluster. There are currently 6 areas where data can be stored. Below details the areas, the type of data you should store there and what is/isn't backed up.
 
 .. csv-table::
     :file: /assets/data/viking_storage.csv

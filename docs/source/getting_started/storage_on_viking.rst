@@ -67,7 +67,7 @@ Then write to the directory that has the flash pool set. By default that just st
 
 .. note::
 
-    It's easiest to create a new dir with the striping set, then ``cp`` the files there (**don't use** ``mv``). For better lustre performance it may be worth explicitly striping across multiple OSTs there as well. Striping in Lustre should only be used for large files, using it for small files can actually degrade performance. Further guidance on using lustre to achieve maximum performance can be found `here <https://oit.utk.edu/hpsc/lustre-striping-guide/>`_.
+    It's easiest to create a new dir with the striping set, then ``cp`` the files there (**don't use** ``mv`` as this only updates the metadata, the underlying objects stay the same). For better lustre performance it may be worth explicitly striping across multiple OSTs there as well. Striping in Lustre should only be used for large files, using it for small files can actually degrade performance. Further guidance on using lustre to achieve maximum performance can be found `here <https://oit.utk.edu/hpsc/lustre-striping-guide/>`_.
 
 .. attention::
 

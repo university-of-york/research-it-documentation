@@ -3,7 +3,7 @@
  Compute node generation,AMD EPYC3
  Cores per processor,48
  Number of processors per node,2
- Memory per compute node,502 GB
+ Memory per compute node,512 GB
  High memory node,2x 2 TB
  High memory node,1x 4 TB
  GPUs,48x A40 |br| 12x H100

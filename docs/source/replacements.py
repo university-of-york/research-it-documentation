@@ -25,7 +25,7 @@ variable_replacements = {
     "{MOD_R}": "R/4.2.1-foss-2022a",
     "{MOD_AMBER_CPU}": "Amber/22.3-foss-2022b-AmberTools-23.0",
     "{MOD_AMBER_GPU}": "Amber/22.4-foss-2022a-AmberTools-22.5-CUDA-11.7.0",
-    "{MOD_GAUSSIAN}": "Gaussian/G16a03",
+    "{MOD_GAUSSIAN}": "Gaussian/16.C.02-AVX2",
     "{MOD_MATLAB}": "MATLAB/2023b",
     "{MOD_MONGODB}": "MongoDB/4.2.3",
     "{MOD_VOXFE}": "VOX-FE/1.0-foss-2019b-Python-3.7.4",  # need to update the OpenMPI on same page

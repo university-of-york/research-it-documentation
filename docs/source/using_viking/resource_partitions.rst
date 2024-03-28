@@ -33,10 +33,10 @@ nodes
     Maximum limit of 960 cores.
 
 week
-    Partition for jobs that need to run for longer than the 48h max time allowed by the nodes partition, but for less than a week. The max running cores and max running memory limits are practical limits, due to the resources available on the nodes.
+    Partition for jobs that need to run for longer than the 48h max time allowed by the nodes partition, but for less than a week. There are 12 nodes in this partition and each user is limited to using a maximum of six node's CPU and memory (576 cores and 3T of RAM).
 
 month
-    Partition for jobs that need to run for longer than the 7 day max time allowed by the week partition, but for less than 30 days. The max running cores and max running memory limits are practical limits, due to the resources available on the nodes.
+    Partition for jobs that need to run for longer than the 7 day max time allowed by the week partition, but for less than 30 days. The max running cores and max running memory limits are practical limits, due to the resources available on the two nodes.
 
 test
     For testing jobs to ensure they run as expected.

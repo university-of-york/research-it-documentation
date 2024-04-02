@@ -57,3 +57,17 @@ Or if you're using the `srun <https://slurm.schedmd.com/srun.html>`_ or `salloc 
 
    --exclude=node123
    -x node123
+
+
+Why hasn't my job started?
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Jobs submitted to the Slurm job scheduler will sometimes take some time before they start running. This can be for a number of reasons for example how busy the particular partition is that the job was submitted to or how many resources the job is requesting. It's always a good idea to request only the :ref:`resources <job_resources>` your job requires. You can check the jobs you have in the queue with the following command:
+
+.. code-block:: console
+
+   $ squeue -u $USER
+
+If you see the reason for a job being held as ``QOSGrpGRES`` then this means a resource has reached its limit for that partition. For example, on the ``gpu_week`` partition only a total of three GPUs are allowed to be used by all users at the same time (on that particular partition). When this limit is reached all new jobs to the queue will be held with that reason code.
+
+For more information there is a full list of `reason codes <https://slurm.schedmd.com/resource_limits.html#reasons>`_.

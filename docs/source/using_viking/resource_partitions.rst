@@ -62,8 +62,8 @@ gpu_week
     Partition for running GPU jobs on any of the **nVidia A40 nodes** for up to a week
 
     - Maximum time is seven days (eg ``#SBATCH --time=7-00:00:00``)
-    - Your job script must request at least one GPU and a maximum of three (eg ``#SBATCH --gres=gpu:1``)
-    - You are limited to **no more than three GPUs** at a time across all of your jobs running in the ``gpu_week`` partition
+    - Your job script should request **only** one GPU (eg ``#SBATCH --gres=gpu:1``)
+    - The ``gpu_week`` partition is limited to running **a maximum of three GPUs** at any time, across all users
 
 himem
     For running jobs that require memory greater than that available in other partitions. Each of the two nodes (himem01 and himem02) have 96 cores. The max running cores and max running memory limits are practical limits, due to the resources available on the nodes.

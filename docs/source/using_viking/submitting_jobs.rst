@@ -73,6 +73,8 @@ If you filled out the ``--mail-user`` option you will get an email when the job 
 Tips and best practices
 -----------------------
 
+.. _job_resources:
+
 Resource requests
 ^^^^^^^^^^^^^^^^^
 

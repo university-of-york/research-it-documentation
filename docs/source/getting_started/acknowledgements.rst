@@ -72,3 +72,7 @@ In addition to providing commodity and research services, we also have a team de
 
 A full list of central services is provided in the service catalogue, available at `https://www.york.ac.uk/it-services/services/ <https://www.york.ac.uk/it-services/services/>`_
 
+
+.. admonition:: Viking logo
+
+    A higher resolution Viking logo can be download :download:`here <../assets/downloads/viking-logo.jpg>`.

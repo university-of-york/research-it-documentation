@@ -1,6 +1,6 @@
  Compute node only CPU cores,"12,864"
  Total standard compute nodes,134
- Compute node generation,AMD EPYC3
+ Processor generation,AMD EPYC3 7643
  Cores per processor,48
  Number of processors per node,2
  Memory per compute node,512 GB

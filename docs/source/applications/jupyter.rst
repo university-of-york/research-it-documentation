@@ -62,6 +62,16 @@ Finally ``Ctrl + left mouse click``  on the link from the first terminal session
 
         ssh -L 8888:localhost:8889 abc123@viking.york.ac.uk ssh -N -L 8889:localhost:8888 node112
 
+.. tip::
+
+    To help find an open port you can try running this command:
+
+    .. code-block:: console
+
+        for p in {8000..9000}; do m=$(netstat -l|grep -c localhost:${p}); if [[ $m == 0 ]]; then echo "try $p"; break; fi; done
+
+    *Thanks to Felix Ulrich-Oltean for this suggestion*
+
 .. FIXME: below method not working.
 
 ..

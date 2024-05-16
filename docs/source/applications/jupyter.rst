@@ -64,13 +64,51 @@ Finally ``Ctrl + left mouse click``  on the link from the first terminal session
 
 .. tip::
 
-    To help find an open port you can try running this command:
+    To help find an open port you can try running this command on Viking:
 
     .. code-block:: console
 
         for p in {8000..9000}; do m=$(netstat -l|grep -c localhost:${p}); if [[ $m == 0 ]]; then echo "try $p"; break; fi; done
 
     *Thanks to Felix Ulrich-Oltean for this suggestion*
+
+
+Tidying up
+----------
+
+The above command is great for getting a lot done in one go, and simplifies setting up two ``ssh tunnels`` however, it also logs into Viking and then leaves the second command running the background (in the above example that's this part: ``ssh -N -L 8889:localhost:8888 node112``). We don't want to leave them running so after you are finished using Jupyter Notebooks it's a good idea to ``kill`` those processes.
+
+You can do this by looking at your running processes, with either the ``ps`` command or perhaps ``top``, noting the Process ID or ``PID``, and then issuing the ``kill`` command followed by the ``PID``.
+
+To quickly find any of your running processes with the characters ``ssh -N -L`` in the command, on Viking run:
+
+.. code-block:: console
+
+    ps -fu $USER | grep "ssh -N -L" | grep -v grep
+
+If there are any to be found, you should see a list, for example:
+
+.. code-block:: console
+    :caption: the second column is the ``PID`` or Process ID
+
+    [abc123@login2[viking2] ~]$ ps -fu $USER | grep "ssh -N -L" | grep -v grep
+    abc123    3937363       1  0 13:40 ?        00:00:00 ssh -N -L 8889:localhost:8888 node112
+    abc123    3938699       1  0 13:40 ?        00:00:00 ssh -N -L 8000:localhost:8888 node020
+    abc123    3947158       1  0 13:45 ?        00:00:00 ssh -N -L 8000:localhost:8888 node112
+
+You can kill them with the ``kill`` command, for example ``kill 3937363 3938699 3947158`` or you can try the following command to kill any it finds:
+
+.. code-block:: console
+
+    kill $(ps -fu $USER | grep "ssh -N -L" | grep -v grep | awk '{print $2}')
+
+
+As Viking has two login nodes you may need to log into both to kill any unused ``ssh`` processes. To log into a specific login node you can specify that with the following:
+
+.. code-block:: console
+
+    ssh abc123@viking-login1.york.ac.uk
+    ssh abc123@viking-login2.york.ac.uk
 
 .. FIXME: below method not working.
 

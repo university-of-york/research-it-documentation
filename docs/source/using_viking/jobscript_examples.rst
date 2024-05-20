@@ -178,6 +178,7 @@ The ``$SLURM_ARRAY_TASK_ID`` environmental variable represents the array index, 
     Rscript --vanilla some_job_array_script.R $SLURM_ARRAY_TASK_ID
 
 
+.. _gpu-jobs:
 
 GPU jobs
 --------

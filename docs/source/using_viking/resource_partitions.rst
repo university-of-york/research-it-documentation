@@ -45,14 +45,14 @@ preempt
     **Warning:** Jobs submitted to this partition are subject to preemption. There is no guarantee when or if a job will run, or whether it will complete. This partition has no limits on the resources that can be requested, but a lower priority than the nodes partition. Jobs will run if there are free resources in the nodes partition, but will be cancelled if these resources are later required for another higher priority job.
 
 gpu
-    Partition for running jobs that require GPUs, see documentation for details about how to request GPUs.
+    Partition for running jobs that require GPUs, see documentation for details about how to :ref:`request GPUs <gpu-jobs>`.
 
     - Each of the 16 nodes house three **nVidia A40 GPUs**
     - Your job script must request at least one GPU (eg ``#SBATCH --gres=gpu:1``)
     - You are limited to **no more than six GPUs** at a time across all of your jobs running in the ``gpu`` partition
 
 gpuplus
-    Partition for running jobs that require more GPU power, see documentation for details about how to request GPUs.
+    Partition for running jobs that require more GPU power, see documentation for details about how to request GPUs :ref:`request GPUs <gpu-jobs>`.
 
     - Each of the six nodes house two **nVidia H100 GPUs**
     - Your job script must request at least one GPU (eg ``#SBATCH --gres=gpu:1``)

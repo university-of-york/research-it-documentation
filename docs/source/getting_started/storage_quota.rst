@@ -74,6 +74,20 @@ When you login to Viking you will be told if you are over quota. If this is in u
 
 If you are over quota in the ``scratch`` area and need more space please email itsupport@york.ac.uk where we can increase your quota. **There is a grace period of 7 days after which you will lose access to Viking.**
 
+.. tip::
+
+    If you receive a warning that you have exceeded the 400,000 file limit in your home directory and would like a summary of where all the files are located, try this command:
+
+    .. code-block:: console
+
+        cd ~ && ls -1d */ .*/ | grep -vE 'scratch|\./|\.\./' | xargs du --inodes -s
+
+    This should provide a breakdown of the number of files (technically, file descriptors, also known as ``inodes``) by (top level) directory. If you don't mind waiting for all the results to be sorted try the folllowing command:
+
+    .. code-block:: console
+
+        cd ~ && ls -1d */ .*/ | grep -vE 'scratch|\./|\.\./' | xargs du --inodes -s | sort -n
+
 
 Transferring file to and from Viking or backing up
 --------------------------------------------------

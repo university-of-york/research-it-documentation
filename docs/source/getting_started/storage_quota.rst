@@ -74,7 +74,7 @@ When you login to Viking you will be told if you are over quota. If this is in u
 
 If you are over quota in the ``scratch`` area and need more space please email itsupport@york.ac.uk where we can increase your quota. **There is a grace period of 7 days after which you will lose access to Viking.**
 
-.. note::
+.. tip::
 
     If you receive a warning that you have exceeded the 400,000 file limit in your home directory and would like a summary of where all the files are located, try this command:
 

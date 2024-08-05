@@ -73,6 +73,7 @@ Then write to the directory that has the flash pool set. By default that just st
 
     Please remember to delete your data after you've finished using the flash storage.
 
+.. _longship:
 
 Longship
 --------

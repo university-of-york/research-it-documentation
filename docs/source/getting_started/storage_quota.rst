@@ -47,9 +47,8 @@ To check how much space you have left, run the following command:
 
     $ myquota
 
-Which will produce something similar to the following result:
+Which will produce something similar to the following result where you can see your **scratch** quota, your **home** folder quota (``/users/abc123``), and now also your :ref:`longship` quota:
 
-.. FIXME: update this
 
 .. code-block:: console
 
@@ -64,7 +63,9 @@ Which will produce something similar to the following result:
     Disk quotas for user abc123 (uid 12345):
          Filesystem   space   quota   limit   grace   files   quota   limit   grace
     10.10.0.15:/export/users
-                       232K    100G    110G              57    400k    500k
+                       220K    100G    110G              53    400k    500k
+    longship.york.ac.uk:/users
+                         0K      0K   2048G               1       0       0
 
 
 What happens if you exceed your quota

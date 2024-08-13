@@ -1,4 +1,4 @@
-Partition |br| Name,Max Job |br| Time,Max Jobs |br| per User,Max Cores |br| Running |br| per User,Max Running |br| Memory |br| Per User,Default |br| Coes |br| Per Job,Default |br| Memory |br| Per Core,Number |br| of Nodes
+Partition |br| Name,Max Job |br| Time,Max Jobs |br| per User,Max Cores |br| Running |br| per User,Max Running |br| Memory |br| Per User,Default |br| Cores |br| Per Job,Default |br| Memory |br| Per Core,Number |br| of Nodes
 nodes,48 hrs,No Limit,960,5T,1,5.2G,114
 week,7 days,No Limit,576,3T,1,5.2G,12
 month,30 days,No Limit,192,1T,1,5.2G,2

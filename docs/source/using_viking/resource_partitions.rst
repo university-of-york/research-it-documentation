@@ -51,12 +51,14 @@ gpu
     - Your job script must request at least one GPU (eg ``#SBATCH --gres=gpu:1``)
     - You are limited to **no more than six GPUs** at a time across all of your jobs running in the ``gpu`` partition
 
-gpuplus
-    Partition for running jobs that require more GPU power, see documentation for details about how to request GPUs :ref:`request GPUs <gpu-jobs>`.
+gpu_short
+    Partition for running short jobs on a GPU
 
-    - Each of the six nodes house two **nVidia H100 GPUs**
-    - Your job script must request at least one GPU (eg ``#SBATCH --gres=gpu:1``)
-    - You are limited to **no more than two GPUs** at a time across all of your jobs running in the ``gpuplus`` partition
+    - One dedicated node with three **nVidia A40 GPUs**
+    - Your job script must request **only one** GPU (eg ``#SBATCH --gres=gpu:1``) per job
+    - Practical limit of three jobs at any one time, as the dedicated node only has three GPUs
+    - Maximum memory per job is 170G
+    - Maximum cores per job is 32
 
 gpu_week
     Partition for running GPU jobs on any of the **nVidia A40 nodes** for up to a week
@@ -64,6 +66,22 @@ gpu_week
     - Maximum time is seven days (eg ``#SBATCH --time=7-00:00:00``)
     - Your job script should request **only** one GPU (eg ``#SBATCH --gres=gpu:1``)
     - The ``gpu_week`` partition is limited to running **a maximum of three GPUs** at any time, across all users
+
+gpu_interactive
+    Partition for running interactive jobs with a GPU
+
+    - One dedicated node with three **nVidia A40 GPUs**
+    - Your job script must request **only one** GPU (eg ``#SBATCH --gres=gpu:1``)
+    - Only **one job per user** on this partition
+    - Maximum memory per job is 170G
+    - Maximum cores per job is 32
+
+gpuplus
+    Partition for running jobs that require more GPU power, see documentation for details about how to request GPUs :ref:`request GPUs <gpu-jobs>`.
+
+    - Each of the six nodes house two **nVidia H100 GPUs**
+    - Your job script must request at least one GPU (eg ``#SBATCH --gres=gpu:1``)
+    - You are limited to **no more than two GPUs** at a time across all of your jobs running in the ``gpuplus`` partition
 
 himem
     For running jobs that require memory greater than that available in other partitions. Each of the two nodes (himem01 and himem02) have 96 cores. The max running cores and max running memory limits are practical limits, due to the resources available on the nodes.

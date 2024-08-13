@@ -8,7 +8,7 @@
 
 .. attention::
 
-    The resource partitions are currently being configured and not all limits are currently set. This will change over the coming days and this page will be updated accordingly.
+    The resource partitions will likely change over time and this page will be updated accordingly.
 
 
 Resource partitions

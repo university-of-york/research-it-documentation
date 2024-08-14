@@ -29,6 +29,7 @@ Welcome to the Viking Documentation!
    using_viking/submitting_jobs
    using_viking/jobscript_examples
    using_viking/resource_partitions
+   using_viking/slurm_job_scheduler
    using_viking/terminal_multiplexing
    using_viking/virtual_desktops
    using_viking/virtual_environments

@@ -56,7 +56,7 @@ Welcome to the Viking Documentation!
    Specific application guides <applications/index>
 
 .. toctree::
-   :titlesonly:
+   :maxdepth: 1
    :caption: Frequently asked questions
    :hidden:
 

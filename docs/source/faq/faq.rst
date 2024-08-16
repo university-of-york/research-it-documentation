@@ -5,9 +5,14 @@ Frequently asked questions
 
 Here is a list of frequently asked questions about Viking, if you have any suggestions to add to this list please email itsupport@york.ac.uk
 
+I'd like to access Viking
+-------------------------
+
+Please follow the instructions on the :doc:`../getting_started/creating_accounts` page
+
 
 When I try to connect to Viking I get a warning that the ``fingerprint`` has changed, should I accept this?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------------------------------------------------------------------
 
 If you connected to the old Viking then your computer may have stored the old ``ssh fingerprint`` of the login nodes. As the new Viking has new login nodes it has new ssh fingerprints. Please check the fingerprints below and ensure they match what is being displayed in the terminal login screen:
 
@@ -20,31 +25,31 @@ If you connected to the old Viking then your computer may have stored the old ``
 In a Linux or MacOS terminal or in a PowerShell or Command Prompt on and up to date Windows 10 or 11 system you can run ``ssh-keygen -R viking.york.ac.uk`` which will remove the old stored ``ssh fingerprint``. Connecting again with ``ssh abc123@viking.york.ac.uk`` (with your username in place of ``abc123``) should give you the option to check the new ``ssh fingerprint``, confirm it matches one of the above, and if so, accept the new ``ssh fingerprint``. You should then be connected and no longer receive the warnings about the ``ssh fingerprint``.
 
 I'd like to use a new project code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 If you have been given another project code you wish to use you can simply complete the :doc:`new user form <../getting_started/creating_accounts>` again, using this new code, and it will be added to your account within 24 hours.
 
 
 I need a shared folder for our team to able to access
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------------
 
 We can create a folder within ``/mnt/scratch/projects`` with the same name as your project code. User access can be controlled by one or more people in your team acting as 'admins' to the shared folder. Please email us to request a shared folder: itsupport@york.ac.uk
 
 
 Can you increase my quota on '/mnt/scratch/users/'?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------------
 
 Absolutely, please email itsupport@york.ac.uk to request we increase your quota. Please try to keep it to what you will use and if you no longer need it please let us know so we can adjust it back. Please remember to take time to arrange for :doc:`regular back ups </getting_started/backing_up>` of your data as nothing on the ``scratch`` file system is backed up automatically. If your data is no longer needed, please delete it to free up space on the file system.
 
 
 WinSCP shows "Error Listing Directory /mnt/lustre/users/"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------------------
 
 This is due to WinSCP using the folder path from the old Viking when trying to connect to the new Viking, which it saved from a previous session. As the folder path has changed slightly on the new Viking, WinSCP exits with this, or a similar error. To fix this please change the path to ``/mnt/scratch/users/abc123`` where ``abc123`` is your username.
 
 
 How to ensure a particular node isn't used for my job?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------------------
 
 If you come across an issue with a particular node, perhaps something on that node has crashed, and your job suddenly fails on one particular node - let us know through itsupport@york.ac.uk. You can still continue your work by using the `exclude <https://slurm.schedmd.com/sbatch.html#OPT_exclude>`_ option to exclude the troubled node form being allocated. This will allow you to continue your work whilst we fix the problem.
 
@@ -65,7 +70,7 @@ Or if you're using the `srun <https://slurm.schedmd.com/srun.html>`_ or `salloc 
 
 
 Why hasn't my job started?
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 Jobs submitted to the Slurm job scheduler will sometimes take some time before they start running. This can be for a number of reasons for example how busy the particular partition is that the job was submitted to or how many resources the job is requesting. It's always a good idea to request only the :ref:`resources <job_resources>` your job requires. You can check the jobs you have in the queue with the following command:
 
@@ -79,7 +84,7 @@ For more information there is a full list of `reason codes <https://slurm.schedm
 
 
 The $SLURM_NODELIST environment variable doesn't give me individual node names
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------------------------------------------
 
 If you need the list of nodes your multi-node job is running on and you find the ``$SLURM_NODELIST`` environment variable gives you the short form, for example:
 

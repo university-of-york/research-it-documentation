@@ -217,15 +217,15 @@ Any `.rst` files dropped into the `docs/source/applications` folder will automat
 - [x] Get ready for Pull Requests:
     - [x] Update README.md to new format
     - [x] Use public actions for workflow
-- [ ] New pages:
+- [x] New pages:
     - [x] Create 'Data Management' section
     - [x] Add X11 Forwarding page
-    - [ ] Slurm common commands page
+    - [x] Slurm common commands page
 - [ ] Update pages:
     - [x] Update Virtual desktops page
     - [x] Move all application specific pages to one section
       - [x] Split up into separate pages
-    - [ ] FAQ page with common issues
+    - [x] FAQ page with common issues
     - [ ] RELION jobscript
 
 See the [open issues](https://github.com/university-of-york/research-it-documentation/issues) for a full list of proposed features (and known issues).

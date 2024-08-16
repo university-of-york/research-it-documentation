@@ -19,6 +19,11 @@ If you connected to the old Viking then your computer may have stored the old ``
 
 In a Linux or MacOS terminal or in a PowerShell or Command Prompt on and up to date Windows 10 or 11 system you can run ``ssh-keygen -R viking.york.ac.uk`` which will remove the old stored ``ssh fingerprint``. Connecting again with ``ssh abc123@viking.york.ac.uk`` (with your username in place of ``abc123``) should give you the option to check the new ``ssh fingerprint``, confirm it matches one of the above, and if so, accept the new ``ssh fingerprint``. You should then be connected and no longer receive the warnings about the ``ssh fingerprint``.
 
+I'd like to use a new project code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you have been given another project code you wish to use you can simply complete the :doc:`new user form <../getting_started/creating_accounts>` again, using this new code, and it will be added to your account within 24 hours.
+
 
 I need a shared folder for our team to able to access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,3 +76,22 @@ Jobs submitted to the Slurm job scheduler will sometimes take some time before t
 If you see the reason for a job being held as ``QOSGrpGRES`` then this means a resource has reached its limit for that partition. For example, on the ``gpu_week`` partition only a total of three GPUs are allowed to be used by all users at the same time (on that particular partition). When this limit is reached all new jobs to the queue will be held with that reason code.
 
 For more information there is a full list of `reason codes <https://slurm.schedmd.com/resource_limits.html#reasons>`_.
+
+
+The $SLURM_NODELIST environment variable doesn't give me individual node names
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you need the list of nodes your multi-node job is running on and you find the ``$SLURM_NODELIST`` environment variable gives you the short form, for example:
+
+.. code-block:: console
+
+   $ echo $SLURM_NODELIST
+   node[005-006]
+
+Use ``scontrol`` to show them in full:
+
+.. code-block:: console
+
+   $ scontrol show hostnames $SLURM_NODELIST
+   node005
+   node006

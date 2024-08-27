@@ -20,16 +20,11 @@ Linux, MacOS and Windows PowerShell
 To log in from a terminal emulator, use the following command:
 
 .. code-block:: console
-
-    $ ssh viking.york.ac.uk
-
-You will be prompted for your IT Services password. If you're using a personal device then you'll need to add your IT Services username for example:
-
-.. code-block:: console
     :caption: remember to substitute 'abc123' for your own username
 
     $ ssh abc123@viking.york.ac.uk
 
+You will be prompted for your IT Services password.
 
 .. note::
 

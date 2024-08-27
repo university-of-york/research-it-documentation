@@ -10,7 +10,9 @@ Log in to Viking
 .. code-block:: console
     :caption: from a Linux or MacOS terminal or Windows PowerShell with OpenSSH installed
 
-    $ ssh viking.york.ac.uk
+    $ ssh abc123@viking.york.ac.uk
+
+Remember to substitute ``abc123`` with your IT Services username.
 
 .. hint::
 

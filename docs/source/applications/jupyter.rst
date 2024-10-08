@@ -62,6 +62,9 @@ Finally ``Ctrl + left mouse click``  on the link from the first terminal session
 
         ssh -L 8888:localhost:8889 abc123@viking.york.ac.uk ssh -N -L 8889:localhost:8888 node112
 
+
+.. _port-command:
+
 .. tip::
 
     To help find an open port you can try running this command on Viking:
@@ -160,13 +163,48 @@ As Viking has two login nodes you may need to log into both to kill any unused `
 Jupyter notebooks using VSCode
 ------------------------------
 
+VSCode locally
+^^^^^^^^^^^^^^
+
 Using some of the above guide as reference, another way to so this is with VSCode. You do it all in VSCode and the inbuilt terminals in VSCode. If you're interested in this method it's similar to the above in many ways:
 
     1. Install the `Jupyter extension <https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter>`_ in VSCode
     2. Remote ssh connect to Viking from VSCode's `terminal <https://code.visualstudio.com/docs/terminal/basics>`_
-    3. Start an interactive session with ``srun`` eg ``srun -N 1 -n 1 -c 10 -t 4:0:0 --pty /bin/bash`` **in the terminal of VSCode**
+    3. Start an interactive session with ``srun`` eg ``srun --nodes=1 --cpus-per-task=8 --time=04:00:00 --pty /bin/bash`` **in the terminal of VSCode**
     4. Once the interactive session is running, load the ``Jupyter`` module and run the notebook, like above
     5. In a **new** remote terminal on Viking, in VSCode, set up the ssh forwarding, like above (noting the ``node`` number from step 4.)
     6. In VSCode, open a new ``Jupyter`` notebook: ``(Ctrl+Shift+P)`` and type ``Jupyter: Create New Jupyter Notebook.``
     7. In VSCode, press ``select kernel`` in the top right then select ``Existing Jupyter server``
     8. Paste in the URL of the notebook, just like the guide above, follow the prompts in VSCode to name the notebook and select the available kernel
+
+
+VSCode remote **ssh** connection to Viking
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yet another way to use VSCode here be to have VSCode remotely connect to Viking (so you can open and save files to Viking in VSCode), request some resources on a compute node to run the Jupyter Notebook server and then create a notebook and connect to the server which is running on the compute node.
+
+.. note::
+    This is a little complex but if you're happy to give it a go then the following should be considered a starter guide as you will need to try different ports and be happy with a little trial and error.
+
+It's worth explicitly mentioning where things are running as we'll need to forward a port later so this may help visualise things. In this example we'll also use the listed ports (but those will likely be different for you):
+
+==========  =================
+Login node  Compute node
+==========  =================
+VScode      Jupyter Notebook
+Port: 8202  Port: 8001
+==========  =================
+
+.. tip::
+
+    The above are ports I chose in this example, you will likely have to pick different ports.
+
+
+1. Connect VSCode to Viking `over ssh <https://marketplace.visualstudio.com/items?itemName=ms-VSCode-remote.remote-ssh>`_
+2. Install `Jupyter ext <https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter>`_ in VSCode, on Viking. Ensure this is `installed remotely <https://code.visualstudio.com/docs/remote/ssh#_managing-extensions>`_ on the ssh host (Viking)
+3. Start an interactive session with ``srun`` eg ``srun --nodes=1 --cpus-per-task=8 --time=04:00:00 --pty /bin/bash`` in the terminal of VSCode, make a note of the node (in this example we'll say it's ``node123``)
+4. Load the Jupyter module: ``module load {MOD_JUPYTER}``
+5. Start a server on a port, make a note of the port: ``jupyter notebook --no-browser --port 8001`` (see :ref:`finding port tip <port-command>` for help picking a port)
+6. In a terminal on the **login node** set up port forward from login node -> compute node eg: ``ssh -N -L 8202:localhost:8001 node123`` and leave it running (again you'll need to pick an open port on the login node, in this case I chose ``8202``)
+7. In VSCode create a new Notebook: ``(Ctrl+Shift+P)`` and type ``Jupyter: Create New Jupyter Notebook`` **or** open an existing Notebook 
+8. In VSCode select the kernel by clicking button in the top right, click ``Select another kernel...`` then ``Existing Jupyter server...`` and paste in the link (which was given when you ran the Notebook server on the compute node) BUT ensure it's the port you are forwarding on the **login node** which in this example was ``8202`` and the link here looks like: ``http://127.0.0.1:8202/?token=991782e43816c044d3e0eeecca5258c1b105344fc5ddb990``

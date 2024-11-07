@@ -24,7 +24,7 @@ Here we have an interactive ``bash`` session on the ``node112`` compute node, wi
 
 .. attention::
 
-    In this example we're using the Jupyter **module** on Viking. If you are using Conda to install Jupyter alongside other packages you should **not** run the ``module load {MOD_JUPYTER}`` command below, skip that command and the rest should still be valid. Instead you should activate your Conda environment where you have Jupyter installed.
+    In this example we're using the Jupyter **module** on Viking. If you are using Conda or another virtual environment to install Jupyter alongside other packages you should **not** run the ``module load {MOD_JUPYTER}`` command below, skip that command and the rest should still be valid. Instead you should activate your virtual environment where you have Jupyter installed.
 
 
 .. code-block:: console

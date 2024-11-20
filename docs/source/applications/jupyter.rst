@@ -186,7 +186,7 @@ Using some of the above guide as reference, another way to so this is with VSCod
 VSCode remote **ssh** connection to Viking
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Yet another way to use VSCode here be to have VSCode remotely connect to Viking (so you can open and save files to Viking in VSCode), request some resources on a compute node to run the Jupyter Notebook server and then create a notebook and connect to the server which is running on the compute node.
+Yet another way to use VSCode is to have VSCode remotely connect to Viking (so you can open and save files to Viking in VSCode), request some resources on a compute node to run the Jupyter Notebook server and then create a notebook and connect to the server which is running on the compute node.
 
 .. note::
     This is a little complex but if you're happy to give it a go then the following should be considered a starter guide as you will need to try different ports and be happy with a little trial and error.

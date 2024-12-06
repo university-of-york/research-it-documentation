@@ -30,7 +30,8 @@ Additional partition information
 --------------------------------
 
 nodes
-    Maximum limit of 960 cores.
+    - Each node has 96 cores.
+    - Maximum limit of 960 cores per user.
 
 week
     Partition for jobs that need to run for longer than the 48h max time allowed by the nodes partition, but for less than a week. There are 12 nodes in this partition and each user is limited to using a maximum of six node's CPU and memory (576 cores and 3T of RAM).
@@ -50,6 +51,7 @@ gpu
     - Each of the 16 nodes house three **nVidia A40 GPUs**
     - Your job script must request at least one GPU (eg ``#SBATCH --gres=gpu:1``)
     - You are limited to **no more than six GPUs** at a time across all of your jobs running in the ``gpu`` partition
+    - Each GPU is limited to a maximum of 32 CPU cores and 167G of memory **per GPU** (1/3 of the the node's resources)
 
 gpu_short
     Partition for running short jobs on a GPU
@@ -57,7 +59,7 @@ gpu_short
     - One dedicated node with three **nVidia A40 GPUs**
     - Your job script must request **only one** GPU (eg ``#SBATCH --gres=gpu:1``) per job
     - Practical limit of three jobs at any one time, as the dedicated node only has three GPUs
-    - Maximum memory per job is 170G
+    - Maximum memory per job is 167G
     - Maximum cores per job is 32
 
 gpu_week
@@ -73,7 +75,7 @@ gpu_interactive
     - One dedicated node with three **nVidia A40 GPUs**
     - Your job script must request **only one** GPU (eg ``#SBATCH --gres=gpu:1``)
     - Only **one job per user** on this partition
-    - Maximum memory per job is 170G
+    - Maximum memory per job is 167G
     - Maximum cores per job is 32
 
 gpuplus

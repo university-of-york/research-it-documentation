@@ -16,5 +16,5 @@ Campus (SFTP/Linux): |br|
 /shared/longship/projects |br| |br|
 Campus (Windows): |br|
 \\\\longship.york.ac.uk\\users |br|
-\\\\longship.york.ac.uk\\projects","3TB","Warm data. |br| A place to store data not actively in use but will be in the future on Viking. |br| Accessible from Viking AND campus. Can also be used to transfer data to/from Viking.","Not deleted "
+\\\\longship.york.ac.uk\\projects","2TB","Warm data. |br| A place to store data not actively in use but will be in the future on Viking. |br| Accessible from Viking AND campus. Can also be used to transfer data to/from Viking.","Not deleted "
 "localtmp","No","/users/abc123/localtmp",,"Tmp files for ","Clean up period TBD"

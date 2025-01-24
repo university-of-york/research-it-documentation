@@ -1,6 +1,10 @@
 Gaussian
 ========
 
+.. note::
+
+    To request access to use ``Gaussian`` you need to agree to its license. Please follow the link found in the `Viking new user form <https://docs.google.com/forms/d/e/1FAIpQLSfXkL10ypU6EQCBB2jS5oDwTpRMo77ppl7dvdbLnXm5zrKR7Q/viewform>`_. Once you have completed this form you will shortly have access to using ``Gaussian``.
+
 ``Gaussian`` can be loaded using the following:
 
 .. code-block:: console

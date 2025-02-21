@@ -136,6 +136,10 @@ At this point, the environment ``my_first_environment`` has been created, and is
 Using an environment
 ^^^^^^^^^^^^^^^^^^^^
 
+.. tip::
+
+    If you have run `conda init bash <https://docs.conda.io/projects/conda/en/stable/dev-guide/deep-dives/activation.html>`_ to manage the ``conda`` function in your ``~/.bashrc`` then to activate a ``conda`` environment in a jobscript you will first need to ``source`` your ``~/.bashrc`` file to load the ``conda`` command. To do this add the following line before any ``conda`` commands in your jobscript: ``source ~/.bashrc``. This will ensure that the ``conda`` function is available in your jobscript (along with anything else contained in your ``~/.bashrc``).
+
 Once an environment has been created, you can activate it using the ``source activate`` command. This can be seen clearly in the following example:
 
 .. code-block:: console
